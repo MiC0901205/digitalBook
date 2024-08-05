@@ -1,0 +1,40 @@
+<div class="modal-background">
+    <div class="login-modal">
+      <h1>Connexion</h1>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="email">Adresse Email</label>
+          <input id="email" formControlName="email" type="email" placeholder="Entrez votre adresse email" />
+          <div *ngIf="(loginForm.get('email')?.invalid && (loginForm.get('email')?.touched || isSubmitted))">
+            <small class="error" *ngIf="loginForm.get('email')?.errors?.['required']">
+              L'adresse email est requise.
+            </small>
+            <small class="error" *ngIf="loginForm.get('email')?.errors?.['email']">
+              L'adresse email n'est pas valide.
+            </small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Mot de passe</label>
+          <input id="password" formControlName="password" type="password" placeholder="Entrez votre mot de passe" />
+          <div *ngIf="(loginForm.get('password')?.invalid && (loginForm.get('password')?.touched || isSubmitted))">
+            <small class="error" *ngIf="loginForm.get('password')?.errors?.['required']">
+              Le mot de passe est requis.
+            </small>
+          </div>
+        </div>
+        <div class="form-group captcha-container">
+          <re-captcha 
+            siteKey="6LfBByAqAAAAAPNgauPyxZPxlgeB6pa8_cuHhD8X" 
+            (resolved)="handleCaptchaResponse($event)" 
+            name="recaptcha"
+            required
+            [class.is-invalid]="!recaptchaToken && (loginForm.touched || isSubmitted)">
+          </re-captcha>
+        </div>
+        <p class="no-account">Pas de compte ? <a href="/register">Inscrivez-vous</a></p>
+        <button type="submit" [disabled]="!loginForm.valid || !recaptchaToken">Se connecter</button>
+      </form>
+    </div>
+  </div>
+  
