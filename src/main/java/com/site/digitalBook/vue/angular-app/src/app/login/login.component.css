@@ -1,143 +1,226 @@
-/* Conteneur de la modale */
-.modal-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-  
-  /* Modale de connexion */
+/* Styles pour la modale de connexion */
 .login-modal {
-    background-color: #000;
-    color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    width: 100%;
-    max-width: 360px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90%;
+  margin: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #fff; /* Couleur de fond par défaut */
+  transition: background-color 0.3s ease;
+  cursor: default;
+  user-select: none;
 }
-  
-  /* Titre de la modale */
-.login-modal h1 {
-    margin-top: 0;
-    color: #cc0000;
-    text-align: center;
-    cursor: default; /* change 'no-cursor' à 'default' */
-    user-select: none; /* Empêche la sélection du texte */
-    pointer-events: none; /* Empêche les interactions de la souris */
-    /* contenteditable: false; /* Non nécessaire pour un <h1> */
-}
-    
-  /* Styles pour le formulaire */
-  form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .form-group {
-    width: 100%;
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #ccc;
-    cursor: default;
-    user-select: none;
-    width: 100%; /* Assurez-vous que les labels occupent toute la largeur disponible */
-    margin-left: 10px;
-  }
-  
-  .form-group input {
-    width: 100%;
-    max-width: 300px; /* Ajustez la largeur maximale si nécessaire */
-    padding: 10px;
-    border: 1px solid #444;
-    border-radius: 4px;
-    background-color: #222;
-    color: #fff;
-    box-sizing: border-box;
-    text-align: left;
-    margin: 0 auto; /* Centre les inputs */
-  }
-  
-  /* Styles pour le CAPTCHA */
-  .captcha-container {
-    width: 100%;
-    max-width: 300px; /* Ajustez la largeur maximale si nécessaire */
-    margin-bottom: 40px;
-    text-align: right; /* Aligne le contenu à droite */
-    margin: 0 auto; /* Centre le conteneur du CAPTCHA */
-  }
-  
-  .captcha-container re-captcha {
-    display: inline-block;
-  }
-  
-  /* Styles pour le bouton */
-  button {
-    width: 100%;
-    max-width: 300px; /* Ajustez la largeur maximale si nécessaire */
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    background-color: #cc0000;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin: 20px auto; /* Centre le bouton */
-  }
-  
-  button:hover {
-    background-color: #a30000;
-  }
-  
-  button:disabled {
-    background-color: #999;
-    color: #666;
-    cursor: not-allowed;
-  }
-  
-  /* Styles pour les messages d'erreur */
-  .error {
-    color: red;
-    margin-left: 12px;
-    margin-top: 5px;
-  }
-  
-  .invalid-feedback {
-    color: red;
-  }
 
-  /* Styles pour le lien "Pas de compte ?" */
+/* Couleur de fond rouge pour les erreurs */
+.error-bg {
+  background-color: #f8d7da; /* Rouge clair */
+}
+
+/* Couleur de fond vert pour le succès */
+.success-bg {
+  background-color: #d4edda; /* Vert clair */
+}
+
+/* Styles pour les messages d'alerte */
+.alert {
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  width: 85%;
+}
+
+.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  width: 85%;
+}
+
+/* Autres styles restants */
+.error-message p,
+.alert p {
+  margin: 0;
+  font-size: 16px;
+}
+
+
+/* Styles pour la modale de connexion */
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Z-index pour la modale de connexion */
+  /* Assurer que la modale de connexion est en dessous */
+}
+
+/* Styles pour les éléments non interactifs derrière la modale d'erreur */
+.modal-background.disabled {
+  pointer-events: none; /* Désactiver les interactions */
+}
+
+/* Contenu de la modale */
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  width: 300px;
+  text-align: center;
+}
+
+/* Bouton dans la modale */
+.modal-content button {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background: #0056b3;
+}
+
+/* Styles pour le message de succès */
+.alert.alert-success {
+  background: #d4edda;
+  color: #155724;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #c3e6cb;
+  border-radius: 5px;
+}
+
+/* Styles pour le formulaire de connexion */
+.login-modal {
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 360px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-modal h1 {
+  margin-top: 0;
+  color: #cc0000;
+  text-align: center;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-group {
+  width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #ccc;
+  cursor: default;
+  user-select: none;
+  width: 100%;
+  margin-left: 10px;
+}
+
+.form-group input {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+  border: 1px solid #444;
+  border-radius: 4px;
+  background-color: #222;
+  color: #fff;
+  box-sizing: border-box;
+  text-align: left;
+  margin: 0 auto;
+}
+
+.captcha-container {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 40px;
+  text-align: right;
+  margin: 0 auto;
+}
+
+.captcha-container re-captcha {
+  display: inline-block;
+}
+
+button {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #cc0000;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 20px auto;
+}
+
+button:hover {
+  background-color: #a30000;
+}
+
+button:disabled {
+  background-color: #999;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.error {
+  color: red;
+  margin-left: 12px;
+  margin-top: 5px;
+}
+
+.invalid-feedback {
+  color: red;
+}
+
 .no-account {
-    margin-bottom: 10px;
-    text-align: center;
-  }
-  
-  .no-account a {
-    color: #cc0000;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  .no-account a:hover {
-    text-decoration: underline;
-  }
-  
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.no-account a {
+  color: #cc0000;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.no-account a:hover {
+  text-decoration: underline;
+}

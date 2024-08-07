@@ -6,6 +6,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.site.digitalBook.entity.User;
+import com.site.digitalBook.exception.EmailAlreadyExistsException;
+import com.site.digitalBook.exception.UnauthorizedException;
 import com.site.digitalBook.exception.UserNotFoundException;
 import com.site.digitalBook.repository.UserRepository;
 
@@ -21,9 +23,8 @@ public class UserService {
     }
 
     public User addUser(User user) {
-        // Vérifier si l'utilisateur existe déjà
         if (userRepository.findByEmail(user.getEmail()) != null) {
-            throw new RuntimeException("Email already exists");
+            throw new EmailAlreadyExistsException("Email already exists");
         }
         String encryptedPassword = passwordEncoder.encode(user.getMdp());
         user.setMdp(encryptedPassword);
@@ -46,9 +47,20 @@ public class UserService {
     // Méthode pour authentifier un utilisateur
     public User authenticateUser(String email, String password) {
         User user = userRepository.findByEmail(email);
-        if (user == null || !passwordEncoder.matches(password, user.getMdp())) {
-            throw new UserNotFoundException("Invalid email/password");
+        
+        if (user == null) {
+            throw new UserNotFoundException("Utilisateur non trouvé");
         }
+
+        if (!passwordEncoder.matches(password, user.getMdp())) {
+            throw new UserNotFoundException("Email ou mot de passe invalide");
+        }
+
+        Boolean estActif = userRepository.findEstActifByEmail(email);
+        if (estActif == null || estActif != true) {
+            throw new UnauthorizedException("Le compte est inactif. Authentification non autorisée.");
+        }
+
         return user;
     }
 }

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.site.digitalBook.controller.payload.Payload;
 import com.site.digitalBook.entity.User;
+import com.site.digitalBook.exception.EmailAlreadyExistsException;
+import com.site.digitalBook.exception.UnauthorizedException;
 import com.site.digitalBook.exception.UserNotFoundException;
 import com.site.digitalBook.service.UserService;
 
@@ -21,16 +23,30 @@ public class UserController {
 
     private final UserService userService;
 
+
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
     @PostMapping("/register")
     public ResponseEntity<Payload> registerUser(@RequestBody User user) {
+        System.out.println("Received user: " + user); 
+       
+        if (user.getEmail() == null || user.getMdp() == null) {
+            Payload payload = new Payload("Email or password cannot be null");
+            return new ResponseEntity<>(payload, HttpStatus.BAD_REQUEST);
+        }
+
         try {
             User newUser = userService.addUser(user);
             Payload payload = new Payload("New user added", newUser);
             return new ResponseEntity<>(payload, HttpStatus.CREATED);
+        } catch (EmailAlreadyExistsException e) {
+            Payload payload = new Payload(e.getMessage());
+            return new ResponseEntity<>(payload, HttpStatus.BAD_REQUEST);       
+        } catch(UnauthorizedException e) {
+                Payload payload = new Payload("Login failed: " + e.getMessage());
+                return new ResponseEntity<>(payload, HttpStatus.UNAUTHORIZED);
         } catch (Exception e) {
             Payload payload = new Payload("Registration failed: " + e.getMessage());
             return new ResponseEntity<>(payload, HttpStatus.BAD_REQUEST);
@@ -46,6 +62,9 @@ public class UserController {
         } catch (UserNotFoundException e) {
             Payload payload = new Payload("Login failed: " + e.getMessage());
             return new ResponseEntity<>(payload, HttpStatus.UNAUTHORIZED);
+        } catch (Exception e) {
+            Payload payload = new Payload("Login failed: " + e.getMessage());
+            return new ResponseEntity<>(payload, HttpStatus.BAD_REQUEST);
         }
     }
 

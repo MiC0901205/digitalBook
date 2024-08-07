@@ -31,9 +31,13 @@ public class User {
 
     private String email;
 
-    private String mdp;
+    private String mdp; 
 
     private String tel;
+    
+    private String questionSecrete; 
+
+    private String reponseSecrete;
 
     private int panier;
 
@@ -46,6 +50,7 @@ public class User {
         this.mdp = mdp;
     }
 
+    // Getters et Setters
     public int getId() {
         return id;
     }
@@ -126,9 +131,26 @@ public class User {
         this.panier = panier;
     }
 
+
+	public String getQuestionSecrete() {
+		return questionSecrete;
+	}
+
+	public void setQuestionSecrete(String questionSecrete) {
+		this.questionSecrete = questionSecrete;
+	}
+
+	public String getReponseSecrete() {
+		return reponseSecrete;
+	}
+
+	public void setReponseSecrete(String reponseSecrete) {
+		this.reponseSecrete = reponseSecrete;
+	}
+	
     @Override
     public String toString() {
-        return "Utilisateur [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", dateNaissance=" + dateNaissance
+        return "User [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", dateNaissance=" + dateNaissance
                 + ", estActif=" + estActif + ", profil=" + profil + ", email=" + email + ", mdp=" + mdp + ", tel=" + tel
                 + ", panier=" + panier + "]";
     }

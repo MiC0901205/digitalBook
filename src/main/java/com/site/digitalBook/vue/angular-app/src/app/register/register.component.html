@@ -1,0 +1,132 @@
+<div class="modal-background">
+  <div class="login-modal">
+    <h1>Inscription</h1>
+    <!-- Affichage du message d'erreur ou de succès -->
+    <div *ngIf="errorMessage" class="alert" [ngClass]="{'alert-danger': errorMessage}">
+      <p [innerHTML]="errorMessage"></p>
+    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <!-- Champ Nom -->
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-item">
+            <label for="nom">Nom</label>
+            <input id="nom" formControlName="nom" type="text" placeholder="Entrez votre nom" />
+            <div *ngIf="registerForm.get('nom')?.invalid && (registerForm.get('nom')?.touched || isSubmitted)">
+              <small class="error" *ngIf="registerForm.get('nom')?.errors?.['required']">
+                Le nom est requis.
+              </small>
+            </div>
+          </div>
+          <!-- Champ Prénom -->
+          <div class="input-group-item">
+            <label for="prenom">Prénom</label>
+            <input id="prenom" formControlName="prenom" type="text" placeholder="Entrez votre prénom" />
+            <div *ngIf="registerForm.get('prenom')?.invalid && (registerForm.get('prenom')?.touched || isSubmitted)">
+              <small class="error" *ngIf="registerForm.get('prenom')?.errors?.['required']">
+                Le prénom est requis.
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Champ Email -->
+      <div class="form-group">
+        <label for="email">Adresse Email</label>
+        <input id="email" formControlName="email" type="email" placeholder="Entrez votre adresse email" />
+        <div *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.touched || isSubmitted)">
+          <small class="error" *ngIf="registerForm.get('email')?.errors?.['required']">
+            L'adresse email est requise.
+          </small>
+          <small class="error" *ngIf="registerForm.get('email')?.errors?.['email']">
+            L'adresse email n'est pas valide.
+          </small>
+        </div>
+      </div>
+      <!-- Champ Mot de passe -->
+      <div class="form-group">
+        <label for="mdp">Mot de passe</label>
+        <input id="mdp" formControlName="mdp" type="password" placeholder="Entrez votre mot de passe" (blur)="registerForm.get('mdp')?.updateValueAndValidity()" />
+        <div *ngIf="registerForm.get('mdp')?.touched && passwordError">
+          <small class="error">
+            {{ passwordError }}
+          </small>
+        </div>
+      </div>
+      <!-- Champ Téléphone -->
+      <div class="form-group">
+        <div class="phone-container">
+          <label for="tel">Téléphone</label>
+          <div class="phone-input-group">
+            <div class="country-code-container">
+              <div class="selected-country" (click)="toggleDropdown()">
+                <img [src]="selectedCountry.flag" alt="{{ selectedCountry.label }}" class="flag-icon" />
+                {{ selectedCountry.value }}
+                <span class="arrow-down"></span>
+              </div>
+              <div *ngIf="dropdownOpen" class="country-code-dropdown">
+                <div *ngFor="let code of countryCodes" class="dropdown-item" (click)="selectCountry(code)">
+                  <img [src]="code.flag" alt="{{ code.label }}" class="flag-icon" />
+                  {{ code.value }}
+                </div>
+              </div>
+            </div>
+            <input 
+              id="tel" 
+              formControlName="tel" 
+              (input)="formatPhoneInput($event)"
+              [attr.maxlength]="maxLength"
+              placeholder="Entrez votre numéro de portable"
+            />
+            <div *ngIf="isSubmitted && registerForm.get('tel')?.invalid" class="error">
+              <div *ngIf="registerForm.get('tel')?.errors?.['required']">Le numéro de téléphone est requis.</div>
+            </div>
+          </div>
+          <div *ngIf="registerForm.get('tel')?.invalid && (registerForm.get('tel')?.touched || isSubmitted)">
+            <small class="error" *ngIf="registerForm.get('tel')?.errors?.['required']">
+              Le numéro de téléphone est requis.
+            </small>
+          </div>
+        </div>
+      </div>      
+      <!-- Champ Date de Naissance -->
+      <div class="form-group">
+        <label for="dateNaissance">Date de Naissance</label>
+        <input id="dateNaissance" formControlName="dateNaissance" type="date" />
+        <div *ngIf="registerForm.get('dateNaissance')?.invalid && (registerForm.get('dateNaissance')?.touched || isSubmitted)">
+          <small class="error" *ngIf="registerForm.get('dateNaissance')?.errors?.['required']">
+            La date de naissance est requise.
+          </small>
+          <small class="error" *ngIf="registerForm.get('dateNaissance')?.errors?.['dateInFuture']">
+            La date de naissance est ultérieure à la date actuelle.
+          </small>
+        </div>
+      </div>
+      <!-- Champ Question Secrète -->
+      <div class="form-group">
+        <label for="questionSecrete">Question Secrète</label>
+        <select id="questionSecrete" formControlName="questionSecrete">
+          <option value="" disabled>Choisissez une question secrète</option>
+          <option *ngFor="let question of secretQuestions" [value]="question">{{ question }}</option>
+        </select>
+        <div *ngIf="registerForm.get('questionSecrete')?.invalid && (registerForm.get('questionSecrete')?.touched || isSubmitted)">
+          <small class="error" *ngIf="registerForm.get('questionSecrete')?.errors?.['required']">
+            La question secrète est requise.
+          </small>
+        </div>
+      </div>
+      <!-- Champ Réponse Secrète -->
+      <div class="form-group">
+        <label for="reponseSecrete">Réponse Secrète</label>
+        <input id="reponseSecrete" formControlName="reponseSecrete" type="text" placeholder="Entrez votre réponse secrète" />
+        <div *ngIf="registerForm.get('reponseSecrete')?.invalid && (registerForm.get('reponseSecrete')?.touched || isSubmitted)">
+          <small class="error" *ngIf="registerForm.get('reponseSecrete')?.errors?.['required']">
+            La réponse secrète est requise.
+          </small>
+        </div>
+      </div>
+      <!-- Bouton S'inscrire -->
+      <button type="submit" [disabled]="!registerForm.valid">S'inscrire</button>
+    </form>
+  </div>
+</div>
