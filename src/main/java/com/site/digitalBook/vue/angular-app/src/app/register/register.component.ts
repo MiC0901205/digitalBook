@@ -50,6 +50,9 @@ export class RegisterComponent implements OnInit {
       questionSecrete: ['', Validators.required],
       reponseSecrete: ['', Validators.required]
     });
+
+    // Update phone validators initially
+    this.updatePhoneValidators();
   }
 
   private passwordStrengthValidator(): ValidatorFn {
@@ -100,6 +103,7 @@ export class RegisterComponent implements OnInit {
     this.selectedCountry = code;
     this.registerForm.get('tel')?.setValue(''); // Clear phone input on country change
     this.updatePhoneValidators();
+    this.dropdownOpen = false; // Close the dropdown after selection
   }
 
   updatePhoneValidators(): void {
@@ -108,10 +112,10 @@ export class RegisterComponent implements OnInit {
       const validators = [Validators.required];
       
       if (this.selectedCountry.value === '+33') {
-        this.maxLength = 12;
+        this.maxLength = 13; 
         validators.push(
           Validators.maxLength(this.maxLength),
-          Validators.pattern(/^(\d{1} \d{2})(?: \d{2}){4}$/)
+          Validators.pattern(/^\d{1} \d{2} \d{2} \d{2} \d{2}$/)
         );
       } else if (this.selectedCountry.value === '+1') {
         this.maxLength = 12;
@@ -122,6 +126,8 @@ export class RegisterComponent implements OnInit {
       }
   
       telControl.setValidators(validators);
+
+      console.log("validators", validators);
       telControl.updateValueAndValidity();
     }
   }
@@ -144,7 +150,7 @@ export class RegisterComponent implements OnInit {
   onSubmit(): void {
     this.isSubmitted = true;
     this.errorMessage = null; // Réinitialiser le message d'erreur
-  
+
     if (this.registerForm.valid) {
       const formData = this.registerForm.value;
       this.authService.register(formData).subscribe(
@@ -166,6 +172,8 @@ export class RegisterComponent implements OnInit {
       );
     } else {
       this.registerForm.markAllAsTouched();
+      console.log('Form errors:', this.registerForm.errors);
+      console.log('Form controls errors:', this.registerForm.controls);
     }
-  }  
+  }
 }

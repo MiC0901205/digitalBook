@@ -40,6 +40,11 @@ export class LoginComponent implements OnInit {
     });
 
     this.registrationSuccess = localStorage.getItem('registrationSuccess') === 'true';
+    if (this.registrationSuccess) {
+      setTimeout(() => {
+        this.registrationSuccess = false;
+      }, 3000);
+    }
     localStorage.removeItem('registrationSuccess');
   }
 
