@@ -44,7 +44,6 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    // Méthode pour authentifier un utilisateur
     public User authenticateUser(String email, String password) {
         User user = userRepository.findByEmail(email);
         

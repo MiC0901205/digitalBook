@@ -5,7 +5,7 @@ import { RecaptchaModule } from 'ng-recaptcha';
 import { CommonModule } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';  // Importation correcte
 import { HttpClientModule } from '@angular/common/http';  // Importez HttpClientModule ici
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -25,12 +25,12 @@ export class LoginComponent implements OnInit {
   recaptchaToken: string = '';
   registrationSuccess: boolean = false;
   errorMessage: string = ''; 
-  isError: boolean = false;  // Propriété pour l'état d'erreur
-  modalClass: string = '';   // Propriété pour les classes CSS de la modale
+  isError: boolean = false;   
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -59,15 +59,18 @@ export class LoginComponent implements OnInit {
       this.authService.login(email, mdp).subscribe(
         response => {
           console.log('Login successful!', response);
-          this.errorMessage = '';  // Réinitialiser le message d'erreur
-          this.isError = false;    // Réinitialiser l'état d'erreur
-          this.modalClass = 'success-bg'; // Appliquer la classe de succès
+          this.errorMessage = ''; 
+          this.isError = false;  
+  
+          // Stocker l'email dans localStorage
+          localStorage.setItem('userEmail', email);
+  
+          this.router.navigate(['/user-action'], { queryParams: { type: 'confirmation' } });
         },
         (error: HttpErrorResponse) => {
           console.error('Login failed', error);
           this.errorMessage = error.error?.message ? error.error.message : 'Adresse email ou mot de passe incorrect';
           this.isError = true;  
-          this.modalClass = 'error-bg';
         }
       );
     } else {

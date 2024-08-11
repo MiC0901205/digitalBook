@@ -34,7 +34,7 @@ public class User {
     private String mdp; 
 
     private String tel;
-    
+        
     private String questionSecrete; 
 
     private String reponseSecrete;
@@ -154,4 +154,5 @@ public class User {
                 + ", estActif=" + estActif + ", profil=" + profil + ", email=" + email + ", mdp=" + mdp + ", tel=" + tel
                 + ", panier=" + panier + "]";
     }
+
 }

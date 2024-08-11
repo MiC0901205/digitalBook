@@ -1,20 +1,20 @@
 package com.site.digitalBook.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.site.digitalBook.controller.payload.Payload;
 import com.site.digitalBook.entity.User;
 import com.site.digitalBook.exception.EmailAlreadyExistsException;
 import com.site.digitalBook.exception.UnauthorizedException;
 import com.site.digitalBook.exception.UserNotFoundException;
+import com.site.digitalBook.service.EmailService;
+import com.site.digitalBook.service.VerificationCodeStorageService;
+import com.site.digitalBook.util.JwtUtil;
 import com.site.digitalBook.service.UserService;
 
 @RestController
@@ -22,10 +22,16 @@ import com.site.digitalBook.service.UserService;
 public class UserController {
 
     private final UserService userService;
+    private final EmailService emailService;
+    private final VerificationCodeStorageService verificationCodeService;
+    private final JwtUtil jwtUtil; // Injection de JwtUtil
 
-
-    public UserController(UserService userService) {
+    // Constructor Injection
+    public UserController(UserService userService, EmailService emailService, VerificationCodeStorageService verificationCodeService, JwtUtil jwtUtil) {
         this.userService = userService;
+        this.emailService = emailService;
+        this.verificationCodeService = verificationCodeService;
+        this.jwtUtil = jwtUtil;
     }
 
     @PostMapping("/register")
@@ -45,8 +51,8 @@ public class UserController {
             Payload payload = new Payload(e.getMessage());
             return new ResponseEntity<>(payload, HttpStatus.BAD_REQUEST);       
         } catch(UnauthorizedException e) {
-                Payload payload = new Payload("Login failed: " + e.getMessage());
-                return new ResponseEntity<>(payload, HttpStatus.UNAUTHORIZED);
+            Payload payload = new Payload("Login failed: " + e.getMessage());
+            return new ResponseEntity<>(payload, HttpStatus.UNAUTHORIZED);
         } catch (Exception e) {
             Payload payload = new Payload("Registration failed: " + e.getMessage());
             return new ResponseEntity<>(payload, HttpStatus.BAD_REQUEST);
@@ -57,7 +63,11 @@ public class UserController {
     public ResponseEntity<Payload> loginUser(@RequestBody User user) {
         try {
             User authenticatedUser = userService.authenticateUser(user.getEmail(), user.getMdp());
-            Payload payload = new Payload("User authenticated", authenticatedUser);
+            String code = emailService.generateVerificationCode(); 
+            emailService.sendConfirmationEmail(user.getEmail(), code);
+            emailService.saveCode(user.getEmail(), code); 
+            
+            Payload payload = new Payload("User authenticated. Please check your email for the confirmation code.", authenticatedUser);
             return new ResponseEntity<>(payload, HttpStatus.OK);
         } catch (UserNotFoundException e) {
             Payload payload = new Payload("Login failed: " + e.getMessage());
@@ -65,8 +75,26 @@ public class UserController {
         } catch (Exception e) {
             Payload payload = new Payload("Login failed: " + e.getMessage());
             return new ResponseEntity<>(payload, HttpStatus.BAD_REQUEST);
+       }
+    }
+    
+    @PostMapping("/verify-code")
+    public ResponseEntity<Map<String, String>> verifyCode(@RequestBody Map<String, String> request) {
+        String email = request.get("email");
+        String code = request.get("code");
+
+        boolean isValid = emailService.validateCode(email, code);
+
+        Map<String, String> response = new HashMap<>();
+        if (isValid) {
+            response.put("message", "Code vérifié avec succès !");
+            return ResponseEntity.ok(response);
+        } else {
+            response.put("message", "Code invalide ou expiré.");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
     }
+
 
     @GetMapping("/user")
     public ResponseEntity<Payload> getAllUsers() {

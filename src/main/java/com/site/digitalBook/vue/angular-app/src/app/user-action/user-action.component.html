@@ -1,0 +1,20 @@
+<div class="modal-background">
+    <div class="user-action-modal">
+        <h1>{{ actionType === 'confirmation' ? 'Vérifiez votre code de confirmation' : 'Complétez l\'action requise' }}</h1>
+        <form [formGroup]="actionForm" (ngSubmit)="onSubmit()">
+        <!-- Afficher le champ email seulement si actionType n'est pas 'confirmation' -->
+        <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+        <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+        <div class="form-group" *ngIf="actionType === 'confirmation'">
+          <label for="code">Code de confirmation</label>
+          <input id="code" formControlName="code" type="text" placeholder="Entrez le code envoyé par e-mail" />
+          <div *ngIf="actionForm.get('code')?.invalid && (actionForm.get('code')?.touched || isSubmitted)">
+            <small class="error" *ngIf="actionForm.get('code')?.errors?.['required']">
+              Le code de confirmation est requis.
+            </small>
+          </div>
+        </div>
+        <button type="submit" [disabled]="!actionForm.valid">Soumettre</button>
+      </form>
+    </div>
+  </div>
