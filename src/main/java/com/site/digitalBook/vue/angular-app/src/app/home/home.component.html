@@ -1,53 +1,51 @@
-<!-- home.component.html -->
 <body>
-    <div class="home-container">
-      <nav class="navbar">
-        <div class="navbar-brand">
-          <h1>Digital Library</h1>
-        </div>
-        <ul class="navbar-menu">
-          <li><a routerLink="/">Home</a></li>
-          <li><a routerLink="/about">About</a></li>
-          <li>
-            <button (click)="toggleUserMenu()" 
-                    class="user-icon" 
-                    [ngClass]="{'logged-in': isLoggedIn}">
-              <i class="fa fa-user"></i>
-            </button>
-            <div *ngIf="showUserMenu" class="user-menu">
-              <ng-container *ngIf="isLoggedIn; else loggedOutMenu">
-                <a routerLink="/profile">Profile</a>
-                <a routerLink="/order-history">Order History</a>
-                <a (click)="logout()">Logout</a>
-              </ng-container>
-              <ng-template #loggedOutMenu>
-                <a routerLink="/login">Login</a>
-              </ng-template>
-            </div>
-          </li>
-        </ul>
-      </nav>
-  
-      <div class="hero-section">
-        <h2>Welcome to the Digital Library</h2>
-        <p>Explore our vast collection of digital books from the comfort of your home.</p>
-        <button class="btn-primary">Browse Books</button>
+  <div class="home-container">
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <h1>Digital Library</h1>
       </div>
-  
-      <div class="features-section">
-        <div class="feature-card">
-          <h3>Wide Selection</h3>
-          <p>Access thousands of e-books across various genres and authors.</p>
-        </div>
-        <div class="feature-card">
-          <h3>Personalized Recommendations</h3>
-          <p>Get book suggestions based on your reading history and preferences.</p>
-        </div>
-        <div class="feature-card">
-          <h3>Read Anywhere</h3>
-          <p>Enjoy reading on any device, anytime, anywhere.</p>
-        </div>
+      <ul class="navbar-menu">
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/about">About</a></li>
+        <li>
+          <button (click)="toggleUserMenu()" 
+                  class="user-icon" 
+                  [ngClass]="{'logged-in': isLoggedIn}">
+            <i class="fa fa-user"></i>
+          </button>
+          <div *ngIf="showUserMenu" class="user-menu">
+            <ng-container *ngIf="isLoggedIn; else loggedOutMenu">
+              <a routerLink="/profile">Mon profil</a>
+              <a routerLink="/order-history">Mes achats</a>
+              <a (click)="logout()">Déconnexion</a>
+            </ng-container>
+            <ng-template #loggedOutMenu>
+              <a routerLink="/login">Login</a>
+            </ng-template>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="hero-section">
+      <h2>Welcome to the Digital Library</h2>
+      <p>Explore our vast collection of digital books from the comfort of your home.</p>
+      <button class="btn-primary">Browse Books</button>
+    </div>
+
+    <div class="features-section">
+      <div class="feature-card">
+        <h3>Wide Selection</h3>
+        <p>Access thousands of e-books across various genres and authors.</p>
       </div>
-    </div>    
-  </body>
-  
+      <div class="feature-card">
+        <h3>Personalized Recommendations</h3>
+        <p>Get book suggestions based on your reading history and preferences.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Read Anywhere</h3>
+        <p>Enjoy reading on any device, anytime, anywhere.</p>
+      </div>
+    </div>
+  </div>    
+</body>

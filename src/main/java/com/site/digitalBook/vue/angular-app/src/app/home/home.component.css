@@ -1,10 +1,11 @@
-/* home.component.css */
 html, body {
     height: 100%;
     margin: 0;
     font-family: Arial, sans-serif;
     color: #fff;
     background-color: #000;
+    cursor: default;
+    user-select: none;
 }
 
 .home-container {
@@ -139,6 +140,8 @@ html, body {
     text-decoration: none;
     padding: 0.5rem 1rem;
     display: block;
+    cursor: pointer;
+    user-select: none;
 }
 
 .user-menu a:hover {

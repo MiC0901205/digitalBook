@@ -1,5 +1,6 @@
 package com.site.digitalBook.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,8 +14,13 @@ import com.site.digitalBook.exception.EmailAlreadyExistsException;
 import com.site.digitalBook.exception.UnauthorizedException;
 import com.site.digitalBook.exception.UserNotFoundException;
 import com.site.digitalBook.service.EmailService;
+import com.site.digitalBook.service.TokenBlacklistService;
 import com.site.digitalBook.service.VerificationCodeStorageService;
 import com.site.digitalBook.util.JwtUtil;
+
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+
 import com.site.digitalBook.service.UserService;
 
 @RestController
@@ -25,13 +31,17 @@ public class UserController {
     private final EmailService emailService;
     private final VerificationCodeStorageService verificationCodeService;
     private final JwtUtil jwtUtil; // Injection de JwtUtil
+    private final TokenBlacklistService tokenBlacklistService;
+
 
     // Constructor Injection
-    public UserController(UserService userService, EmailService emailService, VerificationCodeStorageService verificationCodeService, JwtUtil jwtUtil) {
+    public UserController(UserService userService, EmailService emailService, VerificationCodeStorageService verificationCodeService, JwtUtil jwtUtil, TokenBlacklistService tokenBlacklistService) {
         this.userService = userService;
         this.emailService = emailService;
         this.verificationCodeService = verificationCodeService;
         this.jwtUtil = jwtUtil;
+        this.tokenBlacklistService = tokenBlacklistService;
+
     }
 
     @PostMapping("/register")
@@ -79,22 +89,39 @@ public class UserController {
     }
     
     @PostMapping("/verify-code")
-    public ResponseEntity<Map<String, String>> verifyCode(@RequestBody Map<String, String> request) {
+    public ResponseEntity<Payload> verifyCode(@RequestBody Map<String, String> request) {
         String email = request.get("email");
         String code = request.get("code");
 
-        boolean isValid = emailService.validateCode(email, code);
+        try {
+            boolean isValid = emailService.validateCode(email, code);
+            String token = null;
 
-        Map<String, String> response = new HashMap<>();
-        if (isValid) {
-            response.put("message", "Code vérifié avec succès !");
-            return ResponseEntity.ok(response);
-        } else {
-            response.put("message", "Code invalide ou expiré.");
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+            if (isValid) {
+                token = jwtUtil.generateToken(email);
+                Payload payload = new Payload("Code vérifié avec succès!", email, token);
+                return ResponseEntity.ok(payload);
+            } else {
+                Payload payload = new Payload("Code invalide ou expiré.");
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(payload);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Payload payload = new Payload("Une erreur est survenue.");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(payload);
         }
     }
 
+    @PostMapping("/logout")
+    public ResponseEntity<Void> logout(@RequestHeader(value = "Authorization") String authorizationHeader) {
+        // Extraire le token de l'en-tête Authorization
+        String token = authorizationHeader.substring(7); // Supposer "Bearer " préfixé
+
+        // Ajouter le token à la liste noire
+        tokenBlacklistService.addToBlacklist(token);
+
+        return ResponseEntity.ok().build(); // Retourne HTTP 200 OK
+    }
 
     @GetMapping("/user")
     public ResponseEntity<Payload> getAllUsers() {

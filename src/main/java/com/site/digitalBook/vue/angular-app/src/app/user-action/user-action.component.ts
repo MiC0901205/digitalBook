@@ -50,36 +50,36 @@ export class UserActionComponent implements OnInit {
   onSubmit(): void {
     this.isSubmitted = true;
     if (this.actionForm.valid) {
-      const { code, email } = this.actionForm.value;
-      const emailToSend = email || this.storedEmail;
-  
-      if (emailToSend) {
-        this.authService.verifyCode(emailToSend, code).subscribe(
-          response => {
-            console.log('Code verification successful!', response);
-            this.successMessage = 'Code vérifié avec succès !';
-            this.errorMessage = null;
-  
-            const token = response.token;
-            if (token) {
-              localStorage.setItem('userToken', token);
-              this.authService.setEmail(emailToSend);
-              this.authService.setLoggedInStatus(true);
-            }
-  
-            this.router.navigate(['/']);
-          },
-          error => {
-            console.error('Code verification failed', error);
-            this.successMessage = null;
-            this.errorMessage = error.error?.message ? error.error.message : 'Code invalide ou expiré.';
-          }
-        );
-      } else {
-        this.errorMessage = 'Email non trouvé.';
-      }
+        const { code, email } = this.actionForm.value;
+        const emailToSend = email || this.storedEmail;
+
+        if (emailToSend) {
+            this.authService.verifyCode(emailToSend, code).subscribe(
+                response => {
+                    console.log('Code verification successful!', response);
+                    this.successMessage = response.message;
+                    this.errorMessage = null;
+
+                    const token = response.token;
+                    if (token) {
+                        localStorage.setItem('userToken', token);
+                        this.authService.setEmail(emailToSend);
+                        this.authService.setLoggedInStatus(true);
+                    }
+
+                    this.router.navigate(['/']);
+                },
+                error => {
+                    console.error('Code verification failed', error);
+                    this.successMessage = null;
+                    this.errorMessage = error.error?.message ? error.error.message : 'Code invalide ou expiré.';
+                }
+            );
+        } else {
+            this.errorMessage = 'Email non trouvé.';
+        }
     } else {
-      this.actionForm.markAllAsTouched();
+        this.actionForm.markAllAsTouched();
     }
-  }   
+  }
 }

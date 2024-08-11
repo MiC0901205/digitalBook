@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -8,8 +8,8 @@ import { CommonModule } from '@angular/common';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   standalone: true,
-  imports: [
-    CommonModule
+  imports : [
+    CommonModule,
   ]
 })
 export class HomeComponent implements OnInit {
@@ -21,22 +21,16 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.checkLoginStatus();
   }
-  
+
   checkLoginStatus(): void {
     this.authService.isLoggedIn().subscribe(loggedIn => {
       this.isLoggedIn = loggedIn;
-      console.log(`User is logged in: ${this.isLoggedIn}`); // Ajoutez cette ligne
+      console.log(`User is logged in: ${this.isLoggedIn}`);
     });
-  }  
+  }
 
   toggleUserMenu(): void {
-    if (!this.isLoggedIn) {
-      console.log('User is not logged in, redirecting to login page.');
-      this.router.navigate(['/login']);
-    } else {
-      this.showUserMenu = !this.showUserMenu;
-      console.log('Toggling user menu, currently shown:', this.showUserMenu);
-    }
+    this.showUserMenu = !this.showUserMenu;
   }
 
   logout(): void {
@@ -45,5 +39,15 @@ export class HomeComponent implements OnInit {
       console.log('User logged out.');
       this.router.navigate(['/login']);
     });
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent): void {
+    const target = event.target as HTMLElement;
+    const menu = document.querySelector('.user-menu');
+
+    if (menu && !menu.contains(target) && !target.closest('.user-icon')) {
+      this.showUserMenu = false;
+    }
   }
 }

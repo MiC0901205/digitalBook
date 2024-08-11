@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -23,9 +23,9 @@ export class AuthService {
   verifyCode(email: string, code: string): Observable<any> {
     const body = { email, code };
     return this.http.post(`${this.apiUrl}/verify-code`, body, {
-      headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'application/json' }
     });
-  }
+}
   
   setEmail(email: string) {
     this.userEmail = email;
@@ -40,9 +40,14 @@ export class AuthService {
   }
 
   logout(): Observable<void> {
-    // Implémentez la logique de déconnexion ici, par exemple, effacer le token
-    localStorage.removeItem('userToken');
-    return of();
+    const token = localStorage.getItem('userToken');
+    const headers = { 'Authorization': `Bearer ${token}` };
+    
+    return this.http.post<void>(`${this.apiUrl}/logout`, {}, { headers }).pipe(
+      tap(() => {
+        localStorage.removeItem('userToken');
+      })
+    );
   }
 
   // Ajoutez cette méthode si elle est nécessaire
