@@ -1,14 +1,7 @@
 package com.site.digitalBook.entity;
 
+import jakarta.persistence.*;
 import java.util.Date;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name = "utilisateur")
@@ -19,38 +12,27 @@ public class User {
     private int id;
 
     private String nom;
-
     private String prenom;
 
     @Temporal(TemporalType.DATE)
     private Date dateNaissance;
 
     private boolean estActif;
-
     private String profil;
 
+    @Column(unique = true)
     private String email;
 
-    private String mdp; 
-
+    private String mdp;
     private String tel;
-        
-    private String questionSecrete; 
-
+    private String questionSecrete;
     private String reponseSecrete;
-
     private int panier;
 
-    public User() {
-    }
+    @Column(columnDefinition = "TEXT")
+    private String anciensMotsDePasse;
 
-    // Constructeur avec email et mot de passe
-    public User(String email, String mdp) {
-        this.email = email;
-        this.mdp = mdp;
-    }
-
-    // Getters et Setters
+    // Getters and Setters
     public int getId() {
         return id;
     }
@@ -131,28 +113,34 @@ public class User {
         this.panier = panier;
     }
 
+    public String getQuestionSecrete() {
+        return questionSecrete;
+    }
 
-	public String getQuestionSecrete() {
-		return questionSecrete;
-	}
+    public void setQuestionSecrete(String questionSecrete) {
+        this.questionSecrete = questionSecrete;
+    }
 
-	public void setQuestionSecrete(String questionSecrete) {
-		this.questionSecrete = questionSecrete;
-	}
+    public String getReponseSecrete() {
+        return reponseSecrete;
+    }
 
-	public String getReponseSecrete() {
-		return reponseSecrete;
-	}
+    public void setReponseSecrete(String reponseSecrete) {
+        this.reponseSecrete = reponseSecrete;
+    }
 
-	public void setReponseSecrete(String reponseSecrete) {
-		this.reponseSecrete = reponseSecrete;
-	}
-	
+    public String getAnciensMotsDePasse() {
+        return anciensMotsDePasse;
+    }
+
+    public void setAnciensMotsDePasse(String anciensMotsDePasse) {
+        this.anciensMotsDePasse = anciensMotsDePasse;
+    }
+
     @Override
     public String toString() {
         return "User [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", dateNaissance=" + dateNaissance
                 + ", estActif=" + estActif + ", profil=" + profil + ", email=" + email + ", mdp=" + mdp + ", tel=" + tel
                 + ", panier=" + panier + "]";
     }
-
 }

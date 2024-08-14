@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,8 +20,7 @@ import com.site.digitalBook.service.TokenBlacklistService;
 import com.site.digitalBook.service.VerificationCodeStorageService;
 import com.site.digitalBook.util.JwtUtil;
 
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import jakarta.mail.MessagingException;
 
 import com.site.digitalBook.service.UserService;
 
@@ -30,9 +31,8 @@ public class UserController {
     private final UserService userService;
     private final EmailService emailService;
     private final VerificationCodeStorageService verificationCodeService;
-    private final JwtUtil jwtUtil; // Injection de JwtUtil
+    private final JwtUtil jwtUtil;
     private final TokenBlacklistService tokenBlacklistService;
-
 
     // Constructor Injection
     public UserController(UserService userService, EmailService emailService, VerificationCodeStorageService verificationCodeService, JwtUtil jwtUtil, TokenBlacklistService tokenBlacklistService) {
@@ -41,13 +41,11 @@ public class UserController {
         this.verificationCodeService = verificationCodeService;
         this.jwtUtil = jwtUtil;
         this.tokenBlacklistService = tokenBlacklistService;
-
     }
 
     @PostMapping("/register")
     public ResponseEntity<Payload> registerUser(@RequestBody User user) {
-        System.out.println("Received user: " + user); 
-       
+
         if (user.getEmail() == null || user.getMdp() == null) {
             Payload payload = new Payload("Email or password cannot be null");
             return new ResponseEntity<>(payload, HttpStatus.BAD_REQUEST);
@@ -59,8 +57,8 @@ public class UserController {
             return new ResponseEntity<>(payload, HttpStatus.CREATED);
         } catch (EmailAlreadyExistsException e) {
             Payload payload = new Payload(e.getMessage());
-            return new ResponseEntity<>(payload, HttpStatus.BAD_REQUEST);       
-        } catch(UnauthorizedException e) {
+            return new ResponseEntity<>(payload, HttpStatus.BAD_REQUEST);
+        } catch (UnauthorizedException e) {
             Payload payload = new Payload("Login failed: " + e.getMessage());
             return new ResponseEntity<>(payload, HttpStatus.UNAUTHORIZED);
         } catch (Exception e) {
@@ -73,10 +71,10 @@ public class UserController {
     public ResponseEntity<Payload> loginUser(@RequestBody User user) {
         try {
             User authenticatedUser = userService.authenticateUser(user.getEmail(), user.getMdp());
-            String code = emailService.generateVerificationCode(); 
+            String code = emailService.generateVerificationCode();
             emailService.sendConfirmationEmail(user.getEmail(), code);
-            emailService.saveCode(user.getEmail(), code); 
-            
+            emailService.saveCode(user.getEmail(), code);
+
             Payload payload = new Payload("User authenticated. Please check your email for the confirmation code.", authenticatedUser);
             return new ResponseEntity<>(payload, HttpStatus.OK);
         } catch (UserNotFoundException e) {
@@ -85,9 +83,9 @@ public class UserController {
         } catch (Exception e) {
             Payload payload = new Payload("Login failed: " + e.getMessage());
             return new ResponseEntity<>(payload, HttpStatus.BAD_REQUEST);
-       }
+        }
     }
-    
+
     @PostMapping("/verify-code")
     public ResponseEntity<Payload> verifyCode(@RequestBody Map<String, String> request) {
         String email = request.get("email");
@@ -106,18 +104,63 @@ public class UserController {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(payload);
             }
         } catch (Exception e) {
-            e.printStackTrace();
             Payload payload = new Payload("Une erreur est survenue.");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(payload);
         }
     }
 
+    @PostMapping("/forgot-password")
+    public ResponseEntity<Payload> forgotPassword(@RequestBody User user) {
+        try {
+            String email = user.getEmail();
+
+            try {
+                userService.getUserByEmail(email);
+            } catch (UserNotFoundException e) {
+                Payload payload = new Payload("Adresse e-mail non enregistrée.");
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(payload);
+            }
+
+            String resetLink = "http://localhost:4200/reset-password?email=" + email;
+            emailService.sendResetPasswordEmail(email, resetLink);
+
+            Payload payload = new Payload("Email de réinitialisation envoyé.", resetLink);
+            return ResponseEntity.ok(payload);
+
+        } catch (MessagingException e) {
+            System.err.println("Erreur lors de l'envoi de l'email: " + e.getMessage());
+            Payload payload = new Payload("Erreur lors de l'envoi de l'email.");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(payload);
+        } catch (Exception e) {
+            System.err.println("Erreur inattendue lors de l'envoi de l'email: " + e.getMessage());
+            Payload payload = new Payload("Erreur inattendue lors de l'envoi de l'email.");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(payload);
+        }
+    }
+
+
+
+    @PostMapping("/reset-password")
+    public ResponseEntity<Payload> resetPassword(@RequestParam("email") String email, @RequestBody Map<String, String> requestBody) {
+        try {
+            String newPassword = requestBody.get("newPassword");
+            
+            userService.resetPassword(email, newPassword);
+            
+            emailService.sendPasswordChangeConfirmationEmail(email);
+            
+            Payload payload = new Payload("Mot de passe réinitialisé avec succès.", null, null);
+            return ResponseEntity.ok(payload);
+        } catch (Exception e) {
+            Payload payload = new Payload(e.getMessage(), null, null);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(payload);
+        }
+    }
+
     @PostMapping("/logout")
     public ResponseEntity<Void> logout(@RequestHeader(value = "Authorization") String authorizationHeader) {
-        // Extraire le token de l'en-tête Authorization
         String token = authorizationHeader.substring(7); // Supposer "Bearer " préfixé
 
-        // Ajouter le token à la liste noire
         tokenBlacklistService.addToBlacklist(token);
 
         return ResponseEntity.ok().build(); // Retourne HTTP 200 OK

@@ -1,5 +1,7 @@
 package com.site.digitalBook.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -26,20 +28,25 @@ public class EmailService {
         String subject = "Votre Code de Confirmation";
         String text = "Votre code de confirmation est : " + code;
 
-        MimeMessage message = mailSender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(message, true);
-        helper.setTo(to);
-        helper.setSubject(subject);
-        helper.setText(text);
+        try {
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true);
+            helper.setTo(to);
+            helper.setSubject(subject);
+            helper.setText(text);
 
-        mailSender.send(message);
+            mailSender.send(message);
+        } catch (MessagingException e) {
+            throw e;
+        }
     }
 
     public String generateVerificationCode() {
         SecureRandom random = new SecureRandom();
         byte[] code = new byte[6]; // 6 bytes = 48 bits = 8 characters base64
         random.nextBytes(code);
-        return Base64.getUrlEncoder().withoutPadding().encodeToString(code);
+        String generatedCode = Base64.getUrlEncoder().withoutPadding().encodeToString(code);
+        return generatedCode;
     }
 
     public void saveCode(String email, String code) {
@@ -48,14 +55,12 @@ public class EmailService {
 
     public boolean validateCode(String email, String code) {
         ConfirmationCode storedCode = codeStore.get(email);
-        
-        System.out.println("storedCode " + storedCode); 
 
         if (storedCode != null && storedCode.getCode().equals(code)) {
             if (storedCode.getExpiryDate().isAfter(LocalDateTime.now())) {
                 return true;
             } else {
-                codeStore.remove(email); 
+                codeStore.remove(email);
             }
         }
         return false;
@@ -76,6 +81,48 @@ public class EmailService {
 
         public LocalDateTime getExpiryDate() {
             return expiryDate;
+        }
+
+        @Override
+        public String toString() {
+            return "ConfirmationCode{" +
+                    "code='" + code + '\'' +
+                    ", expiryDate=" + expiryDate +
+                    '}';
+        }
+    }
+
+    public void sendResetPasswordEmail(String to, String resetLink) throws MessagingException {
+        String subject = "Réinitialisation de votre mot de passe";
+        String text = "Voici votre lien de réinitialisation : " + resetLink;
+
+        try {
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true);
+            helper.setTo(to);
+            helper.setSubject(subject);
+            helper.setText(text);
+
+            mailSender.send(message);
+        } catch (MessagingException e) {
+            throw e;
+        }
+    }
+    
+    public void sendPasswordChangeConfirmationEmail(String to) throws MessagingException {
+        String subject = "Changement de mot de passe réussi";
+        String text = "Votre mot de passe a été changé avec succès.";
+
+        try {
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true);
+            helper.setTo(to);
+            helper.setSubject(subject);
+            helper.setText(text, true);
+
+            mailSender.send(message);
+        } catch (MessagingException e) {
+            throw e;
         }
     }
 }

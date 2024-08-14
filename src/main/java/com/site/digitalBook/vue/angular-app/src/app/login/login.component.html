@@ -1,10 +1,10 @@
 <!-- Contenu de la modale de connexion -->
-<div class="modal-background">
+<div *ngIf="!isForgotPasswordModalOpen" class="modal-background">
   <div class="login-modal" [ngClass]="{'alert-danger': isError, 'alert-success': registrationSuccess}">
     <h1>Connexion</h1>
     <!-- Affichage du message d'erreur ou de succès -->
-    <div *ngIf="errorMessage || registrationSuccess" class="alert" [ngClass]="{'alert-danger': isError, 'alert-success': registrationSuccess}">
-      <p [innerHTML]="errorMessage || 'Inscription réussie ! Vous pouvez maintenant vous connecter.'"></p>
+    <div *ngIf="errorMessage || successMessage || registrationSuccess" class="alert" [ngClass]="{'alert-danger': isError, 'alert-success': successMessage || registrationSuccess}">
+      <p [innerHTML]="errorMessage || successMessage || (registrationSuccess ? 'Inscription réussie ! Vous pouvez maintenant vous connecter.' : '')"></p>
     </div>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
@@ -37,8 +37,34 @@
           [class.is-invalid]="!recaptchaToken && (loginForm.touched || isSubmitted)">
         </re-captcha>
       </div>
+      <p class="forgot-password">
+        <a (click)="openForgotPasswordModal()">Mot de passe oublié ?</a>
+      </p>      
       <p class="no-account">Pas de compte ? <a href="/register">Inscrivez-vous</a></p>
       <button type="submit" [disabled]="!loginForm.valid || !recaptchaToken">Se connecter</button>
     </form>
+  </div>
+</div>
+
+<!-- Modale pour la réinitialisation de mot de passe -->
+<div *ngIf="isForgotPasswordModalOpen" class="modal-background">
+  <div class="login-modal" [ngClass]="{'alert-danger': isError, 'alert-success': !isError}">
+    <h1>Réinitialiser le mot de passe</h1>
+    <form [formGroup]="forgotPasswordForm" (ngSubmit)="submitForgotPassword()">
+      <div class="form-group">
+        <label for="email">Adresse Email</label>
+        <input id="email" formControlName="email" type="email" placeholder="Entrez votre adresse email" />
+        <div *ngIf="forgotPasswordForm.get('email')?.invalid && (forgotPasswordForm.get('email')?.touched || isForgotPasswordSubmitted)">
+          <small class="error" *ngIf="forgotPasswordForm.get('email')?.errors?.['required']">
+            L'adresse email est requise.
+          </small>
+          <small class="error" *ngIf="forgotPasswordForm.get('email')?.errors?.['email']">
+            L'adresse email n'est pas valide.
+          </small>
+        </div>
+      </div>
+      <button type="submit" [disabled]="!forgotPasswordForm.valid">Envoyer le lien de réinitialisation</button>
+    </form>
+    <button class="back-button" (click)="closeForgotPasswordModal()">&#8592; Retour</button>
   </div>
 </div>

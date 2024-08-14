@@ -224,3 +224,9 @@ button:disabled {
 .no-account a:hover {
   text-decoration: underline;
 }
+
+.forgot-password {
+  cursor: pointer;
+}
+
+

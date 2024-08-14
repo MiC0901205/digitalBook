@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
-import { RecaptchaModule } from 'ng-recaptcha';
-import { CommonModule } from '@angular/common';
-import { HttpErrorResponse } from '@angular/common/http';  // Importation correcte
-import { HttpClientModule } from '@angular/common/http';  // Importez HttpClientModule ici
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { LoginResponse } from '../interface/login-response.model';  // Importer l'interface
+import { CommonModule } from '@angular/common';
+import { RecaptchaModule } from 'ng-recaptcha';
 
 @Component({
   selector: 'app-login',
@@ -13,19 +13,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css'],
   standalone: true,
   imports: [
-    RecaptchaModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule, 
     CommonModule,
-    HttpClientModule
-  ]
+    RecaptchaModule
+  ],
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
+  forgotPasswordForm!: FormGroup;
   isSubmitted = false;
   recaptchaToken: string = '';
   registrationSuccess: boolean = false;
-  errorMessage: string = ''; 
-  isError: boolean = false;   
+  errorMessage: string | null = null;
+  successMessage: string | null = null;
+  isError: boolean = false;
+  isForgotPasswordModalOpen: boolean = false;
+  isForgotPasswordSubmitted: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -38,7 +41,11 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       mdp: ['', Validators.required]
     });
-
+  
+    this.forgotPasswordForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]]
+    });
+  
     this.registrationSuccess = localStorage.getItem('registrationSuccess') === 'true';
     if (this.registrationSuccess) {
       setTimeout(() => {
@@ -46,6 +53,15 @@ export class LoginComponent implements OnInit {
       }, 3000);
     }
     localStorage.removeItem('registrationSuccess');
+  
+    // Récupération du message de succès pour la réinitialisation du mot de passe
+    this.successMessage = localStorage.getItem('passwordResetSuccessMessage');
+    if (this.successMessage) {
+      setTimeout(() => {
+        this.successMessage = null;
+      }, 3000);
+      localStorage.removeItem('passwordResetSuccessMessage');
+    }
   }
 
   handleCaptchaResponse(response: string | null): void {
@@ -57,25 +73,56 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid && this.recaptchaToken) {
       const { email, mdp } = this.loginForm.value;
       this.authService.login(email, mdp).subscribe(
-        response => {
+        (response: LoginResponse) => {  // Spécifier le type de la réponse
           console.log('Login successful!', response);
-          this.errorMessage = ''; 
-          this.isError = false;  
-  
-          // Stocker l'email dans localStorage
+          this.errorMessage = null;
+          this.successMessage = 'Connexion réussie !';
+          this.isError = false;
           localStorage.setItem('userEmail', email);
-  
-          this.router.navigate(['/user-action'], { queryParams: { type: 'confirmation' } });
+          this.router.navigate(['/user-action'], { queryParams: { actionType: 'confirmation' } });
         },
         (error: HttpErrorResponse) => {
           console.error('Login failed', error);
-          this.errorMessage = error.error?.message ? error.error.message : 'Adresse email ou mot de passe incorrect';
-          this.isError = true;  
+          this.successMessage = null;
+          this.errorMessage = error.error?.message || 'Adresse email ou mot de passe incorrect';
+          this.isError = true;
         }
       );
     } else {
-      console.log('Form is not valid or CAPTCHA not completed. Please fill in all required fields and complete the CAPTCHA.');
+      console.log('Form is not valid or CAPTCHA not completed.');
       this.loginForm.markAllAsTouched();
+    }
+  }
+
+  openForgotPasswordModal(): void {
+    this.isForgotPasswordModalOpen = true;
+  }
+  
+  closeForgotPasswordModal(): void {
+    this.isForgotPasswordModalOpen = false;
+  }
+  
+  submitForgotPassword(): void {
+    this.isForgotPasswordSubmitted = true;
+    if (this.forgotPasswordForm.valid) {
+      const email = this.forgotPasswordForm.value.email;
+      this.authService.forgotPassword(email).subscribe(
+        response => {
+          console.log('Password reset email sent!', response);
+          this.successMessage = 'Un lien pour réinitialiser votre mot de passe a été envoyé à votre adresse email.';
+          this.errorMessage = null;
+          this.isError = false;
+        },
+        (error: HttpErrorResponse) => {
+          console.error('Password reset failed', error);
+          this.successMessage = null;
+          this.errorMessage = error.error?.message || 'Une erreur s\'est produite. Veuillez réessayer.';
+          this.isError = true;
+        }
+      );
+      this.closeForgotPasswordModal();
+    } else {
+      this.forgotPasswordForm.markAllAsTouched();
     }
   }
 }

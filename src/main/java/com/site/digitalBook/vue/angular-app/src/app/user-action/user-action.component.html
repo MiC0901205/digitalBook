@@ -1,20 +1,55 @@
 <div class="modal-background">
-    <div class="user-action-modal">
-        <h1>{{ actionType === 'confirmation' ? 'Vérifiez votre code de confirmation' : 'Complétez l\'action requise' }}</h1>
-        <form [formGroup]="actionForm" (ngSubmit)="onSubmit()">
-        <!-- Afficher le champ email seulement si actionType n'est pas 'confirmation' -->
-        <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
-        <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
-        <div class="form-group" *ngIf="actionType === 'confirmation'">
-          <label for="code">Code de confirmation</label>
-          <input id="code" formControlName="code" type="text" placeholder="Entrez le code envoyé par e-mail" />
-          <div *ngIf="actionForm.get('code')?.invalid && (actionForm.get('code')?.touched || isSubmitted)">
-            <small class="error" *ngIf="actionForm.get('code')?.errors?.['required']">
-              Le code de confirmation est requis.
-            </small>
-          </div>
+  <div class="user-action-modal">
+    <h1>{{ actionType === 'forgot-password' ? 'Réinitialiser le mot de passe' : 'Vérifiez votre code de confirmation' }}</h1>
+
+    <!-- Affichage des messages de succès et d'erreur -->
+    <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+    <form [formGroup]="actionForm" (ngSubmit)="onSubmit()">
+      <!-- Si l'action est "forgot-password" -->
+      <div *ngIf="actionType === 'forgot-password'" class="form-group">
+        <label for="newPassword">Nouveau mot de passe</label>
+        <input id="newPassword" formControlName="newPassword" type="password" placeholder="Entrez votre nouveau mot de passe" />
+        <div *ngIf="actionForm.get('newPassword')?.touched || isSubmitted">
+          <!-- Afficher l'erreur de force du mot de passe s'il y en a une -->
+          <small class="error" *ngIf="actionForm.get('newPassword')?.errors?.['passwordStrength']">
+            {{ passwordError }}
+          </small>
+          
+          <!-- Afficher l'erreur requise seulement si aucune autre erreur n'est présente -->
+          <small class="error" *ngIf="!actionForm.get('newPassword')?.errors?.['passwordStrength'] && actionForm.get('newPassword')?.errors?.['required']">
+            Le mot de passe est requis.
+          </small>
         </div>
-        <button type="submit" [disabled]="!actionForm.valid">Soumettre</button>
-      </form>
-    </div>
+        
+      </div>
+
+      <div *ngIf="actionType === 'forgot-password'" class="form-group">
+        <label for="confirmPassword">Confirmer le mot de passe</label>
+        <input id="confirmPassword" formControlName="confirmPassword" type="password" placeholder="Confirmez votre nouveau mot de passe" />
+        <div *ngIf="actionForm.get('confirmPassword')?.touched || isSubmitted">
+          <small class="error" *ngIf="actionForm.get('confirmPassword')?.errors?.['required']">
+            La confirmation du mot de passe est requise.
+          </small>
+          <small class="error" *ngIf="actionForm.errors?.['mismatch']">
+            Les mots de passe ne correspondent pas.
+          </small>
+        </div>
+      </div>
+
+      <!-- Champ Code de Confirmation (affiché si actionType est 'confirmation') -->
+      <div *ngIf="actionType === 'confirmation'" class="form-group">
+        <label for="code">Code de confirmation</label>
+        <input id="code" formControlName="code" type="text" placeholder="Entrez le code envoyé par e-mail" />
+        <div *ngIf="actionForm.get('code')?.touched || isSubmitted">
+          <small class="error" *ngIf="actionForm.get('code')?.errors?.['required']">
+            Le code de confirmation est requis.
+          </small>
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="!actionForm.valid">Soumettre</button>
+    </form>
   </div>
+</div>

@@ -1,7 +1,10 @@
 package com.site.digitalBook.service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.dao.DataAccessException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +13,8 @@ import com.site.digitalBook.exception.EmailAlreadyExistsException;
 import com.site.digitalBook.exception.UnauthorizedException;
 import com.site.digitalBook.exception.UserNotFoundException;
 import com.site.digitalBook.repository.UserRepository;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class UserService {
@@ -37,7 +42,15 @@ public class UserService {
 
     public User getUserById(int id) {
         return userRepository.findById(id)
-                .orElseThrow(() -> new UserNotFoundException("User Not Found"));
+                .orElseThrow(() -> new UserNotFoundException("Utilisateur non trouvé"));
+    }
+    
+    public User getUserByEmail(String email) {
+        User user = userRepository.findByEmail(email);
+        if (user == null) {
+            throw new UserNotFoundException("Utilisateur non trouvé");
+        }
+        return user;
     }
 
     public void deleteUser(int id) {
@@ -61,5 +74,46 @@ public class UserService {
         }
 
         return user;
+    }
+    
+    public void resetPassword(String email, String newPassword) {
+        User user = userRepository.findByEmail(email);
+        if (user == null) {
+            throw new RuntimeException("Utilisateur non trouvé.");
+        }
+
+        String encodedNewPassword = passwordEncoder.encode(newPassword);
+
+        List<String> lastPasswords = getLastPasswordsList(user);
+        for (String lastPassword : lastPasswords) {
+            if (passwordEncoder.matches(newPassword, lastPassword)) {
+                throw new RuntimeException("Le nouveau mot de passe ne peut pas être l'un des 5 derniers mots de passe.");
+            }
+        }
+
+        user.setMdp(encodedNewPassword);
+
+        addPasswordToHistory(user, encodedNewPassword);
+
+        userRepository.save(user);
+    }
+
+    private List<String> getLastPasswordsList(User user) {
+        String lastPasswords = user.getAnciensMotsDePasse();
+        if (lastPasswords != null && !lastPasswords.isEmpty()) {
+            return new ArrayList<>(Arrays.asList(lastPasswords.split(",")));
+        }
+        return new ArrayList<>();
+    }
+
+    private void addPasswordToHistory(User user, String newPassword) {
+        List<String> passwords = getLastPasswordsList(user);
+
+        if (passwords.size() >= 5) {
+            passwords.remove(0); 
+        }
+        passwords.add(newPassword);
+
+        user.setAnciensMotsDePasse(String.join(",", passwords));
     }
 }

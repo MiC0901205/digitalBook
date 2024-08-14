@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, tap } from 'rxjs';
 
 @Injectable({
@@ -7,7 +7,7 @@ import { Observable, of, tap } from 'rxjs';
 })
 export class AuthService {
 
-  private apiUrl = 'http://localhost:8080/api'; // L'URL de votre backend
+  private apiUrl = 'http://localhost:8080/api'; 
   private userEmail: string | null = null;
 
   constructor(private http: HttpClient) { }
@@ -25,7 +25,7 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/verify-code`, body, {
         headers: { 'Content-Type': 'application/json' }
     });
-}
+  }
   
   setEmail(email: string) {
     this.userEmail = email;
@@ -50,12 +50,23 @@ export class AuthService {
     );
   }
 
-  // Ajoutez cette méthode si elle est nécessaire
   setLoggedInStatus(isLoggedIn: boolean): void {
     if (isLoggedIn) {
       localStorage.setItem('userToken', 'dummy-token');
     } else {
       localStorage.removeItem('userToken');
     }
+  }
+
+  forgotPassword(email: string): Observable<any> {
+    const user = { email }; 
+    return this.http.post(`${this.apiUrl}/forgot-password`, user);
+  }
+  
+  resetPassword(email: string, newPassword: string): Observable<any> {
+    const body = { newPassword }; 
+    return this.http.post(`${this.apiUrl}/reset-password`, body, {
+      params: { email }
+    });
   }
 }

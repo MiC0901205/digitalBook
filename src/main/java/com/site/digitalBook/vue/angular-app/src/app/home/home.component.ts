@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   standalone: true,
-  imports : [
+  imports: [
     CommonModule,
   ]
 })
@@ -31,6 +31,10 @@ export class HomeComponent implements OnInit {
 
   toggleUserMenu(): void {
     this.showUserMenu = !this.showUserMenu;
+  }
+
+  navigateToLogin(): void {
+    this.router.navigate(['/login']);
   }
 
   logout(): void {
