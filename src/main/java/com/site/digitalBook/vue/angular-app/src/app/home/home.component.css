@@ -1,150 +1,361 @@
-html, body {
-    height: 100%;
-    margin: 0;
-    font-family: Arial, sans-serif;
-    color: #fff;
-    background-color: #000;
-    cursor: default;
+* {
     user-select: none;
 }
 
-.home-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-.navbar {
-    background-color: #111;
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between; /* Espace entre le titre et les boutons */
-    align-items: center; /* Aligne verticalement les éléments */
-}
-
-.navbar-brand h1 {
-    color: #e00;
-    margin: 0;
-}
-
-.navbar-menu {
-    list-style: none;
+/* Global Styles */
+body {
+    background-color: #121212; /* Fond sombre */
+    color: #f5f5f5; /* Texte clair */
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
+}
+
+/* Container Principal */
+.main-container {
+    padding: 20px;
+}
+
+/* Bannière avec Barre de Recherche */
+.hero {
     display: flex;
-    gap: 1rem;
-    align-items: center; /* Aligne les éléments du menu verticalement */
-}
-
-.navbar-menu li {
-    position: relative;
-}
-
-.navbar-menu li a {
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px;
+    background: url('/assets/images/hero-background.jpg') no-repeat center center/cover;
     color: #fff;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    transition: background-color 0.3s ease;
+    width: 100%; /* Assure que la bannière prend toute la largeur */
+    box-sizing: border-box; /* Inclut le padding dans la largeur totale */
 }
 
-.navbar-menu li a:hover {
-    background-color: #e00;
-    border-radius: 5px;
+.hero-content {
+    max-width: 50%;
 }
 
-.hero-section {
-    text-align: center;
-    padding: 2rem;
-    background: linear-gradient(135deg, #111 50%, #333 50%);
-    flex: 1;
+.hero-content h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #ff3333; /* Rouge pour le titre */
 }
 
-.hero-section h2 {
-    color: #e00;
-    margin: 0;
-    font-size: 2.5rem;
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
 }
 
-.hero-section p {
-    color: #ccc;
-    font-size: 1.2rem;
-}
-
-.btn-primary {
-    background-color: #e00;
-    color: #fff;
-    border: none;
-    padding: 1rem 2rem;
-    font-size: 1rem;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.btn-primary:hover {
-    background-color: #c00;
-}
-
-.features-section {
+.search-container {
     display: flex;
-    justify-content: space-around;
-    padding: 2rem;
-    background-color: #222;
+    align-items: center;
 }
 
-.feature-card {
-    background-color: #333;
+.search-container input {
+    padding: 10px;
     border: 1px solid #444;
-    border-radius: 5px;
-    padding: 1rem;
-    width: 30%;
+    border-radius: 4px 0 0 4px;
+    background-color: #2e2e2e;
+    color: #f5f5f5;
+}
+
+.search-container button {
+    padding: 10px 20px;
+    background-color: #ff3333;
+    color: #f5f5f5;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.search-container button:hover {
+    background-color: #cc0000;
+    transform: scale(1.05);
+}
+
+.hero-image img {
+    max-width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Section Parallax */
+.parallax-section {
+    background: url('/assets/images/parallax-background.jpg') no-repeat center center/cover;
+    color: #fff;
+    padding: 80px 20px;
+    text-align: center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    width: 100%; /* Assure que la section prend toute la largeur */
+    box-sizing: border-box; /* Inclut le padding dans la largeur totale */
+}
+
+.parallax-content {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.parallax-content h2 {
+    margin-bottom: 20px;
+    color: #ff3333; /* Rouge pour le titre */
+}
+
+.parallax-content p {
+    margin-bottom: 20px;
+}
+
+/* Carrousel de Livres */
+.featured-books {
+    padding: 40px 20px;
     text-align: center;
 }
 
-.feature-card h3 {
-    color: #e00;
-    margin-top: 0;
+.swiper-container {
+    width: 100%;
+    height: auto;
 }
 
-.feature-card p {
-    color: #ccc;
+.swiper-slide {
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Styles pour l'icône utilisateur et le menu utilisateur */
-.user-icon {
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 1.5rem;
-    cursor: pointer;
+.swiper-slide img {
+    max-width: 100%;
+    border-radius: 10px;
 }
 
-.user-icon.logged-in {
-    color: #0f0; /* Vert quand connecté */
+.swiper-button-next, .swiper-button-prev {
+    color: #ff3333;
 }
 
-.user-menu {
-    position: absolute;
-    right: 0;
-    top: 2.5rem;
-    background-color: #333;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-    padding: 0.5rem;
+/* Vidéo de Présentation */
+.video-presentation {
+    text-align: center;
+    padding: 40px 20px;
 }
 
-.user-menu a {
-    color: #fff;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
+.video-presentation video {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 800px;
+}
+
+/* Section Témoignages */
+.testimonials {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 80px 20px;
+    color: #f5f5f5;
+    text-align: center;
+}
+
+.testimonials-content {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.testimonial {
+    margin-bottom: 20px;
+}
+
+.testimonial p {
+    font-style: italic;
+}
+
+.testimonial span {
     display: block;
-    cursor: pointer;
-    user-select: none;
+    margin-top: 10px;
+    color: #ff3333; /* Rouge pour les noms */
 }
 
-.user-menu a:hover {
-    background-color: #e00;
-    border-radius: 5px;
+/* Section Abonnement à la Newsletter */
+.newsletter {
+    background: #1e1e1e;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.newsletter h2 {
+    margin-bottom: 20px;
+    color: #ff3333; /* Rouge pour le titre */
+}
+
+.newsletter p {
+    margin-bottom: 20px;
+}
+
+.newsletter form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.newsletter form input {
+    padding: 10px;
+    width: 250px;
+    margin-right: 10px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background-color: #2e2e2e;
+    color: #f5f5f5;
+}
+
+.newsletter form button {
+    padding: 10px 20px;
+    background-color: #ff3333;
+    color: #f5f5f5;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.newsletter form button:hover {
+    background-color: #cc0000;
+    transform: scale(1.05);
+}
+
+/* Footer */
+.footer {
+    background: #1e1e1e;
+    color: #f5f5f5;
+    padding: 40px 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    width: 30%;
+}
+
+.footer-section h3 {
+    color: #ff3333; /* Rouge pour les titres */
+    margin-bottom: 20px;
+}
+
+.footer-section p, .footer-section ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #ff3333; /* Rouge pour les liens */
+    text-decoration: none;
+}
+
+.footer-section .social-icons img {
+    width: 32px;
+    margin-right: 10px;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    border-top: 1px solid #333;
+    padding-top: 20px;
+    font-size: 14px;
+}
+
+/* Animation de survol pour les boutons */
+.btn-primary, .btn-search {
+    background-color: #ff3333;
+    color: #f5f5f5;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-primary:hover, .btn-search:hover {
+    background-color: #cc0000;
+    transform: scale(1.05);
+}
+
+/* Effet d'ombre pour les cartes de livres */
+.carousel-item {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.carousel-item:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    transform: translateY(-10px);
+}
+
+/* Responsivité */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-section {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+}
+
+p {
+    color: white;
+}
+
+/* Section Réseaux Sociaux */
+.social-media {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.social-media h3 {
+    color: #ff3333; /* Rouge pour le titre */
+    margin-bottom: 20px;
+}
+
+.social-icon {
+    display: inline-block;
+    margin: 0 10px; /* Réduit l'espace entre les icônes */
+    text-decoration: none; /* Supprime le soulignement */
+}
+
+.social-icon i {
+    font-size: 24px; /* Taille des icônes réduite */
+    color: #f5f5f5; /* Couleur des icônes */
+    transition: color 0.3s ease, transform 0.3s ease; /* Transition pour effet de survol */
+}
+
+.social-icon:hover i {
+    color: #ff3333; /* Couleur des icônes au survol */
+    transform: scale(1.1); /* Agrandir légèrement au survol */
+}
+
+h2 {
+    color: red;
+}
+
+ul {
+    margin-left: -20px;
+}
+
+ul .a {    
+    text-decoration: none;
+    color: white;
 }

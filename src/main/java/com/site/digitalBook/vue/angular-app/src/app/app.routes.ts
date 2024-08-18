@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { UserActionComponent } from './user-action/user-action.component';
 import { AuthGuard } from './guards/auth.guard';
+import { ProfileComponent } from './profile/profile.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -12,7 +13,7 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'user-action', component: UserActionComponent },
   { path: 'reset-password', component: UserActionComponent },
-  //{ path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'profil', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '' }
 ];
 

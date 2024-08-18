@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of, tap } from 'rxjs';
+import { catchError, Observable, of, tap, throwError } from 'rxjs';
+import { User } from '../interface/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -68,5 +69,29 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/reset-password`, body, {
       params: { email }
     });
+  }
+
+  getCurrentUser(): Observable<{ data: User }> {
+    const email = localStorage.getItem('userEmail');
+    console.log("email", email);
+    if (!email) {
+      throw new Error('Email non trouvé dans le localStorage');
+    }
+
+    const headers = new HttpHeaders({
+      'Email': email
+    });
+
+    return this.http.get<{ data: User }>(`${this.apiUrl}/current-user`, { headers });
+  }
+  
+  updateUserProfile(user: User): Observable<User> {
+    console.log("user", user);
+    const token = localStorage.getItem('userToken');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.put<User>(`${this.apiUrl}/user/${user.id}`, user, { headers });
   }
 }

@@ -1,0 +1,83 @@
+<app-navbar></app-navbar>
+<div class="profil-container">
+  <h2>Modifier Profil</h2>
+  <div *ngIf="successMessage || errorMessage" class="alert" [ngClass]="{'alert-success': successMessage, 'alert-danger': errorMessage}">
+    <p [innerHTML]="successMessage || errorMessage"></p>
+  </div>  
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <input type="hidden" formControlName="id">
+    <div class="name-group">
+      <div class="form-group">
+        <label for="prenom">Prénom</label>
+        <input type="text" id="prenom" formControlName="prenom" placeholder="Prénom">
+      </div>
+      <div class="form-group">
+        <label for="nom">Nom</label>
+        <input type="text" id="nom" formControlName="nom" placeholder="Nom">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Adresse Email</label>
+      <input id="email" formControlName="email" type="email" placeholder="Entrez votre adresse email" />
+      <div *ngIf="profileForm.get('email')?.invalid && (profileForm.get('email')?.touched || isSubmitted)">
+        <small class="error" *ngIf="profileForm.get('email')?.errors?.['required']">
+          L'adresse email est requise.
+        </small>
+        <small class="error" *ngIf="profileForm.get('email')?.errors?.['email']">
+          L'adresse email n'est pas valide.
+        </small>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="tel">Téléphone</label>
+      <div class="phone-input-group">
+        <div class="country-code-container">
+          <div class="selected-country" (click)="toggleDropdown()">
+            <img [src]="selectedCountry.flag" alt="Code pays {{ selectedCountry.label }}" class="flag-icon" />
+            {{ selectedCountry.value }}
+            <span class="arrow-down"></span>
+          </div>
+          <div *ngIf="dropdownOpen" class="country-code-dropdown">
+            <div *ngFor="let code of countryCodes" class="dropdown-item" (click)="selectCountry(code)">
+              <img [src]="code.flag" alt="Code pays {{ code.label }}" class="flag-icon" />
+              {{ code.value }}
+            </div>
+          </div>
+        </div>
+        <input 
+          id="tel" 
+          formControlName="tel" 
+          (input)="formatPhoneInput($event)"
+          [attr.maxlength]="maxLength"
+          placeholder="Entrez votre numéro de portable"
+        />
+        <div *ngIf="isSubmitted && profileForm.get('tel')?.invalid" class="error">
+          <div *ngIf="profileForm.get('tel')?.errors?.['required']">Le numéro de téléphone est requis.</div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="dateNaissance">Date de Naissance</label>
+      <input id="dateNaissance" formControlName="dateNaissance" type="date" />
+      <div *ngIf="profileForm.get('dateNaissance')?.invalid && (profileForm.get('dateNaissance')?.touched || isSubmitted)">
+        <small class="error" *ngIf="profileForm.get('dateNaissance')?.errors?.['required']">
+          La date de naissance est requise.
+        </small>
+        <small class="error" *ngIf="profileForm.get('dateNaissance')?.errors?.['dateInFuture']">
+          La date de naissance ne peut pas être ultérieur à la date du jour 
+        </small>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="questionSecrete">Question Secrète</label>
+      <select id="questionSecrete" formControlName="questionSecrete">
+        <option *ngFor="let question of secretQuestions" [value]="question">{{ question }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="reponseSecrete">Réponse Secrète</label>
+      <input id="reponseSecrete" formControlName="reponseSecrete" type="text" placeholder="Entrez la réponse secrète" />
+    </div>
+    <button type="submit" [disabled]="isSubmitButtonDisabled()">Mettre à jour le profil</button>
+  </form>
+</div>

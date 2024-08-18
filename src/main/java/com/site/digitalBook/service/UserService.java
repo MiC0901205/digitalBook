@@ -41,8 +41,11 @@ public class UserService {
     }
 
     public User getUserById(int id) {
-        return userRepository.findById(id)
-                .orElseThrow(() -> new UserNotFoundException("Utilisateur non trouvé"));
+    	User user = userRepository.findById(id);
+        if (user == null) {
+        	throw new UserNotFoundException("Utilisateur non trouvé");
+        }
+        return user;
     }
     
     public User getUserByEmail(String email) {
@@ -115,5 +118,25 @@ public class UserService {
         passwords.add(newPassword);
 
         user.setAnciensMotsDePasse(String.join(",", passwords));
+    }
+    
+    public User updateUser(User updatedUser) {
+        User existingUser = userRepository.findById(updatedUser.getId());
+
+        if (existingUser == null) {
+            throw new UserNotFoundException("Utilisateur non trouvé");
+        }
+
+        existingUser.setNom(updatedUser.getNom());
+        existingUser.setPrenom(updatedUser.getPrenom());
+        existingUser.setEmail(updatedUser.getEmail());
+        existingUser.setTel(updatedUser.getTel());
+        existingUser.setDateNaissance(updatedUser.getDateNaissance());
+
+        if (updatedUser.getMdp() != null && !updatedUser.getMdp().isEmpty()) {
+            existingUser.setMdp(passwordEncoder.encode(updatedUser.getMdp()));
+        }
+
+        return userRepository.save(existingUser);
     }
 }

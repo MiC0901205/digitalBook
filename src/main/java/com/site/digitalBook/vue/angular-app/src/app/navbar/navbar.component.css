@@ -1,0 +1,114 @@
+* {
+    user-select: none;
+}
+
+/* Styles pour la navbar */
+.navbar {
+    background-color: #111;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between; /* Espace entre le titre et les boutons */
+    align-items: center; /* Aligne verticalement les éléments */
+    width: 98.6%;
+    margin-top: -10px;
+}
+
+.navbar-brand h1 {
+    color: #e00;
+    margin: 0;
+}
+
+.navbar-title {
+    color: #e00;
+    text-decoration: none; /* Enlève le soulignement du lien */
+}
+
+.navbar-title h1 {
+    margin: 0;
+    font-size: 1.8rem; /* Ajustez la taille de la police si nécessaire */
+    display: inline; /* Assure que le titre s'affiche correctement à l'intérieur du lien */
+}
+
+.navbar-title:hover h1 {
+    text-decoration: none; /* Assure qu'aucun soulignement n'apparaît au survol */
+}
+
+.navbar-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+    align-items: center; /* Aligne les éléments du menu verticalement */
+}
+
+.navbar-menu li {
+    position: relative;
+}
+
+.navbar-menu li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-menu li a:hover {
+    background-color: #e00;
+    border-radius: 5px;
+}
+
+/* Styles pour l'icône utilisateur et le menu utilisateur */
+.user-icon, .cart-icon {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center; /* Aligne verticalement les icônes */
+}
+
+.user-icon.logged-in {
+    color: #0f0; /* Vert quand connecté */
+}
+
+.user-menu {
+    position: absolute;
+    right: 0;
+    top: 2.5rem;
+    background-color: #333;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    z-index: 1000; /* S'assure que le menu est au-dessus des autres éléments */
+}
+
+.user-menu a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    display: block;
+    cursor: pointer;
+    user-select: none;
+}
+
+.user-menu a:hover {
+    background-color: #e00;
+    border-radius: 5px;
+}
+
+/* Styles pour l'icône du panier */
+.cart-icon {
+    color: #fff;
+    font-size: 1.2rem; /* Réduit la taille de l'icône du panier */
+    cursor: pointer;
+    display: flex;
+    align-items: center; /* Aligne verticalement les icônes */
+}
+
+.cart-icon:hover {
+    color: #e00;
+}

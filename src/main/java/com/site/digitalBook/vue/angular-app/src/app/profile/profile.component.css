@@ -1,40 +1,14 @@
-/* Conteneur de la modale */
-.modal-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Modale d'inscription */
-.register-modal {
-  background-color: #000;
-  color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  width: 100%;
-  max-width: 360px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow-y: auto; /* Ajoute le défilement vertical si nécessaire */
-}
-
-/* Titre de la modale */
-.register-modal h1 {
-  margin-top: 0;
-  color: #cc0000;
-  text-align: center;
-  cursor: default;
+* {
   user-select: none;
-  pointer-events: none;
+}
+
+/* Conteneur du formulaire */
+.profil-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 8px; /* Ajouter des coins arrondis */
 }
 
 /* Formulaire */
@@ -42,9 +16,10 @@ form {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch; /* Ne pas centrer les éléments du formulaire */
 }
 
+/* Groupe de champs de formulaire */
 .form-group {
   width: 100%;
   margin-bottom: 15px;
@@ -52,16 +27,17 @@ form {
   flex-direction: column;
 }
 
+/* Label des champs */
 .form-group label {
   display: block;
   font-weight: bold;
   margin-bottom: 8px;
   color: #ccc;
   cursor: default;
-  user-select: none;
   width: 100%;
 }
 
+/* Champs de formulaire */
 .form-group input, .form-group select {
   width: 100%;
   max-width: 100%;
@@ -76,6 +52,7 @@ form {
   margin: 0;
 }
 
+/* Placeholder des champs */
 .form-group input::placeholder, .form-group select::placeholder {
   color: #888;
   opacity: 1;
@@ -114,52 +91,47 @@ button:disabled {
   line-height: 1.4;
   width: 100%;
   box-sizing: border-box;
-  cursor: default; /* Garde le curseur normal */
-  user-select: none; /* Empêche la sélection du texte */
+  cursor: default;
 }
 
-/* Conteneur d’entrée groupé */
-.input-group {
+/* Conteneur d’entrée groupé pour prénom et nom */
+.name-group {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  gap: 15px; /* Espace entre les champs prénom et nom */
 }
 
-.input-group-item {
-  flex: 1;
-  min-width: 0;
+/* Style des champs prénom et nom */
+.name-group .name-field {
+  flex: 1; /* Chaque champ prend la même largeur */
 }
 
-.input-group-item label {
-  display: block;
-  margin-bottom: 5px;
+.name-group .name-field input {
+  background-color: #333; /* Couleur de fond différente pour prénom et nom */
 }
 
+/* Conteneur du téléphone */
 .phone-input-group {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
+/* Champs de téléphone */
 .phone-input-group input {
-  flex: 1; /* Prend l'espace restant */
+  flex: 1;
   padding: 12px;
 }
 
-.phone-input-group select {
-  display: none; /* Masquer le sélecteur natif si vous utilisez un menu déroulant personnalisé */
-}
-
-/* Conteneur du code pays */
+/* Sélecteur de pays */
 .country-code-container {
   display: flex;
   align-items: center;
-  width: 70px; /* Ajustez la largeur selon vos besoins */
+  width: 70px;
   margin-right: 10px;
   position: relative;
 }
 
-/* Menu déroulant du code pays */
+/* Dropdown du code pays */
 .country-code-dropdown {
   display: block;
   position: absolute;
@@ -175,7 +147,7 @@ button:disabled {
   z-index: 1000;
 }
 
-/* Élément du menu déroulant */
+/* Élément du dropdown */
 .country-code-dropdown .dropdown-item {
   display: flex;
   align-items: center;
@@ -188,16 +160,16 @@ button:disabled {
   background-color: #333;
 }
 
+/* Icônes de drapeau */
 .dropdown-item .flag-icon, .country-code-container .flag-icon {
   width: 24px;
-  height: 16px; /* Ajustez la hauteur pour les proportions du drapeau */
+  height: 16px;
   margin-right: 8px;
 }
 
-/* Sélecteur de pays */
+/* Sélection du pays */
 .country-code-container .selected-country {
-  cursor: default; /* Garde le curseur normal */
-  user-select: none; /* Empêche la sélection du texte */
+  cursor: default;
   display: flex;
   align-items: center;
   padding: 10px;
@@ -207,27 +179,48 @@ button:disabled {
   color: #fff;
 }
 
-/* Masquer le curseur pour les éléments interactifs */
 .country-code-container .selected-country img {
-  pointer-events: none; /* Empêche les interactions avec l'image */
+  pointer-events: none;
 }
 
-/* Couleur de fond rouge pour les erreurs */
-.error-bg {
-  background-color: #f8d7da; /* Rouge clair */
-}
-
-/* Styles pour les messages d'alerte */
+/* Messages d'alerte */
 .alert {
-  margin-bottom: 20px;
   padding: 15px;
-  border-radius: 5px;
-  text-align: center;
+  border-radius: 4px;
+  margin-bottom: 20px;
 }
 
 .alert-danger {
-  color: #721c24;
   background-color: #f8d7da;
-  border-color: #f5c6cb;
-  width: 90%;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+
+/* Styles pour la modale */
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Titre h2 */
+h2 {
+  margin-top: 0;
+  color: #cc0000;
+  text-align: center;
+  cursor: default;
+  pointer-events: none;
 }

@@ -1,54 +1,119 @@
-<body>
-  <div class="home-container">
-    <nav class="navbar">
-      <div class="navbar-brand">
-        <h1>Digital Library</h1>
+<app-navbar></app-navbar>
+
+<!-- Conteneur principal -->
+<div class="main-container">
+
+  <!-- Section de l'Héro -->
+  <section class="hero" data-aos="fade-up">
+    <div class="hero-content">
+      <h1>Découvrez votre prochaine lecture préférée</h1>
+      <p>Plongez dans un monde de livres numériques fascinants.</p>
+      <div class="search-container">
+        <input type="text" placeholder="Rechercher un livre...">
+        <button class="btn-search">Rechercher</button>
       </div>
-      <ul class="navbar-menu">
-        <li><a routerLink="/">Home</a></li>
-        <li><a routerLink="/about">About</a></li>
-        <li>
-          <button *ngIf="isLoggedIn; else loggedOutMenu"
-                  (click)="toggleUserMenu()"
-                  class="user-icon"
-                  [ngClass]="{'logged-in': isLoggedIn}">
-            <i class="fa fa-user"></i>
-          </button>
-          <ng-template #loggedOutMenu>
-            <button (click)="navigateToLogin()"
-                    class="user-icon">
-              <i class="fa fa-user"></i>
-            </button>
-          </ng-template>
-
-          <div *ngIf="showUserMenu" class="user-menu">
-            <a routerLink="/profile">Mon profil</a>
-            <a routerLink="/order-history">Mes achats</a>
-            <a (click)="logout()">Déconnexion</a>
-          </div>
-        </li>
-      </ul>
-    </nav>
-
-    <div class="hero-section">
-      <h2>Welcome to the Digital Library</h2>
-      <p>Explore our vast collection of digital books from the comfort of your home.</p>
-      <button class="btn-primary">Browse Books</button>
     </div>
+    <div class="hero-image">
+      <img src="../../assets/icons/banner.png" alt="Hero Image">
+    </div>
+  </section>
 
-    <div class="features-section">
-      <div class="feature-card">
-        <h3>Wide Selection</h3>
-        <p>Access thousands of e-books across various genres and authors.</p>
+  <!-- Section de Défilement Parallax -->
+  <section class="parallax-section" data-aos="fade-up">
+    <div class="parallax-content">
+      <h2>Notre collection de livres</h2>
+      <p>Explorez notre vaste catalogue contenant des milliers de titres dans tous les genres.</p>
+      <a href="#" class="btn-primary">Explorer</a>
+    </div>
+  </section>
+
+  <!-- Section Carrousel de Livres en Vedette -->
+  <section class="featured-books" data-aos="fade-up">
+    <h2>Livres en Vedette</h2>
+    <div class="carousel swiper-container">
+      <div class="swiper-wrapper">
+        <div class="carousel-item swiper-slide">
+          <img src="path/to/book-cover1.jpg" alt="Book Cover 1">
+          <h3>Titre du Livre 1</h3>
+          <p>Auteur 1</p>
+        </div>
+        <div class="carousel-item swiper-slide">
+          <img src="path/to/book-cover2.jpg" alt="Book Cover 2">
+          <h3>Titre du Livre 2</h3>
+          <p>Auteur 2</p>
+        </div>
+        <!-- Ajouter plus de livres ici -->
       </div>
-      <div class="feature-card">
-        <h3>Personalized Recommendations</h3>
-        <p>Get book suggestions based on your reading history and preferences.</p>
+      <!-- Ajoutez les boutons de navigation si nécessaire -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </section>
+
+  <!-- Section Vidéo de Présentation -->
+  <section class="video-presentation" data-aos="fade-up">
+    <h2>Découvrez DigitalBook</h2>
+    <video controls>
+      <source src="path/to/video.mp4" type="video/mp4">
+      Votre navigateur ne supporte pas la lecture de vidéos.
+    </video>
+  </section>
+
+  <!-- Section de Témoignages avec Arrière-Plan Image -->
+  <section class="testimonials" data-aos="fade-up">
+    <div class="testimonials-content">
+      <h2>Ce que disent nos lecteurs</h2>
+      <div class="testimonial">
+        <p>"DigitalBook a changé ma façon de lire. Je trouve toujours quelque chose d'intéressant à explorer."</p>
+        <span>- Marie D.</span>
       </div>
-      <div class="feature-card">
-        <h3>Read Anywhere</h3>
-        <p>Enjoy reading on any device, anytime, anywhere.</p>
+      <div class="testimonial">
+        <p>"Les recommandations personnalisées sont parfaites, elles m'aident à découvrir des livres que j'adore."</p>
+        <span>- Jean P.</span>
       </div>
+    </div>
+  </section>
+
+  <!-- Section Abonnement à la Newsletter -->
+  <section class="newsletter" data-aos="fade-up">
+    <h2>Ne manquez rien</h2>
+    <p>Abonnez-vous à notre newsletter pour rester informé des dernières sorties et promotions.</p>
+    <form>
+      <input type="email" placeholder="Entrez votre email" required>
+      <button type="submit" class="btn-primary">S'abonner</button>
+    </form>
+  </section>
+
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-content">
+    <div class="about">
+      <h3>À propos de DigitalBook</h3>
+      <p>La plateforme ultime pour accéder à une vaste sélection de livres numériques, où que vous soyez.</p>
+    </div>
+    <div class="links">
+      <h3>Liens Utiles</h3>
+      <ul>
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#">Explorer</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div class="social-media">
+      <h3>Suivez-nous</h3>
+      <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
     </div>
   </div>
-</body>
+  <div class="footer-bottom">
+    <p>&copy; 2024 DigitalBook. Tous droits réservés.</p>
+  </div>
+</footer>
+
+<!-- Inclure les scripts en bas -->
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="path/to/your/scripts.js"></script>

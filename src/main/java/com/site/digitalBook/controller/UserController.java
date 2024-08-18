@@ -8,6 +8,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import com.site.digitalBook.controller.payload.Payload;
@@ -45,7 +48,6 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<Payload> registerUser(@RequestBody User user) {
-
         if (user.getEmail() == null || user.getMdp() == null) {
             Payload payload = new Payload("Email or password cannot be null");
             return new ResponseEntity<>(payload, HttpStatus.BAD_REQUEST);
@@ -138,8 +140,6 @@ public class UserController {
         }
     }
 
-
-
     @PostMapping("/reset-password")
     public ResponseEntity<Payload> resetPassword(@RequestParam("email") String email, @RequestBody Map<String, String> requestBody) {
         try {
@@ -166,27 +166,53 @@ public class UserController {
         return ResponseEntity.ok().build(); // Retourne HTTP 200 OK
     }
 
-    @GetMapping("/user")
-    public ResponseEntity<Payload> getAllUsers() {
-        Payload payload = new Payload("All users", userService.getAllUsers());
-        return new ResponseEntity<>(payload, HttpStatus.OK);
-    }
-
-    @GetMapping("/user/{id}")
-    public ResponseEntity<Payload> getUserById(@PathVariable int id) {
+    @PutMapping("/user/{id}")
+    public ResponseEntity<Payload> updateUserProfile(@PathVariable int id, @RequestBody User updatedUser) {
         try {
-            User user = userService.getUserById(id);
-            Payload payload = new Payload("User found", user);
-            return new ResponseEntity<>(payload, HttpStatus.OK);
-        } catch (UserNotFoundException ex) {
-            Payload payload = new Payload(ex.getMessage());
-            return new ResponseEntity<>(payload, HttpStatus.NOT_FOUND);
+    	   User user = userService.getUserById(id);
+           user.setNom(updatedUser.getNom());
+           user.setPrenom(updatedUser.getPrenom());
+           user.setEmail(updatedUser.getEmail());
+           user.setTel(updatedUser.getTel());
+           user.setDateNaissance(updatedUser.getDateNaissance());
+           user.setQuestionSecrete(updatedUser.getQuestionSecrete());
+           user.setReponseSecrete(updatedUser.getReponseSecrete());
+
+            userService.updateUser(user);
+
+            Payload payload = new Payload("User updated successfully", user);
+            return ResponseEntity.ok(payload);
+        } catch (UserNotFoundException e) {
+            Payload payload = new Payload(e.getMessage());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(payload);
+        } catch (Exception e) {
+            Payload payload = new Payload("Error updating user profile: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(payload);
         }
     }
 
-    @DeleteMapping("/user/{id}")
-    public ResponseEntity<Payload> deleteUser(@PathVariable int id) {
-        userService.deleteUser(id);
-        return new ResponseEntity<>(new Payload("User deleted"), HttpStatus.NO_CONTENT);
+    @GetMapping("/current-user")
+    public ResponseEntity<Payload> getCurrentUser(@RequestHeader("Email") String email) {
+        try {
+            if (email == null || email.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new Payload("Email non fourni"));
+            }
+
+            User user = userService.getUserByEmail(email);
+            if (user == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Payload("Utilisateur non trouvé"));
+            }
+
+            Payload payload = new Payload("Utilisateur trouvé", user);
+            return ResponseEntity.ok(payload);
+
+        } catch (UserNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Payload("Erreur : Utilisateur non trouvé. Détails : " + e.getMessage()));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Payload("Erreur : L'email fourni est invalide. Détails : " + e.getMessage()));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new Payload("Erreur interne du serveur. Détails : " + e.getMessage()));
+        }
     }
+
 }
