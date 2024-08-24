@@ -1,0 +1,79 @@
+<!-- book-display.component.html -->
+<app-navbar></app-navbar>
+
+<!-- Barre de recherche -->
+<div class="search-container">
+  <input type="text" placeholder="Rechercher..."/>
+  <button><i class="fa fa-search"></i></button>
+</div>
+
+<!-- Sidebar -->
+<div class="sidebar" [ngClass]="{'sidebar-open': isSidebarOpen}">
+  <!-- Sidebar Toggle Button -->
+  <div class="sidebar-toggle" (click)="toggleSidebar()">
+    <i class="fa" [ngClass]="{'fa-arrow-left': isSidebarOpen, 'fa-arrow-right': !isSidebarOpen}"></i>
+  </div>
+
+  <!-- Filters Content -->
+  <div class="filters">
+    <h2>Filtres</h2>
+    <div class="filter-group">
+      <label>
+        <input type="checkbox" [(ngModel)]="filters.promotion"/>
+        Prix en promotion
+      </label>
+      <label>
+        <input type="checkbox" [(ngModel)]="filters.disponibilite"/>
+        Disponibilité
+      </label>
+      <label>
+        <input type="range" min="0" max="100" step="1" [(ngModel)]="filters.prixMax"/>
+        <span>Prix max: {{filters.prixMax}}€</span>
+      </label>
+    </div>
+
+    <h2>Catégories</h2>
+    <div class="category-group">
+      <ul>
+        <li *ngFor="let type of getCategoryTypes()" class="category-item">
+          <h3>{{ type }}</h3>
+          <div class="subcategory-container">
+            <ul>
+              <li *ngFor="let categorie of categoriesByType[type]" class="subcategory-item">
+                <label>
+                  <input type="radio" name="category" [(ngModel)]="selectedCategory" [value]="categorie.id"/>
+                  {{ categorie.name }}
+                </label>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Buttons for Applying and Resetting Filters -->
+    <div class="button-group">
+      <button class="reset-button" (click)="resetFilters()">Réinitialiser</button>
+      <button class="apply-button" (click)="applyFilters()">Appliquer</button>
+    </div>
+  </div>
+</div>
+
+<!-- Book List Section -->
+<!-- Book List Section -->
+<div class="book-container" [ngClass]="{'sidebar-open': isSidebarOpen}">
+  <div class="book-list">
+    <h1>Liste des Livres</h1>
+    
+    <!-- Message aucun livre disponible -->
+    <p *ngIf="filteredBooks.length === 0" class="no-books-message">Aucun livre disponible</p>
+    
+    <ul *ngIf="filteredBooks.length > 0">
+      <li *ngFor="let book of filteredBooks" class="book-item">
+        <h3>{{ book.titre }}</h3>
+        <p>Auteur : {{ book.auteur }}</p>
+        <p>Prix : {{ book.prix }}€</p>
+      </li>
+    </ul>
+  </div>
+</div>

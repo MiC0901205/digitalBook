@@ -73,6 +73,11 @@
     color: #0f0; /* Vert quand connecté */
 }
 
+.user-icon {
+    margin-bottom: 4px;
+    margin-right: 15px;
+}
+
 .user-menu {
     position: absolute;
     right: 0;

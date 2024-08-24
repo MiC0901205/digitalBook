@@ -62,8 +62,8 @@ public class UserControllerTest {
 
 	    @Test
 	    public void testAuthenticateUser() {
-	        User user = new User("john.doe@example.com", "password");
-	        String encodedPassword = "encodedPassword";
+	        User user = new User("m.pecheur09@gmail.com", "Mickael09@");
+	        String encodedPassword = "Mickael09@";
 
 	        when(userRepository.findByEmail(user.getEmail())).thenReturn(user);
 	        when(passwordEncoder.matches(user.getMdp(), encodedPassword)).thenReturn(true);

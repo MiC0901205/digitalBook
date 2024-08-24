@@ -1,16 +1,8 @@
 package com.site.digitalBook.controller;
 
-import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import com.site.digitalBook.controller.payload.Payload;
@@ -20,13 +12,16 @@ import com.site.digitalBook.exception.UnauthorizedException;
 import com.site.digitalBook.exception.UserNotFoundException;
 import com.site.digitalBook.service.EmailService;
 import com.site.digitalBook.service.TokenBlacklistService;
+import com.site.digitalBook.service.UserService;
 import com.site.digitalBook.service.VerificationCodeStorageService;
 import com.site.digitalBook.util.JwtUtil;
 
 import jakarta.mail.MessagingException;
 
-import com.site.digitalBook.service.UserService;
-
+/**
+ * Contrôleur pour la gestion des utilisateurs.
+ * Fournit des endpoints pour l'inscription, l'authentification, la réinitialisation de mot de passe, et d'autres opérations liées aux utilisateurs.
+ */
 @RestController
 @RequestMapping("/api")
 public class UserController {
@@ -37,7 +32,15 @@ public class UserController {
     private final JwtUtil jwtUtil;
     private final TokenBlacklistService tokenBlacklistService;
 
-    // Constructor Injection
+    /**
+     * Constructeur pour l'injection des dépendances.
+     *
+     * @param userService Le service pour gérer les opérations des utilisateurs.
+     * @param emailService Le service pour gérer les opérations liées aux emails.
+     * @param verificationCodeService Le service pour stocker et vérifier les codes de vérification.
+     * @param jwtUtil L'utilitaire pour gérer les opérations de jetons JWT.
+     * @param tokenBlacklistService Le service pour gérer la liste noire des jetons.
+     */
     public UserController(UserService userService, EmailService emailService, VerificationCodeStorageService verificationCodeService, JwtUtil jwtUtil, TokenBlacklistService tokenBlacklistService) {
         this.userService = userService;
         this.emailService = emailService;
@@ -46,29 +49,41 @@ public class UserController {
         this.tokenBlacklistService = tokenBlacklistService;
     }
 
+    /**
+     * Enregistre un nouvel utilisateur.
+     *
+     * @param user L'utilisateur à enregistrer.
+     * @return Une ResponseEntity avec une charge utile contenant le résultat de l'inscription.
+     */
     @PostMapping("/register")
     public ResponseEntity<Payload> registerUser(@RequestBody User user) {
         if (user.getEmail() == null || user.getMdp() == null) {
-            Payload payload = new Payload("Email or password cannot be null");
+            Payload payload = new Payload("Email ou mot de passe ne peut pas être nul");
             return new ResponseEntity<>(payload, HttpStatus.BAD_REQUEST);
         }
 
         try {
             User newUser = userService.addUser(user);
-            Payload payload = new Payload("New user added", newUser);
+            Payload payload = new Payload("Nouvel utilisateur ajouté", newUser);
             return new ResponseEntity<>(payload, HttpStatus.CREATED);
         } catch (EmailAlreadyExistsException e) {
             Payload payload = new Payload(e.getMessage());
             return new ResponseEntity<>(payload, HttpStatus.BAD_REQUEST);
         } catch (UnauthorizedException e) {
-            Payload payload = new Payload("Login failed: " + e.getMessage());
+            Payload payload = new Payload("Échec de la connexion : " + e.getMessage());
             return new ResponseEntity<>(payload, HttpStatus.UNAUTHORIZED);
         } catch (Exception e) {
-            Payload payload = new Payload("Registration failed: " + e.getMessage());
+            Payload payload = new Payload("Échec de l'inscription : " + e.getMessage());
             return new ResponseEntity<>(payload, HttpStatus.BAD_REQUEST);
         }
     }
 
+    /**
+     * Authentifie un utilisateur et envoie un code de confirmation par email.
+     *
+     * @param user L'utilisateur essayant de se connecter.
+     * @return Une ResponseEntity avec une charge utile contenant le résultat de la connexion.
+     */
     @PostMapping("/login")
     public ResponseEntity<Payload> loginUser(@RequestBody User user) {
         try {
@@ -77,17 +92,26 @@ public class UserController {
             emailService.sendConfirmationEmail(user.getEmail(), code);
             emailService.saveCode(user.getEmail(), code);
 
-            Payload payload = new Payload("User authenticated. Please check your email for the confirmation code.", authenticatedUser);
+            Payload payload = new Payload("Utilisateur authentifié. Veuillez vérifier votre email pour le code de confirmation.", authenticatedUser);
             return new ResponseEntity<>(payload, HttpStatus.OK);
+        } catch (UnauthorizedException e) {
+            Payload payload = new Payload("Échec de la connexion : " + e.getMessage());
+            return new ResponseEntity<>(payload, HttpStatus.FORBIDDEN);
         } catch (UserNotFoundException e) {
-            Payload payload = new Payload("Login failed: " + e.getMessage());
-            return new ResponseEntity<>(payload, HttpStatus.UNAUTHORIZED);
+            Payload payload = new Payload("Échec de la connexion : " + e.getMessage());
+            return new ResponseEntity<>(payload, HttpStatus.NOT_FOUND);
         } catch (Exception e) {
-            Payload payload = new Payload("Login failed: " + e.getMessage());
+            Payload payload = new Payload("Échec de la connexion : " + e.getMessage());
             return new ResponseEntity<>(payload, HttpStatus.BAD_REQUEST);
         }
     }
 
+    /**
+     * Vérifie le code envoyé à l'email de l'utilisateur.
+     *
+     * @param request Une carte contenant l'email et le code.
+     * @return Une ResponseEntity avec une charge utile contenant le résultat de la vérification.
+     */
     @PostMapping("/verify-code")
     public ResponseEntity<Payload> verifyCode(@RequestBody Map<String, String> request) {
         String email = request.get("email");
@@ -111,6 +135,12 @@ public class UserController {
         }
     }
 
+    /**
+     * Initie le processus de réinitialisation du mot de passe en envoyant un lien de réinitialisation à l'email de l'utilisateur.
+     *
+     * @param user L'utilisateur demandant la réinitialisation du mot de passe.
+     * @return Une ResponseEntity avec une charge utile contenant le résultat de la réinitialisation.
+     */
     @PostMapping("/forgot-password")
     public ResponseEntity<Payload> forgotPassword(@RequestBody User user) {
         try {
@@ -130,16 +160,21 @@ public class UserController {
             return ResponseEntity.ok(payload);
 
         } catch (MessagingException e) {
-            System.err.println("Erreur lors de l'envoi de l'email: " + e.getMessage());
             Payload payload = new Payload("Erreur lors de l'envoi de l'email.");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(payload);
         } catch (Exception e) {
-            System.err.println("Erreur inattendue lors de l'envoi de l'email: " + e.getMessage());
             Payload payload = new Payload("Erreur inattendue lors de l'envoi de l'email.");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(payload);
         }
     }
 
+    /**
+     * Réinitialise le mot de passe de l'utilisateur.
+     *
+     * @param email L'email de l'utilisateur.
+     * @param requestBody Une carte contenant le nouveau mot de passe.
+     * @return Une ResponseEntity avec une charge utile contenant le résultat de la réinitialisation.
+     */
     @PostMapping("/reset-password")
     public ResponseEntity<Payload> resetPassword(@RequestParam("email") String email, @RequestBody Map<String, String> requestBody) {
         try {
@@ -157,6 +192,12 @@ public class UserController {
         }
     }
 
+    /**
+     * Déconnecte l'utilisateur en ajoutant le jeton à la liste noire.
+     *
+     * @param authorizationHeader Le header d'autorisation contenant le jeton.
+     * @return Une ResponseEntity indiquant le résultat de la déconnexion.
+     */
     @PostMapping("/logout")
     public ResponseEntity<Void> logout(@RequestHeader(value = "Authorization") String authorizationHeader) {
         String token = authorizationHeader.substring(7); // Supposer "Bearer " préfixé
@@ -166,10 +207,17 @@ public class UserController {
         return ResponseEntity.ok().build(); // Retourne HTTP 200 OK
     }
 
+    /**
+     * Met à jour le profil de l'utilisateur.
+     *
+     * @param id L'ID de l'utilisateur à mettre à jour.
+     * @param updatedUser Les informations mises à jour de l'utilisateur.
+     * @return Une ResponseEntity avec une charge utile contenant le résultat de la mise à jour.
+     */
     @PutMapping("/user/{id}")
     public ResponseEntity<Payload> updateUserProfile(@PathVariable int id, @RequestBody User updatedUser) {
         try {
-    	   User user = userService.getUserById(id);
+           User user = userService.getUserById(id);
            user.setNom(updatedUser.getNom());
            user.setPrenom(updatedUser.getPrenom());
            user.setEmail(updatedUser.getEmail());
@@ -180,17 +228,23 @@ public class UserController {
 
             userService.updateUser(user);
 
-            Payload payload = new Payload("User updated successfully", user);
+            Payload payload = new Payload("Utilisateur mis à jour avec succès", user);
             return ResponseEntity.ok(payload);
         } catch (UserNotFoundException e) {
             Payload payload = new Payload(e.getMessage());
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(payload);
         } catch (Exception e) {
-            Payload payload = new Payload("Error updating user profile: " + e.getMessage());
+            Payload payload = new Payload("Erreur lors de la mise à jour du profil utilisateur : " + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(payload);
         }
     }
 
+    /**
+     * Obtient l'utilisateur authentifié actuel par email.
+     *
+     * @param email L'email de l'utilisateur actuel.
+     * @return Une ResponseEntity avec une charge utile contenant les informations de l'utilisateur.
+     */
     @GetMapping("/current-user")
     public ResponseEntity<Payload> getCurrentUser(@RequestHeader("Email") String email) {
         try {
@@ -214,5 +268,4 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new Payload("Erreur interne du serveur. Détails : " + e.getMessage()));
         }
     }
-
 }

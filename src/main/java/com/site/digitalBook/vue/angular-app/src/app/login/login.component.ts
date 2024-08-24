@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../services/auth/auth.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
-import { LoginResponse } from '../interface/login-response.model';  // Importer l'interface
 import { CommonModule } from '@angular/common';
 import { RecaptchaModule } from 'ng-recaptcha';
 
@@ -70,27 +69,27 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     this.isSubmitted = true;
-    if (this.loginForm.valid && this.recaptchaToken) {
-      const { email, mdp } = this.loginForm.value;
-      this.authService.login(email, mdp).subscribe(
-        (response: LoginResponse) => {  // Spécifier le type de la réponse
-          console.log('Login successful!', response);
-          this.errorMessage = null;
-          this.successMessage = 'Connexion réussie !';
-          this.isError = false;
-          localStorage.setItem('userEmail', email);
-          this.router.navigate(['/user-action'], { queryParams: { actionType: 'confirmation' } });
-        },
-        (error: HttpErrorResponse) => {
-          console.error('Login failed', error);
-          this.successMessage = null;
-          this.errorMessage = error.error?.message || 'Adresse email ou mot de passe incorrect';
-          this.isError = true;
-        }
-      );
+    if (this.loginForm.valid) {
+        const { email, mdp } = this.loginForm.value;
+        this.authService.login(email, mdp).subscribe(
+            (response: any) => {
+                console.log('Login successful!', response);
+                this.errorMessage = null;
+                this.successMessage = 'Connexion réussie !';
+                this.isError = false;
+                localStorage.setItem('userEmail', email);
+                this.router.navigate(['/user-action'], { queryParams: { actionType: 'confirmation' } });
+            },
+            (error: HttpErrorResponse) => {
+                console.error('Login failed', error);
+                this.successMessage = null;
+                this.errorMessage = error.error?.message || 'Adresse email ou mot de passe incorrect';
+                this.isError = true;
+            }
+        );
     } else {
-      console.log('Form is not valid or CAPTCHA not completed.');
-      this.loginForm.markAllAsTouched();
+        console.log('Form is not valid.');
+        this.loginForm.markAllAsTouched();
     }
   }
 

@@ -1,0 +1,352 @@
+/* Styles globaux */
+* {
+  user-select: none;
+  box-sizing: border-box; /* Assure que le padding et la bordure sont inclus dans la largeur et la hauteur */
+}
+
+/* Style pour la barre de recherche */
+/* Style pour la barre de recherche */
+.search-container {
+  position: absolute; /* Positionnement absolu par rapport à .book-container */
+  top: 70px; /* Décalage du haut de la section des livres */
+  right: 10px; /* Décalage du bord droit de la section des livres */
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+  border-radius: 5px; /* Bords arrondis */
+  z-index: 1000; /* Assure que la barre de recherche est au-dessus des autres éléments */
+}
+
+.book-container {
+  position: relative; /* Positionne .book-container pour que .search-container soit positionné relativement à elle */
+  display: flex;
+  transition: margin-left 0.3s ease;
+  margin-left: 20px; /* Ajustez selon vos besoins */
+  height: calc(100vh - 60px); /* Hauteur de la fenêtre moins la hauteur de la navbar */
+  z-index: 998; /* Assure que le conteneur des livres est en dessous de la sidebar mais au-dessus des autres éléments */
+}
+
+
+.search-container input {
+  width: 200px;
+  padding: 8px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  background-color: #333;
+  color: white; /* Texte en blanc */
+}
+
+.search-container button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: -35px;
+  padding: 8px;
+}
+
+.search-container button .fa {
+  font-size: 1rem;
+  color: white;
+}
+
+/* Import de Font Awesome */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
+/* Style pour la navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #333;
+  color: #fff;
+  padding: 10px;
+  z-index: 1000;
+}
+
+/* Style pour le panneau latéral (sidebar) */
+.sidebar {
+  width: 350px; /* Largeur du panneau latéral */
+  background: #1c1c1c;
+  padding: 20px; /* Padding pour le contenu de la sidebar */
+  position: fixed; /* Fixe le panneau latéral sur l'écran */
+  top: 60px; /* Positionne le panneau latéral juste sous la navbar */
+  left: 0; /* Position initiale à gauche de l'écran */
+  height: calc(100vh - 60px); /* Hauteur de l'écran moins la hauteur de la navbar */
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
+  border-right: 2px solid #ff6f61;
+  transition: transform 0.3s ease; /* Transition douce pour l'ouverture/fermeture */
+  transform: translateX(-350px); /* Décale la sidebar complètement hors de l'écran à gauche */
+  display: flex;
+  flex-direction: column; /* Aligne les éléments de manière verticale */
+  z-index: 999; /* Assure que la sidebar est au-dessus des éléments derrière elle */
+}
+
+/* Classe à ajouter lorsque la sidebar est ouverte */
+.sidebar-open {
+  transform: translateX(0); /* Affiche complètement la sidebar sur l'écran */
+  position: absolute; /* Fixe le panneau latéral sur l'écran */
+  height: 1200px; /* Hauteur de l'écran moins la hauteur de la navbar */
+
+}
+/* Styles pour les petits écrans (mobiles) */
+@media (max-width: 767px) {
+  .book-container.sidebar-open {
+    margin-left: 0; /* Ne pas décaler le conteneur des livres sur les petits écrans */
+  }
+
+  .sidebar {
+    width: 100%; /* La sidebar occupe toute la largeur de l'écran sur les petits écrans */
+    height: calc(100vh - 60px); /* Hauteur ajustée pour les petits écrans */
+    top: 60px; /* Positionnée sous la navbar */
+    left: 0; /* Positionnée à gauche de l'écran */
+    transform: translateX(0); /* Visible à l'écran */
+    transition: transform 0.3s ease; /* Transition pour l'ouverture/fermeture */
+    position: fixed; /* Fixe la sidebar en haut à gauche */
+    z-index: 999; /* Assure que la sidebar est au-dessus des autres éléments */
+  }
+
+  .book-container {
+    margin-left: 0; /* Aucune marge pour les petits écrans */
+    padding-top: 60px; /* Pour laisser de la place à la navbar si nécessaire */
+    height: calc(100vh - 60px); /* Ajuste la hauteur en tenant compte de la hauteur de la navbar */
+    overflow-y: auto; /* Ajoute un défilement vertical si nécessaire */
+  }
+}
+
+/* Styles pour les écrans moyens à grands (tablettes et petits écrans de PC) */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .book-container.sidebar-open {
+    margin-left: 350px; /* Ajuste la marge pour tenir compte de la largeur de la sidebar */
+    height: calc(100vh - 60px); /* Ajuste la hauteur pour les écrans moyens à grands */
+    width: calc(100% - 350px); /* Ajuste la largeur pour prendre en compte la sidebar */
+  }
+
+  .sidebar {
+    width: 350px; /* Largeur de la sidebar pour les écrans moyens à grands */
+    height: calc(100vh - 60px); /* Hauteur complète moins la hauteur de la navbar */
+    top: 60px; /* Positionnée sous la navbar */
+    left: 0; /* Positionnée à gauche de l'écran */
+    position: fixed; /* Fixe la sidebar en haut à gauche */
+    z-index: 999; /* Assure que la sidebar est au-dessus des autres éléments */
+  }
+
+  .book-container {
+    margin-left: 350px; /* Ajuste la marge pour tenir compte de la sidebar */
+    height: calc(100vh - 60px); /* Ajuste la hauteur en tenant compte de la hauteur de la navbar */
+    overflow-y: auto; /* Ajoute un défilement vertical si nécessaire */
+  }
+}
+
+/* Styles pour les très grands écrans (moniteurs larges) */
+@media (min-width: 1200px) {
+  .book-container.sidebar-open {
+    margin-left: 350px; 
+    height: 1200px; /* Ajuste la hauteur pour les très grands écrans */
+    width: calc(100% - 350px); /* Ajuste la largeur pour prendre en compte la sidebar */
+  }
+
+  .sidebar {
+    width: 350px; /* Largeur de la sidebar pour les très grands écrans */
+    height: 1200px; /* Hauteur complète moins la hauteur de la navbar */
+  }
+}
+
+
+/* Bouton de basculement de la sidebar */
+.sidebar-toggle {
+  position: fixed;
+  top: 50%; /* Centre verticalement dans la sidebar */
+  right: -20px; /* Ajuste la position de la flèche pour qu'elle soit visible à l'intérieur de la modale */
+  width: 40px;
+  height: 40px;
+  background: #007bff;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1001; /* Assure que le bouton est au-dessus de la sidebar */
+  transform: translateY(-50%); /* Centre verticalement */
+  font-size: 1.5rem; /* Agrandit la taille de la flèche */
+  transition: transform 0.3s ease; /* Ajoute une transition pour le mouvement de la flèche */
+}
+
+
+/* Style pour le bouton de basculement de la modale flottante */
+.modal-toggle {
+  position: fixed;
+  top: 50%; /* Centre verticalement */
+  right: -20px; /* Ajuste la position du bouton de basculement */
+  width: 40px;
+  height: 40px;
+  background: #007bff;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1001; /* Assure que le bouton est au-dessus de la modale flottante */
+  transform: translateY(-50%); /* Centre verticalement */
+  font-size: 1.5rem; /* Taille de la flèche */
+  transition: transform 0.3s ease; /* Transition pour le mouvement du bouton */
+}
+
+/* Style global pour la section des filtres */
+.filters {
+  width: 100%;
+}
+
+.filters h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #fb1e0a; /* Couleur vive pour les titres */
+  text-align: left; /* Aligne les titres à gauche */
+  margin-top: -5px;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: rgba(255, 0, 0, 0.456); /* Couleur rouge atténuée pour les sous-titres */
+}
+
+/* Aligne les labels des filtres et des catégories à gauche */
+.filter-group label,
+.category-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: white;
+}
+
+.filter-group {
+  margin-bottom: 20px;
+}
+
+.filter-group input[type="checkbox"],
+.category-group input[type="radio"] {
+  margin-right: 0.5rem;
+}
+
+.book-list {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #2e2e2e;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  height: 100%; /* Prend toute la hauteur disponible dans .book-container */
+  overflow: auto;
+}
+
+.book-list h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #fe1601;
+  margin-top: 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  transition: margin-left 0.3s ease; /* Ajoute une transition pour le déplacement du titre */
+}
+
+.book-container:not(.sidebar-open) .book-list h1 {
+  margin-left: 20px; /* Décale le titre à droite quand la sidebar est fermée */
+}
+
+.book-item {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  background-color: #3c3c3c;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.book-item h3 {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+  color: #f90707;
+}
+
+.book-item p {
+  margin: 0.2rem 0;
+  color: #e0e0e0;
+}
+
+.no-books-message,
+.no-categories-message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: white;
+  margin-top: 2rem;
+}
+
+.subcategory-container {
+  margin-left: 20px;
+}
+
+.subcategory-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  color: white;
+}
+
+/* Supprimer tout style de liste si vous utilisez <ul> ou <ol> */
+ul, ol {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Style pour le bouton Appliquer dans la sidebar */
+.apply-button,
+.reset-button {
+  background-color: #007bff; /* Couleur de fond bleue */
+  color: white; /* Texte en blanc */
+  border: none; /* Supprime la bordure par défaut */
+  padding: 10px 15px; /* Ajoute du padding */
+  font-size: 1rem; /* Taille de police */
+  border-radius: 5px; /* Coins arrondis */
+  cursor: pointer; /* Curseur en forme de main */
+  margin-top: 1rem; /* Marge au-dessus */
+  transition: background-color 0.3s ease; /* Transition pour le survol */
+  width: 100%; /* Largeur complète pour s'adapter à la largeur de la sidebar */
+}
+
+/* Style pour les boutons dans la sidebar */
+.button-group {
+  display: flex;
+  justify-content: space-between; /* Espace entre les boutons */
+  margin-top: 1rem; /* Marge au-dessus */
+}
+
+.apply-button,
+.reset-button {
+  background-color: #007bff; /* Couleur de fond bleue pour Appliquer */
+  color: white; /* Texte en blanc */
+  border: none; /* Supprime la bordure par défaut */
+  padding: 10px 15px; /* Ajoute du padding */
+  font-size: 1rem; /* Taille de police */
+  border-radius: 5px; /* Coins arrondis */
+  cursor: pointer; /* Curseur en forme de main */
+  transition: background-color 0.3s ease; /* Transition pour le survol */
+  width: 48%; /* Largeur des boutons ajustée pour les afficher côte à côte */
+}
+
+.apply-button {
+  background-color: #007bff; /* Couleur de fond bleue */
+}
+
+.apply-button:hover {
+  background-color: #0056b3; /* Couleur de fond au survol */
+}
+
+.reset-button {
+  background-color: #6c757d; /* Couleur de fond grise */
+}
+
+.reset-button:hover {
+  background-color: #5a6268; /* Couleur de fond au survol */
+}

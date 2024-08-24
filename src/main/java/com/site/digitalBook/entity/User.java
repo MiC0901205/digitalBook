@@ -1,6 +1,8 @@
 package com.site.digitalBook.entity;
 
 import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -8,7 +10,7 @@ import java.util.Date;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String nom;
@@ -29,10 +31,22 @@ public class User {
     private String reponseSecrete;
     private int panier;
 
+    private int failedLoginAttempts = 0; // Nombre de tentatives de connexion échouées
+    private LocalDateTime lastFailedLogin; // Date de la dernière tentative échouée
+    private boolean isLocked = false; // Statut du verrouillage du compte
+
     @Column(columnDefinition = "TEXT")
     private String anciensMotsDePasse;
+    
+	public User() {}
 
-    // Getters and Setters
+	public User(String email, String mdp) {
+		super();
+		this.email = email;
+		this.mdp = mdp;
+	}
+
+	// Getters and Setters
     public int getId() {
         return id;
     }
@@ -135,6 +149,30 @@ public class User {
 
     public void setAnciensMotsDePasse(String anciensMotsDePasse) {
         this.anciensMotsDePasse = anciensMotsDePasse;
+    }
+
+    public int getFailedLoginAttempts() {
+        return failedLoginAttempts;
+    }
+
+    public void setFailedLoginAttempts(int failedLoginAttempts) {
+        this.failedLoginAttempts = failedLoginAttempts;
+    }
+
+    public LocalDateTime getLastFailedLogin() {
+        return lastFailedLogin;
+    }
+
+    public void setLastFailedLogin(LocalDateTime lastFailedLogin) {
+        this.lastFailedLogin = lastFailedLogin;
+    }
+
+    public boolean isLocked() {
+        return isLocked;
+    }
+
+    public void setLocked(boolean isLocked) {
+        this.isLocked = isLocked;
     }
 
     @Override
