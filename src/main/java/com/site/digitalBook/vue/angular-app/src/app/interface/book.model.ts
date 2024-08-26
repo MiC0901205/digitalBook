@@ -13,6 +13,4 @@ export interface Book {
   estVendable: boolean;
   photos: string[];
   categories: Categorie[];  // Liste de catégories auxquelles le livre appartient
-  enPromotion?: boolean;    // Ajout de cette propriété pour la promotion
-  disponible?: boolean;    // Ajout de cette propriété pour la disponibilité
 }

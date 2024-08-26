@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.site.digitalBook.controller.payload.Payload;
-import com.site.digitalBook.entity.Book;
+import com.site.digitalBook.entity.Livre;
 import com.site.digitalBook.exception.BookNotFoundException;
 import com.site.digitalBook.service.BookService;
 
@@ -25,9 +25,9 @@ public class BookController {
 
     
     @GetMapping("/books")
-    public ResponseEntity<List<Book>> getAllBooks() {
+    public ResponseEntity<List<Livre>> getAllBooks() {
         try {
-            List<Book> books = bookService.getAllBooks();
+            List<Livre> books = bookService.getAllBooks();
             if (books.isEmpty()) {
                 // Retourne une réponse vide mais avec un code 200
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);

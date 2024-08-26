@@ -1,0 +1,235 @@
+<div *ngIf="showFooter">
+  <footer class="footer">
+    <div class="footer-content">
+
+      <!-- #region À propos -->
+      <div *ngIf="currentSection === ''" class="footer-section about">
+        <h3>À propos de DigitalBook</h3>
+        <p>La plateforme ultime pour accéder à une vaste sélection de livres numériques, où que vous soyez.</p>
+        <h4><strong><i>Contactez-nous</i></strong></h4>
+        <p>Pour toute assistance, veuillez nous contacter au mail : <a href="mailto:support.digitalbook&#64;proton.me">support.digitalbook&#64;proton.me</a></p>
+      </div>
+      <!-- #endregion -->
+
+      <!-- #region Liens Utiles -->
+      <div *ngIf="currentSection === ''" class="footer-section links">
+        <h3>Liens Utiles</h3>
+        <ul>
+          <li><a [routerLink]="['/']" (click)="scrollToTop()">Accueil</a></li>
+          <li><a [routerLink]="['/books']" (click)="scrollToTop()">Livres</a></li>
+          <li><a [routerLink]="['/contact']" (click)="scrollToTop()">Contact</a></li>
+        </ul>
+      </div>
+      <!-- #endregion -->
+
+      <!-- #region Informations Légales -->
+      <div *ngIf="currentSection === ''" class="footer-section legal-info">
+        <h3>Informations Légales</h3>
+        <ul>
+          <li><a [routerLink]="['/footer/privacy']" (click)="scrollToTop()">Politique de confidentialité</a></li>
+          <li><a [routerLink]="['/footer/terms']" (click)="scrollToTop()">Conditions d'utilisation</a></li>
+          <li><a [routerLink]="['/footer/cookies']" (click)="scrollToTop()">Cookies</a></li>
+          <li><a [routerLink]="['/footer/retraction']" (click)="scrollToTop()">Droits de rétractation</a></li>
+        </ul>
+      </div>
+      <!-- #endregion -->
+
+      <!-- #region Politique de Confidentialité -->
+      <div *ngIf="currentSection === 'privacy'" class="footer-section privacy-policy">
+        <a href="#" class="back-to-top" title="Retour en haut" (click)="scrollToTop()">&#8592; Retour</a>
+        <h1>Politique de Confidentialité</h1>
+        <p>Dernière mise à jour : 26 août 2024</p>
+        <p>Cette Politique de Confidentialité décrit nos politiques et procédures sur la collecte, l'utilisation et la divulgation de vos informations lorsque vous utilisez notre Service et vous informe de vos droits en matière de confidentialité et de la manière dont la loi vous protège.</p>
+
+        <h2>Collecte et Utilisation des Données</h2>
+        <p>Nous recueillons plusieurs types d'informations à des fins diverses pour vous fournir et améliorer notre Service.</p>
+        <ul>
+          <li><i>Données Personnelles :</i> Lors de l'utilisation de notre Service, nous pouvons vous demander de nous fournir certaines informations personnelles identifiables qui peuvent inclure, mais sans s'y limiter, votre adresse e-mail, prénom et nom, numéro de téléphone, adresse, cookies et données d'utilisation.</li>
+        </ul>
+
+        <h2>Types de Données Collectées</h2>
+        <p>Les Données Personnelles que nous recueillons peuvent inclure :</p>
+        <ul>
+          <li><i>Données d'Utilisation :</i> Nous pouvons également recueillir des informations envoyées par votre navigateur chaque fois que vous visitez notre Service ou lorsque vous accédez au Service par ou via un appareil mobile.</li>
+          <li><i>Cookies et Données de Suivi :</i> Nous utilisons des cookies et des technologies de suivi similaires pour suivre l'activité sur notre Service et conserver certaines informations.</li>
+        </ul>
+
+        <h2>Utilisation des Données Personnelles</h2>
+        <p>L'Entreprise utilise les Données Personnelles à des fins suivantes :</p>
+        <ul>
+          <li>- Pour fournir et maintenir notre Service, y compris pour surveiller l'utilisation de notre Service.</li>
+          <li>- Pour vous notifier des modifications apportées à notre Service.</li>
+          <li>- Pour vous permettre de participer à des fonctionnalités interactives de notre Service lorsque vous le souhaitez.</li>
+          <li>- Pour fournir une assistance client.</li>
+          <li>- Pour recueillir des analyses ou des informations précieuses afin que nous puissions améliorer notre Service.</li>
+          <li>- Pour surveiller l'utilisation de notre Service.</li>
+          <li>- Pour détecter, prévenir et résoudre les problèmes techniques.</li>
+        </ul>
+
+        <h2>Transfert de Données</h2>
+        <p>Vos informations, y compris les Données Personnelles, peuvent être transférées et maintenues sur des ordinateurs situés en dehors de votre État, province, pays ou autre région gouvernementale où les lois sur la protection des données peuvent différer de celles de votre juridiction.</p>
+        <p>Si vous êtes situé en dehors de France et que vous choisissez de nous fournir des informations, veuillez noter que nous transférons les données, y compris les Données Personnelles, en France et que nous les traitons là-bas.</p>
+        <p>Votre consentement à cette Politique de Confidentialité suivi de votre soumission de telles informations représente votre accord à ce transfert.</p>
+        <p>L'Entreprise prendra toutes les mesures raisonnablement nécessaires pour s'assurer que vos données sont traitées en toute sécurité et conformément à cette Politique de Confidentialité et aucun transfert de vos Données Personnelles vers une organisation ou un pays ne se fera sauf si des contrôles adéquats sont en place, y compris la sécurité de vos données et d'autres informations personnelles.</p>
+
+        <h2>Divulgation des Données</h2>
+        <p>Nous pouvons divulguer vos Données Personnelles en croyant de bonne foi que cette action est nécessaire pour :</p>
+        <ul>
+          <li>- Se conformer à une obligation légale</li>
+          <li>- Protéger et défendre les droits ou la propriété de l'Entreprise</li>
+          <li>- Prévenir ou enquêter sur d'éventuels actes répréhensibles en relation avec le Service</li>
+          <li>- Protéger la sécurité personnelle des utilisateurs du Service ou du public</li>
+          <li>- Protéger contre la responsabilité légale</li>
+        </ul>
+
+        <h2>Sécurité des Données</h2>
+        <p>La sécurité de vos données est importante pour nous, mais rappelez-vous qu'aucune méthode de transmission sur Internet ou de méthode de stockage électronique n'est sûre à 100 %. Bien que nous nous efforcions d'utiliser des moyens commercialement acceptables pour protéger vos Données Personnelles, nous ne pouvons garantir sa sécurité absolue.</p>
+
+        <h2>Liens vers d'Autres Sites</h2>
+        <p>Notre Service peut contenir des liens vers d'autres sites qui ne sont pas exploités par nous. Si vous cliquez sur un lien tiers, vous serez dirigé vers le site de ce tiers. Nous vous conseillons fortement de consulter la Politique de Confidentialité de chaque site que vous visitez.</p>
+        <p>Nous n'avons aucun contrôle sur et n'assumons aucune responsabilité quant au contenu, aux politiques de confidentialité ou aux pratiques des sites ou services tiers. Nous n'assumons aucune responsabilité pour les actions ou les politiques des tiers.</p>
+
+        <h2>Modifications de Cette Politique de Confidentialité</h2>
+        <p>Nous pouvons mettre à jour notre Politique de Confidentialité de temps à autre. Nous vous informerons de tout changement en publiant la nouvelle Politique de Confidentialité sur cette page.</p>
+        <p>Nous vous informerons par e-mail et/ou par une notification visible sur notre Service, avant que le changement ne prenne effet et mettrons à jour la date en haut de cette Politique de Confidentialité.</p>
+        <p>Vous êtes invité à consulter cette Politique de Confidentialité périodiquement pour tout changement. Les modifications apportées à cette Politique de Confidentialité entrent en vigueur lorsqu'elles sont publiées sur cette page.</p>
+
+        <h2>Nous Contacter</h2>
+        <p>Si vous avez des questions concernant cette Politique de Confidentialité, veuillez nous contacter :</p>
+        <ul>
+          <li>- Par e-mail : <a href="mailto:support.digitalbook&#64;proton.me">support.digitalbook&#64;proton.me</a></li>
+          <li>- Par visite à cette page sur notre site Web : <a href="http://localhost:4200/footer/privacy">http://localhost:4200/footer/privacy</a></li>
+        </ul>
+      </div>
+      <!-- #endregion -->
+
+      <!-- #region Conditions d'Utilisation -->
+      <div *ngIf="currentSection === 'terms'" class="footer-section terms-of-use">
+        <a href="#" class="back-to-top" title="Retour en haut" (click)="scrollToTop()">&#8592; Retour</a>
+        <h1>Conditions d'Utilisation</h1>
+        <p>Dernière mise à jour : 26 août 2024</p>
+        <p>Les présentes Conditions d'Utilisation (les « Conditions ») régissent votre accès à et votre utilisation de notre Service. En accédant à ou en utilisant le Service, vous acceptez d'être lié par ces Conditions.</p>
+
+        <h2>Propriété Intellectuelle</h2>
+        <p>Le Service et son contenu original, ses fonctionnalités et ses fonctionnalités sont et resteront la propriété exclusive de l'Entreprise et de ses concédants de licence.</p>
+        <p>Le Service est protégé par les lois sur les droits d'auteur, les marques commerciales et autres lois des États-Unis et des autres pays. Nos marques commerciales ne peuvent pas être utilisées en relation avec des produits ou services tiers sans l'autorisation écrite préalable de l'Entreprise.</p>
+
+        <h2>Liens vers d'Autres Sites</h2>
+        <p>Notre Service peut contenir des liens vers des sites Web tiers ou des services qui ne sont pas détenus ou contrôlés par nous.</p>
+        <p>L'Entreprise n'a aucun contrôle et n'assume aucune responsabilité quant au contenu, aux politiques de confidentialité ou aux pratiques des sites Web ou services tiers. Vous reconnaissez et acceptez que l'Entreprise ne soit pas responsable, directement ou indirectement, de tout dommage ou perte causé ou prétendu être causé par ou en relation avec l'utilisation ou la confiance accordée à tout contenu, bien ou service disponible sur ou via de tels sites ou services.</p>
+
+        <h2>Résiliation</h2>
+        <p>Nous pouvons résilier ou suspendre votre accès à notre Service immédiatement, sans préavis ni responsabilité, si vous violez les Conditions.</p>
+        <p>En cas de résiliation, votre droit d'utiliser le Service cessera immédiatement. Si vous souhaitez résilier votre compte, vous pouvez simplement arrêter d'utiliser le Service.</p>
+
+        <h2>Exclusion de Garanties</h2>
+        <p>Votre utilisation du Service est à vos propres risques. Le Service est fourni "EN L'ÉTAT" et "SELON SA DISPONIBILITÉ". Le Service est fourni sans aucune garantie, expresse ou implicite.</p>
+
+        <h2>Limitation de Responsabilité</h2>
+        <p>En aucun cas l'Entreprise, ses administrateurs, employés, partenaires, agents, fournisseurs ou affiliés ne seront responsables de tout dommage indirect, accessoire, spécial, consécutif ou punitif, y compris, sans limitation, la perte de profits, de données, d'utilisation, de goodwill, ou autres pertes intangibles, résultant de :</p>
+        <ul>
+          <li>- Votre accès ou votre utilisation du Service ou votre incapacité à accéder ou utiliser le Service</li>
+          <li>- Toute conduite ou contenu de tout tiers sur le Service</li>
+          <li>- Tout contenu obtenu à partir du Service</li>
+          <li>- L'accès non autorisé, l'utilisation ou l'altération de vos transmissions ou données</li>
+        </ul>
+        <p>Cette limitation de responsabilité s'applique dans toute la mesure permise par la loi.</p>
+
+        <h2>Indemnisation</h2>
+        <p>Vous acceptez de défendre, d'indemniser et de dégager de toute responsabilité l'Entreprise et ses dirigeants, administrateurs, employés et agents, contre toute réclamation ou demande, y compris les honoraires d'avocat, faite par un tiers en raison ou en rapport avec votre utilisation du Service, votre violation des présentes Conditions, ou votre violation des droits d'une autre personne ou entité.</p>
+
+        <h2>Modifications</h2>
+        <p>Nous nous réservons le droit, à notre seule discrétion, de modifier ou de remplacer ces Conditions à tout moment. Si une révision est matérielle, nous essaierons de fournir un préavis d'au moins 30 jours avant que les nouvelles conditions ne prennent effet. Ce qui constitue un changement matériel sera déterminé à notre seule discrétion.</p>
+        <p>En continuant à accéder ou à utiliser notre Service après ces révisions entrent en vigueur, vous acceptez d'être lié par les Conditions révisées. Si vous n'acceptez pas les nouvelles conditions, veuillez cesser d'utiliser le Service.</p>
+
+        <h2>Nous Contacter</h2>
+        <p>Si vous avez des questions concernant ces Conditions, veuillez nous contacter :</p>
+        <ul>
+          <li>- Par e-mail : <a href="mailto:support.digitalbook&#64;proton.me">support.digitalbook&#64;proton.me</a></li>
+          <li>- Par visite à cette page sur notre site Web : <a href="http://localhost:4200/footer/terms">http://localhost:4200/footer/terms</a></li>
+        </ul>
+      </div>
+      <!-- #endregion -->
+
+      <!-- #region Cookies -->
+      <div *ngIf="currentSection === 'cookies'" class="footer-section cookies-policy">
+        <a href="#" class="back-to-top" title="Retour en haut" (click)="scrollToTop()">&#8592; Retour</a>
+        <h1>Politique en Matière de Cookies</h1>
+        <p>Dernière mise à jour : 26 août 2024</p>
+        <p>Nous utilisons des cookies et des technologies de suivi similaires pour suivre l'activité sur notre Service et stocker certaines informations. Les cookies sont des fichiers avec une petite quantité de données qui peuvent inclure un identifiant unique anonyme. Les cookies sont envoyés à votre navigateur depuis un site Web et stockés sur votre appareil.</p>
+        <p>Les technologies de suivi également utilisées sont des balises, des balises et des scripts pour collecter et suivre des informations et pour améliorer et analyser notre Service.</p>
+
+        <h2>Types de Cookies que Nous Utilisons</h2>
+        <p>Nous utilisons différents types de cookies pour diverses raisons :</p>
+        <ul>
+          <li><i>Cookies Essentiels :</i> Nous utilisons des cookies essentiels pour vous fournir notre Service et pour vous permettre d'utiliser certaines fonctionnalités. Ils aident à mémoriser vos préférences pour les futures visites.</li>
+          <li><i>Cookies de Performance :</i> Nous utilisons des cookies de performance pour analyser l'utilisation de notre Service et pour améliorer son fonctionnement.</li>
+          <li><i>Cookies Fonctionnels :</i> Nous utilisons des cookies fonctionnels pour se souvenir de vos préférences et pour vous offrir une expérience améliorée.</li>
+          <li><i>Cookies Publicitaires :</i> Nous utilisons des cookies publicitaires pour vous fournir des publicités pertinentes et pour mesurer l'efficacité de nos campagnes publicitaires.</li>
+        </ul>
+
+        <h2>Comment Gérer les Cookies</h2>
+        <p>Vous pouvez configurer votre navigateur pour refuser tous les cookies ou pour vous avertir lorsque des cookies sont envoyés. Vous pouvez également supprimer les cookies déjà stockés sur votre appareil.</p>
+        <p>Si vous choisissez de désactiver les cookies, certaines parties de notre Service peuvent ne pas fonctionner correctement.</p>
+
+        <h2>Modifications de cette Politique en Matière de Cookies</h2>
+        <p>Nous pouvons mettre à jour notre Politique en Matière de Cookies de temps à autre. Nous vous informerons de tout changement en publiant la nouvelle Politique de Cookies sur cette page.</p>
+        <p>Nous vous informerons par e-mail et/ou par une notification visible sur notre Service, avant que le changement ne prenne effet et mettrons à jour la date en haut de cette Politique de Cookies.</p>
+        <p>Vous êtes invité à consulter cette Politique en Matière de Cookies périodiquement pour tout changement. Les modifications apportées à cette Politique en Matière de Cookies entrent en vigueur lorsqu'elles sont publiées sur cette page.</p>
+
+        <h2>Nous Contacter</h2>
+        <p>Si vous avez des questions concernant cette Politique en Matière de Cookies, veuillez nous contacter :</p>
+        <ul>
+          <li>- Par e-mail : <a href="mailto:support.digitalbook&#64;proton.me">support.digitalbook&#64;proton.me</a></li>
+          <li>- Par visite à cette page sur notre site Web : <a href="http://localhost:4200/footer/cookies">http://localhost:4200/footer/cookies</a></li>
+        </ul>
+      </div>
+      <!-- #endregion -->
+
+      <!-- #region Droits de Rétractation -->
+      <div *ngIf="currentSection === 'retraction'" class="footer-section retraction">
+        <a href="#" class="back-to-top" title="Retour en haut" (click)="scrollToTop()">&#8592; Retour</a>
+        <h1>Droits de Rétractation</h1>
+        <p>Dernière mise à jour : 26 août 2024</p>
+        <p>En vertu du droit de rétractation, vous avez le droit de vous rétracter de votre contrat d'achat sans donner de motif et sans frais, à l'exception des frais de retour.</p>
+
+        <h2>Conditions de Rétractation</h2>
+        <p>Le délai de rétractation est de 14 jours à compter du jour où vous ou un tiers autre que le transporteur et désigné par vous, prend physiquement possession du bien.</p>
+        <p>Pour exercer le droit de rétractation, vous devez nous informer de votre décision de vous rétracter du contrat au moyen d'une déclaration claire (par exemple, une lettre envoyée par la poste, un fax ou un e-mail). Vous pouvez utiliser le modèle de formulaire de rétractation ci-joint, mais ce n'est pas obligatoire.</p>
+
+        <h2>Effets de la Rétractation</h2>
+        <p>En cas de rétractation de votre part, nous vous rembourserons tous les paiements reçus de vous, y compris les frais de livraison (à l'exception des frais supplémentaires résultant de votre choix d'un mode de livraison autre que le mode de livraison standard le moins cher que nous proposons), sans retard excessif et, en tout état de cause, au plus tard 14 jours à compter du jour où nous sommes informés de votre décision de vous rétracter du présent contrat.</p>
+        <p>Nous procéderons au remboursement en utilisant le même moyen de paiement que vous avez utilisé pour la transaction initiale, sauf si vous en convenez expressément autrement. En tout état de cause, ce remboursement n'occasionnera pas de frais pour vous.</p>
+
+        <h2>Exclusions du Droit de Rétractation</h2>
+        <p>Le droit de rétractation ne s'applique pas aux contrats :</p>
+        <ul>
+          <li>- De fourniture de biens confectionnés selon vos spécifications ou nettement personnalisés</li>
+          <li>- De fourniture de biens susceptibles de se détériorer ou de se périmer rapidement</li>
+          <li>- De fourniture de biens scellés ne pouvant être renvoyés pour des raisons de protection de la santé ou d'hygiène, une fois le sceau retiré après la livraison</li>
+        </ul>
+
+        <h2>Nous Contacter</h2>
+        <p>Si vous avez des questions concernant vos droits de rétractation, veuillez nous contacter :</p>
+        <ul>
+          <li>- Par e-mail : <a href="mailto:support.digitalbook&#64;proton.me">support.digitalbook&#64;proton.me</a></li>
+          <li>- Par visite à cette page sur notre site Web : <a href="http://localhost:4200/footer/retraction">http://localhost:4200/footer/retraction</a></li>
+        </ul>
+      </div>
+      <!-- #endregion -->
+
+      <!-- Suivez-nous -->
+      <div *ngIf="currentSection === ''" class="social-media footer-section">
+        <h3>Suivez-nous</h3>
+        <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div *ngIf="currentSection === ''" class="footer-bottom">
+        <p>&copy; 2024 DigitalBook. Tous droits réservés.</p>
+      </div>
+
+    </div>
+  </footer>

@@ -1,5 +1,4 @@
-// book-display.component.ts
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from '../navbar/navbar.component';
@@ -7,6 +6,7 @@ import { Book } from '../interface/book.model';
 import { Categorie } from '../interface/categorie.model';
 import { BookService } from '../services/book/book.service';
 import { CategorieService } from '../services/categorie/categorie.service';
+import { FooterComponent } from "../footer/footer.component";
 
 @Component({
   selector: 'app-book-display',
@@ -16,23 +16,30 @@ import { CategorieService } from '../services/categorie/categorie.service';
   imports: [
     CommonModule,
     FormsModule,
-    NavbarComponent
+    NavbarComponent,
+    FooterComponent
   ]
 })
 export class BookDisplayComponent implements OnInit {
   books: Book[] = [];
   filteredBooks: Book[] = [];
+  paginatedBooks: Book[] = [];
   categories: Categorie[] = [];
   filters = {
     promotion: false,
-    disponibilite: false,
-    prixMax: 100
+    prixMax: 4.99 // Valeur par défaut pour le filtre de prix
   };
   selectedCategory: number | null = null;
   searchTerm: string = '';
   categoriesByType: { [type: string]: Categorie[] } = {};
-  isSidebarOpen = false; // État du panneau latéral
-  isModalOpen = false; // État de la modale flottante
+  currentPage: number = 1;
+  itemsPerPage: number = 12; // Nombre d'éléments par page (modifiable pour responsive)
+  totalPages: number = 0;
+  
+  priceOptions: number[] = [1.99, 2.99, 3.99, 4.99]; // Options de prix pour le filtre
+  
+  isSidebarOpen: boolean = false;
+  isModalOpen: boolean = false;
 
   constructor(
     private bookService: BookService,
@@ -42,16 +49,23 @@ export class BookDisplayComponent implements OnInit {
   ngOnInit(): void {
     this.loadBooks();
     this.loadCategories();
+    this.updateItemsPerPage(); // Mise à jour du nombre d'éléments par page au chargement
   }
 
   private loadBooks(): void {
     this.bookService.getBooks().subscribe({
       next: (response: Book[]) => {
         this.books = response || [];
-        this.filteredBooks = this.books; // État initial du filtre
+        this.filteredBooks = this.books;
+        this.updatePagination();
+        this.paginate();
       },
       error: (err) => console.error('Erreur lors de la récupération des livres', err)
     });
+  }
+
+  getImageAltText(book: Book): string {
+    return `${book.titre} par ${book.auteur} - Découvrez ce livre captivant`;
   }
 
   private loadCategories(): void {
@@ -81,25 +95,24 @@ export class BookDisplayComponent implements OnInit {
       const matchesCategory = this.selectedCategory 
         ? book.categories.some(categorie => categorie.id === this.selectedCategory)
         : true;
-      const matchesPromotion = this.filters.promotion ? book.enPromotion : true;
-      const matchesDisponibilite = this.filters.disponibilite ? book.disponible : true;
+      const matchesPromotion = this.filters.promotion ? book.remise > 0 : true;
       const matchesPrix = book.prix <= this.filters.prixMax;
       const matchesSearchTerm = book.titre.toLowerCase().includes(this.searchTerm.toLowerCase());
 
-      return matchesCategory && matchesPromotion && matchesDisponibilite && matchesPrix && matchesSearchTerm;
+      return matchesCategory && matchesPromotion && matchesPrix && matchesSearchTerm;
     });
+    this.updatePagination();
+    this.paginate();
   }
 
   resetFilters(): void {
-    // Réinitialisez les filtres à leurs valeurs par défaut
     this.filters = {
       promotion: false,
-      disponibilite: false,
-      prixMax: 100
+      prixMax: 4.99
     };
     this.selectedCategory = null;
-    this.searchTerm = ''; // Réinitialisez le terme de recherche
-    this.filterBooks(); // Réapplique les filtres avec les valeurs réinitialisées
+    this.searchTerm = '';
+    this.filterBooks();
   }
   
   getCategoryTypes(): string[] {
@@ -108,14 +121,11 @@ export class BookDisplayComponent implements OnInit {
 
   toggleSidebar(): void {
     this.isSidebarOpen = !this.isSidebarOpen;
-    
-    // Récupérer les éléments DOM pour le conteneur de livres et le bouton de basculement
     const bookContainer = document.querySelector('.book-container') as HTMLElement;
-    
     if (this.isSidebarOpen) {
-      bookContainer.style.marginLeft = '360px'; // Ajuste la marge pour tenir compte de la largeur et du décalage de la sidebar
+      bookContainer.style.marginLeft = '360px';
     } else {
-      bookContainer.style.marginLeft = '20px'; // Réinitialise la marge lorsque le panneau est fermé
+      bookContainer.style.marginLeft = '20px';
     }
   }
 
@@ -124,6 +134,49 @@ export class BookDisplayComponent implements OnInit {
   }
 
   applyFilters(): void {
-    this.filterBooks(); // Réappliquer les filtres avec les nouvelles valeurs
+    this.filterBooks();
+  }
+
+  private updatePagination(): void {
+    this.totalPages = Math.max(Math.ceil(this.filteredBooks.length / this.itemsPerPage), 1);
+    this.currentPage = Math.min(this.currentPage, this.totalPages);
+  }
+
+  paginate(): void {
+    const start = (this.currentPage - 1) * this.itemsPerPage;
+    const end = start + this.itemsPerPage;
+    this.paginatedBooks = this.filteredBooks.slice(start, end);
+  }
+
+  nextPage(): void {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.paginate();
+    }
+  }
+
+  previousPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.paginate();
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any): void {
+    this.updateItemsPerPage();
+    this.updatePagination();
+    this.paginate();
+  }
+
+  private updateItemsPerPage(): void {
+    const screenWidth = window.innerWidth;
+    if (screenWidth < 768) {
+      this.itemsPerPage = 4;
+    } else {
+      this.itemsPerPage = 12;
+    }
+    this.updatePagination();
+    this.paginate();
   }
 }

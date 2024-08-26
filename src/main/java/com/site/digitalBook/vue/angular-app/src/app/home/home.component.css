@@ -23,7 +23,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url('../../assets/icons/banner.jpeg') no-repeat center center/cover; /* Image de fond */
+    background: url('../../assets/icons/banner.jpg') no-repeat center center/cover; /* Image de fond */
     height: 400px; /* Ajustez la hauteur selon vos besoins */
     color: #f5f5f5; /* Couleur du texte */
 }
@@ -74,9 +74,6 @@ body {
     background-color: #cc0000;
     transform: scale(1.05);
 }
-
-
-
 
 .hero-image img {
     max-width: 100%;
@@ -229,57 +226,6 @@ body {
     transform: scale(1.05);
 }
 
-/* Footer */
-.footer {
-    background: #1e1e1e;
-    color: #f5f5f5;
-    padding: 40px 20px;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.footer-section {
-    width: 30%;
-}
-
-.footer-section h3 {
-    color: #ff3333; /* Rouge pour les titres */
-    margin-bottom: 20px;
-}
-
-.footer-section p, .footer-section ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.footer-section ul li {
-    margin-bottom: 10px;
-}
-
-.footer-section ul li a {
-    color: #ff3333; /* Rouge pour les liens */
-    text-decoration: none;
-}
-
-.footer-section .social-icons img {
-    width: 32px;
-    margin-right: 10px;
-}
-
-.footer-bottom {
-    text-align: center;
-    margin-top: 20px;
-    border-top: 1px solid #333;
-    padding-top: 20px;
-    font-size: 14px;
-}
 
 /* Animation de survol pour les boutons */
 .btn-primary, .btn-search {
@@ -307,50 +253,17 @@ body {
     transform: translateY(-10px);
 }
 
-/* Responsivité */
-@media (max-width: 768px) {
-    .footer-content {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .footer-section {
-        width: 100%;
-        text-align: center;
-        margin-bottom: 20px;
-    }
-}
-
 p {
-    color: white;
+    color: #f5f5f5; /* Blanc pour les paragraphes */
 }
 
-/* Section Réseaux Sociaux */
-.social-media {
-    text-align: center;
-    margin: 20px 0;
+ul {
+    margin-left: -20px;
 }
 
-.social-media h3 {
-    color: #ff3333; /* Rouge pour le titre */
-    margin-bottom: 20px;
-}
-
-.social-icon {
-    display: inline-block;
-    margin: 0 10px; /* Réduit l'espace entre les icônes */
-    text-decoration: none; /* Supprime le soulignement */
-}
-
-.social-icon i {
-    font-size: 24px; /* Taille des icônes réduite */
-    color: #f5f5f5; /* Couleur des icônes */
-    transition: color 0.3s ease, transform 0.3s ease; /* Transition pour effet de survol */
-}
-
-.social-icon:hover i {
-    color: #ff3333; /* Couleur des icônes au survol */
-    transform: scale(1.1); /* Agrandir légèrement au survol */
+ul a {    
+    text-decoration: none;
+    color: #f5f5f5; /* Blanc pour les liens */
 }
 
 h2 {
@@ -363,5 +276,5 @@ ul {
 
 ul a {    
     text-decoration: none;
-    color: white;
+    color: #f5f5f5; /* Blanc pour les liens */
 }

@@ -1,7 +1,6 @@
 package com.site.digitalBook.entity;
 
-import java.util.HashSet;
-import java.util.Set;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,6 +8,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Column;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Categorie {
@@ -31,7 +33,8 @@ public class Categorie {
     private String description; // Description de la catégorie
 
     @ManyToMany(mappedBy = "categories")
-    private Set<Book> books = new HashSet<>();
+    @JsonBackReference
+    private Set<Livre> books = new HashSet<>();
 
     // Constructeurs
     public Categorie() {}
@@ -60,6 +63,6 @@ public class Categorie {
     public void setType(String type) { this.type = type; }
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
-    public Set<Book> getBooks() { return books; }
-    public void setBooks(Set<Book> books) { this.books = books; }
+    public Set<Livre> getBooks() { return books; }
+    public void setBooks(Set<Livre> books) { this.books = books; }
 }
