@@ -1,12 +1,13 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from '../navbar/navbar.component';
+import { FooterComponent } from '../footer/footer.component';
 import { Book } from '../interface/book.model';
 import { Categorie } from '../interface/categorie.model';
 import { BookService } from '../services/book/book.service';
 import { CategorieService } from '../services/categorie/categorie.service';
-import { FooterComponent } from "../footer/footer.component";
 
 @Component({
   selector: 'app-book-display',
@@ -27,29 +28,30 @@ export class BookDisplayComponent implements OnInit {
   categories: Categorie[] = [];
   filters = {
     promotion: false,
-    prixMax: 4.99 // Valeur par défaut pour le filtre de prix
+    prixMax: 4.99
   };
   selectedCategory: number | null = null;
   searchTerm: string = '';
   categoriesByType: { [type: string]: Categorie[] } = {};
   currentPage: number = 1;
-  itemsPerPage: number = 12; // Nombre d'éléments par page (modifiable pour responsive)
+  itemsPerPage: number = 12;
   totalPages: number = 0;
   
-  priceOptions: number[] = [1.99, 2.99, 3.99, 4.99]; // Options de prix pour le filtre
+  priceOptions: number[] = [1.99, 2.99, 3.99, 4.99];
   
   isSidebarOpen: boolean = false;
   isModalOpen: boolean = false;
 
   constructor(
     private bookService: BookService,
-    private categorieService: CategorieService
+    private categorieService: CategorieService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.loadBooks();
     this.loadCategories();
-    this.updateItemsPerPage(); // Mise à jour du nombre d'éléments par page au chargement
+    this.updateItemsPerPage();
   }
 
   private loadBooks(): void {
@@ -62,10 +64,6 @@ export class BookDisplayComponent implements OnInit {
       },
       error: (err) => console.error('Erreur lors de la récupération des livres', err)
     });
-  }
-
-  getImageAltText(book: Book): string {
-    return `${book.titre} par ${book.auteur} - Découvrez ce livre captivant`;
   }
 
   private loadCategories(): void {
@@ -143,9 +141,9 @@ export class BookDisplayComponent implements OnInit {
   }
 
   paginate(): void {
-    const start = (this.currentPage - 1) * this.itemsPerPage;
-    const end = start + this.itemsPerPage;
-    this.paginatedBooks = this.filteredBooks.slice(start, end);
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.paginatedBooks = this.filteredBooks.slice(startIndex, endIndex);
   }
 
   nextPage(): void {
@@ -171,12 +169,16 @@ export class BookDisplayComponent implements OnInit {
 
   private updateItemsPerPage(): void {
     const screenWidth = window.innerWidth;
-    if (screenWidth < 768) {
-      this.itemsPerPage = 4;
-    } else {
-      this.itemsPerPage = 12;
-    }
+    this.itemsPerPage = screenWidth < 768 ? 6 : 12;
     this.updatePagination();
     this.paginate();
+  }
+
+  viewBookDetail(bookId: number): void {
+    this.router.navigate(['/book-detail', bookId]);
+  }
+
+  getImageAltText(book: Book): string {
+    return book.titre ? `Image de ${book.titre}` : 'Image de livre';
   }
 }

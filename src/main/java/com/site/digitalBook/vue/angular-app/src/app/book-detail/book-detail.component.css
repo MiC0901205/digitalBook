@@ -1,0 +1,195 @@
+* {
+    user-select: none;
+}
+
+/* Styles globaux pour le conteneur principal */
+.book-detail-container {
+    display: flex;
+    justify-content: center; /* Centre le contenu horizontalement */
+    padding: 20px;
+    background-color: #121212; /* Fond sombre */
+    color: #e0e0e0; /* Couleur du texte clair */
+    border-radius: 8px; /* Bords arrondis pour un effet plus doux */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Ombre plus prononcée pour un effet de profondeur */
+}
+
+/* Conteneur pour l'image du livre */
+.image-container {
+    margin-right: 20px; /* Espace entre l'image et les infos */
+}
+
+.image-container img {
+    width: 200px;
+    height: 300px; /* Hauteur fixe pour uniformité */
+    object-fit: cover; /* Maintenir les proportions tout en couvrant le conteneur */
+    border-radius: 4px; /* Bords arrondis pour l'image */
+    margin-right: 20px;
+}
+
+/* Conteneur pour les informations du livre */
+.info-container {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Styles pour les titres */
+h1 {
+    font-size: 24px;
+    color: #d32f2f; /* Rouge pour le titre */
+    margin: 0;
+}
+
+.recommended-books-container h1 {
+    margin-bottom: 20px;
+}
+
+.info-container h2 {
+    font-size: 20px;
+    color: #f5f5f5; /* Couleur claire pour le nom de l'auteur */
+    margin: 0;
+}
+
+/* Styles pour les paragraphes */
+.info-container p {
+    font-size: 16px;
+    color: #e0e0e0; /* Couleur du texte clair */
+    margin: 5px 0;
+}
+
+/* Styles pour les prix */
+.original-price {
+    text-decoration: line-through; /* Barrer le prix d'origine */
+    color: #b0b0b0; /* Couleur plus claire pour le prix barré */
+    margin-right: 10px;
+}
+
+.discounted-price {
+    color: #d32f2f; /* Rouge pour le prix soldé */
+    font-weight: bold; /* Mettre en gras le prix soldé */
+}
+
+/* Style pour le bouton Ajouter au panier */
+.button-group {
+    margin-top: 20px;
+}
+
+.add-to-cart-button {
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #d32f2f; /* Rouge pour le bouton */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart-button:hover {
+    background-color: #b71c1c; /* Rouge plus foncé au survol */
+}
+
+/* Styles pour la description du livre */
+.description-container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #1e1e1e; /* Fond sombre pour la description */
+    border-radius: 8px; /* Bords arrondis pour un effet plus doux */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Ombre plus légère pour faire ressortir la section */
+    margin-bottom: 20px;
+}
+
+.description-container h1 {
+    font-size: 18px; /* Taille du titre */
+    color: red; /* Couleur claire pour le titre */
+    margin: 0 0 10px; /* Espacement autour du titre */
+}
+
+.description-container p {
+    font-size: 14px; /* Taille du texte de la description */
+    color: #e0e0e0; /* Couleur du texte clair */
+    margin: 0; /* Retirer les marges par défaut */
+}
+
+
+span {
+    margin-left: 10px;
+}
+
+/* Styles pour les livres recommandés */
+.recommended-books-container {
+    padding: 20px; /* Ajoute un peu de padding autour de la section */
+}
+
+.recommended-books-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px; /* Augmente l'espacement entre les éléments */
+    justify-content: flex-start; /* Aligne la section des livres recommandés à gauche */
+}
+
+.recommended-book-link {
+    text-decoration: none; /* Supprime le soulignement des liens */
+    color: inherit; /* Assure que la couleur du texte est héritée */
+}
+
+.recommended-book-item {
+    display: flex;
+    flex-direction: column;
+    width: 220px; /* Augmente la largeur des éléments recommandés */
+    background-color: #1e1e1e; /* Fond sombre pour chaque livre recommandé */
+    border-radius: 8px; /* Bords arrondis pour un effet plus doux */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Ombre pour chaque livre */
+    overflow: hidden; /* Assure que le contenu ne dépasse pas les bords arrondis */
+}
+
+.recommended-book-image {
+    width: 100%;
+    height: 250px; /* Augmente la hauteur des images recommandées */
+    object-fit: cover; /* Maintenir les proportions tout en couvrant le conteneur */
+}
+
+.recommended-book-info {
+    padding: 15px; /* Augmente le padding pour plus d'espace autour du texte */
+    text-align: center;
+    color: #e0e0e0; /* Couleur du texte clair */
+    background-color: #2c2c2c; /* Fond légèrement plus clair pour la section d'information */
+}
+
+.recommended-book-info h3 {
+    font-size: 18px; /* Augmente la taille du titre */
+    color: #d32f2f; /* Rouge pour le titre des livres recommandés */
+    margin: 10px 0; /* Espacement autour du titre */
+}
+
+.recommended-book-info p {
+    font-size: 16px; /* Augmente la taille du texte des informations */
+    color: #b0b0b0; /* Couleur plus claire pour le texte des livres recommandés */
+    margin: 5px 0; /* Espacement entre les lignes */
+}
+
+.author, .price {
+    font-weight: bold; /* Met en gras le texte pour l'auteur et le prix */
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: #888;
+  }
+  
+  .discounted-price {
+    color: #d9534f;
+    font-weight: bold;
+    position: relative;
+  }
+  
+  .discount-label {
+    background-color: #d9534f; /* Couleur de fond rouge pour l'étiquette */
+    color: #fff; /* Couleur du texte en blanc */
+    padding: 2px 5px;
+    font-size: 0.8em;
+    border-radius: 3px;
+    margin-left: 10px; /* Espacement avec le prix soldé */
+  }
+  

@@ -12,5 +12,6 @@ export interface Book {
   datePublication: Date;
   estVendable: boolean;
   photos: string[];
-  categories: Categorie[];  // Liste de catégories auxquelles le livre appartient
+  categories: Categorie[];
+  description: string;     
 }

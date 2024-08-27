@@ -24,16 +24,20 @@ export class FooterComponent implements OnInit {
       console.log('URL Segments:', urlSegments); // Debugging purpose
       this.currentSection = urlSegments.length > 1 ? urlSegments[1].path : '';
       
-      // If currentSection is empty or 'about', 'privacy', 'terms', 'cookies', or 'retraction'
-      // Then show the footer
-      this.showFooter = this.currentSection === '' || 
-                        this.currentSection === 'about' || 
-                        this.currentSection === 'privacy' || 
-                        this.currentSection === 'terms' || 
-                        this.currentSection === 'cookies' || 
-                        this.currentSection === 'retraction';
+      // Check if the currentSection is a numeric value
+      if (!isNaN(Number(this.currentSection))) {
+        this.currentSection = ''; // Set to empty string if it's a number
+      }
+
+      // Determine whether to show the full footer or not
+      this.showFooter = !(this.currentSection === 'about' || 
+                          this.currentSection === 'privacy' || 
+                          this.currentSection === 'terms' || 
+                          this.currentSection === 'cookies' || 
+                          this.currentSection === 'retraction');
       
       console.log('Current Section:', this.currentSection);
+      console.log('Show Footer:', this.showFooter);
     });
   }
 

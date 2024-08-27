@@ -63,8 +63,15 @@ public class UserController {
         }
 
         try {
+            // Ajouter l'utilisateur
             User newUser = userService.addUser(user);
-            Payload payload = new Payload("Nouvel utilisateur ajouté", newUser);
+            
+            // Générer un code de vérification et l'envoyer par email
+            String code = emailService.generateVerificationCode();
+            emailService.sendConfirmationEmail(user.getEmail(), code);
+            emailService.saveCode(user.getEmail(), code);
+
+            Payload payload = new Payload("Nouvel utilisateur ajouté. Veuillez vérifier votre email pour le code de confirmation.", newUser);
             return new ResponseEntity<>(payload, HttpStatus.CREATED);
         } catch (EmailAlreadyExistsException e) {
             Payload payload = new Payload(e.getMessage());
@@ -78,6 +85,7 @@ public class UserController {
         }
     }
 
+
     /**
      * Authentifie un utilisateur et envoie un code de confirmation par email.
      *
@@ -87,24 +95,29 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<Payload> loginUser(@RequestBody User user) {
         try {
+            // Authentifier l'utilisateur
             User authenticatedUser = userService.authenticateUser(user.getEmail(), user.getMdp());
-            String code = emailService.generateVerificationCode();
-            emailService.sendConfirmationEmail(user.getEmail(), code);
-            emailService.saveCode(user.getEmail(), code);
 
-            Payload payload = new Payload("Utilisateur authentifié. Veuillez vérifier votre email pour le code de confirmation.", authenticatedUser);
-            return new ResponseEntity<>(payload, HttpStatus.OK);
+            // Vérifier si l'utilisateur est actif
+            if (authenticatedUser.getEstActif() != true) {
+                Payload payload = new Payload("Votre compte n'est pas encore activé. Veuillez vérifier votre email.");
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(payload);
+            }
+
+            Payload payload = new Payload("Utilisateur authentifié. Veuillez vérifier votre email pour le code de confirmation.");
+            return ResponseEntity.ok(payload);
         } catch (UnauthorizedException e) {
             Payload payload = new Payload("Échec de la connexion : " + e.getMessage());
-            return new ResponseEntity<>(payload, HttpStatus.FORBIDDEN);
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(payload);
         } catch (UserNotFoundException e) {
             Payload payload = new Payload("Échec de la connexion : " + e.getMessage());
-            return new ResponseEntity<>(payload, HttpStatus.NOT_FOUND);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(payload);
         } catch (Exception e) {
             Payload payload = new Payload("Échec de la connexion : " + e.getMessage());
-            return new ResponseEntity<>(payload, HttpStatus.BAD_REQUEST);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(payload);
         }
     }
+
 
     /**
      * Vérifie le code envoyé à l'email de l'utilisateur.
@@ -118,12 +131,16 @@ public class UserController {
         String code = request.get("code");
 
         try {
+            // Vérifier si le code est valide
             boolean isValid = emailService.validateCode(email, code);
-            String token = null;
 
             if (isValid) {
-                token = jwtUtil.generateToken(email);
-                Payload payload = new Payload("Code vérifié avec succès!", email, token);
+                // Activer l'utilisateur
+                userService.activateUser(email);
+
+                // Générer le jeton JWT
+                String token = jwtUtil.generateToken(email);
+                Payload payload = new Payload("Code vérifié avec succès! Utilisateur activé.", email, token);
                 return ResponseEntity.ok(payload);
             } else {
                 Payload payload = new Payload("Code invalide ou expiré.");
@@ -134,6 +151,7 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(payload);
         }
     }
+
 
     /**
      * Initie le processus de réinitialisation du mot de passe en envoyant un lien de réinitialisation à l'email de l'utilisateur.

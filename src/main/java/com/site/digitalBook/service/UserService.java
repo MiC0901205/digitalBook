@@ -177,4 +177,14 @@ public class UserService {
 
         return userRepository.save(existingUser);
     }
+    
+    public void activateUser(String email) throws UserNotFoundException {
+        User user = getUserByEmail(email);
+        if (user == null) {
+            throw new UserNotFoundException("Utilisateur non trouvé.");
+        }
+
+        user.setEstActif(true);
+        updateUser(user); // Enregistrer les modifications
+    }
 }

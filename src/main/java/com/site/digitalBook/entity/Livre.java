@@ -1,7 +1,6 @@
 package com.site.digitalBook.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,10 +29,12 @@ public class Livre {
     private LocalDate datePublication;
     private String ISBN;
     private String editeur;
-    
+
     private String format;
     
     private String lienTelechargement;
+
+    private String description; 
 
     @ManyToMany
     @JoinTable(
@@ -139,6 +140,14 @@ public class Livre {
 
     public void setLienTelechargement(String lienTelechargement) {
         this.lienTelechargement = lienTelechargement;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Set<Categorie> getCategories() {

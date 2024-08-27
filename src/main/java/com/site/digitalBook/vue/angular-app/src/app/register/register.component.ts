@@ -161,9 +161,10 @@ export class RegisterComponent implements OnInit {
   
           // Stocker le succès dans le localStorage
           localStorage.setItem('registrationSuccess', 'true');
+
+          localStorage.setItem('userEmail', formData.email);
   
-          // Rediriger vers la page de connexion
-          this.router.navigate(['/login']);
+          this.router.navigate(['/user-action'], { queryParams: { actionType: 'confirmation' } });
         },
         error => {
           console.error('Registration failed', error);

@@ -79,7 +79,7 @@ public class User {
         this.dateNaissance = dateNaissance;
     }
 
-    public boolean isEstActif() {
+    public boolean getEstActif() {
         return estActif;
     }
 

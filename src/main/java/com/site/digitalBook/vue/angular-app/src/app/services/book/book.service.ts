@@ -1,5 +1,6 @@
+// book.service.ts
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Book } from '../../interface/book.model'; // Assurez-vous que le modèle Book existe et est correct
@@ -14,15 +15,20 @@ export class BookService {
   constructor(private http: HttpClient) { }
 
   // Méthode pour récupérer tous les livres
-  getBooks(): Observable<any> {
-    return this.http.get<Book>(`${this.apiUrl}/books`).pipe(
+  getBooks(): Observable<Book[]> {
+    return this.http.get<Book[]>(`${this.apiUrl}/books`).pipe(
       catchError(this.handleError)
     );
   }
 
   // Méthode pour récupérer un livre par son ID
-  getBookById(id: number): Observable<any> {
-    return this.http.get<Book>(`${this.apiUrl}/books/${id}`).pipe(
+  getBookById(id: number): Observable<Book> {
+    return this.http.get<Book>(`${this.apiUrl}/books/${id}`);
+  }
+
+  // Méthode pour récupérer les livres par catégorie
+  getBooksByCategory(categoryName: string): Observable<Book[]> {
+    return this.http.get<Book[]>(`${this.apiUrl}/books/category/${categoryName}`).pipe(
       catchError(this.handleError)
     );
   }

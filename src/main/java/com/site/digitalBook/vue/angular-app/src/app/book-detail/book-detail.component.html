@@ -1,0 +1,76 @@
+<app-navbar></app-navbar>
+
+<div class="book-detail-container">
+  <!-- Conteneur pour l'image du livre -->
+  <div class="image-container">
+    <img *ngIf="book" [src]="book.photos" [alt]="getImageAltText(book)" />
+  </div>
+  
+  <!-- Conteneur pour les détails du livre -->
+  <div class="info-container" *ngIf="book">
+    <h1>{{ book.titre }}</h1>
+    <h2>{{ book.auteur }}</h2>
+    
+    <!-- Affichage du prix avec ou sans promotion -->
+    <p>
+      <strong>Prix :</strong>
+      <span *ngIf="book.remise > 0" class="original-price">{{ book.prix }}€</span>
+      <span *ngIf="book.remise > 0" class="discounted-price">
+        {{ (book.prix * (1 - book.remise / 100)).toFixed(2) }}€
+        <span class="discount-label">-{{ book.remise }}%</span>
+      </span>
+      <span *ngIf="book.remise === 0">{{ book.prix }}€</span>
+    </p>
+
+    <!-- Affichage des catégories -->
+    <p><strong>Catégories :</strong>
+      <span *ngIf="formattedCategories">
+        {{ formattedCategories }}
+      </span>
+    </p>
+
+    <p><strong>Langue :</strong>
+      <span>Anglais</span>
+    </p>
+
+    <!-- Ajout du bouton d'ajout au panier -->
+    <div class="button-group">
+      <button (click)="addToCart(book)" class="add-to-cart-button">Ajouter au panier</button>
+    </div>
+  </div>
+</div>
+
+<!-- Description du livre -->
+<div class="description-container" *ngIf="book">
+  <h1><strong>Description :</strong></h1>
+  <p>{{ book.description }}</p> <!-- Utilisation de <p> pour la description -->
+</div>
+
+<!-- Livres recommandés -->
+<div class="recommended-books-container" *ngIf="recommendedBooks.length > 0">
+  <h1>Livres recommandés</h1>
+  <div class="recommended-books-list">
+    <a *ngFor="let recommendedBook of recommendedBooks" 
+       [routerLink]="['/book-detail', recommendedBook.id]" 
+       class="recommended-book-link">
+      <div class="recommended-book-item">
+        <img [src]="recommendedBook.photos" [alt]="getImageAltText(recommendedBook)" class="recommended-book-image" />
+        <div class="recommended-book-info">
+          <h3>{{ recommendedBook.titre }}</h3>
+          <p class="author">{{ recommendedBook.auteur }}</p>
+          <p class="price">
+            <span *ngIf="recommendedBook.remise > 0" class="original-price">{{ recommendedBook.prix }}€</span>
+            <span *ngIf="recommendedBook.remise > 0" class="discounted-price">
+              {{ (recommendedBook.prix * (1 - recommendedBook.remise / 100)).toFixed(2) }}€
+              <span class="discount-label">-{{ recommendedBook.remise }}%</span>
+            </span>
+            <span *ngIf="recommendedBook.remise === 0">{{ recommendedBook.prix }}€</span>
+          </p>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- Footer -->
+<app-footer></app-footer>

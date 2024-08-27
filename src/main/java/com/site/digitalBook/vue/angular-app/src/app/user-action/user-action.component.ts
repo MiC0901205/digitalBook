@@ -144,7 +144,7 @@ export class UserActionComponent implements OnInit {
               this.authService.setLoggedInStatus(true);
             }
 
-            this.router.navigate(['/']);
+            this.router.navigate(['/login']);
           },
           error: (error: HttpErrorResponse) => {
             console.error('Code verification failed', error);

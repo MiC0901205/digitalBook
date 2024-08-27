@@ -5,7 +5,8 @@ import { RegisterComponent } from './register/register.component';
 import { UserActionComponent } from './user-action/user-action.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BookDisplayComponent } from './book-display/book-display.component';
-import { FooterComponent } from './footer/footer.component';  // Vérifiez cette ligne
+import { FooterComponent } from './footer/footer.component'; 
+import { BookDetailComponent } from './book-detail/book-detail.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,5 +20,6 @@ export const routes: Routes = [
   { path: 'footer/terms', component: FooterComponent },
   { path: 'footer/cookies', component: FooterComponent },
   { path: 'footer/retraction', component: FooterComponent },
+  { path: 'book-detail/:id', component: BookDetailComponent },
   { path: '**', redirectTo: '' }
 ];

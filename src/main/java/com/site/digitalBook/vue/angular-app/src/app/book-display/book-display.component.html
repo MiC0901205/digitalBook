@@ -20,7 +20,6 @@
             <option *ngFor="let price of priceOptions" [value]="price">{{price}}€</option>
           </select>
         </label>
-
       </div>
 
       <h2>Catégories</h2>
@@ -62,7 +61,7 @@
       <div class="book-list">
         <p *ngIf="filteredBooks.length === 0" class="no-books-message">Aucun livre disponible</p>
         <!-- Les éléments livres sont maintenant des divs -->
-        <div *ngFor="let book of paginatedBooks" class="book-item">
+        <div *ngFor="let book of paginatedBooks" class="book-item" (click)="viewBookDetail(book.id)">
           <img [src]="book.photos" [alt]="getImageAltText(book)" />
           <h3>{{ book.titre }}</h3>
           <p>{{ book.auteur }}</p>
