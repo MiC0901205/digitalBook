@@ -150,18 +150,17 @@ export class RegisterComponent implements OnInit {
   onSubmit(): void {
     this.isSubmitted = true;
     this.errorMessage = null; // Réinitialiser le message d'erreur
-
+  
     if (this.registerForm.valid) {
       const formData = this.registerForm.value;
       this.authService.register(formData).subscribe(
         response => {
           console.log('Registration successful!', response);
           this.registerForm.reset();
-          this.errorMessage = null; 
+          this.errorMessage = null;
   
           // Stocker le succès dans le localStorage
           localStorage.setItem('registrationSuccess', 'true');
-
           localStorage.setItem('userEmail', formData.email);
   
           this.router.navigate(['/user-action'], { queryParams: { actionType: 'confirmation' } });
@@ -169,6 +168,11 @@ export class RegisterComponent implements OnInit {
         error => {
           console.error('Registration failed', error);
           this.errorMessage = 'Adresse email déjà existante. Vous pouvez vous rendre sur la page de <a href="/login">connexion</a> pour vous connecter.';
+  
+          // Masquer le message d'erreur après 3 secondes
+          setTimeout(() => {
+            this.errorMessage = null;
+          }, 3000);
         }
       );
     } else {
@@ -177,4 +181,5 @@ export class RegisterComponent implements OnInit {
       console.log('Form controls errors:', this.registerForm.controls);
     }
   }
+  
 }

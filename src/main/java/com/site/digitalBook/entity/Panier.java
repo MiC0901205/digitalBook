@@ -12,7 +12,7 @@ public class Panier {
     private Integer id;
 
     @OneToOne
-    @JoinColumn(name = "user_id", unique = true)
+    @JoinColumn(name = "user_id", unique = true, nullable = true)
     private User user;
 
     @ManyToMany

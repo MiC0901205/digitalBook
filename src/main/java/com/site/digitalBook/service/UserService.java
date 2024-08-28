@@ -160,21 +160,23 @@ public class UserService {
     }
 
     public User updateUser(User updatedUser) {
-        User existingUser = userRepository.findById(updatedUser.getId());
-        if (existingUser == null) {
-            throw new UserNotFoundException("Utilisateur non trouvé");
-        }
+        // Retrieve the user by ID and handle the Optional
+        User existingUser = userRepository.findById(updatedUser.getId())
+                .orElseThrow(() -> new UserNotFoundException("Utilisateur non trouvé"));
 
+        // Update the fields of the existing user
         existingUser.setNom(updatedUser.getNom());
         existingUser.setPrenom(updatedUser.getPrenom());
         existingUser.setEmail(updatedUser.getEmail());
         existingUser.setTel(updatedUser.getTel());
         existingUser.setDateNaissance(updatedUser.getDateNaissance());
 
+        // Update the password if it's provided
         if (updatedUser.getMdp() != null && !updatedUser.getMdp().isEmpty()) {
             existingUser.setMdp(passwordEncoder.encode(updatedUser.getMdp()));
         }
 
+        // Save the updated user and return it
         return userRepository.save(existingUser);
     }
     

@@ -29,8 +29,6 @@ public class User {
     private String tel;
     private String questionSecrete;
     private String reponseSecrete;
-    @OneToOne(mappedBy = "user")
-    private Panier panier;
 
     private int failedLoginAttempts = 0; // Nombre de tentatives de connexion échouées
     private LocalDateTime lastFailedLogin; // Date de la dernière tentative échouée
@@ -38,16 +36,16 @@ public class User {
 
     @Column(columnDefinition = "TEXT")
     private String anciensMotsDePasse;
-    
-	public User() {}
 
-	public User(String email, String mdp) {
-		super();
-		this.email = email;
-		this.mdp = mdp;
-	}
+    public User() {}
 
-	// Getters and Setters
+    public User(String email, String mdp) {
+        super();
+        this.email = email;
+        this.mdp = mdp;
+    }
+
+    // Getters and Setters
     public Integer getId() {
         return id;
     }
@@ -172,6 +170,6 @@ public class User {
     public String toString() {
         return "User [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", dateNaissance=" + dateNaissance
                 + ", estActif=" + estActif + ", profil=" + profil + ", email=" + email + ", mdp=" + mdp + ", tel=" + tel
-                + ", panier=" + panier + "]";
+                + "]";
     }
 }
