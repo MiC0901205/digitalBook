@@ -77,6 +77,7 @@ export class LoginComponent implements OnInit {
                 this.errorMessage = null;
                 this.successMessage = 'Connexion réussie !';
                 this.isError = false;
+                localStorage.setItem('userEmail', email);
                 this.router.navigate(['/']);
             },
             (error: HttpErrorResponse) => {

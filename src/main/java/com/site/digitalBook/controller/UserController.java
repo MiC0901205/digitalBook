@@ -99,12 +99,16 @@ public class UserController {
             User authenticatedUser = userService.authenticateUser(user.getEmail(), user.getMdp());
 
             // Vérifier si l'utilisateur est actif
-            if (authenticatedUser.getEstActif() != true) {
+            if (!authenticatedUser.getEstActif()) {
                 Payload payload = new Payload("Votre compte n'est pas encore activé. Veuillez vérifier votre email.");
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).body(payload);
             }
 
-            Payload payload = new Payload("Utilisateur authentifié. Veuillez vérifier votre email pour le code de confirmation.");
+            // Générer le token JWT après l'authentification réussie
+            String token = jwtUtil.generateToken(authenticatedUser.getEmail());
+
+            // Inclure le token dans le payload de réponse
+            Payload payload = new Payload("Utilisateur authentifié avec succès.", authenticatedUser, token);
             return ResponseEntity.ok(payload);
         } catch (UnauthorizedException e) {
             Payload payload = new Payload("Échec de la connexion : " + e.getMessage());
@@ -117,6 +121,7 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(payload);
         }
     }
+
 
 
     /**

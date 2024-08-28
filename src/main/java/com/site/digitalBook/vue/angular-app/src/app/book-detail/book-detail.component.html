@@ -35,7 +35,14 @@
 
     <!-- Ajout du bouton d'ajout au panier -->
     <div class="button-group">
-      <button (click)="addToCart(book)" class="add-to-cart-button">Ajouter au panier</button>
+      <button 
+        (click)="addToCart(book)" 
+        class="add-to-cart-button"
+        [disabled]="isInCart"
+        [class.disabled]="isInCart"
+      >
+        {{ isInCart ? 'Déjà ajouté au panier' : 'Ajouter au panier' }}
+      </button>
     </div>
   </div>
 </div>
@@ -43,7 +50,7 @@
 <!-- Description du livre -->
 <div class="description-container" *ngIf="book">
   <h1><strong>Description :</strong></h1>
-  <p>{{ book.description }}</p> <!-- Utilisation de <p> pour la description -->
+  <p>{{ book.description }}</p>
 </div>
 
 <!-- Livres recommandés -->

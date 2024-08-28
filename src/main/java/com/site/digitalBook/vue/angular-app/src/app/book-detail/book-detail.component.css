@@ -101,13 +101,13 @@ h1 {
 }
 
 .description-container h1 {
-    font-size: 18px; /* Taille du titre */
+    font-size: 20px; /* Taille du titre */
     color: red; /* Couleur claire pour le titre */
     margin: 0 0 10px; /* Espacement autour du titre */
 }
 
 .description-container p {
-    font-size: 14px; /* Taille du texte de la description */
+    font-size: 18px; /* Taille du texte de la description */
     color: #e0e0e0; /* Couleur du texte clair */
     margin: 0; /* Retirer les marges par défaut */
 }
@@ -193,3 +193,8 @@ span {
     margin-left: 10px; /* Espacement avec le prix soldé */
   }
   
+  .add-to-cart-button.disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+  }

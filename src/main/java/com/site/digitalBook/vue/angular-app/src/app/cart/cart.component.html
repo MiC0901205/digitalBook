@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+
+<div class="cart-container">
+  <h1>Votre Panier</h1>
+
+  <div *ngIf="cartItems.length > 0; else emptyCart">
+    <div class="cart-item" *ngFor="let item of cartItems">
+      <!-- Affichage de l'image du livre, s'il y a une URL d'image -->
+      <img *ngIf="item.photos" [src]="item.photos" [alt]="item.titre" class="cart-item-image" />
+      
+      <!-- Informations sur le livre -->
+      <div class="cart-item-info">
+        <h3>{{ item.titre }}</h3>
+        <p>{{ item.auteur }}</p>
+        <p>{{ item.prix | currency:'EUR':'symbol' }}</p> <!-- Utilisation du pipe currency pour le prix -->
+        
+        <!-- Bouton pour supprimer l'élément du panier -->
+        <button (click)="removeFromCart(item)" class="remove-button">Supprimer</button>
+      </div>
+    </div>
+
+    <!-- Actions du panier -->
+    <div class="cart-actions">
+      <button (click)="clearCart()" class="clear-cart-button">Vider le panier</button>
+      <button (click)="validateCart()" class="validate-cart-button">Valider le panier</button>
+    </div>
+  </div>
+
+  <!-- Message pour le panier vide -->
+  <ng-template #emptyCart>
+    <p>Votre panier est vide.</p>
+  </ng-template>
+</div>
+
+<app-footer></app-footer>

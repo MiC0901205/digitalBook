@@ -29,7 +29,8 @@ public class User {
     private String tel;
     private String questionSecrete;
     private String reponseSecrete;
-    private int panier;
+    @OneToOne(mappedBy = "user")
+    private Panier panier;
 
     private int failedLoginAttempts = 0; // Nombre de tentatives de connexion échouées
     private LocalDateTime lastFailedLogin; // Date de la dernière tentative échouée
@@ -117,14 +118,6 @@ public class User {
 
     public void setTel(String tel) {
         this.tel = tel;
-    }
-
-    public int getPanier() {
-        return panier;
-    }
-
-    public void setPanier(int panier) {
-        this.panier = panier;
     }
 
     public String getQuestionSecrete() {

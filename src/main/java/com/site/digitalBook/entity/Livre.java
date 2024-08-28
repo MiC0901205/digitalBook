@@ -18,7 +18,7 @@ public class Livre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     private String titre;
     private String auteur;
@@ -44,13 +44,16 @@ public class Livre {
     )
     @JsonManagedReference
     private Set<Categorie> categories = new HashSet<>();
+    
+    @ManyToMany(mappedBy = "livres")
+    private Set<Panier> paniers = new HashSet<>();
 
     // Getters et setters
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

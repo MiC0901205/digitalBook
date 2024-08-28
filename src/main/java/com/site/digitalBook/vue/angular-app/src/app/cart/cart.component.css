@@ -1,0 +1,107 @@
+/* Styles globaux */
+* {
+    box-sizing: border-box;
+    user-select: none;
+  }
+  
+  /* Container principal du panier */
+  .cart-container {
+    padding: 20px;
+    background-color: #111; /* Fond noir pour le container */
+    color: #fff; /* Texte blanc */
+    min-height: 80vh; /* Hauteur minimale pour le container */
+  }
+  
+  /* Titre du panier */
+  .cart-container h1 {
+    color: #e00; /* Rouge vif pour le titre */
+    font-size: 1.8rem; /* Taille réduite */
+    margin-bottom: 20px;
+  }
+  
+  /* Eléments du panier */
+  .cart-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #333;
+    margin-bottom: 10px;
+  }
+  
+  .cart-item-image {
+    width: 80px; /* Ajustez la taille de l'image */
+    height: auto;
+    margin-right: 15px;
+    border-radius: 5px; /* Coins arrondis pour l'image */
+  }
+  
+  .cart-item-info {
+    flex: 1;
+  }
+  
+  .cart-item-info h3 {
+    margin: 0;
+    color: #fff; /* Texte blanc pour le titre du livre */
+    font-size: 1.2rem; /* Taille réduite */
+  }
+  
+  .cart-item-info p {
+    margin: 5px 0;
+    font-size: 1rem; /* Taille légèrement réduite */
+  }
+  
+  .remove-button {
+    background-color: #444; /* Fond gris foncé pour le bouton */
+    color: #fff; /* Texte blanc */
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 0.9rem; /* Taille réduite */
+  }
+  
+  .remove-button:hover {
+    background-color: #666; /* Gris plus clair au survol */
+  }
+  
+  /* Actions du panier */
+  .cart-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between; /* Espacement entre les boutons */
+  }
+  
+  .clear-cart-button, .validate-cart-button {
+    background-color: #444; /* Fond gris foncé pour les boutons */
+    color: #fff; /* Texte blanc */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem; /* Taille réduite */
+  }
+  
+  .clear-cart-button:hover, .validate-cart-button:hover {
+    background-color: #666; /* Gris plus clair au survol */
+  }
+  
+  .validate-cart-button {
+    background-color: #e00; /* Fond rouge pour le bouton de validation */
+    font-size: 1rem; /* Taille réduite */
+  }
+  
+  .validate-cart-button:hover {
+    background-color: #c00; /* Rouge plus foncé au survol */
+  }
+  
+  /* Affichage d'un panier vide */
+  ng-template {
+    text-align: center;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 20px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #222; /* Fond légèrement plus clair pour le message */
+  }
+  
