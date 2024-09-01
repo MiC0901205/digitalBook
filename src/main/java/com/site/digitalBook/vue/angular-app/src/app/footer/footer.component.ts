@@ -21,27 +21,26 @@ export class FooterComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.url.subscribe(urlSegments => {
-      console.log('URL Segments:', urlSegments); // Debugging purpose
-      this.currentSection = urlSegments.length > 1 ? urlSegments[1].path : '';
-      
-      // Check if the currentSection is a numeric value
+      // Si il y a plusieurs segments, utiliser le deuxième segment
+      if (urlSegments.length > 1) {
+        this.currentSection = urlSegments[1].path;
+      } else {
+        this.currentSection = urlSegments.length > 0 ? urlSegments[0].path : '';
+      }
+      // Vérifier si currentSection est un nombre et réinitialiser si nécessaire
       if (!isNaN(Number(this.currentSection))) {
-        this.currentSection = ''; // Set to empty string if it's a number
+        this.currentSection = ''; // Réinitialiser si c'est un nombre
       }
 
-      // Determine whether to show the full footer or not
-      this.showFooter = !(this.currentSection === 'about' || 
-                          this.currentSection === 'privacy' || 
-                          this.currentSection === 'terms' || 
-                          this.currentSection === 'cookies' || 
-                          this.currentSection === 'retraction');
-      
-      console.log('Current Section:', this.currentSection);
-      console.log('Show Footer:', this.showFooter);
+      // Déterminer si le footer doit être affiché ou non
+      const sectionsToHideFooter = ['sales-conditions', 'about', 'privacy', 'terms', 'cookies', 'retraction', ''];
+      this.showFooter = sectionsToHideFooter.includes(this.currentSection.toLowerCase());
     });
   }
 
   scrollToTop(): void {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+  
 }
+

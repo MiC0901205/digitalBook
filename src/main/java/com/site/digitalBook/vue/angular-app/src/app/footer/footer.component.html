@@ -30,6 +30,7 @@
           <li><a [routerLink]="['/footer/terms']" (click)="scrollToTop()">Conditions d'utilisation</a></li>
           <li><a [routerLink]="['/footer/cookies']" (click)="scrollToTop()">Cookies</a></li>
           <li><a [routerLink]="['/footer/retraction']" (click)="scrollToTop()">Droits de rétractation</a></li>
+          <li><a [routerLink]="['/footer/sales-conditions']" (click)="scrollToTop()">Conditions Générales de Vente</a></li> <!-- Added this line -->
         </ul>
       </div>
       <!-- #endregion -->
@@ -218,6 +219,53 @@
       </div>
       <!-- #endregion -->
 
+      <!-- #region Conditions Générales de Vente -->
+      <div *ngIf="currentSection === 'sales-conditions'" class="footer-section sales-conditions">
+        <a href="#" class="back-to-top" title="Retour en haut" (click)="scrollToTop()">&#8592; Retour</a>
+        <h1>Conditions Générales de Vente</h1>
+        <p>Dernière mise à jour : 26 août 2024</p>
+        <p>Les présentes Conditions Générales de Vente régissent votre achat de produits ou services sur notre site. En passant une commande, vous acceptez ces conditions.</p>
+
+        <h2>1. Objet</h2>
+        <p>Les présentes conditions régissent les ventes de produits ou services sur notre site web. Elles sont applicables à toutes les commandes passées sur notre site.</p>
+
+        <h2>2. Commande</h2>
+        <p>Pour passer une commande, vous devez suivre le processus de commande en ligne et fournir les informations nécessaires à la livraison et au paiement.</p>
+
+        <h2>3. Prix</h2>
+        <p>Les prix des produits ou services sont indiqués en euros toutes taxes comprises (TTC). Nous nous réservons le droit de modifier les prix à tout moment, mais les produits seront facturés sur la base des tarifs en vigueur au moment de la validation de la commande.</p>
+
+        <h2>4. Paiement</h2>
+        <p>Le paiement est exigible immédiatement lors de la commande. Vous pouvez effectuer le paiement par carte bancaire ou tout autre mode de paiement accepté sur notre site.</p>
+
+        <h2>5. Livraison</h2>
+        <p>Nous expédions les produits à l'adresse de livraison que vous avez indiquée lors de votre commande. Les délais de livraison sont indicatifs et peuvent varier en fonction de la disponibilité des produits.</p>
+
+        <h2>6. Réclamations</h2>
+        <p>En cas de réclamation ou de problème avec un produit ou service, veuillez nous contacter dès que possible pour que nous puissions résoudre le problème.</p>
+
+        <h2>7. Droit de Rétractation</h2>
+        <p>Vous avez le droit de vous rétracter de votre commande dans un délai de 14 jours sans justification. Vous devez nous informer de votre décision et renvoyer le produit dans son état d'origine.</p>
+
+        <h2>8. Responsabilité</h2>
+        <p>Nous ne pouvons être tenus responsables des dommages indirects ou accessoires liés à l'utilisation de nos produits ou services.</p>
+
+        <h2>9. Modifications des Conditions</h2>
+        <p>Nous nous réservons le droit de modifier ces conditions générales de vente à tout moment. Les modifications seront publiées sur notre site.</p>
+
+        <h2>10. Loi Applicable</h2>
+        <p>Ces conditions générales de vente sont régies par la loi française. Tout litige sera soumis à la compétence des tribunaux français.</p>
+
+        <h2>11. Nous Contacter</h2>
+        <p>Pour toute question concernant les présentes conditions générales de vente, veuillez nous contacter :</p>
+        <ul>
+          <li>- Par e-mail : <a href="mailto:support.digitalbook&#64;proton.me">support.digitalbook&#64;proton.me</a></li>
+          <li>- Par visite à cette page sur notre site Web : <a href="http://localhost:4200/footer/sales-conditions">http://localhost:4200/footer/sales-conditions</a></li>
+        </ul>
+      </div>
+      <!-- #endregion -->
+
+
       <!-- Suivez-nous -->
       <div *ngIf="currentSection === ''" class="social-media footer-section">
         <h3>Suivez-nous</h3>
@@ -233,3 +281,5 @@
 
     </div>
   </footer>
+
+  

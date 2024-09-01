@@ -7,7 +7,6 @@ export interface User {
     dateNaissance?: Date;
     estActif?: boolean;
     profil?: string;
-    panier?: number;
     questionSecrete?: string;
     reponseSecrete?: string;
 }

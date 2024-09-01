@@ -127,7 +127,6 @@ export class RegisterComponent implements OnInit {
   
       telControl.setValidators(validators);
 
-      console.log("validators", validators);
       telControl.updateValueAndValidity();
     }
   }
@@ -155,7 +154,6 @@ export class RegisterComponent implements OnInit {
       const formData = this.registerForm.value;
       this.authService.register(formData).subscribe(
         response => {
-          console.log('Registration successful!', response);
           this.registerForm.reset();
           this.errorMessage = null;
   
@@ -177,8 +175,6 @@ export class RegisterComponent implements OnInit {
       );
     } else {
       this.registerForm.markAllAsTouched();
-      console.log('Form errors:', this.registerForm.errors);
-      console.log('Form controls errors:', this.registerForm.controls);
     }
   }
   

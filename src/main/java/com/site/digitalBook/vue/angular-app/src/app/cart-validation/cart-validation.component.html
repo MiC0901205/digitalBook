@@ -1,0 +1,111 @@
+<!-- Affichage du montant total de la commande -->
+<div *ngIf="showPaymentModal" class="payment-modal-background">
+  <div class="payment-modal">
+    <div class="order-summary">
+      <h3>Montant total de la commande : <strong>{{ total | currency:'EUR':'symbol':'1.2-2':'fr' }}</strong></h3>
+    </div>
+
+    <div class="payment-options">
+      <h2>Choisissez votre mode de paiement</h2>
+      <div class="payment-buttons">
+        <button (click)="selectPaymentMethod('paypal')" title="PayPal">
+          <i class="fab fa-cc-paypal" aria-hidden="true"></i>
+        </button>
+        <button (click)="selectPaymentMethod('creditCard')" title="Carte Bancaire">
+          <i class="fa fa-credit-card"></i>
+        </button>
+        <button (click)="selectPaymentMethod('giftCard')" title="Chèque-Cadeau">
+          <i class="fa fa-gift"></i>
+        </button>
+      </div>
+    </div>
+
+    <div [ngSwitch]="selectedPaymentMethod">
+      <div *ngSwitchCase="'paypal'">
+        <h3>Paiement PayPal</h3>
+        <form [formGroup]="paymentForm">
+          <div class="form-group">
+            <label for="paypalEmail">Email PayPal</label>
+            <input id="paypalEmail" formControlName="paypalEmail" type="email" placeholder="Votre email PayPal" />
+            <div *ngIf="paymentForm.get('paypalEmail')?.invalid && paymentForm.get('paypalEmail')?.touched">
+              <small *ngIf="paymentForm.get('paypalEmail')?.errors?.['required']">L'email est requis.</small>
+              <small *ngIf="paymentForm.get('paypalEmail')?.errors?.['email']">Veuillez entrer un email valide.</small>
+            </div>
+          </div>
+          <button type="button" [disabled]="paymentForm.invalid" (click)="submitOrder()">Valider le paiement</button>
+        </form>
+      </div>
+      
+      <div *ngSwitchCase="'creditCard'">
+        <h3>Paiement par Carte Bancaire</h3>
+        <form [formGroup]="paymentForm">
+          <div class="form-group">
+            <label for="cardNumber">Numéro de carte</label>
+            <input 
+              id="cardNumber" 
+              formControlName="cardNumber" 
+              type="text" 
+              placeholder="Numéro de carte" 
+              (input)="formatCardNumber($event)"
+              maxlength="19"
+            />
+            <div *ngIf="paymentForm.get('cardNumber')?.invalid && paymentForm.get('cardNumber')?.touched">
+              <small *ngIf="paymentForm.get('cardNumber')?.errors?.['required']">Le numéro de carte est requis.</small>
+              <small *ngIf="paymentForm.get('cardNumber')?.errors?.['pattern']">Veuillez entrer un numéro de carte valide.</small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="expiryDate">Date d'expiration (MM/AA)</label>
+            <input 
+              id="expiryDate" 
+              formControlName="expiryDate" 
+              type="text" 
+              placeholder="MM/AA" 
+              (input)="formatExpiryDate($event)"
+              maxlength="5"
+            />
+            <div *ngIf="paymentForm.get('expiryDate')?.invalid && paymentForm.get('expiryDate')?.touched">
+              <small *ngIf="paymentForm.get('expiryDate')?.errors?.['required']">La date d'expiration est requise.</small>
+              <small *ngIf="paymentForm.get('expiryDate')?.errors?.['pattern']">Veuillez entrer une date valide (MM/AA).</small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="cvv">CVV</label>
+            <input 
+              id="cvv" 
+              formControlName="cvv" 
+              type="text" 
+              placeholder="CVV" 
+              (input)="formatCvv($event)"
+              maxlength="3"
+            />
+            <div *ngIf="paymentForm.get('cvv')?.invalid && paymentForm.get('cvv')?.touched">
+              <small *ngIf="paymentForm.get('cvv')?.errors?.['required']">Le CVV est requis.</small>
+              <small *ngIf="paymentForm.get('cvv')?.errors?.['pattern']">Veuillez entrer un CVV valide (3 chiffres).</small>
+            </div>
+          </div>
+          <button type="button" [disabled]="paymentForm.invalid" (click)="submitOrder()">Valider le paiement</button>
+        </form>
+      </div>
+
+      <div *ngSwitchCase="'giftCard'">
+        <h3>Paiement par Chèque-Cadeau</h3>
+        <form [formGroup]="paymentForm">
+          <div class="form-group">
+            <label for="giftCardCode">Code du chèque-cadeau</label>
+            <input id="giftCardCode" formControlName="giftCardCode" type="text" placeholder="Code du chèque-cadeau" />
+            <div *ngIf="paymentForm.get('giftCardCode')?.invalid && paymentForm.get('giftCardCode')?.touched">
+              <small *ngIf="paymentForm.get('giftCardCode')?.errors?.['required']">Le code est requis.</small>
+            </div>
+          </div>
+          <button type="button" [disabled]="paymentForm.invalid" (click)="submitOrder()">Valider le paiement</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Message de succès -->
+<div *ngIf="showSuccessMessage" class="success-message">
+  <p>Paiement réussi ! Le livre vous a été envoyé par email. Vous serez redirigé vers la page d'accueil.</p>
+</div>

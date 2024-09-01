@@ -1,18 +1,21 @@
 package com.site.digitalBook.service;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import jakarta.activation.FileDataSource;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
+
+import java.io.File;
 import java.security.SecureRandom;
 import java.util.Base64;
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.time.LocalDateTime;
+
 
 @Service
 public class EmailService {
@@ -125,4 +128,24 @@ public class EmailService {
             throw e;
         }
     }
+    
+    public void sendOrderConfirmationEmail(String to, String orderId) throws MessagingException {
+        String subject = "Confirmation de votre commande";
+        String text = "Votre commande avec l'ID " + orderId + " a été enregistrée avec succès. " +
+                      "Vous pouvez consulter votre historique d'achat pour plus de détails.";
+
+        try {
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true);
+            helper.setTo(to);
+            helper.setSubject(subject);
+            helper.setText(text, true); 
+
+            mailSender.send(message);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
 }

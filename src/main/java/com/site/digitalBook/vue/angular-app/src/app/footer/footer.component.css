@@ -104,7 +104,7 @@
 }
 
 /* Style pour la politique de confidentialité dans le footer */
-.privacy-policy, .terms-of-use, .cookies-policy, .retraction {
+.privacy-policy, .terms-of-use, .cookies-policy, .retraction, .sales-conditions {
     background-color: #2c2c2c; /* Fond légèrement plus clair pour différencier de la section générale */
     color: #f5f5f5;
     padding: 30px; /* Augmente l'espace intérieur */
@@ -129,41 +129,46 @@
     margin-left: 27%;
 }
 
+.sales-conditions h1 {
+    color: #ff3333;
+    margin-left: 27%;
+}
+
 .retraction h1 {
     color: #ff3333;
     margin-left: 35%;
 }
 
-.privacy-policy h2, .terms-of-use h2, .cookies-policy h2, .retraction h2 {
-    color: #f60909; /* Couleur du texte des titres de niveau 2 */
-    font-size: 1.8em; /* Taille des titres de niveau 2 */
-    margin-top: 20px; /* Espace au-dessus des titres de niveau 2 */
-    margin-bottom: 10px; /* Espace en-dessous des titres de niveau 2 */
-    font-weight: bold; /* Rendre le texte en gras */
+.privacy-policy h2, .terms-of-use h2, .cookies-policy h2, .retraction h2, .sales-conditions h2 {
+    color: #f60909;
+    font-size: 1.8em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
 }
 
-.privacy-policy p, .terms-of-use p, .cookies-policy p, .retraction p {
-    font-size: 0.9em; /* Réduit la taille de la police des paragraphes */
-    margin-bottom: 20px; /* Augmente l'espace entre les paragraphes */
-    line-height: 1.8; /* Hauteur de ligne pour une meilleure lisibilité */
+.privacy-policy p, .terms-of-use p, .cookies-policy p, .retraction p, .sales-conditions p {
+    font-size: 0.9em; 
+    margin-bottom: 20px;
+    line-height: 1.8; 
 }
 
-.privacy-policy ul, .terms-of-use ul, .cookies-policy ul, .retraction ul {
+.privacy-policy ul, .terms-of-use ul, .cookies-policy ul, .retraction ul, .sales-conditions ul {
     margin: 0;
     padding: 0;
-    list-style: none; /* Supprimer les puces des listes */
+    list-style: none;
 }
 
-.privacy-policy ul li, .terms-of-use ul li, .cookies-policy ul li, .retraction ul li {
-    margin-bottom: 15px; /* Espace entre les éléments de la liste */
+.privacy-policy ul li, .terms-of-use ul li, .cookies-policy ul li, .retraction ul li, .sales-conditions ul li {
+    margin-bottom: 15px;
 }
 
-.privacy-policy ul li a, .terms-of-use ul li a, .cookies-policy ul li a, .retraction ul li a {
+.privacy-policy ul li a, .terms-of-use ul li a, .cookies-policy ul li a, .retraction ul li a, .sales-conditions ul li a {
     color: #ff3333; /* Couleur des liens */
     text-decoration: none; /* Supprime le soulignement */
 }
 
-.privacy-policy ul li a:hover, .terms-of-use ul li a:hover, .cookies-policy ul li a:hover, .retraction ul li a:hover {
+.privacy-policy ul li a:hover, .terms-of-use ul li a:hover, .cookies-policy ul li a:hover, .retraction ul li a:hover, .sales-conditions ul li a:hover {
     text-decoration: underline; /* Souligner les liens au survol */
 }
 

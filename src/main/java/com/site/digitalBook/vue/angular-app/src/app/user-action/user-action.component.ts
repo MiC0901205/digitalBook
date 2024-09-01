@@ -42,10 +42,6 @@ export class UserActionComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.actionType = params['actionType'] || 'forgot-password';
       this.storedEmail = localStorage.getItem('userEmail');
-      
-      console.log('Action Type:', this.actionType);
-      console.log('Stored Email:', this.storedEmail);
-
       if (this.actionType === 'confirmation') {
         this.actionForm.get('newPassword')?.disable();
         this.actionForm.get('confirmPassword')?.disable();
@@ -109,7 +105,6 @@ export class UserActionComponent implements OnInit {
 
         this.authService.resetPassword(emailToSend, newPassword).subscribe({
           next: response => {
-            console.log('Password reset successful!', response);
             this.successMessage = response.message;
             this.errorMessage = null;
   
@@ -133,7 +128,6 @@ export class UserActionComponent implements OnInit {
 
         this.authService.verifyCode(emailToSend, code).subscribe({
           next: response => {
-            console.log('Code verification successful!', response);
             this.successMessage = response.message;
             this.errorMessage = null;
 

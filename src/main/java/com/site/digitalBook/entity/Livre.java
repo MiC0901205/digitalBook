@@ -32,8 +32,6 @@ public class Livre {
 
     private String format;
     
-    private String lienTelechargement;
-
     private String description; 
 
     @ManyToMany
@@ -135,14 +133,6 @@ public class Livre {
 
     public void setFormat(String format) {
         this.format = format;
-    }
-
-    public String getLienTelechargement() {
-        return lienTelechargement;
-    }
-
-    public void setLienTelechargement(String lienTelechargement) {
-        this.lienTelechargement = lienTelechargement;
     }
 
     public String getDescription() {

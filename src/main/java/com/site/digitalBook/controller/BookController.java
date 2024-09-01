@@ -46,7 +46,6 @@ public class BookController {
         }
     }
 
-    // Nouvelle méthode pour récupérer les livres par catégorie
     @GetMapping("/books/category/{categoryName}")
     public ResponseEntity<List<Livre>> getBooksByCategory(@PathVariable String categoryName) {
         try {

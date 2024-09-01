@@ -13,5 +13,6 @@ export interface Book {
   estVendable: boolean;
   photos: string[];
   categories: Categorie[];
-  description: string;     
+  description: string;  
+  pdfUrl?: string; 
 }

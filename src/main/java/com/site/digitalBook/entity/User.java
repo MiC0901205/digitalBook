@@ -32,8 +32,9 @@ public class User {
 
     private int failedLoginAttempts = 0; // Nombre de tentatives de connexion échouées
     private LocalDateTime lastFailedLogin; // Date de la dernière tentative échouée
-    private boolean isLocked = false; // Statut du verrouillage du compte
 
+    private boolean isLocked = false;
+    
     @Column(columnDefinition = "TEXT")
     private String anciensMotsDePasse;
 

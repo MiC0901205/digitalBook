@@ -28,9 +28,6 @@ export class AuthService {
         if (response && response.token) {
           localStorage.setItem('userToken', response.token); 
           this.isLoggedInSubject.next(true);
-          console.log('Login successful, token stored:', response.token);
-        } else {
-          console.log('Login failed or token not provided');
         }
       })
     );
@@ -67,7 +64,6 @@ export class AuthService {
       tap(() => {
         localStorage.removeItem('userToken');
         this.isLoggedInSubject.next(false);
-        console.log('User logged out, token removed.');
       })
     );
   }
@@ -98,7 +94,6 @@ export class AuthService {
 
   getCurrentUser(): Observable<{ data: User }> {
     const email = localStorage.getItem('userEmail');
-    console.log("email", email);
     if (!email) {
       throw new Error('Email non trouvé dans le localStorage');
     }
@@ -111,7 +106,6 @@ export class AuthService {
   }
   
   updateUserProfile(user: User): Observable<User> {
-    console.log("user", user);
     const token = localStorage.getItem('userToken');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',

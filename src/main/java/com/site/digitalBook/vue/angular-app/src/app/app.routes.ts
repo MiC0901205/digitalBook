@@ -8,6 +8,7 @@ import { BookDisplayComponent } from './book-display/book-display.component';
 import { FooterComponent } from './footer/footer.component'; 
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { CartComponent } from './cart/cart.component';
+import { CartValidationComponent } from './cart-validation/cart-validation.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,7 +22,11 @@ export const routes: Routes = [
   { path: 'footer/terms', component: FooterComponent },
   { path: 'footer/cookies', component: FooterComponent },
   { path: 'footer/retraction', component: FooterComponent },
+  { path: 'footer/sales-conditions', component: FooterComponent },  // Add this line
   { path: 'book-detail/:id', component: BookDetailComponent },
   { path: 'cart', component: CartComponent },
+  { path: 'cart-validation', component: CartValidationComponent },
   { path: '**', redirectTo: '' }
 ];
+
+

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router'; // Importez Router
 import { CartService } from '../services/cart/cart.service';
 import { AuthService } from '../services/auth/auth.service';
 import { Book } from '../interface/book.model';
@@ -23,7 +24,8 @@ export class CartComponent implements OnInit {
 
   constructor(
     private cartService: CartService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router // Injectez Router
   ) {}
 
   ngOnInit(): void {
@@ -44,12 +46,22 @@ export class CartComponent implements OnInit {
     if (this.userId !== undefined) {
       this.cartService.getCartItems(this.userId).subscribe({
         next: (response: any) => {
-          console.log('Réponse reçue pour les éléments du panier:', response);
-          this.cartItems = response.data || []; 
+          this.cartItems = response.data || [];
+  
+          this.cartItems.forEach(item => {
+            item.prix = this.calculateDiscountedPrice(item.prix, item.remise);
+          });
         },
         error: (err: any) => console.error('Erreur lors de la récupération des éléments du panier', err)
       });
     }
+  }
+
+  calculateDiscountedPrice(price: number, discount: number): number {
+    if (discount > 0) {
+      return parseFloat((price * (1 - discount / 100)).toFixed(2));
+    }
+    return price;
   }
 
   removeFromCart(item: Book): void {
@@ -81,6 +93,11 @@ export class CartComponent implements OnInit {
   }
 
   validateCart(): void {
-    console.log('Panier validé !');
+    this.router.navigate(['/cart-validation']); // Navigation vers le composant de validation du panier
+  }
+
+  // Méthode pour calculer le total du panier
+  getTotal(): number {
+    return this.cartItems.reduce((total, item) => total + (item.prix || 0), 0);
   }
 }

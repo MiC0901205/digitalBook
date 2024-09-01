@@ -189,4 +189,9 @@ public class UserService {
         user.setEstActif(true);
         updateUser(user); // Enregistrer les modifications
     }
+    
+    public User findById(Integer id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found with id " + id));
+    }
 }

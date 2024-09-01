@@ -73,7 +73,6 @@ export class LoginComponent implements OnInit {
         const { email, mdp } = this.loginForm.value;
         this.authService.login(email, mdp).subscribe(
             (response: any) => {
-                console.log('Login successful!', response);
                 this.errorMessage = null;
                 this.successMessage = 'Connexion réussie !';
                 this.isError = false;
@@ -88,7 +87,6 @@ export class LoginComponent implements OnInit {
             }
         );
     } else {
-        console.log('Form is not valid.');
         this.loginForm.markAllAsTouched();
     }
   }
@@ -107,7 +105,6 @@ export class LoginComponent implements OnInit {
       const email = this.forgotPasswordForm.value.email;
       this.authService.forgotPassword(email).subscribe(
         response => {
-          console.log('Password reset email sent!', response);
           this.successMessage = 'Un lien pour réinitialiser votre mot de passe a été envoyé à votre adresse email.';
           this.errorMessage = null;
           this.isError = false;

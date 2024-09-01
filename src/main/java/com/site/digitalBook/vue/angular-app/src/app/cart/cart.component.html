@@ -19,6 +19,11 @@
       </div>
     </div>
 
+    <!-- Total du panier -->
+    <div class="cart-total">
+      <h2>Total : {{ getTotal() | currency:'EUR':'symbol' }}</h2>
+    </div>
+
     <!-- Actions du panier -->
     <div class="cart-actions">
       <button (click)="clearCart()" class="clear-cart-button">Vider le panier</button>

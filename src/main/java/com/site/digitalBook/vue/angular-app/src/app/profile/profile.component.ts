@@ -160,7 +160,6 @@ export class ProfileComponent implements OnInit {
       if (user.id) {
         this.authService.updateUserProfile(user).subscribe(
           response => {
-            console.log('Profil mis à jour avec succès', response);
             this.successMessage = 'Profil mis à jour avec succès';
 
             // Mettre à jour l'email dans le localStorage si modifié
@@ -187,8 +186,6 @@ export class ProfileComponent implements OnInit {
       }
     } else {
       this.profileForm.markAllAsTouched();
-      console.log('Form errors:', this.profileForm.errors);
-      console.log('Form controls errors:', this.profileForm.controls);
     }
   }
 

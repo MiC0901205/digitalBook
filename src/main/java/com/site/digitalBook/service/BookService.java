@@ -32,4 +32,13 @@ public class BookService {
     public List<Livre> getBooksByCategory(String categoryName) {
         return bookRepository.findByCategoriesName(categoryName);
     }
+    
+    public Livre findById(Integer id) {
+        return bookRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Livre not found with id " + id));
+    }
+    
+    public Livre ajouterLivre(Livre livre) {
+        return bookRepository.save(livre);
+    }
 }
