@@ -1,6 +1,7 @@
 package com.site.digitalBook.controller;
 
 import com.site.digitalBook.entity.Commande;
+import com.site.digitalBook.entity.User;
 import com.site.digitalBook.service.CommandeService;
 import com.site.digitalBook.controller.payload.Payload;
 
@@ -10,7 +11,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
@@ -53,8 +56,7 @@ public class CommandeController {
         }
     }
 
-    // Endpoint pour récupérer les commandes d'un utilisateur par son ID
-    @GetMapping("/commandes/user/{userId}")
+    @GetMapping("/commandes/{userId}")
     public ResponseEntity<Payload> getCommandesByUserId(@PathVariable Integer userId) {
         try {
             List<Commande> commandes = commandeService.findByUserId(userId);
@@ -62,7 +64,20 @@ public class CommandeController {
                 Payload payload = new Payload("Aucune commande trouvée pour l'utilisateur ID : " + userId);
                 return new ResponseEntity<>(payload, HttpStatus.NO_CONTENT);
             }
-            Payload payload = new Payload("Commandes récupérées avec succès.", commandes);
+
+            // Transformer les commandes en un format simplifié
+            List<Map<String, Object>> commandeMaps = commandes.stream().map(commande -> {
+                return Map.of(
+                    "id", commande.getId(),
+                    "user", Map.of("id", commande.getUser().getId()),
+                    "prixTotal", commande.getPrixTotal(),
+                    "methodePaiement", commande.getMethodePaiement(),
+                    "dateCreation", commande.getDateCreation(),
+                    "livreIds", commande.getLivreIds()
+                );
+            }).collect(Collectors.toList());
+
+            Payload payload = new Payload("Commandes récupérées avec succès.", commandeMaps);
             return ResponseEntity.ok(payload);
         } catch (Exception e) {
             Payload payload = new Payload("Erreur lors de la récupération des commandes pour l'utilisateur : " + e.getMessage());

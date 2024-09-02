@@ -1,0 +1,77 @@
+<app-navbar></app-navbar>
+
+<div class="order-history">
+  <h2>Historique des Achats</h2>
+  <table *ngIf="sortedCommandes && sortedCommandes.length > 0; else noOrders">
+    <thead>
+      <tr>
+        <th>ID Commande</th>
+        <th>
+          <div class="date-header">
+            Date
+            <!-- Bouton avec flèches superposées pour trier par date -->
+            <button (click)="toggleSortByDate()" class="sort-button">
+              <span class="arrows">▲<br>▼</span>
+            </button>
+          </div>
+        </th>
+        <th>
+          <div class="price-header">
+            Prix Total
+            <!-- Bouton avec flèches superposées pour trier par prix -->
+            <button (click)="toggleSortByPrice()" class="sort-button">
+              <span class="arrows">▲<br>▼</span>
+            </button>
+          </div>
+        </th>
+        <th>Méthode de Paiement</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let commande of displayedCommandes" (click)="openOrderDetails(commande)">
+        <td>{{ commande.id }}</td>
+        <td>{{ commande.dateCreation | date:'short' }}</td>
+        <td>{{ formatPrice(commande.prixTotal || 0) }}</td>
+        <td>{{ commande.methodePaiement }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #noOrders>
+    <p>Aucune commande trouvée.</p>
+  </ng-template>
+
+ <!-- Pagination Controls -->
+ <div *ngIf="totalPages > 1" class="pagination-controls">
+    <button (click)="previousPage()" [disabled]="currentPage === 1">
+      <i class="fa fa-chevron-left"></i> <!-- Flèche gauche -->
+    </button>
+    <span>Page {{ currentPage }} sur {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">
+      <i class="fa fa-chevron-right"></i> <!-- Flèche droite -->
+    </button>
+  </div>
+
+<!-- Modale personnalisée -->
+<div class="modal" [ngClass]="{'show': isModalOpen}" (click)="closeOrderDetails()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <span class="close" (click)="closeOrderDetails()">&times;</span>
+      <h2>Détails de la Commande</h2>
+      <p><strong>ID Commande:</strong> {{ selectedCommande?.id }}</p>
+      <p><strong>Date:</strong> {{ selectedCommande?.dateCreation | date:'short' }}</p>
+      <p><strong>Prix total :</strong> {{ formatPrice(selectedCommande?.prixTotal || 0) }}</p>
+      <p><strong>Méthode de Paiement:</strong> {{ selectedCommande?.methodePaiement }}</p>
+      <p><strong>Livres achetés:</strong></p>
+      <ul>
+        <li *ngFor="let livre of livres">{{ livre.titre }} ({{ livre.auteur }})</li>
+      </ul>
+      <div *ngIf="livres.length > 0">
+        <button class="btn btn-primary" (click)="downloadPdfs()">
+          <i class="fas fa-download"></i>
+          {{ livres.length > 1 ? 'Télécharger les PDFs' : 'Télécharger le PDF' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

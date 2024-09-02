@@ -110,17 +110,19 @@ public class UserController {
             // Inclure le token dans le payload de réponse
             Payload payload = new Payload("Utilisateur authentifié avec succès.", authenticatedUser, token);
             return ResponseEntity.ok(payload);
-        } catch (UnauthorizedException e) {
+
+        } catch (UnauthorizedException | UserNotFoundException e) {
+            // Gestion des erreurs : Authentification non réussie
             Payload payload = new Payload("Échec de la connexion : " + e.getMessage());
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(payload);
-        } catch (UserNotFoundException e) {
-            Payload payload = new Payload("Échec de la connexion : " + e.getMessage());
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(payload);
+            
         } catch (Exception e) {
+            // Gestion des erreurs générales
             Payload payload = new Payload("Échec de la connexion : " + e.getMessage());
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(payload);
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(payload);
         }
     }
+
 
 
 

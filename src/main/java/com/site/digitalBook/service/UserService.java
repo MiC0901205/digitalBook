@@ -75,6 +75,10 @@ public class UserService {
         // Récupération de l'utilisateur à partir de son email
         User user = userRepository.findByEmail(email);
 
+        if (user == null) {
+            throw new UnauthorizedException("Email ou mot de passe invalide");
+        }
+
         // Vérification si le compte est verrouillé
         if (user.isLocked() && user.getLastFailedLogin() != null &&
             Duration.between(user.getLastFailedLogin(), LocalDateTime.now()).toMillis() < LOCK_TIME_DURATION) {
@@ -87,7 +91,6 @@ public class UserService {
             throw new UnauthorizedException("Email ou mot de passe invalide");
         }
 
-        // Réinitialisation des tentatives échouées et du verrouillage si l'authentification réussit
         if (user.getFailedLoginAttempts() > 0 || user.isLocked()) {
             user.setFailedLoginAttempts(0);
             user.setLastFailedLogin(null);
@@ -97,6 +100,7 @@ public class UserService {
 
         return user; // Retourne l'utilisateur authentifié
     }
+
 
     /**
      * Gère les tentatives de connexion échouées.

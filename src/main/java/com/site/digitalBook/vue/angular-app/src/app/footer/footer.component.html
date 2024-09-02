@@ -1,9 +1,9 @@
-<div *ngIf="showFooter">
+<div>
   <footer class="footer">
     <div class="footer-content">
 
       <!-- #region À propos -->
-      <div *ngIf="currentSection === ''" class="footer-section about">
+      <div *ngIf="showFooter" class="footer-section about">
         <h3>À propos de DigitalBook</h3>
         <p>La plateforme ultime pour accéder à une vaste sélection de livres numériques, où que vous soyez.</p>
         <h4><strong><i>Contactez-nous</i></strong></h4>
@@ -12,7 +12,7 @@
       <!-- #endregion -->
 
       <!-- #region Liens Utiles -->
-      <div *ngIf="currentSection === ''" class="footer-section links">
+      <div *ngIf="showFooter" class="footer-section links">
         <h3>Liens Utiles</h3>
         <ul>
           <li><a [routerLink]="['/']" (click)="scrollToTop()">Accueil</a></li>
@@ -23,7 +23,7 @@
       <!-- #endregion -->
 
       <!-- #region Informations Légales -->
-      <div *ngIf="currentSection === ''" class="footer-section legal-info">
+      <div *ngIf="showFooter" class="footer-section legal-info">
         <h3>Informations Légales</h3>
         <ul>
           <li><a [routerLink]="['/footer/privacy']" (click)="scrollToTop()">Politique de confidentialité</a></li>
@@ -267,7 +267,7 @@
 
 
       <!-- Suivez-nous -->
-      <div *ngIf="currentSection === ''" class="social-media footer-section">
+      <div *ngIf="showFooter" class="social-media footer-section">
         <h3>Suivez-nous</h3>
         <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
         <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
@@ -275,7 +275,7 @@
       </div>
 
       <!-- Footer Bottom -->
-      <div *ngIf="currentSection === ''" class="footer-bottom">
+      <div *ngIf="showFooter" class="footer-bottom">
         <p>&copy; 2024 DigitalBook. Tous droits réservés.</p>
       </div>
 

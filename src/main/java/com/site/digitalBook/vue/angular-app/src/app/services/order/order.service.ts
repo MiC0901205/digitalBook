@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Commande } from '../../interface/commande.model';
 
 @Injectable({
@@ -15,5 +15,11 @@ export class OrderService {
     return this.http.post<Commande>(`${this.apiUrl}/commande`, commande, {
       headers: { 'Content-Type': 'application/json' }
     });
-  }   
+  }  
+  
+  getCommandesByUserId(userId: number): Observable<Commande[]> {
+    return this.http.get<{ message: string, data: Commande[] }>(`${this.apiUrl}/commandes/${userId}`).pipe(
+      map(response => response.data)
+    );
+  }
 }

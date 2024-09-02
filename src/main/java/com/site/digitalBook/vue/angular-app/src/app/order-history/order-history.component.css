@@ -1,0 +1,204 @@
+* {
+    user-select: none;
+}
+
+.order-history {
+    padding: 20px;
+    background-color: #000; /* Fond noir pour correspondre au style du login */
+    color: #fff; /* Texte en blanc pour contraster avec le fond noir */
+    border-radius: 8px; /* Coins arrondis pour un look moderne */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Ombre plus prononcée pour un effet de profondeur */
+}
+
+.order-history h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #cc0000; /* Couleur du titre */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* Pour des bordures fusionnées */
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #444; /* Bordures plus sombres pour s’harmoniser avec le fond */
+}
+
+th {
+    background-color: #222; /* Fond sombre pour les en-têtes de colonne */
+    color: #ccc; /* Couleur du texte des en-têtes, clair pour contraster */
+    font-weight: bold;
+}
+
+tbody tr:hover {
+    background-color: #333; /* Couleur de survol des lignes, légèrement plus claire */
+}
+
+p {
+    font-size: 16px;
+    color: #ccc; /* Couleur du texte des messages */
+}
+
+/* Style de la modale */
+.modal {
+    display: none; /* Cacher la modale par défaut */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Fond sombre */
+}
+
+.modal.show {
+    display: block; /* Afficher la modale quand elle est active */
+}
+
+.modal-content {
+    background-color: #000; /* Fond noir pour correspondre au style du tableau */
+    margin: 10% auto; /* Remonter le contenu de la modale */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    color: #fff; /* Texte en blanc pour contraster avec le fond noir */
+    border-radius: 8px; /* Coins arrondis pour un look moderne */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Ombre plus prononcée pour un effet de profondeur */
+    position: relative; /* Pour que le positionnement de la croix soit relatif à .modal-content */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute; /* Positionner la croix absolument */
+    top: 0px; /* Ajuster la position verticale */
+    right: 10px; /* Ajuster la position horizontale */
+}
+
+.close:hover,
+.close:focus {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Style pour le titre de la modale */
+.modal-content h2 {
+    color: #cc0000; /* Couleur rouge pour le titre */
+    margin-top: 0; /* Supprimer la marge au-dessus du titre */
+    font-size: 1.5em; /* Ajustez la taille de la police du titre si nécessaire */
+}
+
+/* Style pour les éléments <strong> dans la modale */
+.modal-content strong {
+    color: #cc000098; /* Couleur rouge pour le texte fort */
+}
+
+/* Style pour le bouton de téléchargement avec l'icône */
+.btn-primary {
+    background-color: #cc0000; /* Couleur du bouton */
+    color: #fff; /* Texte du bouton en blanc */
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px; /* Coins arrondis pour le bouton */
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espace entre l'icône et le texte */
+}
+
+.btn-primary i {
+    font-size: 18px; /* Taille de l'icône */
+}
+
+.btn-primary:hover {
+    background-color: #a30000; /* Couleur du bouton au survol */
+}
+
+/* Pour l'icône Font Awesome */
+.fas {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+}
+
+/* Header pour les options de tri */
+.price-header {
+    display: flex;
+    align-items: center;
+}
+
+.sort-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 12px; /* Ajustez la taille de la police selon vos besoins */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 5px; /* Espace entre le texte "Prix Total" et le bouton */
+}
+
+.arrows {
+    line-height: 1; /* Pour s'assurer que les flèches sont proches l'une de l'autre */
+    display: flex;
+    flex-direction: column; /* Superpose les flèches */
+    justify-content: center;
+    align-items: center;
+}
+
+.date-header, .price-header {
+    display: flex;
+    align-items: center;
+}
+
+.sort-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 12px; /* Ajustez la taille de la police selon vos besoins */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 5px; /* Espace entre le texte "Date" ou "Prix Total" et le bouton */
+}
+
+.arrows {
+    line-height: 1; /* Pour s'assurer que les flèches sont proches l'une de l'autre */
+    display: flex;
+    flex-direction: column; /* Superpose les flèches */
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Pagination Controls */
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pagination-controls button {
+    background-color: transparent;
+    border: none;
+    color: #fd2626;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 0 5px;
+  }
+  
+  .pagination-controls button.active {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  
+  .pagination-controls button:hover {
+    text-decoration: underline;
+  }

@@ -86,33 +86,40 @@ export class CartValidationComponent implements OnInit {
 
   async submitOrder(): Promise<void> {
     if (this.userId !== undefined && this.paymentForm.valid) {
+      // Utilisation de l'heure locale actuelle
+      const currentDate = new Date();
+  
+      // Créer une chaîne ISO avec l'heure locale française
+      const offset = currentDate.getTimezoneOffset(); // Décalage de fuseau horaire en minutes
+      const localDate = new Date(currentDate.getTime() - offset * 60 * 1000); // Ajustement de l'heure en utilisant le décalage
+  
       const commande: Commande = {
         user: { id: this.userId },
         prixTotal: this.total,
         methodePaiement: this.selectedPaymentMethod,
-        dateCreation: new Date().toISOString(),
+        dateCreation: localDate.toISOString().slice(0, 19), // Supprime le 'Z' à la fin pour éviter la confusion UTC
         livreIds: this.cartItems.map(item => item.id)
       };
-
+  
       try {
         const response = await this.orderService.createCommande(commande).toPromise();
         console.log('Commande créée avec succès:', response);
-
+  
         // Télécharge les PDFs associés aux livres
         this.downloadPdfs();
-
+  
         this.cartService.clearCart(this.userId!).subscribe({
           next: () => {
             console.log('Panier vidé avec succès');
           },
           error: (err) => console.error('Erreur lors du vidage du panier:', err)
         });
-
+  
         this.showSuccessMessage = true;
         setTimeout(() => {
           this.router.navigate(['/']);
         }, 3000);
-
+  
       } catch (err) {
         console.error('Erreur lors de la création de la commande:', err);
       }
@@ -120,6 +127,7 @@ export class CartValidationComponent implements OnInit {
       console.log('Formulaire invalide');
     }
   }
+  
 
   formatCvv(event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -197,43 +205,43 @@ export class CartValidationComponent implements OnInit {
     this.cartItems.forEach(item => {
       const pdfUrl = this.generatePdfUrl(item.titre);
       console.log('Processing book:', item.titre, 'with generated PDF URL:', pdfUrl);
-  
+
       if (pdfUrl) {
         const link = document.createElement('a');
         link.href = pdfUrl;
-        link.download = `${item.titre}.pdf`; 
-  
+        link.download = `${item.titre}.pdf`;
+
         console.log('Adding link to DOM');
         document.body.appendChild(link);
-  
+
         console.log('Triggering download');
         link.click();
-  
+
         console.log('Removing link from DOM');
         document.body.removeChild(link);
-  
+
         console.log(`Downloaded PDF for ${item.titre}`);
       } else {
         console.log(`No PDF URL generated for ${item.titre}`);
       }
     });
     console.log('PDF download process finished.');
-  }  
+  }
 
   generatePdfUrl(titre: string): string {
     const specialChars = /['"]/g;
-  
+
     let formattedTitle = titre;
-  
+
     if (specialChars.test(titre)) {
       formattedTitle = titre
-        .replace(/'/g, '') 
+        .replace(/'/g, '')
         .replace(/"/g, '')
         .replace(/\s+/g, '-');
     } else {
       formattedTitle = titre.replace(/\s+/g, '-');
     }
-  
+
     return `assets/pdfs/${formattedTitle}.pdf`;
-  }  
+  }
 }
