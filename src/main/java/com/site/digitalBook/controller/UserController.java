@@ -63,9 +63,11 @@ public class UserController {
         }
 
         try {
+            user.setProfil("USER");
+
             // Ajouter l'utilisateur
             User newUser = userService.addUser(user);
-            
+
             // Générer un code de vérification et l'envoyer par email
             String code = emailService.generateVerificationCode();
             emailService.sendConfirmationEmail(user.getEmail(), code);
@@ -84,6 +86,7 @@ public class UserController {
             return new ResponseEntity<>(payload, HttpStatus.BAD_REQUEST);
         }
     }
+
 
 
     /**
@@ -107,8 +110,11 @@ public class UserController {
             // Générer le token JWT après l'authentification réussie
             String token = jwtUtil.generateToken(authenticatedUser.getEmail());
 
-            // Inclure le token dans le payload de réponse
-            Payload payload = new Payload("Utilisateur authentifié avec succès.", authenticatedUser, token);
+            // Inclure le rôle de l'utilisateur dans le payload de réponse
+            String role = authenticatedUser.getProfil(); // Obtenir le rôle de l'utilisateur
+
+            // Inclure le token et le rôle dans le payload de réponse
+            Payload payload = new Payload("Utilisateur authentifié avec succès.", authenticatedUser, token, role);
             return ResponseEntity.ok(payload);
 
         } catch (UnauthorizedException | UserNotFoundException e) {
@@ -122,9 +128,6 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(payload);
         }
     }
-
-
-
 
     /**
      * Vérifie le code envoyé à l'email de l'utilisateur.

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.site.digitalBook.entity.User;
@@ -19,12 +19,12 @@ import com.site.digitalBook.repository.UserRepository;
 public class UserService {
 
     private final UserRepository userRepository;
-    private final BCryptPasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder; // Utilisation de PasswordEncoder générique
     
     private static final int MAX_ATTEMPTS = 3;
-    private static final long LOCK_TIME_DURATION = 20 * 60 * 1000; // 15 minutes
+    private static final long LOCK_TIME_DURATION = 20 * 60 * 1000; // 20 minutes
 
-    public UserService(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
@@ -33,61 +33,63 @@ public class UserService {
         if (userRepository.findByEmail(user.getEmail()) != null) {
             throw new EmailAlreadyExistsException("Email already exists");
         }
-        String encryptedPassword = passwordEncoder.encode(user.getMdp());
+
+        String rawPassword = user.getMdp();
+        String encryptedPassword = passwordEncoder.encode(rawPassword);
+
+        System.out.println("Mot de passe avant encodage : " + rawPassword);
+        System.out.println("Mot de passe après encodage : " + encryptedPassword);
+
         user.setMdp(encryptedPassword);
-        return userRepository.save(user);
+        System.out.println("user : " + user);
+
+        
+        User savedUser = userRepository.save(user);
+
+        System.out.println("Utilisateur ajouté : " + savedUser.getEmail());
+
+        return savedUser;
     }
+
 
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
     public User getUserById(int id) {
-        User user = userRepository.findById(id);
-        if (user == null) {
-            throw new UserNotFoundException("Utilisateur non trouvé");
-        }
-        return user;
+        return userRepository.findById(id);
     }
 
     public User getUserByEmail(String email) {
-        User user = userRepository.findByEmail(email);
-        if (user == null) {
-            throw new UserNotFoundException("Utilisateur non trouvé");
-        }
-        return user;
+        return userRepository.findByEmail(email); 
     }
 
     public void deleteUser(int id) {
         userRepository.deleteById(id);
     }
 
-    /**
-     * Authentifie un utilisateur à partir de son email et mot de passe.
-     * Vérifie également si le compte est verrouillé en raison de tentatives de connexion échouées.
-     *
-     * @param email    l'adresse email de l'utilisateur
-     * @param password le mot de passe de l'utilisateur
-     * @return l'utilisateur authentifié s'il est trouvé et les informations d'authentification sont correctes
-     * @throws UnauthorizedException si les informations d'identification sont incorrectes ou si le compte est verrouillé
-     */
     public User authenticateUser(String email, String password) {
-        // Récupération de l'utilisateur à partir de son email
         User user = userRepository.findByEmail(email);
+        		
+		 if(user == null) {
+	        	throw new UnauthorizedException("Email ou mot de passe invalide");
+	     }
 
-        if (user == null) {
-            throw new UnauthorizedException("Email ou mot de passe invalide");
-        }
-
-        // Vérification si le compte est verrouillé
         if (user.isLocked() && user.getLastFailedLogin() != null &&
             Duration.between(user.getLastFailedLogin(), LocalDateTime.now()).toMillis() < LOCK_TIME_DURATION) {
             throw new UnauthorizedException("Compte verrouillé. Essayez plus tard.");
         }
 
-        // Vérification de la correspondance du mot de passe
-        if (!passwordEncoder.matches(password, user.getMdp())) {
-            handleFailedLogin(user); // Gestion des tentatives échouées
+        System.out.println("Tentative de connexion : email=" + email);
+        System.out.println("Mot de passe envoyé : " + password);
+        System.out.println("Mot de passe encodé en base : " + user.getMdp());
+
+        boolean passwordMatches = passwordEncoder.matches(password, user.getMdp());
+
+        System.out.println("Mot de passe correspond : " + passwordMatches);
+
+        if (!passwordMatches) {
+            handleFailedLogin(user);
             throw new UnauthorizedException("Email ou mot de passe invalide");
         }
 
@@ -98,35 +100,27 @@ public class UserService {
             userRepository.save(user);
         }
 
-        return user; // Retourne l'utilisateur authentifié
+        return user;
     }
 
-
-    /**
-     * Gère les tentatives de connexion échouées.
-     * Incrémente le compteur de tentatives échouées et verrouille le compte si le nombre maximal est atteint.
-     *
-     * @param user l'utilisateur pour lequel la tentative a échoué
-     */
     private void handleFailedLogin(User user) {
-        int attempts = user.getFailedLoginAttempts() + 1; // Incrémenter le nombre de tentatives échouées
+        int attempts = user.getFailedLoginAttempts() + 1;
         System.out.println("Failed login attempt: " + attempts);
         user.setFailedLoginAttempts(attempts);
         user.setLastFailedLogin(LocalDateTime.now());
 
-        // Verrouiller le compte si le nombre maximal de tentatives échouées est atteint
         if (attempts >= MAX_ATTEMPTS) {
             user.setLocked(true);
-            System.out.println("Account is locked due to too many failed login attempts.");
         }
 
-        userRepository.save(user); // Sauvegarde des modifications de l'utilisateur
+        userRepository.save(user);
     }
 
     public void resetPassword(String email, String newPassword) {
         User user = userRepository.findByEmail(email);
-        if (user == null) {
-            throw new RuntimeException("Utilisateur non trouvé.");
+        
+        if(user == null) {
+        	throw new RuntimeException("Utilisateur non trouvé.");
         }
 
         String encodedNewPassword = passwordEncoder.encode(newPassword);
@@ -156,7 +150,7 @@ public class UserService {
         List<String> passwords = getLastPasswordsList(user);
 
         if (passwords.size() >= 5) {
-            passwords.remove(0); // Enlever le plus ancien mot de passe
+            passwords.remove(0);
         }
         passwords.add(newPassword);
 
@@ -164,23 +158,19 @@ public class UserService {
     }
 
     public User updateUser(User updatedUser) {
-        // Retrieve the user by ID and handle the Optional
         User existingUser = userRepository.findById(updatedUser.getId())
                 .orElseThrow(() -> new UserNotFoundException("Utilisateur non trouvé"));
 
-        // Update the fields of the existing user
         existingUser.setNom(updatedUser.getNom());
         existingUser.setPrenom(updatedUser.getPrenom());
         existingUser.setEmail(updatedUser.getEmail());
         existingUser.setTel(updatedUser.getTel());
         existingUser.setDateNaissance(updatedUser.getDateNaissance());
 
-        // Update the password if it's provided
         if (updatedUser.getMdp() != null && !updatedUser.getMdp().isEmpty()) {
             existingUser.setMdp(passwordEncoder.encode(updatedUser.getMdp()));
         }
 
-        // Save the updated user and return it
         return userRepository.save(existingUser);
     }
     
@@ -191,8 +181,9 @@ public class UserService {
         }
 
         user.setEstActif(true);
-        updateUser(user); // Enregistrer les modifications
+        userRepository.save(user);
     }
+
     
     public User findById(Integer id) {
         return userRepository.findById(id)

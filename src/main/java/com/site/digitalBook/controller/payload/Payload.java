@@ -5,6 +5,7 @@ public class Payload {
     private String message;
     private Object data;
     private String token;
+    private String role; // Ajouter un champ pour le rôle de l'utilisateur
 
     public Payload() {}
 
@@ -21,6 +22,14 @@ public class Payload {
         this.message = message;
         this.data = data;
         this.token = token;
+    }
+
+    // Nouveau constructeur pour inclure le rôle
+    public Payload(String message, Object data, String token, String role) {
+        this.message = message;
+        this.data = data;
+        this.token = token;
+        this.role = role;
     }
 
     public String getMessage() {
@@ -45,5 +54,13 @@ public class Payload {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
