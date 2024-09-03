@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, Inject, PLATFORM_ID } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -8,6 +8,7 @@ import { Book } from '../interface/book.model';
 import { Categorie } from '../interface/categorie.model';
 import { BookService } from '../services/book/book.service';
 import { CategorieService } from '../services/categorie/categorie.service';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-book-display',
@@ -42,11 +43,16 @@ export class BookDisplayComponent implements OnInit {
   isSidebarOpen: boolean = false;
   isModalOpen: boolean = false;
 
+  private isBrowser: boolean;
+
   constructor(
     private bookService: BookService,
     private categorieService: CategorieService,
-    private router: Router
-  ) {}
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+  }
 
   ngOnInit(): void {
     this.loadBooks();
@@ -168,10 +174,12 @@ export class BookDisplayComponent implements OnInit {
   }
 
   private updateItemsPerPage(): void {
-    const screenWidth = window.innerWidth;
-    this.itemsPerPage = screenWidth < 768 ? 6 : 12;
-    this.updatePagination();
-    this.paginate();
+    if (this.isBrowser) {
+      const screenWidth = window.innerWidth;
+      this.itemsPerPage = screenWidth < 768 ? 6 : 12;
+      this.updatePagination();
+      this.paginate();
+    }
   }
 
   viewBookDetail(bookId: number): void {

@@ -1,0 +1,74 @@
+<app-navbar></app-navbar>
+<div class="user-management">
+  <h2>Gestion des Utilisateurs</h2>
+  
+  <!-- Tableau des utilisateurs -->
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Email</th>
+        <th>Statut</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of paginatedUsers" (click)="openUserModal(user)">
+        <td>{{ user.id }}</td>
+        <td>{{ user.nom }}</td>
+        <td>{{ user.prenom }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.estActif ? 'Actif' : 'Inactif' }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Message si aucun utilisateur n'est trouvé -->
+  <ng-template #noUsers>
+    <p>Aucun utilisateur trouvé.</p>
+  </ng-template>
+
+  <!-- Contrôles de pagination -->
+  <div *ngIf="enablePagination" class="pagination-controls">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">Précédent</button>
+    <span>Page {{ currentPage }} sur {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Suivant</button>
+  </div>
+
+  <!-- Modale pour les détails de l'utilisateur -->
+  <!-- Modale pour les détails de l'utilisateur -->
+<div class="modal" [ngClass]="{'show': isModalOpen}" (click)="closeUserModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h2>Détails de l'Utilisateur</h2>
+    <p><strong>ID:</strong> {{ selectedUser?.id }}</p>
+    <p><strong>Nom:</strong> {{ selectedUser?.nom }}</p>
+    <p><strong>Prénom:</strong> {{ selectedUser?.prenom }}</p>
+    <p><strong>Date de Naissance:</strong> {{ selectedUser?.dateNaissance | date:'shortDate' }}</p>
+    <p><strong>Email:</strong> {{ selectedUser?.email }}</p>
+    
+    <!-- Conteneur pour le texte et le toggle switch -->
+    <div class="status-container">
+      <!-- Texte pour le statut -->
+      <p class="status-label"><strong>Statut:</strong></p>
+      
+      <!-- Toggle Switch pour le statut de l'utilisateur -->
+      <label class="switch">
+        <input 
+          type="checkbox" 
+          [checked]="selectedUser?.estActif" 
+          (change)="toggleUserStatus($event)">
+        <span class="slider round"></span>
+      </label>
+      
+      <!-- Texte indiquant le statut de l'utilisateur -->
+      <span class="switch-status">
+        {{ selectedUser?.estActif ? 'Actif' : 'Inactif' }}
+      </span>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<app-footer></app-footer>

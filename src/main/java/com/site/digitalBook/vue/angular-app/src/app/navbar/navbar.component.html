@@ -1,39 +1,42 @@
 <nav class="navbar">
-    <div class="navbar-brand">
-      <a routerLink="/" class="navbar-title">
-        <h1>Digital Book</h1>
+  <div class="navbar-brand">
+    <a routerLink="/" class="navbar-title">
+      <h1>Digital Book</h1>
+    </a>
+  </div>
+  <ul class="navbar-menu">
+    <li><a routerLink="/about">About</a></li>
+    <div class="cart-container">
+      <a routerLink="/cart" class="cart-link">
+        <i class="fa fa-shopping-cart cart-icon"></i> <!-- Icône de panier -->
+        <span class="cart-badge" *ngIf="(cartItemCount$ | async) ?? 0 > 0">
+          {{ (cartItemCount$ | async) ?? 0 }}
+        </span>
       </a>
     </div>
-    <ul class="navbar-menu">
-      <li><a routerLink="/about">About</a></li>
-      <div class="cart-container">
-        <a routerLink="/cart" class="cart-link">
-          <i class="fa fa-shopping-cart cart-icon"></i> <!-- Icône de panier -->
-          <span class="cart-badge" *ngIf="(cartItemCount$ | async) ?? 0 > 0">
-            {{ (cartItemCount$ | async) ?? 0 }}
-          </span>
-          
-        </a>
-      </div>
-      <li>
-        <button *ngIf="isLoggedIn; else loggedOutMenu"
-                (click)="toggleUserMenu()"
-                class="user-icon"
-                [ngClass]="{'logged-in': isLoggedIn}">
+    <li>
+      <button *ngIf="isLoggedIn; else loggedOutMenu"
+              (click)="toggleUserMenu()"
+              class="user-icon"
+              [ngClass]="{'logged-in': isLoggedIn}">
+        <i class="fa fa-user"></i>
+      </button>
+      <ng-template #loggedOutMenu>
+        <button (click)="navigateToLogin()" class="user-icon">
           <i class="fa fa-user"></i>
         </button>
-        <ng-template #loggedOutMenu>
-          <button (click)="navigateToLogin()" class="user-icon">
-            <i class="fa fa-user"></i>
-          </button>
-        </ng-template>
-  
-        <div *ngIf="showUserMenu" class="user-menu">
-          <a routerLink="/profil">Mon profil</a>
+      </ng-template>
+
+      <div *ngIf="showUserMenu" class="user-menu">
+        <a routerLink="/profil">Mon profil</a>
+        <ng-container *ngIf="userProfile !== 'ADMIN'">
           <a routerLink="/order-history">Mes achats</a>
-          <a (click)="logout()">Déconnexion</a>
-        </div>
-      </li>
-    </ul>
-  </nav>
-  
+        </ng-container>
+        <ng-container *ngIf="userProfile === 'ADMIN'">
+          <a routerLink="/user-management">Gestion des comptes</a>
+        </ng-container>
+        <a (click)="logout()">Déconnexion</a>
+      </div>
+    </li>
+  </ul>
+</nav>

@@ -1,5 +1,6 @@
 package com.site.digitalBook.controller;
 
+import java.util.List;
 import java.util.Map;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -129,6 +130,7 @@ public class UserController {
         }
     }
 
+
     /**
      * Vérifie le code envoyé à l'email de l'utilisateur.
      *
@@ -245,27 +247,35 @@ public class UserController {
     @PutMapping("/user/{id}")
     public ResponseEntity<Payload> updateUserProfile(@PathVariable int id, @RequestBody User updatedUser) {
         try {
-           User user = userService.getUserById(id);
-           user.setNom(updatedUser.getNom());
-           user.setPrenom(updatedUser.getPrenom());
-           user.setEmail(updatedUser.getEmail());
-           user.setTel(updatedUser.getTel());
-           user.setDateNaissance(updatedUser.getDateNaissance());
-           user.setQuestionSecrete(updatedUser.getQuestionSecrete());
-           user.setReponseSecrete(updatedUser.getReponseSecrete());
+            User user = userService.getUserById(id);
 
+            // Met à jour tous les champs nécessaires
+            user.setNom(updatedUser.getNom());
+            user.setPrenom(updatedUser.getPrenom());
+            user.setEmail(updatedUser.getEmail());
+            user.setTel(updatedUser.getTel());
+            user.setDateNaissance(updatedUser.getDateNaissance());
+            user.setQuestionSecrete(updatedUser.getQuestionSecrete());
+            user.setReponseSecrete(updatedUser.getReponseSecrete());
+            user.setEstActif(updatedUser.getEstActif()); // Ajoute cette ligne pour mettre à jour le statut actif
+
+            // Appelle le service pour enregistrer les changements
             userService.updateUser(user);
 
+            // Prépare la réponse avec les données mises à jour
             Payload payload = new Payload("Utilisateur mis à jour avec succès", user);
             return ResponseEntity.ok(payload);
         } catch (UserNotFoundException e) {
+            // Si l'utilisateur n'est pas trouvé
             Payload payload = new Payload(e.getMessage());
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(payload);
         } catch (Exception e) {
+            // Pour toutes les autres exceptions
             Payload payload = new Payload("Erreur lors de la mise à jour du profil utilisateur : " + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(payload);
         }
     }
+
 
     /**
      * Obtient l'utilisateur authentifié actuel par email.
@@ -294,6 +304,21 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Payload("Erreur : L'email fourni est invalide. Détails : " + e.getMessage()));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new Payload("Erreur interne du serveur. Détails : " + e.getMessage()));
+        }
+    }
+    
+    /**
+     * Récupère tous les utilisateurs.
+     *
+     * @return Une ResponseEntity avec une liste de tous les utilisateurs.
+     */
+    @GetMapping("/users")
+    public ResponseEntity<List<User>> getAllUsers() {
+        try {
+            List<User> users = userService.getAllUsers();
+            return ResponseEntity.ok(users);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
 }

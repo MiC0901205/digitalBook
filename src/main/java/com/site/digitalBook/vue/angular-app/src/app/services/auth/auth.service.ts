@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of, BehaviorSubject, throwError } from 'rxjs';
+import { Observable, BehaviorSubject, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { User } from '../../interface/user.model';
 
@@ -17,31 +17,55 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  
-  getCurrentUserId(): number {
-    return Number(localStorage.getItem('userId'));
+  private getLocalStorage() {
+    return typeof window !== 'undefined' ? window.localStorage : null;
+  }
+
+  private hasToken(): boolean {
+    const localStorage = this.getLocalStorage();
+    const token = localStorage ? localStorage.getItem('userToken') : null;
+    return !!token;
   }
 
   login(email: string, mdp: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, { email, mdp }).pipe(
       tap((response: any) => {
         if (response && response.token) {
-          localStorage.setItem('userToken', response.token); 
-          this.isLoggedInSubject.next(true);
+          const localStorage = this.getLocalStorage();
+          if (localStorage) {
+            localStorage.setItem('userToken', response.token);
+            localStorage.setItem('userProfile', response.data.profil);
+            this.isLoggedInSubject.next(true);
+          }
         }
+      }),
+      catchError(error => {
+        console.error('Erreur lors de la tentative de connexion:', error);
+        this.isLoggedInSubject.next(false);
+        return throwError(() => new Error('Login failed'));
       })
     );
   }
 
   register(user: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/register`, user);
+    return this.http.post(`${this.apiUrl}/register`, user).pipe(
+      catchError(error => {
+        console.error('Erreur lors de l\'enregistrement:', error);
+        return throwError(() => new Error('Registration failed'));
+      })
+    );
   }
 
   verifyCode(email: string, code: string): Observable<any> {
     const body = { email, code };
     return this.http.post(`${this.apiUrl}/verify-code`, body, {
       headers: { 'Content-Type': 'application/json' }
-    });
+    }).pipe(
+      catchError(error => {
+        console.error('Erreur lors de la vérification du code:', error);
+        return throwError(() => new Error('Code verification failed'));
+      })
+    );
   }
   
   setEmail(email: string) {
@@ -57,79 +81,129 @@ export class AuthService {
   }
 
   logout(): Observable<void> {
-    const token = localStorage.getItem('userToken');
-    const headers = { 'Authorization': `Bearer ${token}` };
+    const localStorage = this.getLocalStorage();
+    const token = localStorage ? localStorage.getItem('userToken') : null;
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
     
     return this.http.post<void>(`${this.apiUrl}/logout`, {}, { headers }).pipe(
       tap(() => {
-        localStorage.removeItem('userToken');
-        this.isLoggedInSubject.next(false);
+        if (localStorage) {
+          localStorage.removeItem('userToken');
+          this.isLoggedInSubject.next(false);
+        }
+      }),
+      catchError(error => {
+        console.error('Erreur lors de la déconnexion:', error);
+        this.isLoggedInSubject.next(true);
+        return throwError(() => new Error('Logout failed'));
       })
     );
   }
 
-  private hasToken(): boolean {
-    return !!localStorage.getItem('userToken');
-  }
-
-  setLoggedInStatus(isLoggedIn: boolean): void {
-    if (isLoggedIn) {
-      localStorage.setItem('userToken', 'dummy-token');
-    } else {
-      localStorage.removeItem('userToken');
-    }
-  }
-
   forgotPassword(email: string): Observable<any> {
     const user = { email }; 
-    return this.http.post(`${this.apiUrl}/forgot-password`, user);
+    return this.http.post(`${this.apiUrl}/forgot-password`, user).pipe(
+      catchError(error => {
+        console.error('Erreur lors de l\'envoi de l\'email de réinitialisation de mot de passe:', error);
+        return throwError(() => new Error('Forgot password failed'));
+      })
+    );
   }
   
   resetPassword(email: string, newPassword: string): Observable<any> {
     const body = { newPassword }; 
     return this.http.post(`${this.apiUrl}/reset-password`, body, {
       params: { email }
-    });
+    }).pipe(
+      catchError(error => {
+        console.error('Erreur lors de la réinitialisation du mot de passe:', error);
+        return throwError(() => new Error('Password reset failed'));
+      })
+    );
   }
 
   getCurrentUser(): Observable<{ data: User }> {
-    const email = localStorage.getItem('userEmail');
+    const localStorage = this.getLocalStorage();
+    const email = localStorage ? localStorage.getItem('userEmail') : null;
     if (!email) {
-      throw new Error('Email non trouvé dans le localStorage');
+      return throwError(() => new Error('Email non trouvé dans le localStorage'));
     }
 
     const headers = new HttpHeaders({
       'Email': email
     });
 
-    return this.http.get<{ data: User }>(`${this.apiUrl}/current-user`, { headers });
+    return this.http.get<{ data: User }>(`${this.apiUrl}/current-user`, { headers }).pipe(
+      catchError(error => {
+        console.error('Erreur lors de la récupération de l\'utilisateur courant:', error);
+        return throwError(() => new Error('Failed to fetch current user'));
+      })
+    );
   }
   
   updateUserProfile(user: User): Observable<User> {
-    const token = localStorage.getItem('userToken');
+    const localStorage = this.getLocalStorage();
+    const token = localStorage ? localStorage.getItem('userToken') : null;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     });
-    return this.http.put<User>(`${this.apiUrl}/user/${user.id}`, user, { headers });
+    return this.http.put<User>(`${this.apiUrl}/user/${user.id}`, user, { headers }).pipe(
+      catchError(error => {
+        console.error('Erreur lors de la mise à jour de l\'utilisateur:', error);
+        return throwError(() => new Error('User update failed'));
+      })
+    );
   }
 
-  /**
-   * Obtient l'ID de l'utilisateur courant à partir du backend.
-   * @returns Un Observable contenant l'ID de l'utilisateur.
-   */
   getUserId(): Observable<number> {
     return this.getCurrentUser().pipe(
-      tap(response => {
+      map(response => {
         if (!response.data || !response.data.id) {
           throw new Error('ID utilisateur non disponible');
         }
+        return response.data.id;
       }),
-      map(response => response.data.id),
       catchError(err => {
         console.error('Erreur lors de la récupération de l\'ID utilisateur', err);
         return throwError(() => new Error('Erreur lors de la récupération de l\'ID utilisateur'));
       })
     );
   }
+
+  setLoggedInStatus(isLoggedIn: boolean): void {
+    const localStorage = this.getLocalStorage();
+    if (localStorage) {
+      if (isLoggedIn) {
+        localStorage.setItem('userToken', 'dummy-token'); // Vous devriez remplacer 'dummy-token' par le token réel si nécessaire
+        this.isLoggedInSubject.next(true);
+      } else {
+        localStorage.removeItem('userToken');
+        this.isLoggedInSubject.next(false);
+      }
+    }
+  }
+
+  getUserProfile(): string | null {
+    const localStorage = this.getLocalStorage();
+    return localStorage ? localStorage.getItem('userProfile') : null;
+  }
+
+  getUsers(): Observable<User[]> {
+    const localStorage = this.getLocalStorage();
+    const token = localStorage ? localStorage.getItem('userToken') : null;
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+  
+    return this.http.get<User[]>(`${this.apiUrl}/users`, { headers }).pipe(
+      catchError(error => {
+        console.error('Erreur lors de la récupération des utilisateurs:', error);
+        return throwError(() => new Error('Failed to fetch users'));
+      })
+    );
+  }
+  
 }

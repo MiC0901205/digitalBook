@@ -1,3 +1,4 @@
+// navbar.component.ts
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';
@@ -21,7 +22,7 @@ export class NavbarComponent implements OnInit {
   isLoggedIn = false;
   showUserMenu = false;
   cartItemCount$: Observable<number> | undefined;
-  userId: number | undefined;
+  userProfile: string | null = null;
 
   constructor(
     private authService: AuthService,
@@ -31,23 +32,18 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkLoginStatus();
-    this.authService.getUserId().subscribe({
-      next: (id: number) => {
-        this.userId = id;
-        this.cartItemCount$ = this.cartService.getCartItemCountObservable(); // Obtenir l'Observable pour le nombre d'articles
-        if (this.userId) {
-          this.cartService.updateCartItemCount(this.userId); // Initialiser le Subject
-        }
-      },
-      error: (err: any) => console.error('Erreur lors de la récupération de l\'ID utilisateur', err)
-    });
+    this.loadUserProfile();
+    this.cartItemCount$ = this.cartService.getCartItemCountObservable(); // Obtenir l'Observable pour le nombre d'articles
   }
-  
 
   checkLoginStatus(): void {
     this.authService.isLoggedIn().subscribe(loggedIn => {
       this.isLoggedIn = loggedIn;
     });
+  }
+
+  loadUserProfile(): void {
+    this.userProfile = this.authService.getUserProfile();
   }
 
   toggleUserMenu(): void {

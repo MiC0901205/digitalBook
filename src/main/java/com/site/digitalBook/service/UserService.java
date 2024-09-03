@@ -80,13 +80,8 @@ public class UserService {
             throw new UnauthorizedException("Compte verrouillé. Essayez plus tard.");
         }
 
-        System.out.println("Tentative de connexion : email=" + email);
-        System.out.println("Mot de passe envoyé : " + password);
-        System.out.println("Mot de passe encodé en base : " + user.getMdp());
-
         boolean passwordMatches = passwordEncoder.matches(password, user.getMdp());
 
-        System.out.println("Mot de passe correspond : " + passwordMatches);
 
         if (!passwordMatches) {
             handleFailedLogin(user);

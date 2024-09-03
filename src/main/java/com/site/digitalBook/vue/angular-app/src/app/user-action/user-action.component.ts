@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, ValidatorFn, AbstractControl } from '@angular/forms';
 import { AuthService } from '../services/auth/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-user-action',
@@ -24,12 +25,17 @@ export class UserActionComponent implements OnInit {
   storedEmail: string | null = null;
   passwordError: string | null = null;
 
+  private isBrowser: boolean;
+
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+
     this.actionForm = this.fb.group({
       newPassword: ['', [Validators.required, this.passwordStrengthValidator()]],
       confirmPassword: ['', [Validators.required]],
@@ -41,7 +47,9 @@ export class UserActionComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.actionType = params['actionType'] || 'forgot-password';
-      this.storedEmail = localStorage.getItem('userEmail');
+      if (this.isBrowser) {
+        this.storedEmail = localStorage.getItem('userEmail');
+      }
       if (this.actionType === 'confirmation') {
         this.actionForm.get('newPassword')?.disable();
         this.actionForm.get('confirmPassword')?.disable();
@@ -107,11 +115,11 @@ export class UserActionComponent implements OnInit {
           next: response => {
             this.successMessage = response.message;
             this.errorMessage = null;
-  
-            if (this.successMessage) {
+
+            if (this.successMessage && this.isBrowser) {
               localStorage.setItem('passwordResetSuccessMessage', this.successMessage);
             }
-  
+
             this.router.navigate(['/login']);
           },
           error: (error: HttpErrorResponse) => {
@@ -130,13 +138,6 @@ export class UserActionComponent implements OnInit {
           next: response => {
             this.successMessage = response.message;
             this.errorMessage = null;
-
-            const token = response.token;
-            if (token) {
-              localStorage.setItem('userToken', token);
-              this.authService.setEmail(emailToSend);
-              this.authService.setLoggedInStatus(true);
-            }
 
             this.router.navigate(['/login']);
           },
