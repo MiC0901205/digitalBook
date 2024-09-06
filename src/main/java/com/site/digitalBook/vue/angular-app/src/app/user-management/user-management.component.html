@@ -2,6 +2,10 @@
 <div class="user-management">
   <h2>Gestion des Utilisateurs</h2>
   
+  <div *ngIf="successMessage" class="success-message">
+    {{ successMessage }}
+  </div>
+
   <!-- Tableau des utilisateurs -->
   <table>
     <thead>

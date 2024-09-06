@@ -35,13 +35,9 @@ export class FooterComponent implements OnInit {
       // Déterminer si le footer doit être affiché ou non
       const sectionsToHideFooter = ['sales-conditions', 'about', 'privacy', 'terms', 'cookies', 'retraction'];
       this.showFooter = !sectionsToHideFooter.includes(this.currentSection.toLowerCase());
-      console.log('showFooter:', this.showFooter);
-      console.log('currentSection:', this.currentSection);
       if(this.currentSection === 'books') {
         this.currentSection = '';
       }
-      console.log('currentSectionFinale:', this.currentSection);
-
     });
   }
 

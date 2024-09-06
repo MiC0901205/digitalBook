@@ -103,15 +103,12 @@ export class CartValidationComponent implements OnInit {
   
       try {
         const response = await this.orderService.createCommande(commande).toPromise();
-        console.log('Commande créée avec succès:', response);
   
         // Télécharge les PDFs associés aux livres
         this.downloadPdfs();
   
         this.cartService.clearCart(this.userId!).subscribe({
-          next: () => {
-            console.log('Panier vidé avec succès');
-          },
+          next: () => {},
           error: (err) => console.error('Erreur lors du vidage du panier:', err)
         });
   
@@ -123,8 +120,6 @@ export class CartValidationComponent implements OnInit {
       } catch (err) {
         console.error('Erreur lors de la création de la commande:', err);
       }
-    } else {
-      console.log('Formulaire invalide');
     }
   }
   
@@ -172,7 +167,6 @@ export class CartValidationComponent implements OnInit {
 
   resetForm(): void {
     this.paymentForm.reset();
-    console.log('Mode de paiement sélectionné:', this.selectedPaymentMethod);
 
     if (this.selectedPaymentMethod === 'paypal') {
       this.paymentForm.get('paypalEmail')?.setValidators([Validators.required, Validators.email]);
@@ -201,31 +195,21 @@ export class CartValidationComponent implements OnInit {
   }
 
   downloadPdfs(): void {
-    console.log('Starting PDF download process...');
     this.cartItems.forEach(item => {
       const pdfUrl = this.generatePdfUrl(item.titre);
-      console.log('Processing book:', item.titre, 'with generated PDF URL:', pdfUrl);
 
       if (pdfUrl) {
         const link = document.createElement('a');
         link.href = pdfUrl;
         link.download = `${item.titre}.pdf`;
 
-        console.log('Adding link to DOM');
         document.body.appendChild(link);
 
-        console.log('Triggering download');
         link.click();
 
-        console.log('Removing link from DOM');
         document.body.removeChild(link);
-
-        console.log(`Downloaded PDF for ${item.titre}`);
-      } else {
-        console.log(`No PDF URL generated for ${item.titre}`);
       }
     });
-    console.log('PDF download process finished.');
   }
 
   generatePdfUrl(titre: string): string {

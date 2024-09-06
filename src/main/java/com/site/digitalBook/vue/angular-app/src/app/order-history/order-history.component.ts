@@ -59,7 +59,6 @@ export class OrderHistoryComponent implements OnInit {
         this.commandes$ = this.orderService.getCommandesByUserId(userId);
         this.commandes$.subscribe({
           next: (commandes) => {
-            console.log('Commandes reçues :', commandes);
             this.sortedCommandes = commandes;
             this.updateDisplayedCommandes();
           },
@@ -107,31 +106,21 @@ export class OrderHistoryComponent implements OnInit {
   }
 
   downloadPdfs(): void {
-    console.log('Démarrage du processus de téléchargement des PDFs...');
     this.livres.forEach(livre => {
       const pdfUrl = this.generatePdfUrl(livre.titre);
-      console.log('Traitement du livre:', livre.titre, 'avec l\'URL PDF générée:', pdfUrl);
 
       if (pdfUrl) {
         const link = document.createElement('a');
         link.href = pdfUrl;
         link.download = `${livre.titre}.pdf`;
 
-        console.log('Ajout du lien au DOM');
         document.body.appendChild(link);
 
-        console.log('Déclenchement du téléchargement');
         link.click();
 
-        console.log('Suppression du lien du DOM');
         document.body.removeChild(link);
-
-        console.log(`PDF téléchargé pour ${livre.titre}`);
-      } else {
-        console.log(`Aucune URL PDF générée pour ${livre.titre}`);
       }
     });
-    console.log('Processus de téléchargement des PDFs terminé.');
   }
 
   generatePdfUrl(titre: string): string {

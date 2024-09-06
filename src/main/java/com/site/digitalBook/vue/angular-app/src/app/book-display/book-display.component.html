@@ -1,4 +1,3 @@
-<!-- book-display.component.html -->
 <app-navbar></app-navbar>
 
 <!-- Main Container -->
@@ -51,16 +50,19 @@
 
   <!-- Content for Books -->
   <div class="content">
-    <div class="search-container">
-      <input type="text" placeholder="Rechercher..." [(ngModel)]="searchTerm" (input)="filterBooks()" />
-      <button><i class="fa fa-search"></i></button>
-    </div>
-
     <div class="book-list-section">
-      <h1>Liste des Livres</h1>
-      <div class="book-list">
-        <p *ngIf="filteredBooks.length === 0" class="no-books-message">Aucun livre disponible</p>
-        <!-- Les éléments livres sont maintenant des divs -->
+      <div class="header">
+        <h1>Liste des Livres</h1>
+        <button *ngIf="userProfile === 'ADMIN'" (click)="openAddBookModal()" class="add-button">Ajouter</button>
+      </div>
+
+      <!-- Message de succès -->
+      <div *ngIf="showSuccessMessage" class="success-message">
+        Livre ajouté avec succès !
+      </div>
+
+      <div *ngIf="filteredBooks.length === 0" class="no-books-message">Aucun livre disponible</div>
+      <div class="book-container">
         <div *ngFor="let book of paginatedBooks" class="book-item" (click)="viewBookDetail(book.id)">
           <img [src]="book.photos" [alt]="getImageAltText(book)" />
           <h3>{{ book.titre }}</h3>
@@ -68,18 +70,79 @@
           <p>{{ book.prix }}€</p>
         </div>
       </div>
-
+    
       <!-- Pagination Controls -->
       <div *ngIf="totalPages > 1" class="pagination-controls">
         <button (click)="previousPage()" [disabled]="currentPage === 1">
-          <i class="fa fa-chevron-left"></i> <!-- Flèche gauche -->
+          <i class="fa fa-chevron-left"></i>
         </button>
         <span>Page {{ currentPage }} sur {{ totalPages }}</span>
         <button (click)="nextPage()" [disabled]="currentPage === totalPages">
-          <i class="fa fa-chevron-right"></i> <!-- Flèche droite -->
+          <i class="fa fa-chevron-right"></i>
         </button>
       </div>
     </div>
   </div>
+    
 </div>
+
 <app-footer></app-footer>
+<!-- Modale -->
+<div class="modal" *ngIf="isModalOpen" (click)="closeModalOnOutsideClick($event)">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h2>Ajouter un livre</h2>
+    <form>
+      <!-- Champs du formulaire -->
+      <label>Titre:
+        <input type="text" [(ngModel)]="newBook.titre" name="titre" />
+      </label>
+      <label>Auteur:
+        <input type="text" [(ngModel)]="newBook.auteur" name="auteur" />
+      </label>
+      <label>Prix:
+        <input type="number" [(ngModel)]="newBook.prix" name="prix" />
+      </label>
+      <label>Remise:
+        <input type="number" [(ngModel)]="newBook.remise" name="remise" />
+      </label>
+      <label>ISBN:
+        <input type="text" [(ngModel)]="newBook.isbn" name="ISBN" />
+      </label>
+      <label>Éditeur:
+        <input type="text" [(ngModel)]="newBook.editeur" name="editeur" />
+      </label>
+      <label>Date de publication:
+        <input type="date" [(ngModel)]="newBook.datePublication" name="datePublication" />
+      </label>
+
+      <fieldset class="categories">
+        <legend>Catégories:</legend>
+        <div *ngFor="let categorie of categories" class="categorie-item">
+          <label class="label-category">
+            <input 
+              type="checkbox" 
+              [value]="categorie.id"
+              (change)="onCategoryChange($event)" 
+              [checked]="modalSelectedCategories.includes(categorie.id)"
+            />
+            {{ categorie.name }}
+          </label>
+        </div>
+      </fieldset>  
+
+      <!-- Upload de la photo -->
+      <label>Photos:
+        <input type="file" (change)="onFileChange($event)" />
+      </label>
+      <label>Description:
+        <textarea [(ngModel)]="newBook.description" name="description"></textarea>
+      </label>
+      
+      <!-- Conteneur pour le bouton -->
+      <div class="form-footer">
+        <button class="submit-button" (click)="addBook()" [disabled]="!areAllFieldsFilled()">Ajouter</button>
+      </div>
+    </form>
+  </div>
+</div>
+

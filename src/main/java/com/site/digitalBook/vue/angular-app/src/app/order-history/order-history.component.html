@@ -60,7 +60,7 @@
       <p><strong>Date:</strong> {{ selectedCommande?.dateCreation | date:'short' }}</p>
       <p><strong>Prix total :</strong> {{ formatPrice(selectedCommande?.prixTotal || 0) }}</p>
       <p><strong>Méthode de Paiement:</strong> {{ selectedCommande?.methodePaiement }}</p>
-      <p><strong>Livres achetés:</strong></p>
+      <p><strong>Livre(s) acheté(s):</strong></p>
       <ul>
         <li *ngFor="let livre of livres">{{ livre.titre }} ({{ livre.auteur }})</li>
       </ul>

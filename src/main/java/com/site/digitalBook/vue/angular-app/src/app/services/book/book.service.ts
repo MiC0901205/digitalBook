@@ -1,6 +1,6 @@
 // book.service.ts
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Book } from '../../interface/book.model'; // Assurez-vous que le modèle Book existe et est correct
@@ -31,6 +31,24 @@ export class BookService {
     return this.http.get<Book[]>(`${this.apiUrl}/books/category/${categoryName}`).pipe(
       catchError(this.handleError)
     );
+  }
+
+  updateBook(id: number, updateData: { remise: number }): Observable<Book> {
+    return this.http.put<Book>(
+      `${this.apiUrl}/book/${id}`,
+      updateData,
+      { headers: { 'Content-Type': 'application/json' } }
+    ).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  addBook(book: Book): Observable<Book> {  
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+  
+    return this.http.post<Book>('http://localhost:8080/api/book', book, { headers });
   }
 
   // Gestion des erreurs HTTP

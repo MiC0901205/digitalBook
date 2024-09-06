@@ -41,6 +41,14 @@ body {
     width: 100%;
 }
 
+.hero-content h1 {
+   color: red;
+}
+
+.hero-content p {
+    color: rgba(157, 3, 3, 0.682);
+ }
+
 .search-container {
     display: flex;
     align-items: center;

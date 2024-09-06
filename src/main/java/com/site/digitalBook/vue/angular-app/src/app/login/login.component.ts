@@ -70,7 +70,6 @@ export class LoginComponent implements OnInit {
 
       // Check if user is already logged in
       this.authService.isLoggedIn().subscribe(isLoggedIn => {
-        console.log('User is logged in:', isLoggedIn);
         if (isLoggedIn) {
           this.router.navigate(['/']);
         }

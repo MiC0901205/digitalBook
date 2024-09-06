@@ -5,14 +5,13 @@ export interface Book {
   titre: string;
   auteur: string;
   prix: number;
-  stock: number;
   remise: number;
-  ISBN: string;
+  isbn: string;
   editeur: string;
   datePublication: Date;
   estVendable: boolean;
-  photos: string[];
+  photos: string; 
   categories: Categorie[];
   description: string;  
-  pdfUrl?: string; 
 }
+

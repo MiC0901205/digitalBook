@@ -30,6 +30,7 @@ export class UserManagementComponent implements OnInit {
 
   selectedUser: User | undefined;
   isModalOpen: boolean = false;
+  successMessage: string | null = null;  
 
   constructor(private userService: AuthService) { }
 
@@ -40,7 +41,6 @@ export class UserManagementComponent implements OnInit {
   loadUsers(): void {
     this.userService.getUsers().pipe(
       map((data: User[]) => {
-        console.log('Utilisateurs reçus:', data);
         this.totalPages = Math.ceil(data.length / this.itemsPerPage);
         this.enablePagination = this.totalPages > 1;
         this.updatePaginatedUsers(data);
@@ -84,7 +84,6 @@ export class UserManagementComponent implements OnInit {
 
   openUserModal(user: User): void {
     this.selectedUser = user;
-    console.log('Utilisateur sélectionné :', this.selectedUser);
     this.isModalOpen = true;
   }
 
@@ -94,17 +93,29 @@ export class UserManagementComponent implements OnInit {
   }
 
   toggleUserStatus(event: Event): void {
-    const checkbox = event.target as HTMLInputElement; // Cast pour obtenir la propriété checked
+    const checkbox = event.target as HTMLInputElement;
     if (this.selectedUser) {
-      this.selectedUser.estActif = checkbox.checked; // Utilisation de la propriété checked de l'élément input
-      console.log('Utilisateur mis à jour avant l\'appel du service:', this.selectedUser);
+      const previousStatus = this.selectedUser.estActif;
+      this.selectedUser.estActif = checkbox.checked;
 
       // Appelle le service pour mettre à jour le profil de l'utilisateur
       this.userService.updateUserProfile(this.selectedUser).subscribe({
         next: (response) => {
-          console.log('Réponse après mise à jour:', response);
-          this.closeUserModal(); 
+          // Vérifier la réponse du service
+          if (response) {
+            this.successMessage = `Le statut de ${this.selectedUser?.prenom} a été mis à jour avec succès.`;
+          } else {
+            console.error('Réponse du service vide ou incorrecte.');
+          }
+
+          // Fermer la modale et recharger les utilisateurs
+          this.closeUserModal();
           this.loadUsers();
+
+          // Effacer le message après 3 secondes
+          setTimeout(() => {
+            this.successMessage = null;
+          }, 3000);
         },
         error: (err) => {
           console.error('Erreur lors de la mise à jour de l\'utilisateur', err);

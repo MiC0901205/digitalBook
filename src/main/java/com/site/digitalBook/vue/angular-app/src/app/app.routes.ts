@@ -12,6 +12,7 @@ import { CartValidationComponent } from './cart-validation/cart-validation.compo
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { AuthGuard } from './guards/auth.guard';
 import { UserManagementComponent } from './user-management/user-management.component';
+import { PromotionManagementComponent } from './promotion-management/promotion-management.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -31,6 +32,7 @@ export const routes: Routes = [
   { path: 'cart-validation', component: CartValidationComponent },
   { path: 'order-history', component: OrderHistoryComponent, canActivate: [AuthGuard]}, 
   { path: 'user-management', component: UserManagementComponent, canActivate: [AuthGuard]},
+  { path: 'promotion-management', component: PromotionManagementComponent, canActivate: [AuthGuard]},
   { path: '**', redirectTo: '' }
 ];
 

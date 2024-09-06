@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import com.site.digitalBook.entity.Livre;
 import com.site.digitalBook.repository.BookRepository;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookService {
@@ -38,7 +39,18 @@ public class BookService {
                 .orElseThrow(() -> new RuntimeException("Livre not found with id " + id));
     }
     
-    public Livre ajouterLivre(Livre livre) {
-        return bookRepository.save(livre);
+    
+    public Livre updateBook(int id, double remise) {
+        Optional<Livre> optionalLivre = bookRepository.findById(id);
+        if (optionalLivre.isPresent()) {
+            Livre livre = optionalLivre.get();
+            livre.setRemise(remise);
+            return bookRepository.save(livre);
+        }
+        return null;
+    }
+    
+    public Livre addBook(Livre newBook) {
+        return bookRepository.save(newBook);
     }
 }

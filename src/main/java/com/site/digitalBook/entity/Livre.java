@@ -1,6 +1,5 @@
 package com.site.digitalBook.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -36,16 +35,18 @@ public class Livre {
 
     @ManyToMany
     @JoinTable(
-            name = "INCLURE",  // Nom de la table associative
+            name = "INCLURE",
             joinColumns = @JoinColumn(name = "livre_id"),
             inverseJoinColumns = @JoinColumn(name = "categorie_id")
     )
-    @JsonManagedReference
     private Set<Categorie> categories = new HashSet<>();
     
     @ManyToMany(mappedBy = "livres")
     private Set<Panier> paniers = new HashSet<>();
 
+    // Constructeur par défaut
+    public Livre() {}
+    
     // Getters et setters
     public Integer getId() {
         return id;

@@ -9,6 +9,7 @@ import { Categorie } from '../interface/categorie.model';
 import { BookService } from '../services/book/book.service';
 import { CategorieService } from '../services/categorie/categorie.service';
 import { isPlatformBrowser } from '@angular/common';
+import { AuthService } from '../services/auth/auth.service';
 
 @Component({
   selector: 'app-book-display',
@@ -35,18 +36,25 @@ export class BookDisplayComponent implements OnInit {
   searchTerm: string = '';
   categoriesByType: { [type: string]: Categorie[] } = {};
   currentPage: number = 1;
-  itemsPerPage: number = 12;
+  itemsPerPage: number = 12; 
+  itemsPerRow: number = 4;
   totalPages: number = 0;
   
   priceOptions: number[] = [1.99, 2.99, 3.99, 4.99];
   
   isSidebarOpen: boolean = false;
   isModalOpen: boolean = false;
+  newBook: Partial<Book> = {}; 
+  userProfile: string | null = null;
+  selectedCategories: number[] = [];
+  modalSelectedCategories: number[] = []; 
+  showSuccessMessage: boolean = false;
 
   private isBrowser: boolean;
 
   constructor(
     private bookService: BookService,
+    private authService: AuthService,
     private categorieService: CategorieService,
     private router: Router,
     @Inject(PLATFORM_ID) private platformId: Object
@@ -56,21 +64,37 @@ export class BookDisplayComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadBooks();
+    this.loadUserProfile();
     this.loadCategories();
     this.updateItemsPerPage();
   }
 
-  private loadBooks(): void {
-    this.bookService.getBooks().subscribe({
-      next: (response: Book[]) => {
-        this.books = response || [];
-        this.filteredBooks = this.books;
-        this.updatePagination();
-        this.paginate();
-      },
-      error: (err) => console.error('Erreur lors de la récupération des livres', err)
-    });
+  toggleCategory(categoryId: number): void {
+    const index = this.selectedCategories.indexOf(categoryId);
+    if (index === -1) {
+      this.selectedCategories.push(categoryId);
+    } else {
+      this.selectedCategories.splice(index, 1);
+    }
   }
+
+  isCategorySelected(categoryId: number): boolean {
+    return this.selectedCategories.includes(categoryId);
+  }
+
+  // Méthode pour appliquer les filtres
+  applyFilters(): void {
+    this.filterBooks();
+  }
+
+  loadUserProfile(): void {
+    this.userProfile = this.authService.getUserProfile();
+  }
+
+  // Méthode pour fermer la modale
+  closeModal(): void {
+    this.toggleModal();
+  }  
 
   private loadCategories(): void {
     this.categorieService.getCategories().subscribe({
@@ -105,9 +129,11 @@ export class BookDisplayComponent implements OnInit {
 
       return matchesCategory && matchesPromotion && matchesPrix && matchesSearchTerm;
     });
+    
     this.updatePagination();
     this.paginate();
   }
+  
 
   resetFilters(): void {
     this.filters = {
@@ -133,23 +159,96 @@ export class BookDisplayComponent implements OnInit {
     }
   }
 
+  // Gestion de la modale
   toggleModal(): void {
     this.isModalOpen = !this.isModalOpen;
   }
 
-  applyFilters(): void {
-    this.filterBooks();
+  onFileChange(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader(); 
+      reader.onload = () => {
+        const base64String = reader.result as string; 
+        this.newBook.photos = base64String;
+      };
+      reader.onerror = (error) => {
+        console.error('Erreur lors de la conversion de l\'image en base64:', error);
+      };
+      reader.readAsDataURL(file); 
+    }
+  }
+  
+  addBook(): void {
+    if (this.newBook && this.areAllFieldsFilled()) {
+      this.newBook.categories = this.modalSelectedCategories.map(id => {
+        return { id } as Categorie;
+      });
+
+      this.bookService.addBook(this.newBook as Book).subscribe({
+        next: () => {
+          this.loadBooks(); 
+          this.toggleModal();
+
+          // Afficher le message de succès
+          this.showSuccessMessage = true;
+
+          // Masquer le message après 3 secondes
+          setTimeout(() => {
+            this.showSuccessMessage = false;
+          }, 3000); // 3 secondes
+        },
+        error: (err) => console.error('Erreur lors de l\'ajout du livre', err)
+      });
+    }
+  }
+  
+  private loadBooks(): void {
+    this.bookService.getBooks().subscribe({
+      next: (response: Book[]) => {
+        this.books = response || [];
+        this.filteredBooks = this.books; 
+        this.updatePagination(); 
+        this.paginate();
+      },
+      error: (err) => console.error('Erreur lors de la récupération des livres', err)
+    });
   }
 
-  private updatePagination(): void {
-    this.totalPages = Math.max(Math.ceil(this.filteredBooks.length / this.itemsPerPage), 1);
-    this.currentPage = Math.min(this.currentPage, this.totalPages);
+  openAddBookModal(): void {
+    this.newBook = {
+      id: 0,
+      titre: '',
+      auteur: '',
+      prix: 0,
+      remise: 0,
+      isbn: '',
+      editeur: '',
+      datePublication: new Date(),
+      estVendable: true,
+      photos: '', // Assigne une chaîne vide
+      categories: [],
+      description: '',
+    };
+    this.isModalOpen = true;
   }
 
+  updatePagination(): void {
+    this.totalPages = Math.ceil(this.filteredBooks.length / this.itemsPerPage); // Utiliser filteredBooks pour la pagination
+    this.paginate(); // Met à jour les livres paginés
+  }
+  
   paginate(): void {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
     this.paginatedBooks = this.filteredBooks.slice(startIndex, endIndex);
+  }
+  
+  previousPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.paginate();
+    }
   }
 
   nextPage(): void {
@@ -158,27 +257,12 @@ export class BookDisplayComponent implements OnInit {
       this.paginate();
     }
   }
-
-  previousPage(): void {
-    if (this.currentPage > 1) {
-      this.currentPage--;
-      this.paginate();
-    }
-  }
-
-  @HostListener('window:resize', ['$event'])
-  onResize(event: any): void {
-    this.updateItemsPerPage();
-    this.updatePagination();
-    this.paginate();
-  }
-
+  
   private updateItemsPerPage(): void {
     if (this.isBrowser) {
       const screenWidth = window.innerWidth;
       this.itemsPerPage = screenWidth < 768 ? 6 : 12;
       this.updatePagination();
-      this.paginate();
     }
   }
 
@@ -187,6 +271,29 @@ export class BookDisplayComponent implements OnInit {
   }
 
   getImageAltText(book: Book): string {
-    return book.titre ? `Image de ${book.titre}` : 'Image de livre';
+    return `${book.titre} - ${book.auteur}`;
+  }
+
+  // Ajout de la méthode pour vérifier si tous les champs requis sont remplis
+  areAllFieldsFilled(): boolean {
+    const { titre, auteur, prix, remise, isbn, editeur, datePublication, description, photos } = this.newBook;
+    return !!(titre && auteur && prix !== undefined && remise !== undefined && isbn && editeur && datePublication && description && photos);
+  }
+
+  onCategoryChange(event: any): void {
+    const categoryId = Number(event.target.value);
+    const isChecked = event.target.checked;
+  
+    if (isChecked) {
+      if (!this.modalSelectedCategories.includes(categoryId)) {
+        this.modalSelectedCategories.push(categoryId);
+      }
+    } else {
+      this.modalSelectedCategories = this.modalSelectedCategories.filter(id => id !== categoryId);
+    }
+  }
+  
+  closeModalOnOutsideClick(event: Event): void {
+    this.isModalOpen = false; 
   }
 }

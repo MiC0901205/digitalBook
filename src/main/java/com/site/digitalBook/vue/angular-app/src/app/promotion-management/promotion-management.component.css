@@ -1,0 +1,158 @@
+/* Style global pour désactiver la sélection du texte */
+* {
+    user-select: none;
+}
+
+.promotion-management {
+    padding: 20px;
+    background-color: #000; /* Fond noir */
+    color: #fff; /* Texte en blanc */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.promotion-management h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #cc0000; /* Couleur rouge pour le titre */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #444;
+}
+
+th {
+    background-color: #222;
+    color: #ccc;
+    font-weight: bold;
+}
+
+tbody tr:hover {
+    background-color: #333;
+}
+
+p {
+    font-size: 16px;
+    color: #ccc;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal.show {
+    display: block;
+}
+
+.modal-content {
+    background-color: #000;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; /* Réduction de la taille de la modale */
+    max-width: 400px; /* Limite maximale de la largeur */
+    color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.modal-content h2 {
+    color: #cc0000;
+    margin-top: 0;
+    font-size: 1.5em;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-content form label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    text-align: center; /* Centrer le texte du label */
+}
+
+.modal-content form input {
+    width: 50%; /* Réduction de la largeur de l'input */
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 14px; /* Ajustement de la taille de la police */
+    max-width: 100px; /* Largeur maximale de l'input */
+    text-align: center; /* Centrer le texte dans l'input */
+}
+
+.modal-content form .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn-primary {
+    background-color: #cc0000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: 15px;
+}
+
+.btn-primary i {
+    font-size: 18px;
+}
+
+.btn-primary:hover {
+    background-color: #a30000;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    margin: 0 10px;
+    padding: 5px 10px;
+    font-size: 12px; /* Taille des flèches */
+    background-color: transparent;
+    color: white;
+}
+
+.pagination span {
+    line-height: 30px;
+    color: red;
+}
+
+.success-message {
+    color: green;
+    font-size: 1.2em;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}

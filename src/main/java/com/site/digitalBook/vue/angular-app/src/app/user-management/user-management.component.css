@@ -18,6 +18,10 @@
     color: #cc0000; /* Couleur rouge pour le titre */
 }
 
+h2 {
+    color: red;
+}
+
 table {
     width: 100%;
     border-collapse: collapse; /* Pour des bordures fusionnées */
@@ -239,3 +243,11 @@ input:checked + .slider:before {
 .switch-status {
     margin-left: 10px;
 }
+
+.success-message {
+    color: green;
+    font-size: 1.2em;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+  }

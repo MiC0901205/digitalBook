@@ -8,6 +8,7 @@
 
 body {
   font-family: Arial, sans-serif;
+  background-color: #1e1e1e;
 }
 
 /* Conteneur principal */
@@ -16,81 +17,49 @@ body {
   min-height: 100vh;
 }
 
-/* Conteneur des livres */
-.book-container {
-  flex-grow: 1;
-  padding: 20px;
-  background-color: #2e2e2e;
-  overflow-y: auto;
-  height: calc(100vh - 60px);
-}
-
-/* Ajuster les styles pour les petits écrans */
-@media (max-width: 767px) {
-  .book-container {
-    height: calc(100vh - 60px);
-  }
-
-  .main-container {
-    flex-direction: column;
-  }
-
-  .sidebar {
-    width: 100%;
-    position: relative;
-    border-right: none;
-    border-bottom: 2px solid #ff6f61;
-  }
-
-  .content {
-    width: 100%;
-    padding: 10px;
-  }
-}
-
-/* Sidebar for Filters */
+/* Sidebar pour les filtres */
 .sidebar {
   width: 320px;
-  background: #1c1c1c;
+  background: #2c2c2c;
   padding: 20px;
-  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.4);
   border-right: 2px solid #ff6f61;
   color: white;
   overflow-y: auto;
 }
 
-/* Filter Title */
+/* Titre des filtres */
 .filters h2 {
-  font-size: 1.6rem; /* Réduit la taille du titre des filtres */
+  font-size: 1.6rem;
   margin-bottom: 1.5rem;
-  color: #fb1e0a;
+  color: red;
   border-bottom: 1px solid #ff6f61;
   padding-bottom: 0.5rem;
-  margin-top: 20px;
 }
 
-/* Filter Groups */
+/* Groupes de filtres et catégories */
 .filter-group, .category-group {
-  margin-bottom: 1.5rem; /* Réduit la marge inférieure */
+  margin-bottom: 1.5rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #444;
 }
 
-/* Labels and Inputs */
+/* Labels et inputs */
 .filter-group label, .category-group label {
   display: block;
-  margin-bottom: 0.8rem; /* Réduit la marge sous les labels */
-  font-size: 0.9rem; /* Réduit la taille des labels des filtres et catégories */
+  margin-bottom: 0.8rem;
+  font-size: 0.9rem;
+  color: white;
+}
+
+/* Cases à cocher et boutons radio */
+.filter-group input[type="checkbox"], .category-group input[type="radio"] {
+  margin-right: 0.8rem;
+  transform: scale(1.2);
   cursor: pointer;
 }
 
-/* Checkbox and Radio button styles */
-.filter-group input[type="checkbox"], .category-group input[type="radio"] {
-  margin-right: 0.8rem;
-  transform: scale(1.2); /* Réduit la taille des cases à cocher et des boutons radio */
-  cursor: pointer;
-}
-/* Price Filter Specific Styling */
+/* Filtre de prix */
 .price-filter {
   display: flex;
   flex-direction: column;
@@ -98,16 +67,16 @@ body {
   justify-content: center;
   margin-top: 1.5rem;
   font-size: 0.9rem;
-  gap: 10px;
 }
 
 .price-filter label {
   margin-bottom: 10px;
+  color: red;
 }
 
 .price-filter input[type="range"] {
   width: 80%;
-  margin-top: 10px; /* Ajoute de l'espace entre le label et la barre de progression */
+  margin-top: 10px;
 }
 
 .price-filter span {
@@ -119,7 +88,7 @@ span {
   color: white;
 }
 
-/* Button Group */
+/* Groupe de boutons */
 .button-group {
   margin-top: 3rem;
   display: flex;
@@ -150,7 +119,7 @@ span {
   background-color: #5a6268;
 }
 
-/* Content for Books */
+/* Contenu des livres */
 .content {
   flex-grow: 1;
   padding: 20px;
@@ -158,7 +127,7 @@ span {
   overflow-y: auto;
 }
 
-/* Search Container */
+/* Conteneur de recherche */
 .search-container {
   position: relative;
   margin-bottom: 20px;
@@ -168,9 +137,9 @@ span {
   width: calc(100% - 50px);
   padding: 8px;
   font-size: 1rem;
-  border: 1px solid #ddd;
+  border: 1px solid #666;
   border-radius: 4px;
-  background-color: #333;
+  background-color: #444;
   color: white;
 }
 
@@ -190,35 +159,41 @@ span {
   color: white;
 }
 
-/* Book List */
+/* Liste des livres */
 .book-list {
   background-color: #3c3c3c;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   padding: 20px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 20px;
 }
 
-/* Élément du livre */
+.book-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 colonnes */
+  gap: 16px; /* Ajoute de l'espace entre les éléments */
+}
+
 .book-item {
-  border: 2px solid #000;
-  padding: 15px;
-  border-radius: 8px;
-  background-color: #000;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+  border: 1px solid #333;
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #1c1c1c;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+  flex: 1 1 calc(25% - 16px); /* Ajuste la largeur en fonction de l'espace */
+  box-sizing: border-box;
+  margin: 0; /* Retire les marges si vous utilisez `gap` */
+  max-width: 250px;
+  text-align: center;
 }
 
 .book-item img {
-  max-width: 60%;
-  height: auto;
+  max-width: 70%;
+  height: auto; /* Maintient le ratio d'aspect */
   margin-bottom: 10px;
   border: 3px solid #fff;
   border-radius: 5px;
@@ -232,7 +207,7 @@ span {
 .book-item h3 {
   margin: 0.5rem 0;
   font-size: 1.2rem;
-  color: #fd2626;
+  color: red;
 }
 
 .book-item p {
@@ -254,17 +229,16 @@ span {
   text-align: center;
   font-size: 1.2rem;
   color: white;
-  margin-top: 1rem;
 }
 
-/* Style pour les filtres et catégories */
+/* Style des filtres et catégories */
 .category-item {
   margin-bottom: 1rem;
 }
 
 .category-item h3 {
-  font-size: 1.1rem; /* Réduit la taille des titres des catégories */
-  color: #fb1e0a84;
+  font-size: 1.1rem;
+  color: red;
   margin-bottom: 0.5rem;
 }
 
@@ -284,11 +258,7 @@ ul, ol {
   padding: 0;
 }
 
-h1 {
-  color: red;
-}
-
-/* Pagination Controls */
+/* Contrôles de pagination */
 .pagination-controls {
   display: flex;
   justify-content: center;
@@ -313,24 +283,201 @@ h1 {
   text-decoration: underline;
 }
 
-
+/* Style du filtre de prix */
 .price-filter {
   margin-bottom: 1em;
   font-size: 16px;
 }
 
 .price-select {
-  background-color: #333; /* Gris foncé pour le fond */
-  color: #fff; /* Texte blanc */
-  border: 1px solid #666; /* Bordure légèrement plus claire pour le contraste */
-  padding: 4px 8px; /* Espacement intérieur réduit */
-  border-radius: 4px; /* Coins arrondis */
-  font-size: 14px; /* Taille de la police réduite */
-  cursor: pointer; /* Curseur en forme de main pour indiquer la sélection */
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #666;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 14px;
 }
 
-.price-select:focus {
-  outline: none; /* Retirer le contour par défaut du focus */
-  border-color: #888; /* Changer la couleur de la bordure au focus */
-  background-color: #444; /* Légèrement plus clair pour l'état de focus */
+.price-range {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
 }
+
+.price-range input {
+  width: 100%;
+}/* Styles pour la modale */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: #2c2c2c;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  position: relative;
+  color: #fff;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Grille de 2 colonnes */
+  gap: 15px;
+  grid-template-rows: auto 1fr auto; /* Définir des lignes pour les champs et le bouton */
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: red;
+  grid-column: 1 / -1; /* Prend toute la largeur de la grille */
+}
+
+.modal-content form {
+  display: contents; /* Utiliser les styles de grille parent */
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+form label, legend {
+  color: rgb(149, 4, 4);
+}
+
+form .label-category{
+  color: rgb(255, 255, 255);
+  margin-bottom: 20px;
+}
+
+form input, form select, form textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #444;
+  background-color: #a7a7a7;
+  color: #fff;
+}
+
+form input[type="file"] {
+  padding: 10;
+}
+
+form button {
+  background-color: #ff6f61;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 
+}
+
+.add-button {
+  background-color: red; /* Couleur de fond rouge */
+  color: white; /* Couleur du texte blanche */
+  border: none; /* Supprime la bordure */
+  padding: 10px 20px; /* Ajoute de l'espace autour du texte */
+  border-radius: 5px; /* Arrondit les coins */
+  cursor: pointer; /* Change le curseur lorsqu'on survole le bouton */
+  transition: background-color 0.3s ease; /* Transition douce pour le changement de couleur */
+}
+
+.add-button:hover {
+  background-color: darkred; /* Couleur de fond plus sombre au survol */
+}
+
+.header {
+  display: flex;
+  justify-content: space-between; /* Écarte le titre et le bouton */
+  align-items: center; /* Aligne verticalement le titre et le bouton */
+  margin-bottom: 20px; /* Espacement sous la section d'en-tête */
+}
+
+.header h1 {
+  color: red; /* Couleur du texte rouge */
+}
+
+.form-footer {
+  grid-column: 1 / -1; /* Prend toute la largeur de la grille */
+  text-align: center;
+  margin-top: 20px; /* Espacement au-dessus du bouton */
+}
+
+.submit-button {
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
+  background-color: #e74c3c; /* Rouge */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+
+/* book-display.component.css */
+/* book-display.component.css */
+
+/* Conteneur du fieldset avec défilement pour les catégories */
+.categories {
+  max-height: 150px; /* Ajustez cette hauteur selon vos besoins */
+  overflow-y: auto; /* Ajoute une barre de défilement verticale si le contenu dépasse la hauteur */
+  padding: 10px; /* Ajoute un peu de padding autour du contenu */
+  border: 1px solid #ccc; /* Ajoute une bordure pour mieux délimiter la zone de défilement */
+  border-radius: 4px; /* Ajoute des coins arrondis */
+  margin: 0; /* Assure que le margin est nul pour éviter l'alignement centré */
+}
+
+/* Style des éléments de catégorie pour un alignement propre */
+.categorie-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0; /* Pas de marge entre les lignes */
+}
+
+/* Assure que le champ de sélection est aligné à gauche */
+.categorie-item label {
+  display: flex;
+  align-items: center;
+  width: 100%; /* Utilise toute la largeur disponible pour l'alignement */
+  margin: 0; /* Pas de marge supplémentaire */
+}
+
+/* Assure que les cases à cocher sont à gauche avec aucun espacement entre elles */
+.categorie-item input[type="checkbox"] {
+  margin-right: 0; /* Pas d'espacement entre la case à cocher et le texte */
+  margin-left: 0; /* Assure que la case est bien alignée à gauche */
+  width: 50px;
+}
+
+.success-message {
+  color: green;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+

@@ -152,8 +152,6 @@ export class RegisterComponent implements OnInit {
   
     if (this.registerForm.valid) {
       const formData = this.registerForm.value;
-
-      console.log("formData", formData);
       this.authService.register(formData).subscribe(
         response => {
           this.registerForm.reset();

@@ -1,0 +1,63 @@
+<app-navbar></app-navbar>
+<div class="promotion-management">
+  <h2>Gestion des Promotions</h2>
+
+   <!-- Message de succès -->
+   <div *ngIf="showSuccessMessage" class="success-message">
+    La promotion a été mise à jour avec succès !
+  </div>
+
+  <!-- Tableau des livres avec leur remise -->
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Titre du Livre</th>
+        <th>Prix du Livre (€)</th> <!-- Nouvelle colonne pour le prix -->
+        <th>Réduction (%)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of paginatedBooks" (click)="editPromotion(book)" style="cursor: pointer;">
+        <td>{{ book.id }}</td>
+        <td>{{ book.titre }}</td>
+        <td>{{ book.prix | number:'1.2-2' }}</td> <!-- Affichage formaté du prix -->
+        <td>{{ book.remise }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Pagination -->
+  <div class="pagination">
+    <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">
+      <i class="fa fa-chevron-left"></i> <!-- Flèche gauche -->
+    </button>
+    <span>Page {{ currentPage }} sur {{ totalPages }}</span>
+    <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">
+      <i class="fa fa-chevron-right"></i> <!-- Flèche droite -->
+    </button>
+  </div>
+
+  <!-- Message si aucun livre n'est trouvé -->
+  <ng-template #noBooks>
+    <p>Aucun livre trouvé.</p>
+  </ng-template>
+
+  <!-- Modale pour modifier la remise d'un livre -->
+  <div class="modal" [ngClass]="{'show': isModalOpen}" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <h2>Modifier la Promotion pour {{ currentBook?.titre }}</h2>
+      
+      <form (ngSubmit)="updatePromotion()">
+        <label for="remise">Réduction (%)</label>
+        <!-- N'affiche l'input que si currentBook est défini -->
+        <div *ngIf="currentBook">
+            <input id="remise" type="number" [(ngModel)]="currentBook.remise" name="remise" required min="0" max="100">
+        </div>
+  
+        <button type="submit" class="btn-primary">Mettre à Jour</button>
+      </form>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

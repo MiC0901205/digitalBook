@@ -5,7 +5,6 @@
     </a>
   </div>
   <ul class="navbar-menu">
-    <li><a routerLink="/about">About</a></li>
     <div class="cart-container">
       <a routerLink="/cart" class="cart-link">
         <i class="fa fa-shopping-cart cart-icon"></i> <!-- Icône de panier -->
@@ -34,6 +33,9 @@
         </ng-container>
         <ng-container *ngIf="userProfile === 'ADMIN'">
           <a routerLink="/user-management">Gestion des comptes</a>
+        </ng-container>
+        <ng-container *ngIf="userProfile === 'ADMIN'">
+          <a routerLink="/promotion-management">Gestion des promotions</a>
         </ng-container>
         <a (click)="logout()">Déconnexion</a>
       </div>
