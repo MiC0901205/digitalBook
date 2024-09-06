@@ -2,9 +2,18 @@ package com.site.digitalBook.controller;
 
 import java.util.List;
 import java.util.Map;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.site.digitalBook.controller.payload.Payload;
 import com.site.digitalBook.entity.User;
@@ -101,32 +110,28 @@ public class UserController {
         try {
             // Authentifier l'utilisateur
             User authenticatedUser = userService.authenticateUser(user.getEmail(), user.getMdp());
-
-            // Vérifier si l'utilisateur est actif
+            
             if (!authenticatedUser.getEstActif()) {
                 Payload payload = new Payload("Votre compte n'est pas encore activé. Veuillez vérifier votre email.");
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).body(payload);
             }
 
-            // Générer le token JWT après l'authentification réussie
             String token = jwtUtil.generateToken(authenticatedUser.getEmail());
 
-            // Inclure le rôle de l'utilisateur dans le payload de réponse
-            String role = authenticatedUser.getProfil(); // Obtenir le rôle de l'utilisateur
+            String role = authenticatedUser.getProfil();
 
-            // Inclure le token et le rôle dans le payload de réponse
             Payload payload = new Payload("Utilisateur authentifié avec succès.", authenticatedUser, token, role);
             return ResponseEntity.ok(payload);
 
-        } catch (UnauthorizedException | UserNotFoundException e) {
-            // Gestion des erreurs : Authentification non réussie
+        } catch (UnauthorizedException e) {
             Payload payload = new Payload("Échec de la connexion : " + e.getMessage());
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(payload);
-            
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(payload);
+        } catch (UserNotFoundException e) {
+            Payload payload = new Payload("Utilisateur non trouvé : " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(payload);
         } catch (Exception e) {
-            // Gestion des erreurs générales
             Payload payload = new Payload("Échec de la connexion : " + e.getMessage());
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(payload);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(payload);
         }
     }
 
@@ -321,4 +326,27 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
+    
+    /**
+     * Envoie le messegae de contact par email.
+     *
+     * @param email L'email du destinataire.
+     * @param subject Le sujet de l'email.
+     * @param message Le message de l'email.
+     * @return Une ResponseEntity indiquant le résultat de l'envoi.
+     */
+    @PostMapping("/contact")
+    public ResponseEntity<Payload> contact(@RequestParam String email, @RequestParam String subject, @RequestParam String message) {
+        try {
+            // Appeler le service pour envoyer l'email
+            emailService.sendSimpleEmail(email, subject, message);
+            
+            // Retourner une réponse OK si l'email a été envoyé avec succès
+            return ResponseEntity.ok(new Payload("Email envoyé avec succès"));
+        } catch (MessagingException e) {
+            // Retourner une réponse d'erreur en cas d'exception
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new Payload("Erreur lors de l'envoi de l'email"));
+        }
+    }
+
 }

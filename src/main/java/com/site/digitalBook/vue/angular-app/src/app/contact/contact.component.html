@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+
+<div class="contact-form-container">
+    <h2>Formulaire de contact</h2>
+    <!-- Message de succès -->
+    <div *ngIf="successMessage" class="alert alert-success">
+    {{ successMessage }}
+    </div>
+
+    <!-- Message d'erreur -->
+    <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+    </div>
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="subject">Sujet :</label>
+            <input type="text" id="subject" formControlName="subject" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="message">Message :</label>
+            <textarea id="message" formControlName="message" required></textarea>
+        </div>
+        
+        <div class="form-group">
+            <button type="submit" [disabled]="contactForm.invalid">Envoyer</button>
+        </div>
+    </form>      
+</div>
+
+<app-footer></app-footer>

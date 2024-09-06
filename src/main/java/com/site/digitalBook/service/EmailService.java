@@ -147,5 +147,19 @@ public class EmailService {
             throw e;
         }
     }
+    
+    public void sendSimpleEmail(String to, String subject, String messageBody) throws MessagingException {
+        try {
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true);
+            helper.setTo(to);
+            helper.setSubject(subject);
+            helper.setText(messageBody, true); // true pour le contenu HTML, false pour le texte brut
+
+            mailSender.send(message);
+        } catch (MessagingException e) {
+            throw e;
+        }
+    }
 
 }

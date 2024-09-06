@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, BehaviorSubject, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { User } from '../../interface/user.model';
@@ -39,11 +39,6 @@ export class AuthService {
           }
         }
       }),
-      catchError(error => {
-        console.error('Erreur lors de la tentative de connexion:', error);
-        this.isLoggedInSubject.next(false);
-        return throwError(() => new Error('Login failed'));
-      })
     );
   }
 
@@ -94,11 +89,6 @@ export class AuthService {
           this.isLoggedInSubject.next(false);
         }
       }),
-      catchError(error => {
-        console.error('Erreur lors de la déconnexion:', error);
-        this.isLoggedInSubject.next(true);
-        return throwError(() => new Error('Logout failed'));
-      })
     );
   }
 
@@ -202,6 +192,21 @@ export class AuthService {
       catchError(error => {
         console.error('Erreur lors de la récupération des utilisateurs:', error);
         return throwError(() => new Error('Failed to fetch users'));
+      })
+    );
+  }
+  
+  sendContactMessage(email: string, subject: string, message: string): Observable<any> {
+    // Construire les paramètres de la requête
+    const params = new HttpParams()
+      .set('email', email)
+      .set('subject', subject)
+      .set('message', message);
+  
+    return this.http.post(`${this.apiUrl}/contact`, null, { params }).pipe(
+      catchError(error => {
+        console.error('Erreur lors de l\'envoi du message de contact:', error);
+        return throwError(() => new Error('Échec de l\'envoi du message de contact'));
       })
     );
   }

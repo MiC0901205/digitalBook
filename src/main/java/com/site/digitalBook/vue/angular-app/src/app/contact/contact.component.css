@@ -1,0 +1,106 @@
+* {
+    user-select: none;
+}
+
+/* Styles pour le conteneur du formulaire de contact */
+.contact-form-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #000; /* Couleur de fond noir pour le formulaire */
+    color: #fff; /* Couleur du texte du formulaire */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre le contenu horizontalement */
+    margin-bottom: 20px;
+}
+
+/* Styles pour le titre du formulaire */
+.contact-form-container h2 {
+    color: #cc0000; /* Couleur du titre */
+    margin-bottom: 1.5rem;
+    text-align: center; /* Centre le titre */
+}
+
+form {
+    width: 85%;
+}
+
+/* Styles pour les labels des champs de formulaire */
+.form-group label {
+    display: block;
+    margin-bottom: .5rem;
+    font-weight: bold;
+    color: #ccc; /* Couleur du texte des labels */
+
+}
+
+/* Styles pour les champs de texte */
+.form-group input,
+.form-group textarea {
+    width: 300%; /* Assure que les champs occupent toute la largeur disponible */
+    max-width: 500px; /* Limite la largeur maximale des champs */
+    padding: .5rem;
+    border: 1px solid #444;
+    border-radius: .25rem;
+    box-sizing: border-box;
+    background-color: #222; /* Couleur de fond des champs de texte */
+    color: #fff; /* Couleur du texte des champs de texte */
+    align-self: center; /* Centre les champs de texte horizontalement */
+    margin-bottom: 15px;
+}
+
+/* Agrandissement du textarea */
+.form-group textarea {
+    height: 200px; /* Hauteur augmentée pour le textarea */
+}
+
+/* Styles pour les messages d'erreur */
+.error {
+    color: red;
+    font-size: .875rem;
+    margin-top: 0.25rem;
+}
+
+/* Styles pour les boutons */
+button {
+    padding: .75rem 1.5rem;
+    background-color: #cc0000; /* Couleur de fond du bouton */
+    color: #fff;
+    border: none;
+    border-radius: .25rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 1rem; /* Ajoute une marge en haut pour séparer du formulaire */
+    margin-left: 79%;
+}
+
+/* Styles pour les boutons en état désactivé */
+button:disabled {
+    background-color: #999; /* Couleur de fond du bouton désactivé */
+    color: #666;
+    cursor: not-allowed;
+}
+
+.alert {
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    width: 79%;
+    margin-right: 10px;
+  }
+  
+  .alert-success {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  .alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  
