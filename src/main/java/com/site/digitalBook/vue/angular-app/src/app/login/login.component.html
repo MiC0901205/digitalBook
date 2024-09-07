@@ -1,5 +1,5 @@
 <!-- Contenu de la modale de connexion -->
-<div *ngIf="!isForgotPasswordModalOpen" class="modal-background">
+<div *ngIf="!isForgotPasswordModalOpen && !isSecretQuestionModalOpen" class="modal-background">
   <div class="login-modal" [ngClass]="{'alert-danger': isError, 'alert-success': registrationSuccess}">
     <h1>Connexion</h1>
     <!-- Affichage du message d'erreur ou de succès -->
@@ -38,7 +38,7 @@
         </re-captcha>
       </div>
       <p class="forgot-password">
-        <a (click)="openForgotPasswordModal()">Mot de passe oublié ?</a>
+        <a (click)="openSecretQuestionModal()">Mot de passe oublié ?</a>
       </p>      
       <p class="no-account">Pas de compte ? <a href="/register">Inscrivez-vous</a></p>
       <button type="submit" [disabled]="!loginForm.valid || !recaptchaToken">Se connecter</button>
@@ -47,24 +47,23 @@
 </div>
 
 <!-- Modale pour la réinitialisation de mot de passe -->
-<div *ngIf="isForgotPasswordModalOpen" class="modal-background">
-  <div class="login-modal" [ngClass]="{'alert-danger': isError, 'alert-success': !isError}">
+<div *ngIf="isSecretQuestionModalOpen" class="modal-background">
+  <div class="reset-modal">
     <h1>Réinitialiser le mot de passe</h1>
-    <form [formGroup]="forgotPasswordForm" (ngSubmit)="submitForgotPassword()">
+    <form [formGroup]="secretQuestionForm" (ngSubmit)="submitSecretQuestionAnswer()">
+      <!-- Question de sécurité -->
       <div class="form-group">
-        <label for="email">Adresse Email</label>
-        <input id="email" formControlName="email" type="email" placeholder="Entrez votre adresse email" />
-        <div *ngIf="forgotPasswordForm.get('email')?.invalid && (forgotPasswordForm.get('email')?.touched || isForgotPasswordSubmitted)">
-          <small class="error" *ngIf="forgotPasswordForm.get('email')?.errors?.['required']">
-            L'adresse email est requise.
-          </small>
-          <small class="error" *ngIf="forgotPasswordForm.get('email')?.errors?.['email']">
-            L'adresse email n'est pas valide.
+        <label for="securityAnswer">{{ securityQuestion }}</label>
+        <input id="securityAnswer" formControlName="securityAnswer" type="text" placeholder="Répondez à la question de sécurité" />
+        <div *ngIf="secretQuestionForm.get('securityAnswer')?.invalid && (secretQuestionForm.get('securityAnswer')?.touched || isSubmittedSecretQuestion)">
+          <small class="error" *ngIf="secretQuestionForm.get('securityAnswer')?.errors?.['required']">
+            La réponse à la question de sécurité est requise.
           </small>
         </div>
       </div>
-      <button type="submit" [disabled]="!forgotPasswordForm.valid">Envoyer le lien de réinitialisation</button>
+
+      <button type="submit" [disabled]="!secretQuestionForm.valid">Envoyer le lien de réinitialisation</button>
     </form>
-    <button class="back-button" (click)="closeForgotPasswordModal()">&#8592; Retour</button>
+    <button class="back-button" (click)="closeSecretQuestionModal()">&#8592; Retour</button>
   </div>
 </div>
