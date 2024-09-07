@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener, Inject, PLATFORM_ID } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from '../navbar/navbar.component';
@@ -49,6 +49,7 @@ export class BookDisplayComponent implements OnInit {
   selectedCategories: number[] = [];
   modalSelectedCategories: number[] = []; 
   showSuccessMessage: boolean = false;
+  searchQuery: string = ''; // Déclarer 'searchQuery'
 
   private isBrowser: boolean;
 
@@ -57,6 +58,7 @@ export class BookDisplayComponent implements OnInit {
     private authService: AuthService,
     private categorieService: CategorieService,
     private router: Router,
+    private route: ActivatedRoute, 
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
     this.isBrowser = isPlatformBrowser(this.platformId);
@@ -67,6 +69,21 @@ export class BookDisplayComponent implements OnInit {
     this.loadUserProfile();
     this.loadCategories();
     this.updateItemsPerPage();
+    // Écoute des changements dans les paramètres de l'URL
+    this.route.queryParams.subscribe(params => {
+      this.searchQuery = params['search'] || '';  // Récupère le terme de recherche
+      console.log('Search Query:', this.searchQuery); // Déboguer la requête de recherche
+      this.filterBooks();  // Applique le filtre après avoir chargé les livres
+    });
+  }  
+
+   // Ajouter la méthode getBooks si elle n'existe pas encore
+   getBooks(): void {
+    // Logique pour charger les livres filtrés par la recherche
+    this.filteredBooks = this.books.filter(book => 
+      book.titre.toLowerCase().includes(this.searchQuery.toLowerCase())
+    );
+    this.paginate();
   }
 
   toggleCategory(categoryId: number): void {
@@ -119,22 +136,33 @@ export class BookDisplayComponent implements OnInit {
   }
 
   filterBooks(): void {
-    this.filteredBooks = this.books.filter(book => {
-      const matchesCategory = this.selectedCategory 
-        ? book.categories.some(categorie => categorie.id === this.selectedCategory)
-        : true;
-      const matchesPromotion = this.filters.promotion ? book.remise > 0 : true;
-      const matchesPrix = book.prix <= this.filters.prixMax;
-      const matchesSearchTerm = book.titre.toLowerCase().includes(this.searchTerm.toLowerCase());
-
-      return matchesCategory && matchesPromotion && matchesPrix && matchesSearchTerm;
+    console.log('Performing search with query:', this.searchQuery);
+    this.bookService.getBooks().subscribe((response) => {
+      this.books = response;
+      console.log('All Books:', this.books);
+      this.filteredBooks = this.books.filter(book => {
+        const matchesCategory = this.selectedCategory 
+          ? book.categories.some(categorie => categorie.id === this.selectedCategory)
+          : true;
+        const matchesPromotion = this.filters.promotion ? book.remise > 0 : true;
+        const matchesPrix = book.prix <= this.filters.prixMax;
+        const matchesSearch = book.titre.toLowerCase().includes(this.searchQuery.toLowerCase()) || 
+                              book.auteur.toLowerCase().includes(this.searchQuery.toLowerCase());
+        
+        return matchesCategory && matchesPromotion && matchesPrix && matchesSearch;
+      });
+      
+      console.log('Filtered Books:', this.filteredBooks);
+      this.updatePagination();
+      this.paginate();
     });
-    
-    this.updatePagination();
-    this.paginate();
+  }
+
+  onSearchChange(): void {
+    console.log('Search Query Changed:', this.searchQuery);
+    this.filterBooks();
   }
   
-
   resetFilters(): void {
     this.filters = {
       promotion: false,

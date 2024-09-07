@@ -9,8 +9,8 @@
       <h1>Découvrez votre prochaine lecture préférée</h1>
       <p>Plongez dans un monde de livres numériques fascinants.</p>
       <div class="search-container">
-        <input type="text" placeholder="Rechercher un livre...">
-        <button class="btn-search">Rechercher</button>
+        <input type="text" placeholder="Rechercher un livre..." [(ngModel)]="searchQuery">
+        <button class="btn-search" (click)="performSearch()">Rechercher</button>
       </div>
     </div>
     <div class="hero-image">
@@ -19,47 +19,36 @@
   </section>
 
   <!-- Section de Défilement Parallax -->
-  <!-- Section Défilement Parallax -->
   <section class="parallax-section" data-aos="fade-up">
     <div class="parallax-content">
       <h2>Notre collection de livres</h2>
       <p>Explorez notre vaste catalogue contenant des milliers de titres dans tous les genres.</p>
-      <a href="/books" class="btn-primary">Explorer</a> <!-- Modifiez le lien ici -->
+      <a href="/books" class="btn-primary">Explorer</a>
     </div>
   </section>
 
-
-  <!-- Section Carrousel de Livres en Vedette -->
+  <!-- Section Livres en Vedette -->
   <section class="featured-books" data-aos="fade-up">
     <h2>Livres en Vedette</h2>
-    <div class="carousel swiper-container">
-      <div class="swiper-wrapper">
-        <div class="carousel-item swiper-slide">
-          <img src="path/to/book-cover1.jpg" alt="Book Cover 1">
-          <h3>Titre du Livre 1</h3>
-          <p>Auteur 1</p>
-        </div>
-        <div class="carousel-item swiper-slide">
-          <img src="path/to/book-cover2.jpg" alt="Book Cover 2">
-          <h3>Titre du Livre 2</h3>
-          <p>Auteur 2</p>
-        </div>
-        <!-- Ajouter plus de livres ici -->
+    <div class="book-container">
+      <div *ngFor="let book of featuredBooks" class="book-item" (click)="viewBookDetail(book.id)">
+        <img [src]="book.photos" [alt]="getImageAltText(book)" />
+        <h3>{{ book.titre }}</h3>
+        <p>{{ book.auteur }}</p>
+        <p>{{ book.prix }}€</p>
       </div>
-      <!-- Ajoutez les boutons de navigation si nécessaire -->
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
     </div>
   </section>
 
-  <!-- Section Vidéo de Présentation -->
-  <section class="video-presentation" data-aos="fade-up">
-    <h2>Découvrez DigitalBook</h2>
-    <video controls>
-      <source src="path/to/video.mp4" type="video/mp4">
-      Votre navigateur ne supporte pas la lecture de vidéos.
-    </video>
-  </section>
+  
+<!-- Section Vidéo de Présentation -->
+<section class="video-presentation" data-aos="fade-up">
+  <h2>Découvrez DigitalBook</h2>
+  <video controls autoplay>
+    <source src="assets/video/video.mp4" type="video/mp4">
+    Votre navigateur ne supporte pas la lecture de vidéos.
+  </video>
+</section>
 
   <!-- Section de Témoignages avec Arrière-Plan Image -->
   <section class="testimonials" data-aos="fade-up">

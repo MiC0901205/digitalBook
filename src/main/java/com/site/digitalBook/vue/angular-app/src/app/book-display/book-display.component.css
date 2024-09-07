@@ -126,37 +126,35 @@ span {
   background-color: #2e2e2e;
   overflow-y: auto;
 }
-
-/* Conteneur de recherche */
-.search-container {
-  position: relative;
-  margin-bottom: 20px;
-}
-
-.search-container input {
-  width: calc(100% - 50px);
-  padding: 8px;
-  font-size: 1rem;
-  border: 1px solid #666;
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #333; /* Fond gris foncé */
+  padding: 10px;
   border-radius: 4px;
-  background-color: #444;
-  color: white;
+  margin-bottom: 20px;
+  position: relative;
 }
 
-.search-container button {
-  background: none;
-  border: none;
-  cursor: pointer;
+.search-bar input {
+  width: calc(100% - 40px); /* Ajuster pour faire de la place pour l'icône */
+  padding: 10px;
+  font-size: 16px;
+  border: none; /* Supprimer la bordure pour un style plus propre */
+  border-radius: 4px;
+  background-color: #444; /* Couleur de fond légèrement plus claire pour l'input */
+  color: #fff; /* Texte blanc pour contraster avec le fond foncé */
+}
+
+.search-icon {
   position: absolute;
-  right: 10px;
-  top: 0;
-  bottom: 0;
-  padding: 8px;
+  right: 15px;
+  font-size: 20px;
+  color: #bbb; /* Couleur de l'icône de loupe */
 }
 
-.search-container button .fa {
-  font-size: 1rem;
-  color: white;
+.book-list-section {
+  position: relative;
 }
 
 /* Liste des livres */

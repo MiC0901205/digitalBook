@@ -4,12 +4,24 @@
 
 /* Global Styles */
 body {
-    background-color: #121212; /* Fond sombre */
-    color: #f5f5f5; /* Texte clair */
+    background-color: #121212;
+    color: #f5f5f5;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+}
+
+p, ul a {
+    color: #f5f5f5;
+}
+
+ul {
+    margin-left: -20px;
+}
+
+h2 {
+    color: red;
 }
 
 /* Container Principal */
@@ -17,45 +29,50 @@ body {
     padding: 20px;
 }
 
-/* Contenu de la section héro */
+/* Section Héro */
 .hero {
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url('../../assets/icons/banner.jpg') no-repeat center center/cover; /* Image de fond */
-    height: 400px; /* Ajustez la hauteur selon vos besoins */
-    color: #f5f5f5; /* Couleur du texte */
+    background: url('../../assets/icons/banner.jpg') no-repeat center center/cover;
+    height: 400px;
+    color: #f5f5f5;
+    width: 100vw; /* Prendre toute la largeur de la fenêtre de visualisation */
+    position: relative; /* Nécessaire pour ajuster les éléments internes si besoin */
+    overflow: hidden; /* Assurer qu'aucun débordement ne soit visible */
+    margin: 0; /* Enlever les marges pour s'assurer que ça prenne toute la largeur */
+    padding: 0; /* Enlever les paddings pour s'assurer que ça prenne toute la largeur */
 }
 
-/* Masquer l'image de la section héro (elle est maintenant en background) */
-.hero-image img {
-    display: none;
-}
-
+/* Contenu de la section héro */
 .hero-content {
-    position: relative;
-    z-index: 2; /* Assure que le contenu est au-dessus de l'image de fond */
     text-align: center;
     max-width: 600px;
     width: 100%;
+    z-index: 2;
 }
 
 .hero-content h1 {
-   color: red;
+    color: red;
 }
 
 .hero-content p {
     color: rgba(157, 3, 3, 0.682);
- }
+}
 
+/* Image héro */
+.hero-image {
+    display: none; /* Cacher l'image pour ne montrer que le background */
+}
+
+/* Search bar */
 .search-container {
     display: flex;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.8); /* Fond légèrement transparent pour la barre de recherche */
+    background-color: rgba(255, 255, 255, 0.8);
     border-radius: 5px;
-    width: 100%; /* Prend toute la largeur du bloc */
-    margin-top: 20px; /* Ajoute un espace au-dessus pour aérer */
+    width: 100%;
+    margin-top: 20px;
 }
 
 .search-container input {
@@ -64,7 +81,7 @@ body {
     border-radius: 5px 0 0 5px;
     background-color: #2e2e2e;
     color: #f5f5f5;
-    flex-grow: 1; /* Permet à l'input de prendre tout l'espace disponible */
+    flex-grow: 1;
 }
 
 .search-container button {
@@ -75,18 +92,12 @@ body {
     border-radius: 0 5px 5px 0;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    flex-shrink: 0; /* Empêche le bouton de rétrécir */
+    flex-shrink: 0;
 }
 
 .search-container button:hover {
     background-color: #cc0000;
     transform: scale(1.05);
-}
-
-.hero-image img {
-    max-width: 100%;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* Section Parallax */
@@ -96,10 +107,8 @@ body {
     padding: 80px 20px;
     text-align: center;
     background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-    width: 100%; /* Assure que la section prend toute la largeur */
-    box-sizing: border-box; /* Inclut le padding dans la largeur totale */
+    box-sizing: border-box;
+    margin-bottom: -90px;
 }
 
 .parallax-content {
@@ -111,19 +120,66 @@ body {
 
 .parallax-content h2 {
     margin-bottom: 20px;
-    color: #ff3333; /* Rouge pour le titre */
+    color: #ff3333;
 }
 
-.parallax-content p {
-    margin-bottom: 20px;
-}
-
-/* Carrousel de Livres */
 .featured-books {
     padding: 40px 20px;
     text-align: center;
+    width: 100%; /* Assurer que le conteneur prend toute la largeur disponible */
+    max-width: 1200px; /* Limiter la largeur maximale pour ne pas trop étendre */
+    margin-bottom: -50px;
+    margin-left: auto; /* Centre le conteneur horizontalement */
+    margin-right: auto; /* Centre le conteneur horizontalement */
 }
 
+/* Container pour les livres */
+.book-container {
+    display: grid; /* Utilise grid layout */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* 4 colonnes flexibles */
+    gap: 20px; /* Espace entre les livres */
+    width: 100%; /* S'assurer que le conteneur prend toute la largeur disponible */
+    margin-bottom: 10px;
+    margin-left: auto; /* Centre le conteneur horizontalement */
+    margin-right: auto; /* Centre le conteneur horizontalement */
+    max-width: 1200px; /* Limiter la largeur maximale pour ne pas trop étendre */
+}
+
+/* Ajuster la taille de la grille sur mobile */
+@media (max-width: 600px) {
+    .book-container {
+        grid-template-columns: 1fr; /* Une seule colonne sur les petits écrans */
+    }
+}
+
+.book-item {
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    height: 95%;
+    max-width: 200px; /* Largeur maximale de chaque livre */
+    box-sizing: border-box; /* S'assurer que padding est inclus dans la taille */
+    margin: 0 auto; /* Centre chaque élément book-item */
+}
+
+.book-item img {
+    max-width: 100%; 
+    height: auto;
+    border-radius: 8px; 
+    display: block; 
+    margin: 0 auto;
+}
+
+/* Ajuster la taille de la grille sur mobile */
+@media (max-width: 600px) {
+    .books-grid {
+        grid-template-columns: 1fr; /* Une seule colonne sur les petits écrans */
+    }
+}
+
+/* Swiper container */
 .swiper-container {
     width: 100%;
     height: auto;
@@ -173,50 +229,31 @@ body {
     display: inline-block;
 }
 
-.testimonial {
-    margin-bottom: 20px;
-}
-
-.testimonial p {
-    font-style: italic;
-}
-
 .testimonial span {
-    display: block;
     margin-top: 10px;
-    color: #ff3333; /* Rouge pour les noms */
+    color: #ff3333;
 }
 
-/* Section Abonnement à la Newsletter */
+/* Section Abonnement */
 .newsletter {
     background: #1e1e1e;
     padding: 40px 20px;
     text-align: center;
 }
 
-.newsletter h2 {
-    margin-bottom: 20px;
-    color: #ff3333; /* Rouge pour le titre */
-}
-
-.newsletter p {
-    margin-bottom: 20px;
-}
-
 .newsletter form {
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 .newsletter form input {
     padding: 10px;
     width: 250px;
     margin-right: 10px;
-    border: 1px solid #444;
-    border-radius: 4px;
     background-color: #2e2e2e;
     color: #f5f5f5;
+    border: 1px solid #444;
+    border-radius: 4px;
 }
 
 .newsletter form button {
@@ -234,8 +271,7 @@ body {
     transform: scale(1.05);
 }
 
-
-/* Animation de survol pour les boutons */
+/* Boutons et animations */
 .btn-primary, .btn-search {
     background-color: #ff3333;
     color: #f5f5f5;
@@ -259,30 +295,4 @@ body {
 .carousel-item:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     transform: translateY(-10px);
-}
-
-p {
-    color: #f5f5f5; /* Blanc pour les paragraphes */
-}
-
-ul {
-    margin-left: -20px;
-}
-
-ul a {    
-    text-decoration: none;
-    color: #f5f5f5; /* Blanc pour les liens */
-}
-
-h2 {
-    color: red;
-}
-
-ul {
-    margin-left: -20px;
-}
-
-ul a {    
-    text-decoration: none;
-    color: #f5f5f5; /* Blanc pour les liens */
 }

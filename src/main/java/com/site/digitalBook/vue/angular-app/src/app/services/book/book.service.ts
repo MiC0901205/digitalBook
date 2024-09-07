@@ -15,8 +15,12 @@ export class BookService {
   constructor(private http: HttpClient) { }
 
   // Méthode pour récupérer tous les livres
-  getBooks(): Observable<Book[]> {
-    return this.http.get<Book[]>(`${this.apiUrl}/books`).pipe(
+  getBooks(searchQuery?: string): Observable<Book[]> {
+    let url = `${this.apiUrl}/books`;
+    if (searchQuery) {
+      url += `?search=${encodeURIComponent(searchQuery)}`;
+    }
+    return this.http.get<Book[]>(url).pipe(
       catchError(this.handleError)
     );
   }

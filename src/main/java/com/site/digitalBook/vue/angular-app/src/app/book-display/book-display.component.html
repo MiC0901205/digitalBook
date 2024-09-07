@@ -51,11 +51,20 @@
   <!-- Content for Books -->
   <div class="content">
     <div class="book-list-section">
+      <!-- Barre de recherche -->
+      <div class="search-bar">
+        <input
+          type="text"
+          placeholder="Rechercher des livres..."
+          [(ngModel)]="searchQuery"
+          (ngModelChange)="filterBooks()"
+        />
+        <i class="fa fa-search search-icon"></i>
+      </div>
       <div class="header">
         <h1>Liste des Livres</h1>
         <button *ngIf="userProfile === 'ADMIN'" (click)="openAddBookModal()" class="add-button">Ajouter</button>
       </div>
-
       <!-- Message de succès -->
       <div *ngIf="showSuccessMessage" class="success-message">
         Livre ajouté avec succès !
