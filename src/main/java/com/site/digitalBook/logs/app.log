@@ -1265,3 +1265,282 @@ This generated password is for development use only. Your security configuration
 2024-09-08 20:12:27 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
 2024-09-08 20:12:27 [http-nio-8080-exec-4] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
 2024-09-08 20:12:27 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:23:02 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:23:02 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:23:03 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:23:03 [http-nio-8080-exec-8] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-08 20:23:03 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:23:03 [http-nio-8080-exec-8] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-08 20:23:03 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:25:38 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:25:38 [http-nio-8080-exec-3] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-08 20:25:38 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:25:38 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:25:38 [http-nio-8080-exec-7] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-08 20:25:38 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:25:38 [http-nio-8080-exec-3] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-08 20:25:38 [http-nio-8080-exec-7] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-08 20:25:39 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:25:39 [http-nio-8080-exec-9] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-08 20:25:39 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:25:39 [http-nio-8080-exec-9] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-08 20:25:40 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:29:48 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:29:48 [http-nio-8080-exec-8] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-08 20:29:48 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:29:48 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:29:48 [http-nio-8080-exec-6] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-08 20:29:48 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:29:48 [http-nio-8080-exec-8] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-08 20:29:48 [http-nio-8080-exec-6] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-08 20:29:50 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:29:50 [http-nio-8080-exec-3] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-08 20:29:50 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:29:50 [http-nio-8080-exec-3] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-08 20:29:50 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:30:54 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:30:54 [http-nio-8080-exec-2] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-08 20:30:54 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:30:54 [http-nio-8080-exec-2] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-08 20:30:56 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:30:56 [http-nio-8080-exec-10] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-08 20:30:56 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:30:56 [http-nio-8080-exec-10] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-08 20:30:56 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:32:54 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:32:54 [http-nio-8080-exec-10] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-08 20:32:54 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:32:54 [http-nio-8080-exec-10] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-08 20:32:55 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:32:55 [http-nio-8080-exec-7] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-08 20:32:55 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:32:55 [http-nio-8080-exec-7] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-08 20:32:56 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:32:56 [http-nio-8080-exec-1] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-08 20:32:56 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:32:56 [http-nio-8080-exec-1] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-08 20:32:56 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:36:55 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:36:55 [http-nio-8080-exec-10] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-08 20:36:55 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:36:55 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:36:55 [http-nio-8080-exec-7] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-08 20:36:55 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:36:55 [http-nio-8080-exec-10] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-08 20:36:55 [http-nio-8080-exec-7] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-08 20:36:56 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:36:56 [http-nio-8080-exec-6] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-08 20:36:56 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:36:56 [http-nio-8080-exec-6] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-08 20:36:56 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:38:09 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:38:09 [http-nio-8080-exec-3] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-08 20:38:09 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:38:09 [http-nio-8080-exec-3] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-08 20:38:10 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:38:10 [http-nio-8080-exec-9] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-08 20:38:10 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:38:10 [http-nio-8080-exec-9] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-08 20:38:10 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:39:36 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:39:36 [http-nio-8080-exec-9] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-08 20:39:36 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:39:36 [http-nio-8080-exec-9] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-08 20:39:36 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:39:41 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:39:41 [http-nio-8080-exec-4] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-08 20:39:41 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:39:41 [http-nio-8080-exec-4] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-08 20:39:42 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:39:42 [http-nio-8080-exec-9] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-08 20:39:42 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:39:42 [http-nio-8080-exec-9] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-08 20:39:42 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:39:53 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:39:53 [http-nio-8080-exec-2] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-08 20:39:53 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:39:53 [http-nio-8080-exec-2] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-08 20:39:54 [http-nio-8080-exec-9] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-08 20:39:54 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:39:54 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:39:54 [http-nio-8080-exec-9] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-08 20:39:54 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:40:54 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:40:54 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:40:54 [http-nio-8080-exec-8] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-08 20:40:54 [http-nio-8080-exec-8] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-08 20:40:55 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:40:55 [http-nio-8080-exec-3] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-08 20:40:55 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:40:55 [http-nio-8080-exec-3] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-08 20:40:56 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:40:56 [http-nio-8080-exec-10] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-08 20:40:56 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:40:56 [http-nio-8080-exec-10] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-08 20:40:56 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:41:03 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 39
+2024-09-08 20:41:03 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:41:03 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:41:05 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:41:05 [http-nio-8080-exec-8] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-08 20:41:05 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:41:05 [http-nio-8080-exec-8] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-08 20:41:05 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:41:09 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:41:11 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:41:15 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 10
+2024-09-08 20:41:15 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:41:15 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:42:22 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 10
+2024-09-08 20:42:23 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 10
+2024-09-08 20:42:23 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:42:23 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:42:28 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 10
+2024-09-08 20:42:28 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 10
+2024-09-08 20:42:28 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:42:28 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:42:29 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:42:29 [http-nio-8080-exec-7] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-08 20:42:29 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:42:29 [http-nio-8080-exec-7] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-08 20:42:29 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:42:30 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
+2024-09-08 20:42:30 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:42:30 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:42:51 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
+2024-09-08 20:42:52 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
+2024-09-08 20:42:52 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:42:52 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:45:17 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
+2024-09-08 20:45:18 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
+2024-09-08 20:45:18 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:45:18 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:47:13 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
+2024-09-08 20:47:13 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.BookService - Récupération des livres par catégorie : Romance
+2024-09-08 20:47:13 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
+2024-09-08 20:47:13 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.BookService - Récupération des livres par catégorie : Action & Adventure
+2024-09-08 20:47:13 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
+2024-09-08 20:47:13 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:47:13 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:47:13 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.BookService - Récupération des livres par catégorie : Humorous
+2024-09-08 20:47:14 [http-nio-8080-exec-6] WARN  c.s.digitalBook.service.CartService - Panier non trouvé pour l'utilisateur avec l'ID: 31
+2024-09-08 20:47:35 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.CartService - Ajout du livre avec l'ID 2 au panier de l'utilisateur avec l'ID 31
+2024-09-08 20:47:35 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.CartService - Livre avec l'ID 2 ajouté au panier de l'utilisateur avec l'ID 31
+2024-09-08 20:47:35 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 31
+2024-09-08 20:47:35 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 31: 1
+2024-09-08 20:47:36 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:47:36 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:47:36 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 31
+2024-09-08 20:47:37 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:47:37 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 31
+2024-09-08 20:47:38 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:47:38 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:47:38 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 31
+2024-09-08 20:47:39 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:47:39 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:47:41 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:47:41 [http-nio-8080-exec-4] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-08 20:47:41 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:47:41 [http-nio-8080-exec-4] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-08 20:47:42 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:47:42 [http-nio-8080-exec-10] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-08 20:47:42 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:47:42 [http-nio-8080-exec-10] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-08 20:47:42 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:47:47 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 3
+2024-09-08 20:47:47 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:47:47 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:47:47 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.BookService - Récupération des livres par catégorie : Mystery & Detective
+2024-09-08 20:47:47 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 31
+2024-09-08 20:51:01 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 3
+2024-09-08 20:51:01 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.BookService - Récupération des livres par catégorie : Mystery & Detective
+2024-09-08 20:51:02 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 3
+2024-09-08 20:51:02 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:51:02 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:51:02 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération des livres par catégorie : Mystery & Detective
+2024-09-08 20:51:02 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 31
+2024-09-08 20:54:39 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 3
+2024-09-08 20:54:39 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.BookService - Récupération des livres par catégorie : Mystery & Detective
+2024-09-08 20:54:40 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 3
+2024-09-08 20:54:40 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:54:40 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:54:41 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.BookService - Récupération des livres par catégorie : Mystery & Detective
+2024-09-08 20:54:41 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 31
+2024-09-08 20:54:47 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:54:47 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 20:58:42 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:58:42 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:58:44 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 20:58:44 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 21:01:40 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 21:01:40 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 21:01:41 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 21:01:41 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 21:03:56 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 21:03:57 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 21:03:57 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 21:04:04 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 3
+2024-09-08 21:04:04 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 21:04:04 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 21:04:04 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération des livres par catégorie : Mystery & Detective
+2024-09-08 21:04:04 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 31
+2024-09-08 21:04:08 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.CartService - Ajout du livre avec l'ID 3 au panier de l'utilisateur avec l'ID 31
+2024-09-08 21:04:08 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.CartService - Livre avec l'ID 3 ajouté au panier de l'utilisateur avec l'ID 31
+2024-09-08 21:04:08 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 31
+2024-09-08 21:04:08 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 31: 2
+2024-09-08 21:04:09 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 21:04:09 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 21:04:09 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 31
+2024-09-08 21:04:11 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Suppression du livre avec l'ID 2 du panier de l'utilisateur avec l'ID 31
+2024-09-08 21:04:11 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 31
+2024-09-08 21:04:11 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Livre avec l'ID 2 supprimé du panier de l'utilisateur avec l'ID 31
+2024-09-08 21:04:11 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 31
+2024-09-08 21:04:11 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 31
+2024-09-08 21:04:11 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 31: 1
+2024-09-08 21:04:11 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 21:04:11 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 21:04:14 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 4
+2024-09-08 21:04:14 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 21:04:14 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 21:04:14 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.BookService - Récupération des livres par catégorie : Classics
+2024-09-08 21:04:14 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 31
+2024-09-08 21:04:15 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 21:04:15 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 21:04:15 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 31
+2024-09-08 21:04:16 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.CartService - Suppression du livre avec l'ID 3 du panier de l'utilisateur avec l'ID 31
+2024-09-08 21:04:16 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 31
+2024-09-08 21:04:16 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.CartService - Livre avec l'ID 3 supprimé du panier de l'utilisateur avec l'ID 31
+2024-09-08 21:04:16 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 31
+2024-09-08 21:04:16 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 31
+2024-09-08 21:04:16 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 31: 0
+2024-09-08 21:04:17 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 21:04:17 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 21:04:19 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
+2024-09-08 21:04:19 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 21:04:19 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 21:04:19 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération des livres par catégorie : Romance
+2024-09-08 21:04:19 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 31
+2024-09-08 21:04:20 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.CartService - Ajout du livre avec l'ID 2 au panier de l'utilisateur avec l'ID 31
+2024-09-08 21:04:20 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.CartService - Livre avec l'ID 2 ajouté au panier de l'utilisateur avec l'ID 31
+2024-09-08 21:04:20 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 31
+2024-09-08 21:04:20 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 31: 1
+2024-09-08 21:04:21 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 21:04:21 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 21:04:21 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 31
+2024-09-08 21:04:23 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 21:04:23 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 31
+2024-09-08 21:04:26 [http-nio-8080-exec-7] INFO  c.s.d.service.CommandeService - Commande ajoutée avec succès. ID: 72
+2024-09-08 21:04:26 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.EmailService - E-mail de confirmation de commande envoyé à l'adresse : m.pecheur09@gmail.com
+2024-09-08 21:04:26 [http-nio-8080-exec-7] INFO  c.s.d.service.CommandeService - E-mail de confirmation envoyé à l'adresse: m.pecheur09@gmail.com
+2024-09-08 21:04:26 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.CartService - Vidage du panier de l'utilisateur avec l'ID: 31
+2024-09-08 21:04:26 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 31
+2024-09-08 21:04:26 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.CartService - Panier de l'utilisateur avec l'ID 31 vidé avec succès
+2024-09-08 21:04:26 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 31
+2024-09-08 21:04:26 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 31: 0
+2024-09-08 21:04:29 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 21:04:29 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 21:04:31 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 21:04:31 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-08 21:04:31 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 31
+2024-09-08 21:04:36 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-08 21:04:36 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
