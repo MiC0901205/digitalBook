@@ -12,7 +12,8 @@
 
 .footer-content {
     display: flex;
-    flex-wrap: wrap; /* Permet au footer de s'adapter aux écrans plus petits */
+    flex-wrap: wrap; /* Adaptation pour écrans plus petits */
+    justify-content: space-between;
     align-items: flex-start;
     max-width: 1200px;
     margin: 0 auto;
@@ -20,16 +21,17 @@
 }
 
 .footer-section {
-    width: 18%; /* Ajustez la largeur pour inclure plus de sections si nécessaire */
-    margin-bottom: 20px; /* Espace entre les sections */
+    flex: 1 1 200px; /* Ajustement dynamique des largeurs */
+    margin-bottom: 20px; /* Espacement entre sections */
 }
 
 .footer-section h3 {
-    color: #ff3333; /* Rouge pour les titres */
+    color: #ff3333;
     margin-bottom: 15px;
 }
 
-.footer-section p, .footer-section ul {
+.footer-section p,
+.footer-section ul {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -40,7 +42,7 @@
 }
 
 .footer-section ul li a {
-    color: #f5f5f5; /* Blanc pour les liens */
+    color: #f5f5f5;
     text-decoration: none;
 }
 
@@ -50,96 +52,94 @@
     border-top: 1px solid #333;
     padding-top: 20px;
     font-size: 14px;
-    margin-left: 40%;
 }
 
-/* Responsivité */
-@media (max-width: 768px) {
-    .footer-content {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .footer-section {
-        width: 100%;
-        text-align: center;
-        margin-bottom: 20px;
-    }
-}
-
-
-/* Section Réseaux Sociaux */
+/* Réseaux Sociaux */
 .social-media {
     text-align: center;
 }
 
 .social-media h3 {
-    color: #ff3333; /* Rouge pour le titre */
+    color: #ff3333;
     margin-bottom: 20px;
 }
 
 .social-icon {
     display: inline-block;
-    margin: 0 10px; /* Réduit l'espace entre les icônes */
-    text-decoration: none; /* Supprime le soulignement */
+    margin: 0 10px;
+    text-decoration: none;
 }
 
 .social-icon i {
-    font-size: 24px; /* Taille des icônes réduite */
-    color: #f5f5f5; /* Blanc pour les icônes */
-    transition: color 0.3s ease, transform 0.3s ease; 
+    font-size: 24px;
+    color: #f5f5f5;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .social-icon:hover i {
-    color: #ff3333; /* Rouge pour les icônes au survol */
-    transform: scale(1.1); /* Agrandir légèrement au survol */
+    color: #ff3333;
+    transform: scale(1.1);
 }
 
-.links {
-    margin-left: 50px;
+/* Footer responsive */
+@media (max-width: 1024px) {
+    .footer-content {
+        flex-direction: column; /* Stacking sections for narrower screens */
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-section {
+        width: 100%; /* Full width for sections on smaller screens */
+        margin-bottom: 20px;
+    }
 }
 
-.about {
-    margin-left: 100px;
+@media (max-width: 768px) {
+    .footer-section {
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer-bottom {
+        margin-left: 0; /* Centers the text on mobile */
+    }
+
+    .social-media h3 {
+        font-size: 1.5rem;
+    }
 }
 
-/* Style pour la politique de confidentialité dans le footer */
-.privacy-policy, .terms-of-use, .cookies-policy, .retraction, .sales-conditions {
-    background-color: #2c2c2c; /* Fond légèrement plus clair pour différencier de la section générale */
+/* Style spécifique pour les pages légales */
+.privacy-policy,
+.terms-of-use,
+.cookies-policy,
+.retraction,
+.sales-conditions {
+    background-color: #2c2c2c;
     color: #f5f5f5;
-    padding: 30px; /* Augmente l'espace intérieur */
-    border-radius: 8px; /* Coins arrondis pour un effet plus doux */
-    max-width: 2000px; /* Largeur maximale pour une meilleure lisibilité */
-    width: 1200px;
-    margin: 20px auto; /* Centrage horizontal et espace autour */
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 100%;
+    margin: 20px auto;
+    width: 90%;
 }
 
-.privacy-policy h1 {
-    color: #ff3333;
-    margin-left: 30%;
-}
-
-.terms-of-use h1 {
-    color: #ff3333;
-    margin-left: 32%;
-}
-
-.cookies-policy h1 {
-    color: #ff3333;
-    margin-left: 27%;
-}
-
+.privacy-policy h1,
+.terms-of-use h1,
+.cookies-policy h1,
+.retraction h1,
 .sales-conditions h1 {
     color: #ff3333;
-    margin-left: 27%;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-.retraction h1 {
-    color: #ff3333;
-    margin-left: 35%;
-}
-
-.privacy-policy h2, .terms-of-use h2, .cookies-policy h2, .retraction h2, .sales-conditions h2 {
+.privacy-policy h2,
+.terms-of-use h2,
+.cookies-policy h2,
+.retraction h2,
+.sales-conditions h2 {
     color: #f60909;
     font-size: 1.8em;
     margin-top: 20px;
@@ -147,44 +147,73 @@
     font-weight: bold;
 }
 
-.privacy-policy p, .terms-of-use p, .cookies-policy p, .retraction p, .sales-conditions p {
-    font-size: 0.9em; 
+.privacy-policy p,
+.terms-of-use p,
+.cookies-policy p,
+.retraction p,
+.sales-conditions p {
+    font-size: 0.9em;
     margin-bottom: 20px;
-    line-height: 1.8; 
+    line-height: 1.8;
 }
 
-.privacy-policy ul, .terms-of-use ul, .cookies-policy ul, .retraction ul, .sales-conditions ul {
+.privacy-policy ul,
+.terms-of-use ul,
+.cookies-policy ul,
+.retraction ul,
+.sales-conditions ul {
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-.privacy-policy ul li, .terms-of-use ul li, .cookies-policy ul li, .retraction ul li, .sales-conditions ul li {
-    margin-bottom: 15px;
+.privacy-policy ul li a,
+.terms-of-use ul li a,
+.cookies-policy ul li a,
+.retraction ul li a,
+.sales-conditions ul li a {
+    color: #ff3333;
+    text-decoration: none;
 }
 
-.privacy-policy ul li a, .terms-of-use ul li a, .cookies-policy ul li a, .retraction ul li a, .sales-conditions ul li a {
-    color: #ff3333; /* Couleur des liens */
-    text-decoration: none; /* Supprime le soulignement */
+.privacy-policy ul li a:hover,
+.terms-of-use ul li a:hover,
+.cookies-policy ul li a:hover,
+.retraction ul li a:hover,
+.sales-conditions ul li a:hover {
+    text-decoration: underline;
 }
 
-.privacy-policy ul li a:hover, .terms-of-use ul li a:hover, .cookies-policy ul li a:hover, .retraction ul li a:hover, .sales-conditions ul li a:hover {
-    text-decoration: underline; /* Souligner les liens au survol */
-}
-
+/* Bouton retour en haut */
 .back-to-top {
-    position: absolute; /* Fixe l'élément par rapport à la fenêtre */
-    top: 20px; /* Distance par rapport au haut de la fenêtre */
-    left: 20px; /* Distance par rapport au côté gauche de la fenêtre */
-    background-color: #000; /* Couleur de fond noire */
-    color: #fff; /* Couleur du texte blanche */
-    padding: 10px 15px; /* Espacement interne autour du texte */
-    border-radius: 5px; /* Coins arrondis */
-    text-decoration: none; /* Pas de soulignement de lien */
-    font-size: 16px; /* Taille du texte */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ombre pour effet de profondeur */
-    z-index: 1000; /* Met l'élément au-dessus des autres */
-    transition: background-color 0.3s ease; /* Transition douce sur le changement de couleur de fond */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #000;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+.back-to-top {
+    position: absolute; 
+    top: 20px; 
+    left: 20px;
+    background-color: #000;
+    color: #fff;
+    padding: 10px 15px; 
+    border-radius: 5px;
+    text-decoration: none; 
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000; 
+    transition: background-color 0.3s ease;
+    width: 70px;
+    height: 20px;
 }
 
 .back-to-top:hover {

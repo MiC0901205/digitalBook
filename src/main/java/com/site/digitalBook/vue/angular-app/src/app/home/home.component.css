@@ -172,6 +172,10 @@ h2 {
     margin: 0 auto;
 }
 
+.book-item h3 {
+    color: #ff3333;
+}
+
 /* Ajuster la taille de la grille sur mobile */
 @media (max-width: 600px) {
     .books-grid {
