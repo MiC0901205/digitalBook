@@ -5,6 +5,9 @@
     </a>
   </div>
   <ul class="navbar-menu">
+    <li class="welcome-message" *ngIf="isLoggedIn">
+      <p>Bienvenue {{ userName }}!</p>
+    </li>
     <div class="cart-container">
       <a routerLink="/cart" class="cart-link">
         <i class="fa fa-shopping-cart cart-icon"></i> <!-- Icône de panier -->

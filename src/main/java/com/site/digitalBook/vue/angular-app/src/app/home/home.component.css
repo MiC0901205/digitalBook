@@ -32,16 +32,17 @@ h2 {
 /* Section Héro */
 .hero {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: url('../../assets/icons/banner.jpg') no-repeat center center/cover;
+    background: url('../../assets/icons/banner.png') no-repeat center center/cover;
     height: 400px;
     color: #f5f5f5;
-    width: 100vw; /* Prendre toute la largeur de la fenêtre de visualisation */
-    position: relative; /* Nécessaire pour ajuster les éléments internes si besoin */
-    overflow: hidden; /* Assurer qu'aucun débordement ne soit visible */
-    margin: 0; /* Enlever les marges pour s'assurer que ça prenne toute la largeur */
-    padding: 0; /* Enlever les paddings pour s'assurer que ça prenne toute la largeur */
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
 }
 
 /* Contenu de la section héro */
@@ -50,14 +51,54 @@ h2 {
     max-width: 600px;
     width: 100%;
     z-index: 2;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .hero-content h1 {
-    color: red;
+    color: rgb(248, 248, 248);
+    font-size: 2rem;
 }
 
 .hero-content p {
-    color: rgba(157, 3, 3, 0.682);
+    color: rgba(224, 224, 224, 0.682);
+    font-size: 1rem;
+}
+
+/* Ajuster l'image de fond pour les petits écrans */
+@media (max-width: 768px) {
+    .hero {
+        height: 300px;
+        background-size: cover;
+        background-position: center top;
+    }
+
+    .hero-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        height: 200px;
+        background-position: center;
+    }
+
+    .hero-content {
+        padding: 10px;
+    }
+
+    .hero-content h1 {
+        font-size: 1.2rem;
+    }
+
+    .hero-content p {
+        font-size: 0.8rem;
+    }
 }
 
 /* Image héro */
@@ -65,7 +106,7 @@ h2 {
     display: none; /* Cacher l'image pour ne montrer que le background */
 }
 
-/* Search bar */
+/* Barre de recherche */
 .search-container {
     display: flex;
     align-items: center;
@@ -123,32 +164,32 @@ h2 {
     color: #ff3333;
 }
 
+/* Livres mis en avant */
 .featured-books {
     padding: 40px 20px;
     text-align: center;
-    width: 100%; /* Assurer que le conteneur prend toute la largeur disponible */
-    max-width: 1200px; /* Limiter la largeur maximale pour ne pas trop étendre */
+    width: 100%;
+    max-width: 1200px;
     margin-bottom: -50px;
-    margin-left: auto; /* Centre le conteneur horizontalement */
-    margin-right: auto; /* Centre le conteneur horizontalement */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Container pour les livres */
 .book-container {
-    display: grid; /* Utilise grid layout */
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* 4 colonnes flexibles */
-    gap: 20px; /* Espace entre les livres */
-    width: 100%; /* S'assurer que le conteneur prend toute la largeur disponible */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    width: 100%;
     margin-bottom: 10px;
-    margin-left: auto; /* Centre le conteneur horizontalement */
-    margin-right: auto; /* Centre le conteneur horizontalement */
-    max-width: 1200px; /* Limiter la largeur maximale pour ne pas trop étendre */
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
 }
 
-/* Ajuster la taille de la grille sur mobile */
 @media (max-width: 600px) {
     .book-container {
-        grid-template-columns: 1fr; /* Une seule colonne sur les petits écrans */
+        grid-template-columns: 1fr;
     }
 }
 
@@ -159,28 +200,21 @@ h2 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 100%;
     height: 95%;
-    max-width: 200px; /* Largeur maximale de chaque livre */
-    box-sizing: border-box; /* S'assurer que padding est inclus dans la taille */
-    margin: 0 auto; /* Centre chaque élément book-item */
+    max-width: 200px;
+    box-sizing: border-box;
+    margin: 0 auto;
 }
 
 .book-item img {
-    max-width: 100%; 
+    max-width: 100%;
     height: auto;
-    border-radius: 8px; 
-    display: block; 
+    border-radius: 8px;
+    display: block;
     margin: 0 auto;
 }
 
 .book-item h3 {
     color: #ff3333;
-}
-
-/* Ajuster la taille de la grille sur mobile */
-@media (max-width: 600px) {
-    .books-grid {
-        grid-template-columns: 1fr; /* Une seule colonne sur les petits écrans */
-    }
 }
 
 /* Swiper container */
@@ -205,7 +239,7 @@ h2 {
     color: #ff3333;
 }
 
-/* Vidéo de Présentation */
+/* Vidéo de présentation */
 .video-presentation {
     text-align: center;
     padding: 40px 20px;

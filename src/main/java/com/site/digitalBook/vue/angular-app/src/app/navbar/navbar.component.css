@@ -3,19 +3,21 @@
 }
 
 .navbar {
-    background-color: #111;
-    padding: 1rem;
+    background-color: #171717d9;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin-top: -10px;
     box-sizing: border-box;
+    position: relative;
+    margin-bottom: 5px;
+    padding: 0.5rem;
 }
 
 .navbar-brand h1 {
     color: #e00;
     margin: 0;
+    font-size: 2rem; /* Taille du titre pour les grands écrans */
 }
 
 .navbar-title {
@@ -25,8 +27,7 @@
 
 .navbar-title h1 {
     margin: 0;
-    font-size: 1.8rem;
-    display: inline;
+    font-size: 2rem; /* Taille du titre pour les grands écrans */
 }
 
 .navbar-title:hover h1 {
@@ -40,8 +41,23 @@
     display: flex;
     gap: 1rem;
     align-items: center;
+    flex: 1; /* Assure que le menu prend l'espace restant */
+    justify-content: center; /* Centre les éléments horizontalement */
 }
 
+.welcome-message {
+    text-align: center;
+    color: rgba(185, 1, 1, 0.629);
+    font-weight: bold;
+    flex: 1; /* Permet au message de prendre toute la largeur disponible */
+}
+
+/* Style du texte de bienvenue */
+.welcome-message p {
+    margin: 0;
+}
+
+/* Styles pour les éléments du menu */
 .navbar-menu li {
     position: relative;
 }
@@ -66,15 +82,16 @@
     cursor: pointer;
     display: flex;
     align-items: center;
+    margin: 0 0.5rem; /* Marge autour des icônes */
+}
+
+/* Pour aligner les icônes correctement dans la navbar */
+.navbar {
+    align-items: center; /* Assure que les icônes sont centrées verticalement */
 }
 
 .user-icon.logged-in {
     color: #0f0;
-}
-
-.user-icon {
-    margin-bottom: 4px;
-    margin-right: 15px;
 }
 
 .user-menu {
@@ -97,6 +114,7 @@
     display: block;
     cursor: pointer;
     user-select: none;
+    text-align: center;
 }
 
 .user-menu a:hover {
@@ -108,6 +126,7 @@
     position: relative;
     display: flex;
     align-items: center;
+    margin: 0 0.5rem; /* Marge autour du conteneur du panier */
 }
 
 .cart-link {
@@ -118,9 +137,9 @@
 }
 
 .cart-icon {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     color: #fff;
-    margin-right: 8px;
+    margin-right: 4px;
 }
 
 .cart-badge {
@@ -148,16 +167,19 @@
     }
 }
 
+/* Ajustements pour les petits écrans */
 @media (max-width: 768px) {
     .navbar {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        padding: 1rem; /* Ajoute du padding pour l'espace intérieur */
     }
 
     .navbar-menu {
         flex-direction: column;
         width: 100%;
         gap: 0.5rem;
+        justify-content: center; /* Assure le centrage vertical des éléments du menu */
     }
 
     .user-menu {
@@ -172,20 +194,25 @@
 }
 
 @media (max-width: 480px) {
-    .navbar-title h1 {
-        font-size: 1.5rem;
+    .navbar-brand h1 {
+        font-size: 1.5rem; /* Taille de police pour les très petits écrans */
+    }
+
+    .navbar-menu li a {
+        font-size: 0.8rem; /* Taille de police réduite pour les petits écrans */
+        padding: 0.5rem 0.7rem; /* Réduit le padding */
     }
 
     .user-icon, .cart-icon {
         font-size: 1.2rem;
     }
 
-    .user-menu a {
-        padding: 0.5rem;
-    }
-
     .cart-badge {
         font-size: 8px;
         padding: 2px 4px;
+    }
+
+    .user-menu {
+        top: 3.5rem; /* Ajuste la position du menu utilisateur */
     }
 }

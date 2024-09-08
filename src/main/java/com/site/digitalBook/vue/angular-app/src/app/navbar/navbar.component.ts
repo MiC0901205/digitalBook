@@ -1,4 +1,3 @@
-// navbar.component.ts
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';
@@ -23,6 +22,7 @@ export class NavbarComponent implements OnInit {
   showUserMenu = false;
   cartItemCount$: Observable<number> | undefined;
   userProfile: string | null = null;
+  userName: string | null = null;
 
   constructor(
     private authService: AuthService,
@@ -33,15 +33,17 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.checkLoginStatus();
     this.loadUserProfile();
-    this.cartItemCount$ = this.cartService.getCartItemCountObservable(); // Obtenir l'Observable pour le nombre d'articles
-    this.cartItemCount$.subscribe(count => {
-      console.log('Cart item count updated in Navbar:', count); // Debugging
-    });
+    this.cartItemCount$ = this.cartService.getCartItemCountObservable();
   }
 
   checkLoginStatus(): void {
     this.authService.isLoggedIn().subscribe(loggedIn => {
       this.isLoggedIn = loggedIn;
+      if (loggedIn) {
+        this.authService.getCurrentUser().subscribe(user => {
+          this.userName = user.data.prenom; 
+        });
+      }
     });
   }
 
@@ -60,6 +62,7 @@ export class NavbarComponent implements OnInit {
   logout(): void {
     this.authService.logout().subscribe(() => {
       this.isLoggedIn = false;
+      this.userName = null;
       this.router.navigate(['/login']);
     });
   }
