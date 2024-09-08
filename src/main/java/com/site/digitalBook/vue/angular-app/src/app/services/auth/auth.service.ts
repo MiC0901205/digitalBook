@@ -35,6 +35,7 @@ export class AuthService {
           if (localStorage) {
             localStorage.setItem('userToken', response.token);
             localStorage.setItem('userProfile', response.data.profil);
+            localStorage.setItem('userEmail', email);  
             this.isLoggedInSubject.next(true);
           }
         }
@@ -120,11 +121,11 @@ export class AuthService {
     if (!email) {
       return throwError(() => new Error('Email non trouvé dans le localStorage'));
     }
-
+  
     const headers = new HttpHeaders({
       'Email': email
     });
-
+  
     return this.http.get<{ data: User }>(`${this.apiUrl}/current-user`, { headers }).pipe(
       catchError(error => {
         console.error('Erreur lors de la récupération de l\'utilisateur courant:', error);

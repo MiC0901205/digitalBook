@@ -72,8 +72,19 @@ export class CartValidationComponent implements OnInit {
   }
 
   calculateTotal(): void {
-    this.total = this.cartItems.reduce((acc, item) => acc + (item.prix || 0), 0);
+    this.total = this.cartItems.reduce((acc, item) => {
+      const discountedPrice = this.calculateDiscountedPrice(item.prix, item.remise);
+      return acc + discountedPrice;
+    }, 0);
   }
+  
+  calculateDiscountedPrice(price: number, discount: number): number {
+    if (discount > 0) {
+      return parseFloat((price * (1 - discount / 100)).toFixed(2));
+    }
+    return price;
+  }
+  
 
   selectPaymentMethod(method: string): void {
     this.selectedPaymentMethod = method;
