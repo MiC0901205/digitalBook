@@ -88,11 +88,11 @@ export class CartValidationComponent implements OnInit {
     if (this.userId !== undefined && this.paymentForm.valid) {
       // Utilisation de l'heure locale actuelle
       const currentDate = new Date();
-  
+      
       // Créer une chaîne ISO avec l'heure locale française
       const offset = currentDate.getTimezoneOffset(); // Décalage de fuseau horaire en minutes
       const localDate = new Date(currentDate.getTime() - offset * 60 * 1000); // Ajustement de l'heure en utilisant le décalage
-  
+      
       const commande: Commande = {
         user: { id: this.userId },
         prixTotal: this.total,
@@ -100,28 +100,33 @@ export class CartValidationComponent implements OnInit {
         dateCreation: localDate.toISOString().slice(0, 19), // Supprime le 'Z' à la fin pour éviter la confusion UTC
         livreIds: this.cartItems.map(item => item.id)
       };
-  
+      
       try {
         const response = await this.orderService.createCommande(commande).toPromise();
-  
+        
         // Télécharge les PDFs associés aux livres
         this.downloadPdfs();
-  
+        
+        // Vide le panier
         this.cartService.clearCart(this.userId!).subscribe({
-          next: () => {},
+          next: () => {
+            // Met à jour le compteur du panier après avoir vidé le panier
+            this.cartService.updateCartItemCount(this.userId!);
+          },
           error: (err) => console.error('Erreur lors du vidage du panier:', err)
         });
-  
+        
         this.showSuccessMessage = true;
         setTimeout(() => {
           this.router.navigate(['/']);
         }, 3000);
-  
+        
       } catch (err) {
         console.error('Erreur lors de la création de la commande:', err);
       }
     }
   }
+  
   
 
   formatCvv(event: Event): void {

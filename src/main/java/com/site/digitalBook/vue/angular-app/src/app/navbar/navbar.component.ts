@@ -34,6 +34,9 @@ export class NavbarComponent implements OnInit {
     this.checkLoginStatus();
     this.loadUserProfile();
     this.cartItemCount$ = this.cartService.getCartItemCountObservable(); // Obtenir l'Observable pour le nombre d'articles
+    this.cartItemCount$.subscribe(count => {
+      console.log('Cart item count updated in Navbar:', count); // Debugging
+    });
   }
 
   checkLoginStatus(): void {
