@@ -26,9 +26,8 @@ export class BookDetailComponent implements OnInit {
   book: Book | null = null;
   recommendedBooks: Book[] = [];
   formattedCategories: string = '';
-  userId?: number; // Utilisez undefined pour indiquer que la valeur n'est pas encore définie
-  isInCart: boolean = false; // État pour vérifier si le livre est dans le panier
-  cartItems: Book[] = []; // Assurez-vous de définir cartItems comme un tableau de Book
+  userId?: number;
+  isInCart: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -36,32 +35,35 @@ export class BookDetailComponent implements OnInit {
     private cartService: CartService,
     private router: Router,
     private authService: AuthService,
-    private cookieService: CookieService // Ajouter CookieService ici
+    private cookieService: CookieService
   ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const id = Number(params.get('id'));
 
-      this.bookService.getBookById(id).subscribe({
-        next: (response: Book) => {
-          this.book = response;
+      if (id) {
+        this.bookService.getBookById(id).subscribe({
+          next: (response: any) => {
+            console.log('Détails du livre reçus:', response);
+            this.book = response.data; // Ajustez en fonction de votre réponse API
 
-          this.formattedCategories = this.formatCategories(response.categories || []);
-
-          if (this.book.categories && this.book.categories.length > 0) {
-            this.loadRecommendedBooks(this.book.categories[0].name);
-          }
-
-          // Assurez-vous que userId a bien été récupéré avant d'appeler cette méthode
-          this.checkIfBookIsInCart();
-        },
-        error: (err: any) => console.error('Erreur lors de la récupération des détails du livre', err)
-      });
+            if (this.book) {
+              this.formattedCategories = this.formatCategories(this.book.categories || []);
+              if (this.book.categories && this.book.categories.length > 0) {
+                this.loadRecommendedBooks(this.book.categories[0].name);
+              }
+              this.checkIfBookIsInCart();
+            }
+          },
+          error: (err: any) => console.error('Erreur lors de la récupération des détails du livre', err)
+        });
+      }
     });
 
     this.authService.getUserId().subscribe({
       next: (id: number) => {
+        console.log('ID utilisateur récupéré:', id);
         this.userId = id;
         if (this.book) {
           this.checkIfBookIsInCart();
@@ -77,46 +79,52 @@ export class BookDetailComponent implements OnInit {
 
   addToCart(book: Book): void {
     if (this.userId !== undefined) {
-      // Si l'utilisateur est connecté
       if (book.id && !this.isInCart) {
-
         this.cartService.addToCart(this.userId, book.id).subscribe({
           next: () => {
             if (this.userId !== undefined) {
               this.cartService.updateCartItemCount(this.userId);
             }
             this.isInCart = true;
+            console.log('Livre ajouté au panier:', book);
           },
           error: (err: any) => console.error('Erreur lors de l\'ajout du livre au panier', err)
         });
       }
     } else {
-      // Si l'utilisateur n'est pas connecté, utiliser les cookies
       this.addToCartInCookies(book);
     }
   }
-
 
   private addToCartInCookies(book: Book): void {
     const cartCookie = this.cookieService.get('cart') || '[]';
     const cart: Book[] = JSON.parse(cartCookie);
 
-    // Vérifiez si le livre est déjà dans le panier
     if (!cart.some(item => item.id === book.id)) {
       cart.push(book);
       this.cookieService.set('cart', JSON.stringify(cart));
+      console.log('Livre ajouté aux cookies:', book);
     }
   }
 
   private loadRecommendedBooks(category: string): void {
-
     this.bookService.getBooksByCategory(category).subscribe({
-      next: (books: Book[]) => {
-        this.recommendedBooks = books.filter(b => b.id !== this.book?.id);
+      next: (response: any) => {
+        console.log('Réponse reçue pour les livres recommandés:', response);
+        
+        // Supposons que la réponse contient une propriété 'data' qui est un tableau
+        const books = response.data as Book[];
+  
+        if (Array.isArray(books)) {
+          this.recommendedBooks = books.filter(b => b.id !== this.book?.id);
+        } else {
+          console.error('La réponse API ne contient pas un tableau de livres.');
+        }
       },
       error: (err: any) => console.error('Erreur lors de la récupération des livres recommandés', err)
     });
   }
+  
 
   calculateDiscountedPrice(price: number, discount: number): string {
     if (discount > 0) {
@@ -127,19 +135,15 @@ export class BookDetailComponent implements OnInit {
   }
 
   private formatCategories(categories: { name: string }[]): string {
-    const formatted = categories.map(categorie => categorie.name.trim()).join(' ,  ');
-    return formatted;
+    return categories.map(categorie => categorie.name.trim()).join(' ,  ');
   }
 
   private checkIfBookIsInCart(): void {
-
     if (this.userId !== undefined && this.book?.id !== undefined) {
-
       this.cartService.getCartItems(this.userId).subscribe({
         next: (response: any) => {
-
+          console.log('Éléments du panier reçus:', response);
           const cartItems: Book[] = response.data || [];
-
           this.isInCart = cartItems.some((item: Book) => item.id === this.book?.id);
         },
         error: (err: any) => console.error('Erreur lors de la récupération des éléments du panier', err)

@@ -43,13 +43,20 @@ export class HomeComponent implements OnInit {
 
   loadFeaturedBooks(): void {
     this.bookService.getBooks().subscribe({
-      next: (response: Book[]) => {
-        this.featuredBooks = response.slice(0, this.FEATURED_BOOK_COUNT);
+      next: (response: any) => {
+        // Vérifiez que 'response' est un objet avec une clé 'data' qui est un tableau
+        if (response && Array.isArray(response.data)) {
+          this.featuredBooks = response.data.slice(0, this.FEATURED_BOOK_COUNT);
+        } else {
+          console.error('La réponse de l\'API est mal formatée ou la propriété data n\'est pas un tableau', response);
+        }
       },
-      error: (err) => console.error('Erreur lors de la récupération des livres', err)
+      error: (err: any) => console.error('Erreur lors de la récupération des livres', err)
     });
   }
   
+
+
   viewBookDetail(bookId: number): void {
     console.log('Viewing book detail:', bookId);
     this.router.navigate(['/book-detail', bookId]);

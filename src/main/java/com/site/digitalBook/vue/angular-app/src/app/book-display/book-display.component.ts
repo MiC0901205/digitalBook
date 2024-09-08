@@ -26,6 +26,7 @@ import { AuthService } from '../services/auth/auth.service';
 export class BookDisplayComponent implements OnInit {
   books: Book[] = [];
   filteredBooks: Book[] = [];
+
   paginatedBooks: Book[] = [];
   categories: Categorie[] = [];
   filters = {
@@ -137,24 +138,31 @@ export class BookDisplayComponent implements OnInit {
 
   filterBooks(): void {
     console.log('Performing search with query:', this.searchQuery);
-    this.bookService.getBooks().subscribe((response) => {
-      this.books = response;
-      console.log('All Books:', this.books);
-      this.filteredBooks = this.books.filter(book => {
-        const matchesCategory = this.selectedCategory 
-          ? book.categories.some(categorie => categorie.id === this.selectedCategory)
-          : true;
-        const matchesPromotion = this.filters.promotion ? book.remise > 0 : true;
-        const matchesPrix = book.prix <= this.filters.prixMax;
-        const matchesSearch = book.titre.toLowerCase().includes(this.searchQuery.toLowerCase()) || 
-                              book.auteur.toLowerCase().includes(this.searchQuery.toLowerCase());
-        
-        return matchesCategory && matchesPromotion && matchesPrix && matchesSearch;
-      });
-      
-      console.log('Filtered Books:', this.filteredBooks);
-      this.updatePagination();
-      this.paginate();
+    this.bookService.getBooks().subscribe({
+      next: (response: any) => { 
+        // Vérifiez que 'response' est un objet avec une clé 'data' qui est un tableau
+        if (response && Array.isArray(response.data)) {
+          this.books = response.data; // Assigner le tableau de livres à 'this.books'
+          
+          // Appliquer les filtres
+          this.filteredBooks = this.books.filter(book => {
+            const matchesCategory = this.selectedCategory 
+              ? book.categories.some(categorie => categorie.id === this.selectedCategory)
+              : true;
+            const matchesPromotion = this.filters.promotion ? book.remise > 0 : true;
+            const matchesPrix = book.prix <= this.filters.prixMax;
+            const matchesSearch = book.titre.toLowerCase().includes(this.searchQuery.toLowerCase()) || 
+                                  book.auteur.toLowerCase().includes(this.searchQuery.toLowerCase());
+            
+            return matchesCategory && matchesPromotion && matchesPrix && matchesSearch;
+          });
+  
+          this.updatePagination();
+        } else {
+          console.error('La réponse de l\'API est mal formatée ou la propriété data n\'est pas un tableau', response);
+        }
+      },
+      error: (err) => console.error('Erreur lors de la récupération des livres', err)
     });
   }
 
@@ -233,15 +241,21 @@ export class BookDisplayComponent implements OnInit {
   
   private loadBooks(): void {
     this.bookService.getBooks().subscribe({
-      next: (response: Book[]) => {
-        this.books = response || [];
-        this.filteredBooks = this.books; 
-        this.updatePagination(); 
-        this.paginate();
+      next: (response: any) => { 
+        // Vérifiez que 'response' est un objet avec une clé 'data' qui est un tableau
+        if (response && Array.isArray(response.data)) {
+          this.books = response.data; // Assigner le tableau de livres à 'this.books'
+          this.filteredBooks = [...this.books]; // Crée une copie pour le filtrage
+          this.updatePagination();
+          this.paginate();
+        } else {
+          console.error('La réponse de l\'API est mal formatée ou la propriété data n\'est pas un tableau', response);
+        }
       },
       error: (err) => console.error('Erreur lors de la récupération des livres', err)
     });
   }
+  
 
   openAddBookModal(): void {
     this.newBook = {
@@ -261,15 +275,29 @@ export class BookDisplayComponent implements OnInit {
     this.isModalOpen = true;
   }
 
-  updatePagination(): void {
-    this.totalPages = Math.ceil(this.filteredBooks.length / this.itemsPerPage); // Utiliser filteredBooks pour la pagination
-    this.paginate(); // Met à jour les livres paginés
+  private updatePagination(): void {
+    this.totalPages = Math.ceil(this.filteredBooks.length / this.itemsPerPage);
+    
+    // Assurez-vous que `currentPage` est dans les limites valides
+    if (this.currentPage > this.totalPages) {
+      this.currentPage = this.totalPages;
+    }
+    
+    if (this.currentPage < 1) {
+      this.currentPage = 1;
+    }
+  
+    this.paginate();
   }
   
   paginate(): void {
-    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-    const endIndex = startIndex + this.itemsPerPage;
-    this.paginatedBooks = this.filteredBooks.slice(startIndex, endIndex);
+    if (Array.isArray(this.filteredBooks)) { 
+      const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+      const endIndex = Math.min(this.currentPage * this.itemsPerPage, this.filteredBooks.length);
+      this.paginatedBooks = this.filteredBooks.slice(startIndex, endIndex);
+    } else {
+      console.error('filteredBooks is not an array:', this.filteredBooks);
+    }
   }
   
   previousPage(): void {
@@ -278,13 +306,14 @@ export class BookDisplayComponent implements OnInit {
       this.paginate();
     }
   }
-
+  
   nextPage(): void {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
       this.paginate();
     }
   }
+  
   
   private updateItemsPerPage(): void {
     if (this.isBrowser) {

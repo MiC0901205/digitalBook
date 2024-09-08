@@ -7,17 +7,14 @@
 </div>
 
 <div class="book-detail-container">
-  <!-- Conteneur pour l'image du livre -->
   <div class="image-container">
     <img *ngIf="book" [src]="book.photos" [alt]="getImageAltText(book)" />
   </div>
-  
-  <!-- Conteneur pour les détails du livre -->
+
   <div class="info-container" *ngIf="book">
     <h1>{{ book.titre }}</h1>
     <h2>{{ book.auteur }}</h2>
-    
-    <!-- Affichage du prix avec ou sans promotion -->
+
     <p>
       <strong>Prix :</strong>
       <span *ngIf="book.remise > 0" class="original-price">{{ book.prix }}€</span>
@@ -28,7 +25,6 @@
       <span *ngIf="book.remise === 0">{{ book.prix }}€</span>
     </p>
 
-    <!-- Affichage des catégories -->
     <p><strong>Catégories :</strong>
       <span *ngIf="formattedCategories">
         {{ formattedCategories }}
@@ -39,7 +35,6 @@
       <span>Anglais</span>
     </p>
 
-    <!-- Ajout du bouton d'ajout au panier -->
     <div class="button-group">
       <button 
         (click)="addToCart(book)" 
@@ -53,13 +48,11 @@
   </div>
 </div>
 
-<!-- Description du livre -->
 <div class="description-container" *ngIf="book">
   <h1><strong>Description :</strong></h1>
   <p>{{ book.description }}</p>
 </div>
 
-<!-- Livres recommandés -->
 <div class="recommended-books-container" *ngIf="recommendedBooks.length > 0">
   <h1>Livres recommandés</h1>
   <div class="recommended-books-list">
@@ -85,5 +78,4 @@
   </div>
 </div>
 
-<!-- Footer -->
 <app-footer></app-footer>
