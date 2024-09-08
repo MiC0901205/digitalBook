@@ -1,0 +1,85 @@
+/* Style pour l'overlay de la modale */
+.privacy-modal-overlay {
+    position: fixed; /* Assurez-vous que l'overlay couvre tout l'écran */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Couleur d'arrière-plan semi-transparente */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Assurez-vous que l'overlay est au-dessus du contenu */
+  }
+  
+  /* Style pour la modale */
+  .privacy-modal {
+    position: relative; /* Assurez-vous que la modale est positionnée par rapport à l'overlay */
+    background-color: #000; /* Couleur de fond noire */
+    color: #fff; /* Couleur du texte blanche */
+    border-radius: 8px;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    z-index: 1001; /* Assurez-vous que la modale est au-dessus de l'overlay */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Ajouter une ombre légère pour la profondeur */
+  }
+  
+  /* Style pour les titres de la modale */
+  .modal-title {
+    color: red; /* Couleur du texte des titres en rouge */
+    margin-bottom: 20px; /* Espacement sous les titres */
+    font-size: 24px; /* Taille de police plus grande pour les titres */
+  }
+  
+  /* Style pour les paragraphes de la modale */
+  .modal-message {
+    margin-bottom: 20px; /* Espacement entre les paragraphes */
+    line-height: 1.6; /* Hauteur de ligne augmentée pour améliorer la lisibilité */
+  }
+  
+  /* Style pour les listes dans les paragraphes */
+  .modal-message ul {
+    margin-top: 10px; /* Espacement au-dessus des listes */
+    margin-bottom: 10px; /* Espacement en dessous des listes */
+    padding-left: 20px; /* Indentation des listes */
+    list-style-type: disc; /* Style de liste */
+    color: #fff; /* Couleur du texte des listes */
+  }
+  
+  /* Style pour les liens dans la modale */
+  .privacy-link {
+    color: #00f; /* Couleur des liens en bleu clair */
+    text-decoration: underline;
+  }
+  
+  /* Style pour les éléments strong */
+  .modal-message strong {
+    color: red; /* Couleur du texte des éléments strong en rouge */
+  }
+  
+  /* Style pour les boutons */
+  .modal-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px; /* Espacement au-dessus des boutons */
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px; /* Taille de police des boutons */
+  }
+  
+  .accept-btn {
+    background-color: green;
+    color: white;
+  }
+  
+  .reject-btn {
+    background-color: red;
+    color: white;
+  }
+  

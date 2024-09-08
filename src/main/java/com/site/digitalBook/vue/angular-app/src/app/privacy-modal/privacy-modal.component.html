@@ -1,0 +1,31 @@
+<div *ngIf="showModal" class="privacy-modal-overlay">
+    <div class="privacy-modal">
+      <h2 class="modal-title">Protection de vos données personnelles</h2>
+      <p class="modal-message">
+        Nous respectons votre vie privée et nous nous engageons à protéger vos données personnelles. Pour utiliser notre site, nous avons besoin de votre consentement pour collecter et traiter vos données personnelles.
+      </p>
+      <p class="modal-message">
+        <strong>Finalités du traitement :</strong>
+      </p>
+      <ul class="modal-list">
+        <li>Envoyer des informations pertinentes et des offres promotionnelles.</li>
+      </ul>
+      <p class="modal-message">
+        <strong>Durée de conservation :</strong>
+        Nous conserverons vos données pendant une période de 5 ans ou jusqu'à ce que vous retiriez votre consentement.
+      </p>
+      <p class="modal-message">
+        <strong>Vos droits :</strong>
+        Vous avez le droit d'accéder, de rectifier ou de supprimer vos données personnelles. Vous pouvez également retirer votre consentement à tout moment en contactant notre support à <a href="mailto:support.digitalbook&#64;proton.me">support.digitalbook&#64;proton.me</a>. Pour plus d'informations, consultez notre <a href="/footer/privacy" target="_blank" class="privacy-link">Politique de confidentialité</a>.
+      </p>
+      <p class="modal-message">
+        <strong>Consentement :</strong>
+        En cliquant sur "J'accepte", vous donnez votre consentement au traitement de vos données personnelles selon les conditions décrites ci-dessus.
+      </p>
+      <div class="modal-actions">
+        <button (click)="rejectPolicy()" class="btn reject-btn">Je refuse</button>
+        <button (click)="acceptPolicy()" class="btn accept-btn">J'accepte</button>
+      </div>
+    </div>
+  </div>
+  

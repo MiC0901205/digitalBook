@@ -1,14 +1,19 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { PrivacyModalComponent } from './privacy-modal/privacy-modal.component'; // Import de la modale
 
 @Component({
   selector: 'app-root',
-  template: '<router-outlet></router-outlet>',
+  template: `
+    <app-privacy-modal></app-privacy-modal> <!-- Ajout de la modale -->
+    <router-outlet></router-outlet>
+  `,
   standalone: true,
   imports: [
     RouterOutlet,
-    HttpClientModule // Assurez-vous que HttpClientModule est importé ici
+    HttpClientModule,
+    PrivacyModalComponent 
   ]
 })
 export class AppComponent {}

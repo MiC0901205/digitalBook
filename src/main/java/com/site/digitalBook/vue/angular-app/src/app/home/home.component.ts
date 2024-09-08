@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit {
       error: (err) => console.error('Erreur lors de la récupération des livres', err)
     });
   }
-
+  
   viewBookDetail(bookId: number): void {
     console.log('Viewing book detail:', bookId);
     this.router.navigate(['/book-detail', bookId]);
