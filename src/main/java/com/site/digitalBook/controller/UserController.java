@@ -24,6 +24,7 @@ import com.site.digitalBook.service.EmailService;
 import com.site.digitalBook.service.TokenBlacklistService;
 import com.site.digitalBook.service.UserService;
 import com.site.digitalBook.service.VerificationCodeStorageService;
+import com.site.digitalBook.service.VerificationCodeService;
 import com.site.digitalBook.util.JwtUtil;
 
 import jakarta.mail.MessagingException;
@@ -38,6 +39,7 @@ public class UserController {
 
     private final UserService userService;
     private final EmailService emailService;
+    private final VerificationCodeService verifService;
     private final VerificationCodeStorageService verificationCodeService;
     private final JwtUtil jwtUtil;
     private final TokenBlacklistService tokenBlacklistService;
@@ -51,12 +53,13 @@ public class UserController {
      * @param jwtUtil L'utilitaire pour gérer les opérations de jetons JWT.
      * @param tokenBlacklistService Le service pour gérer la liste noire des jetons.
      */
-    public UserController(UserService userService, EmailService emailService, VerificationCodeStorageService verificationCodeService, JwtUtil jwtUtil, TokenBlacklistService tokenBlacklistService) {
+    public UserController(UserService userService, EmailService emailService, VerificationCodeStorageService verificationCodeService, JwtUtil jwtUtil, TokenBlacklistService tokenBlacklistService, VerificationCodeService verifService) {
         this.userService = userService;
         this.emailService = emailService;
         this.verificationCodeService = verificationCodeService;
         this.jwtUtil = jwtUtil;
         this.tokenBlacklistService = tokenBlacklistService;
+        this.verifService = verifService;
     }
 
     /**
@@ -79,9 +82,9 @@ public class UserController {
             User newUser = userService.addUser(user);
 
             // Générer un code de vérification et l'envoyer par email
-            String code = emailService.generateVerificationCode();
+            String code = verifService.generateVerificationCode();
             emailService.sendConfirmationEmail(user.getEmail(), code);
-            emailService.saveCode(user.getEmail(), code);
+            verifService.saveCode(user.getEmail(), code);
 
             Payload payload = new Payload("Nouvel utilisateur ajouté. Veuillez vérifier votre email pour le code de confirmation.", newUser);
             return new ResponseEntity<>(payload, HttpStatus.CREATED);
@@ -96,7 +99,6 @@ public class UserController {
             return new ResponseEntity<>(payload, HttpStatus.BAD_REQUEST);
         }
     }
-
 
 
     /**
@@ -149,7 +151,7 @@ public class UserController {
 
         try {
             // Vérifier si le code est valide
-            boolean isValid = emailService.validateCode(email, code);
+            boolean isValid = verifService.validateCode(email, code);
 
             if (isValid) {
                 // Activer l'utilisateur

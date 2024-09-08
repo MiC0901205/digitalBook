@@ -1,27 +1,19 @@
 package com.site.digitalBook.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
-import jakarta.activation.FileDataSource;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
-
-import java.io.File;
-import java.security.SecureRandom;
-import java.util.Base64;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-import java.time.LocalDateTime;
-
 
 @Service
 public class EmailService {
 
     private final JavaMailSender mailSender;
-    private final ConcurrentMap<String, ConfirmationCode> codeStore = new ConcurrentHashMap<>();
+    private static final Logger logger = LoggerFactory.getLogger(EmailService.class);
 
     public EmailService(JavaMailSender mailSender) {
         this.mailSender = mailSender;
@@ -39,59 +31,10 @@ public class EmailService {
             helper.setText(text);
 
             mailSender.send(message);
+            logger.info("E-mail de confirmation envoyé à l'adresse : {}", to);
         } catch (MessagingException e) {
+            logger.error("Erreur lors de l'envoi de l'e-mail de confirmation à l'adresse : {}", to, e);
             throw e;
-        }
-    }
-
-    public String generateVerificationCode() {
-        SecureRandom random = new SecureRandom();
-        byte[] code = new byte[6]; // 6 bytes = 48 bits = 8 characters base64
-        random.nextBytes(code);
-        String generatedCode = Base64.getUrlEncoder().withoutPadding().encodeToString(code);
-        return generatedCode;
-    }
-
-    public void saveCode(String email, String code) {
-        codeStore.put(email, new ConfirmationCode(code, LocalDateTime.now().plusMinutes(10)));
-    }
-
-    public boolean validateCode(String email, String code) {
-        ConfirmationCode storedCode = codeStore.get(email);
-
-        if (storedCode != null && storedCode.getCode().equals(code)) {
-            if (storedCode.getExpiryDate().isAfter(LocalDateTime.now())) {
-                return true;
-            } else {
-                codeStore.remove(email);
-            }
-        }
-        return false;
-    }
-
-    private static class ConfirmationCode {
-        private final String code;
-        private final LocalDateTime expiryDate;
-
-        public ConfirmationCode(String code, LocalDateTime expiryDate) {
-            this.code = code;
-            this.expiryDate = expiryDate;
-        }
-
-        public String getCode() {
-            return code;
-        }
-
-        public LocalDateTime getExpiryDate() {
-            return expiryDate;
-        }
-
-        @Override
-        public String toString() {
-            return "ConfirmationCode{" +
-                    "code='" + code + '\'' +
-                    ", expiryDate=" + expiryDate +
-                    '}';
         }
     }
 
@@ -107,7 +50,9 @@ public class EmailService {
             helper.setText(text);
 
             mailSender.send(message);
+            logger.info("E-mail de réinitialisation de mot de passe envoyé à l'adresse : {}", to);
         } catch (MessagingException e) {
+            logger.error("Erreur lors de l'envoi de l'e-mail de réinitialisation de mot de passe à l'adresse : {}", to, e);
             throw e;
         }
     }
@@ -124,7 +69,9 @@ public class EmailService {
             helper.setText(text, true);
 
             mailSender.send(message);
+            logger.info("E-mail de confirmation de changement de mot de passe envoyé à l'adresse : {}", to);
         } catch (MessagingException e) {
+            logger.error("Erreur lors de l'envoi de l'e-mail de confirmation de changement de mot de passe à l'adresse : {}", to, e);
             throw e;
         }
     }
@@ -142,8 +89,9 @@ public class EmailService {
             helper.setText(text, true); 
 
             mailSender.send(message);
+            logger.info("E-mail de confirmation de commande envoyé à l'adresse : {}", to);
         } catch (MessagingException e) {
-            e.printStackTrace();
+            logger.error("Erreur lors de l'envoi de l'e-mail de confirmation de commande à l'adresse : {}", to, e);
             throw e;
         }
     }
@@ -157,9 +105,10 @@ public class EmailService {
             helper.setText(messageBody, true); // true pour le contenu HTML, false pour le texte brut
 
             mailSender.send(message);
+            logger.info("E-mail simple envoyé à l'adresse : {} avec le sujet : {}", to, subject);
         } catch (MessagingException e) {
+            logger.error("Erreur lors de l'envoi de l'e-mail simple à l'adresse : {} avec le sujet : {}", to, subject, e);
             throw e;
         }
     }
-
 }

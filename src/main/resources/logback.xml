@@ -1,0 +1,37 @@
+<configuration>
+
+    <!-- Console Appender (affiche tous les logs) -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <charset>UTF-8</charset> <!-- Définir l'encodage en UTF-8 -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Rolling File Appender for Non-DEBUG Logs -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>C:/Users/mpech/workspace/DigitalBook/src/main/java/com/site/digitalBook/logs/app.log</file>
+        <encoder>
+            <charset>UTF-8</charset> 
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+        <!-- Filter to exclude DEBUG logs -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG</level>
+            <onMatch>DENY</onMatch>
+            <onMismatch>ACCEPT</onMismatch>
+        </filter>
+        <!-- Rolling Policy -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/app-%d{yyyy-MM-dd}.log</fileNamePattern> <!-- Utiliser un chemin relatif -->
+            <maxHistory>30</maxHistory> <!-- Garder les logs pour 30 jours -->
+        </rollingPolicy>
+    </appender>
+
+    <!-- Log Level Configuration -->
+    <root level="DEBUG">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE" />
+    </root>
+
+</configuration>
