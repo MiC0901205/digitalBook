@@ -33,4 +33,5 @@ build/
 .vscode/
 /.metadata/
 # Ajout du dossier logs
-/src/main/java/com/site/digitalBook/logs/
+/src/main/java/com/site/digitalBook/logs/*.log
+
