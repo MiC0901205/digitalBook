@@ -742,3 +742,69 @@ This generated password is for development use only. Your security configuration
 2024-09-18 17:51:03 [http-nio-8080-exec-2] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
 2024-09-18 17:51:04 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
 2024-09-18 17:51:04 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
+2024-09-18 17:52:35 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-18 17:52:35 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-18 17:52:36 [http-nio-8080-exec-8] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 32
+2024-09-18 17:52:36 [http-nio-8080-exec-8] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
+2024-09-18 17:52:38 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
+2024-09-18 17:52:38 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
+2024-09-18 17:54:16 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-18 17:54:16 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-18 17:54:17 [http-nio-8080-exec-10] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 32
+2024-09-18 17:54:17 [http-nio-8080-exec-10] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
+2024-09-18 17:54:21 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-18 17:54:21 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-18 17:54:21 [http-nio-8080-exec-3] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 32
+2024-09-18 17:54:21 [http-nio-8080-exec-3] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
+2024-09-18 17:54:23 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
+2024-09-18 17:54:23 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
+2024-09-18 17:54:55 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-18 17:54:55 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-18 17:54:55 [http-nio-8080-exec-5] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 32
+2024-09-18 17:54:55 [http-nio-8080-exec-5] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
+2024-09-18 17:54:58 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
+2024-09-18 17:54:58 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
+2024-09-18 17:54:59 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
+2024-09-18 17:54:59 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
+2024-09-18 17:55:00 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
+2024-09-18 17:55:00 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
+2024-09-18 17:55:01 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
+2024-09-18 17:55:01 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
+2024-09-18 17:55:01 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
+2024-09-18 17:55:01 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
+2024-09-18 17:55:01 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
+2024-09-18 17:55:01 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
+2024-09-18 17:55:09 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
+2024-09-18 17:55:09 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
+2024-09-18 17:55:09 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
+2024-09-18 17:55:09 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
+2024-09-18 17:55:09 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
+2024-09-18 17:55:09 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
+2024-09-18 17:55:51 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-18 17:55:51 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-18 17:55:51 [http-nio-8080-exec-2] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 32
+2024-09-18 17:55:51 [http-nio-8080-exec-2] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
+2024-09-18 17:56:02 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-18 17:56:02 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-18 17:56:02 [http-nio-8080-exec-4] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 32
+2024-09-18 17:56:02 [http-nio-8080-exec-4] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
+2024-09-18 17:56:04 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-18 17:56:04 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-18 17:56:04 [http-nio-8080-exec-2] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 32
+2024-09-18 17:56:04 [http-nio-8080-exec-2] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
+2024-09-18 17:56:06 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
+2024-09-18 17:56:06 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
+2024-09-18 17:56:08 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
+2024-09-18 17:56:08 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
+2024-09-18 17:56:09 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
+2024-09-18 17:56:09 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
+2024-09-18 17:56:15 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-18 17:56:15 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-18 17:56:15 [http-nio-8080-exec-8] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 32
+2024-09-18 17:56:15 [http-nio-8080-exec-8] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
+2024-09-18 17:57:03 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-18 17:57:03 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-18 17:57:03 [http-nio-8080-exec-9] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 32
+2024-09-18 17:57:03 [http-nio-8080-exec-9] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
+2024-09-18 17:57:06 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
+2024-09-18 17:57:06 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
