@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { Book } from '../../interface/book.model'; // Assurez-vous que le modèle Book existe et est correct
 
 @Injectable({
@@ -25,10 +25,14 @@ export class BookService {
     );
   }
 
-  // Méthode pour récupérer un livre par son ID
-  getBookById(id: number): Observable<Book> {
-    return this.http.get<Book>(`${this.apiUrl}/books/${id}`);
+  getBookById(id: number): Observable<{ data: Book }> {
+    return this.http.get<{ data: Book }>(`${this.apiUrl}/books/${id}`).pipe(
+      map(response => response), 
+      catchError(this.handleError)
+    );
   }
+  
+  
 
   // Méthode pour récupérer les livres par catégorie
   getBooksByCategory(categoryName: string): Observable<Book[]> {

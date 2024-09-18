@@ -1,32 +1,32 @@
-2024-09-18 15:51:45 [main] INFO  c.s.d.DigitalBookApplication - Starting DigitalBookApplication using Java 17.0.2 with PID 6680 (C:\Users\mpech\workspace\DigitalBook\target\classes started by mpech in C:\Users\mpech\workspace\DigitalBook)
-2024-09-18 15:51:45 [main] INFO  c.s.d.DigitalBookApplication - No active profile set, falling back to 1 default profile: "default"
-2024-09-18 15:51:47 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-2024-09-18 15:51:47 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-09-18 15:51:47 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 275 ms. Found 5 JPA repository interfaces.
-2024-09-18 15:51:47 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-2024-09-18 15:51:47 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2024-09-18 15:51:47 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.site.digitalBook.repository.BookRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2024-09-18 15:51:47 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.site.digitalBook.repository.CartRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2024-09-18 15:51:47 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.site.digitalBook.repository.CategorieRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2024-09-18 15:51:47 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.site.digitalBook.repository.CommandeRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2024-09-18 15:51:47 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.site.digitalBook.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2024-09-18 15:51:47 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces.
-2024-09-18 15:51:49 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2024-09-18 15:51:49 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-2024-09-18 15:51:49 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2024-09-18 15:51:49 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.20]
-2024-09-18 15:51:49 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2024-09-18 15:51:49 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3708 ms
-2024-09-18 15:51:50 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
-2024-09-18 15:51:50 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2024-09-18 15:51:50 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-09-18 15:51:50 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2024-09-18 15:51:51 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@12f3fcd
-2024-09-18 15:51:51 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2024-09-18 15:51:51 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-09-18 15:51:51 [main] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2024-09-18 15:51:53 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-09-18 15:51:53 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "alter table attacher modify column commande_id integer not null" via JDBC [ALTER command denied to user 'admin_user'@'localhost' for table 'attacher']
+2024-09-13 22:44:53 [main] INFO  c.s.d.DigitalBookApplication - Starting DigitalBookApplication using Java 17.0.2 with PID 26692 (C:\Users\mpech\workspace\DigitalBook\target\classes started by mpech in C:\Users\mpech\workspace\DigitalBook)
+2024-09-13 22:44:53 [main] INFO  c.s.d.DigitalBookApplication - No active profile set, falling back to 1 default profile: "default"
+2024-09-13 22:44:54 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2024-09-13 22:44:54 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-13 22:44:54 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 142 ms. Found 5 JPA repository interfaces.
+2024-09-13 22:44:54 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2024-09-13 22:44:54 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-09-13 22:44:54 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.site.digitalBook.repository.BookRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2024-09-13 22:44:54 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.site.digitalBook.repository.CartRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2024-09-13 22:44:54 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.site.digitalBook.repository.CategorieRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2024-09-13 22:44:54 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.site.digitalBook.repository.CommandeRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2024-09-13 22:44:54 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.site.digitalBook.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2024-09-13 22:44:54 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces.
+2024-09-13 22:44:55 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-09-13 22:44:55 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-09-13 22:44:55 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-09-13 22:44:55 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-09-13 22:44:55 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-09-13 22:44:55 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2110 ms
+2024-09-13 22:44:55 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-09-13 22:44:55 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-09-13 22:44:56 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-13 22:44:56 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-09-13 22:44:56 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@76134251
+2024-09-13 22:44:56 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-09-13 22:44:56 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-13 22:44:56 [main] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-09-13 22:44:57 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-13 22:44:57 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "alter table attacher modify column commande_id integer not null" via JDBC [ALTER command denied to user 'admin_user'@'localhost' for table 'attacher']
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table attacher modify column commande_id integer not null" via JDBC [ALTER command denied to user 'admin_user'@'localhost' for table 'attacher']
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
 	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:574)
@@ -76,7 +76,7 @@ Caused by: java.sql.SQLSyntaxErrorException: ALTER command denied to user 'admin
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
 	... 38 common frames omitted
-2024-09-18 15:51:53 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "alter table categorie modify column id integer not null auto_increment" via JDBC [ALTER command denied to user 'admin_user'@'localhost' for table 'categorie']
+2024-09-13 22:44:57 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "alter table categorie modify column id integer not null auto_increment" via JDBC [ALTER command denied to user 'admin_user'@'localhost' for table 'categorie']
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table categorie modify column id integer not null auto_increment" via JDBC [ALTER command denied to user 'admin_user'@'localhost' for table 'categorie']
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
 	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:574)
@@ -126,7 +126,7 @@ Caused by: java.sql.SQLSyntaxErrorException: ALTER command denied to user 'admin
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
 	... 38 common frames omitted
-2024-09-18 15:51:53 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "alter table commandes modify column id integer not null auto_increment" via JDBC [ALTER command denied to user 'admin_user'@'localhost' for table 'commandes']
+2024-09-13 22:44:57 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "alter table commandes modify column id integer not null auto_increment" via JDBC [ALTER command denied to user 'admin_user'@'localhost' for table 'commandes']
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table commandes modify column id integer not null auto_increment" via JDBC [ALTER command denied to user 'admin_user'@'localhost' for table 'commandes']
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
 	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:574)
@@ -176,7 +176,7 @@ Caused by: java.sql.SQLSyntaxErrorException: ALTER command denied to user 'admin
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
 	... 38 common frames omitted
-2024-09-18 15:51:53 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "alter table contenir modify column livre_id integer not null" via JDBC [ALTER command denied to user 'admin_user'@'localhost' for table 'contenir']
+2024-09-13 22:44:57 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "alter table contenir modify column livre_id integer not null" via JDBC [ALTER command denied to user 'admin_user'@'localhost' for table 'contenir']
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table contenir modify column livre_id integer not null" via JDBC [ALTER command denied to user 'admin_user'@'localhost' for table 'contenir']
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
 	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:574)
@@ -226,7 +226,7 @@ Caused by: java.sql.SQLSyntaxErrorException: ALTER command denied to user 'admin
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
 	... 38 common frames omitted
-2024-09-18 15:51:53 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "alter table inclure modify column livre_id integer not null" via JDBC [ALTER command denied to user 'admin_user'@'localhost' for table 'inclure']
+2024-09-13 22:44:57 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "alter table inclure modify column livre_id integer not null" via JDBC [ALTER command denied to user 'admin_user'@'localhost' for table 'inclure']
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table inclure modify column livre_id integer not null" via JDBC [ALTER command denied to user 'admin_user'@'localhost' for table 'inclure']
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
 	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:574)
@@ -276,7 +276,7 @@ Caused by: java.sql.SQLSyntaxErrorException: ALTER command denied to user 'admin
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
 	... 38 common frames omitted
-2024-09-18 15:51:53 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "alter table inclure modify column categorie_id integer not null" via JDBC [ALTER command denied to user 'admin_user'@'localhost' for table 'inclure']
+2024-09-13 22:44:57 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "alter table inclure modify column categorie_id integer not null" via JDBC [ALTER command denied to user 'admin_user'@'localhost' for table 'inclure']
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table inclure modify column categorie_id integer not null" via JDBC [ALTER command denied to user 'admin_user'@'localhost' for table 'inclure']
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
 	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:574)
@@ -326,7 +326,7 @@ Caused by: java.sql.SQLSyntaxErrorException: ALTER command denied to user 'admin
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
 	... 38 common frames omitted
-2024-09-18 15:51:53 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "alter table livre modify column id integer not null auto_increment" via JDBC [ALTER command denied to user 'admin_user'@'localhost' for table 'livre']
+2024-09-13 22:44:57 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "alter table livre modify column id integer not null auto_increment" via JDBC [ALTER command denied to user 'admin_user'@'localhost' for table 'livre']
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table livre modify column id integer not null auto_increment" via JDBC [ALTER command denied to user 'admin_user'@'localhost' for table 'livre']
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
 	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:574)
@@ -376,7 +376,7 @@ Caused by: java.sql.SQLSyntaxErrorException: ALTER command denied to user 'admin
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
 	... 38 common frames omitted
-2024-09-18 15:51:53 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "alter table panier modify column user_id integer" via JDBC [ALTER command denied to user 'admin_user'@'localhost' for table 'panier']
+2024-09-13 22:44:57 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "alter table panier modify column user_id integer" via JDBC [ALTER command denied to user 'admin_user'@'localhost' for table 'panier']
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table panier modify column user_id integer" via JDBC [ALTER command denied to user 'admin_user'@'localhost' for table 'panier']
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
 	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:574)
@@ -426,7 +426,7 @@ Caused by: java.sql.SQLSyntaxErrorException: ALTER command denied to user 'admin
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
 	... 38 common frames omitted
-2024-09-18 15:51:53 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "alter table utilisateur modify column id integer not null auto_increment" via JDBC [ALTER command denied to user 'admin_user'@'localhost' for table 'utilisateur']
+2024-09-13 22:44:57 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "alter table utilisateur modify column id integer not null auto_increment" via JDBC [ALTER command denied to user 'admin_user'@'localhost' for table 'utilisateur']
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table utilisateur modify column id integer not null auto_increment" via JDBC [ALTER command denied to user 'admin_user'@'localhost' for table 'utilisateur']
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
 	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:574)
@@ -476,7 +476,7 @@ Caused by: java.sql.SQLSyntaxErrorException: ALTER command denied to user 'admin
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
 	... 38 common frames omitted
-2024-09-18 15:51:53 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "alter table commandes add constraint FK6e3lfrfs9rwhs3slma6gsjnaj foreign key (user_id) references utilisateur (id)" via JDBC [ALTER command denied to user 'admin_user'@'localhost' for table 'commandes']
+2024-09-13 22:44:57 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "alter table commandes add constraint FK6e3lfrfs9rwhs3slma6gsjnaj foreign key (user_id) references utilisateur (id)" via JDBC [ALTER command denied to user 'admin_user'@'localhost' for table 'commandes']
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table commandes add constraint FK6e3lfrfs9rwhs3slma6gsjnaj foreign key (user_id) references utilisateur (id)" via JDBC [ALTER command denied to user 'admin_user'@'localhost' for table 'commandes']
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
 	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:574)
@@ -525,220 +525,160 @@ Caused by: java.sql.SQLSyntaxErrorException: ALTER command denied to user 'admin
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
 	... 37 common frames omitted
-2024-09-18 15:51:53 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-09-18 15:51:53 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
-2024-09-18 15:51:54 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-09-18 15:51:54 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+2024-09-13 22:44:57 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-13 22:44:58 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-09-13 22:44:58 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-13 22:44:58 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
 
-Using generated security password: 40ce6b9a-05bc-474f-b96b-45b8923c865e
+Using generated security password: 1e38965c-f932-4f00-92a8-5114e09d4888
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
-2024-09-18 15:51:55 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 13 endpoint(s) beneath base path '/actuator'
-2024-09-18 15:51:55 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4835e10a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@50f88cea, org.springframework.security.web.context.SecurityContextHolderFilter@3fc0f3c2, org.springframework.security.web.header.HeaderWriterFilter@5c1d1aa6, org.springframework.web.filter.CorsFilter@2654f4aa, org.springframework.security.web.authentication.logout.LogoutFilter@2e0e1acf, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6de4e34a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@38b7b02f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@680ebfb2, org.springframework.security.web.access.ExceptionTranslationFilter@5bdde886, org.springframework.security.web.access.intercept.AuthorizationFilter@2438cc7e]
-2024-09-18 15:51:56 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
-2024-09-18 15:51:56 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
-2024-09-18 15:51:56 [main] INFO  c.s.d.DigitalBookApplication - Started DigitalBookApplication in 10.977 seconds (process running for 12.144)
-2024-09-18 15:51:56 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-09-18 15:51:56 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2024-09-18 15:51:56 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
-2024-09-18 15:51:56 [http-nio-8080-exec-2] INFO  c.s.d.service.TokenBlacklistService - Jeton ajouté à la liste noire : dummy-token
-2024-09-18 15:53:08 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.UserService - Ajout d'un utilisateur avec l'email : m@gmail.com
-2024-09-18 15:53:08 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.UserService - Utilisateur ajouté avec l'email : m@gmail.com
-2024-09-18 15:53:08 [http-nio-8080-exec-6] INFO  c.s.d.s.VerificationCodeService - Code de vérification généré : otGs74d2
-2024-09-18 15:53:08 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.EmailService - E-mail de confirmation envoyé à l'adresse : m@gmail.com
-2024-09-18 15:53:08 [http-nio-8080-exec-6] INFO  c.s.d.s.VerificationCodeService - Code de vérification sauvegardé pour l'email m@gmail.com : otGs74d2
-2024-09-18 15:53:24 [http-nio-8080-exec-9] INFO  c.s.d.s.VerificationCodeService - Code de vérification valide pour l'email m@gmail.com : otGs74d2
-2024-09-18 15:53:24 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Activation de l'utilisateur avec l'email : m@gmail.com
-2024-09-18 15:53:24 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m@gmail.com
-2024-09-18 15:53:24 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Utilisateur activé avec l'email : m@gmail.com
-2024-09-18 15:53:44 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Authentification de l'utilisateur avec l'email : m@gmail.com
-2024-09-18 15:53:44 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
-2024-09-18 15:53:44 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m@gmail.com
-2024-09-18 15:53:46 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m@gmail.com
-2024-09-18 15:53:46 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m@gmail.com
-2024-09-18 15:53:49 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
-2024-09-18 15:53:49 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m@gmail.com
-2024-09-18 15:55:28 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
-2024-09-18 15:55:28 [http-nio-8080-exec-8] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
-2024-09-18 15:55:28 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m@gmail.com
-2024-09-18 15:55:28 [http-nio-8080-exec-8] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
-2024-09-18 15:55:28 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
-2024-09-18 15:55:29 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m@gmail.com
-2024-09-18 15:55:29 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
-2024-09-18 15:55:29 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m@gmail.com
-2024-09-18 15:55:29 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.BookService - Récupération des livres par catégorie : Science Fiction
-2024-09-18 15:55:29 [http-nio-8080-exec-7] WARN  c.s.digitalBook.service.CartService - Panier non trouvé pour l'utilisateur avec l'ID: 35
-2024-09-18 15:55:32 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
-2024-09-18 15:55:32 [http-nio-8080-exec-10] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
-2024-09-18 15:55:32 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m@gmail.com
-2024-09-18 15:55:32 [http-nio-8080-exec-10] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
-2024-09-18 15:55:32 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
-2024-09-18 15:55:33 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
-2024-09-18 15:55:33 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m@gmail.com
-2024-09-18 15:55:33 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m@gmail.com
-2024-09-18 15:55:33 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.BookService - Récupération des livres par catégorie : Fantasy
-2024-09-18 15:55:33 [http-nio-8080-exec-9] WARN  c.s.digitalBook.service.CartService - Panier non trouvé pour l'utilisateur avec l'ID: 35
-2024-09-18 15:55:34 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
-2024-09-18 15:55:34 [http-nio-8080-exec-10] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
-2024-09-18 15:55:34 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m@gmail.com
-2024-09-18 15:55:34 [http-nio-8080-exec-10] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
-2024-09-18 15:55:34 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
-2024-09-18 16:01:33 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
-2024-09-18 16:01:33 [http-nio-8080-exec-6] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
-2024-09-18 16:01:33 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
-2024-09-18 16:01:33 [http-nio-8080-exec-6] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
-2024-09-18 16:01:33 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
-2024-09-18 16:01:33 [http-nio-8080-exec-5] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
-2024-09-18 16:01:33 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m@gmail.com
-2024-09-18 16:01:34 [http-nio-8080-exec-5] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
-2024-09-18 16:01:34 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
-2024-09-18 16:01:36 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
-2024-09-18 16:01:36 [http-nio-8080-exec-10] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
-2024-09-18 16:01:36 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
-2024-09-18 16:01:36 [http-nio-8080-exec-10] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
-2024-09-18 16:01:37 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
-2024-09-18 16:01:37 [http-nio-8080-exec-5] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
-2024-09-18 16:01:37 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m@gmail.com
-2024-09-18 16:01:37 [http-nio-8080-exec-5] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
-2024-09-18 16:01:37 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
-2024-09-18 16:01:39 [http-nio-8080-exec-6] INFO  c.s.d.service.TokenBlacklistService - Jeton ajouté à la liste noire : dummy-token
-2024-09-18 16:01:50 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Authentification de l'utilisateur avec l'email : m@gmail.com
-2024-09-18 16:01:50 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m@gmail.com
-2024-09-18 16:01:50 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
-2024-09-18 16:01:50 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m@gmail.com
-2024-09-18 16:01:50 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m@gmail.com
-2024-09-18 16:02:11 [http-nio-8080-exec-4] INFO  c.s.d.service.TokenBlacklistService - Jeton ajouté à la liste noire : dummy-token
-2024-09-18 16:02:20 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Authentification de l'utilisateur avec l'email : cedricp1979@gmail.com
-2024-09-18 16:02:20 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 16:02:20 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 16:02:20 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
-2024-09-18 16:02:20 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 16:02:21 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 16:02:21 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 16:02:22 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 16:02:22 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 16:02:22 [http-nio-8080-exec-1] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 32
-2024-09-18 16:02:22 [http-nio-8080-exec-1] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
-2024-09-18 16:02:23 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
-2024-09-18 16:02:23 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
-2024-09-18 16:03:00 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
-2024-09-18 16:03:00 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
-2024-09-18 16:12:39 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 16:12:39 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 16:12:39 [http-nio-8080-exec-5] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 32
-2024-09-18 16:12:39 [http-nio-8080-exec-5] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
-2024-09-18 16:12:42 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 16:12:42 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 16:12:42 [http-nio-8080-exec-10] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 32
-2024-09-18 16:12:42 [http-nio-8080-exec-10] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
-2024-09-18 16:14:21 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 16:14:21 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 16:14:21 [http-nio-8080-exec-5] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 32
-2024-09-18 16:14:21 [http-nio-8080-exec-5] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
-2024-09-18 16:14:23 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
-2024-09-18 16:14:23 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
-2024-09-18 16:59:11 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 16:59:12 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 16:59:12 [http-nio-8080-exec-7] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 32
-2024-09-18 16:59:12 [http-nio-8080-exec-7] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
-2024-09-18 16:59:14 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
-2024-09-18 16:59:14 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
-2024-09-18 17:05:32 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:05:32 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:05:32 [http-nio-8080-exec-6] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 32
-2024-09-18 17:05:32 [http-nio-8080-exec-6] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
-2024-09-18 17:05:39 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:05:39 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:05:40 [http-nio-8080-exec-2] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 32
-2024-09-18 17:05:40 [http-nio-8080-exec-2] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
-2024-09-18 17:05:43 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
-2024-09-18 17:05:43 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
-2024-09-18 17:09:13 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
-2024-09-18 17:09:13 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
-2024-09-18 17:09:38 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:09:38 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:09:38 [http-nio-8080-exec-6] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 32
-2024-09-18 17:09:39 [http-nio-8080-exec-6] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
-2024-09-18 17:09:40 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
-2024-09-18 17:09:40 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
-2024-09-18 17:10:32 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:10:32 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:10:32 [http-nio-8080-exec-2] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 32
-2024-09-18 17:10:32 [http-nio-8080-exec-2] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
-2024-09-18 17:10:34 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
-2024-09-18 17:10:34 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
-2024-09-18 17:10:46 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:10:46 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:10:46 [http-nio-8080-exec-2] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 32
-2024-09-18 17:10:46 [http-nio-8080-exec-2] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
-2024-09-18 17:10:53 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:10:53 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:10:53 [http-nio-8080-exec-4] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 32
-2024-09-18 17:10:53 [http-nio-8080-exec-4] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
-2024-09-18 17:10:55 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
-2024-09-18 17:10:55 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
-2024-09-18 17:20:17 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:20:17 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:20:18 [http-nio-8080-exec-10] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 32
-2024-09-18 17:20:18 [http-nio-8080-exec-10] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
-2024-09-18 17:21:57 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:21:57 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:21:57 [http-nio-8080-exec-6] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 32
-2024-09-18 17:21:57 [http-nio-8080-exec-6] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
-2024-09-18 17:23:56 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:23:56 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:23:56 [http-nio-8080-exec-5] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 32
-2024-09-18 17:23:56 [http-nio-8080-exec-5] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
-2024-09-18 17:23:59 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
-2024-09-18 17:23:59 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
-2024-09-18 17:28:30 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
-2024-09-18 17:28:30 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
-2024-09-18 17:32:13 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:32:13 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:32:13 [http-nio-8080-exec-7] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 32
-2024-09-18 17:32:13 [http-nio-8080-exec-7] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
-2024-09-18 17:32:16 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
-2024-09-18 17:32:16 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
-2024-09-18 17:38:53 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:38:53 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:38:53 [http-nio-8080-exec-6] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 32
-2024-09-18 17:38:53 [http-nio-8080-exec-6] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
-2024-09-18 17:39:37 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:39:37 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:39:37 [http-nio-8080-exec-2] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 32
-2024-09-18 17:39:37 [http-nio-8080-exec-2] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
-2024-09-18 17:39:39 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
-2024-09-18 17:39:39 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
-2024-09-18 17:44:18 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:44:18 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:44:18 [http-nio-8080-exec-5] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 32
-2024-09-18 17:44:18 [http-nio-8080-exec-5] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
-2024-09-18 17:44:20 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
-2024-09-18 17:44:20 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
-2024-09-18 17:45:36 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:45:36 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:45:36 [http-nio-8080-exec-1] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 32
-2024-09-18 17:45:36 [http-nio-8080-exec-1] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
-2024-09-18 17:48:26 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:48:26 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:48:26 [http-nio-8080-exec-8] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 32
-2024-09-18 17:48:26 [http-nio-8080-exec-8] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
-2024-09-18 17:48:28 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
-2024-09-18 17:48:28 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
-2024-09-18 17:50:37 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:50:37 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:50:37 [http-nio-8080-exec-4] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 32
-2024-09-18 17:50:37 [http-nio-8080-exec-4] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
-2024-09-18 17:50:55 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:50:55 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:50:55 [http-nio-8080-exec-8] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 32
-2024-09-18 17:50:55 [http-nio-8080-exec-8] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
-2024-09-18 17:50:58 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
-2024-09-18 17:50:58 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
-2024-09-18 17:51:02 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:51:02 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
-2024-09-18 17:51:03 [http-nio-8080-exec-2] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 32
-2024-09-18 17:51:03 [http-nio-8080-exec-2] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
-2024-09-18 17:51:04 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
-2024-09-18 17:51:04 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
+2024-09-13 22:44:59 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 13 endpoint(s) beneath base path '/actuator'
+2024-09-13 22:44:59 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@698d07ac, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@62d59d60, org.springframework.security.web.context.SecurityContextHolderFilter@353ab9e5, org.springframework.security.web.header.HeaderWriterFilter@17fe4f0f, org.springframework.web.filter.CorsFilter@3c532b97, org.springframework.security.web.authentication.logout.LogoutFilter@3f13c9a2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4ba62429, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6319ea75, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5cffd11d, org.springframework.security.web.access.ExceptionTranslationFilter@29b78b34, org.springframework.security.web.access.intercept.AuthorizationFilter@df52b26]
+2024-09-13 22:44:59 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-09-13 22:44:59 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2024-09-13 22:44:59 [main] INFO  c.s.d.DigitalBookApplication - Started DigitalBookApplication in 7.233 seconds (process running for 7.796)
+2024-09-13 22:45:11 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-09-13 22:45:11 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-09-13 22:45:11 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2024-09-13 22:45:11 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Authentification de l'utilisateur avec l'email : cedricp1979@gmail.com
+2024-09-13 22:45:11 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:45:11 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-13 22:45:12 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-13 22:45:12 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-13 22:45:15 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-13 22:45:15 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-13 22:45:20 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:45:20 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-13 22:45:22 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-13 22:45:22 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-13 22:45:28 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:45:28 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-13 22:45:30 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-13 22:45:30 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-13 22:45:30 [http-nio-8080-exec-2] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 32
+2024-09-13 22:45:30 [http-nio-8080-exec-2] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
+2024-09-13 22:45:39 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
+2024-09-13 22:45:39 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
+2024-09-13 22:45:47 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
+2024-09-13 22:45:47 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
+2024-09-13 22:45:49 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
+2024-09-13 22:45:49 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
+2024-09-13 22:45:51 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
+2024-09-13 22:46:06 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:46:06 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-13 22:46:18 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
+2024-09-13 22:46:18 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-13 22:46:18 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-13 22:46:18 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération des livres par catégorie : Romance
+2024-09-13 22:46:18 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 32
+2024-09-13 22:46:29 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:46:29 [http-nio-8080-exec-3] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-13 22:46:29 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-13 22:46:29 [http-nio-8080-exec-3] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-13 22:46:29 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:46:39 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:46:43 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:46:47 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:46:49 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:46:50 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:46:50 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:46:50 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:46:51 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:46:51 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:46:52 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:46:52 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:46:55 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-13 22:46:55 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-13 22:46:57 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-13 22:46:57 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-13 22:46:57 [http-nio-8080-exec-3] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 32
+2024-09-13 22:46:57 [http-nio-8080-exec-3] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 32: 4
+2024-09-13 22:46:57 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
+2024-09-13 22:46:57 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
+2024-09-13 22:48:16 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:48:16 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-13 22:48:19 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:48:19 [http-nio-8080-exec-3] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-13 22:48:19 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:48:19 [http-nio-8080-exec-3] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-13 22:48:19 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:48:19 [http-nio-8080-exec-8] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-13 22:48:19 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-13 22:48:19 [http-nio-8080-exec-8] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-13 22:48:19 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:48:22 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:48:22 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-13 22:48:24 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:48:24 [http-nio-8080-exec-4] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-13 22:48:24 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:48:24 [http-nio-8080-exec-4] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-13 22:48:25 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:48:25 [http-nio-8080-exec-8] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-13 22:48:25 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-13 22:48:25 [http-nio-8080-exec-8] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-13 22:48:25 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:48:34 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:48:34 [http-nio-8080-exec-10] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-13 22:48:34 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:48:34 [http-nio-8080-exec-10] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-13 22:48:35 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:48:35 [http-nio-8080-exec-3] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-13 22:48:35 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-13 22:48:35 [http-nio-8080-exec-3] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-13 22:48:35 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:48:38 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:48:38 [http-nio-8080-exec-6] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-13 22:48:38 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:48:38 [http-nio-8080-exec-6] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-13 22:48:38 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:48:38 [http-nio-8080-exec-7] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-13 22:48:38 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-13 22:48:38 [http-nio-8080-exec-7] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-13 22:48:38 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:49:17 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:49:17 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-13 22:49:58 [http-nio-8080-exec-9] INFO  c.s.d.service.TokenBlacklistService - Jeton ajouté à la liste noire : dummy-token
+2024-09-13 22:50:06 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.UserService - Authentification de l'utilisateur avec l'email : m.pecheur09@gmail.com
+2024-09-13 22:50:06 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-13 22:50:06 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:50:06 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-13 22:50:06 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-13 22:50:06 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-13 22:50:06 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-13 22:50:18 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:50:18 [http-nio-8080-exec-3] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-13 22:50:18 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:50:18 [http-nio-8080-exec-3] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-13 22:50:18 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:50:18 [http-nio-8080-exec-10] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-13 22:50:18 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-13 22:50:18 [http-nio-8080-exec-10] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-13 22:50:18 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:50:42 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-13 22:50:42 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-13 22:51:09 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:51:09 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-13 22:51:37 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 22:51:37 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-13 23:16:38 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 23:16:38 [http-nio-8080-exec-4] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-13 23:16:38 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 23:16:38 [http-nio-8080-exec-4] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-13 23:16:39 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 23:16:39 [http-nio-8080-exec-3] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-13 23:16:39 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-13 23:16:39 [http-nio-8080-exec-3] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-13 23:16:39 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 23:18:35 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-13 23:18:56 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 23:18:56 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-13 23:19:05 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 23:19:05 [http-nio-8080-exec-4] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-13 23:19:05 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-13 23:19:05 [http-nio-8080-exec-4] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 20
+2024-09-13 23:19:05 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 23:19:07 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 23:20:07 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-13 23:20:07 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com

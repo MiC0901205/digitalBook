@@ -6,6 +6,7 @@ import { BookService } from '../services/book/book.service';
 import { Commande } from '../interface/commande.model';
 import { Book } from '../interface/book.model';
 import { Observable, forkJoin } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { CommonModule, registerLocaleData, CurrencyPipe } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { FooterComponent } from '../footer/footer.component';
@@ -58,9 +59,14 @@ export class OrderHistoryComponent implements OnInit {
       next: (userId: number) => {
         this.commandes$ = this.orderService.getCommandesByUserId(userId);
         this.commandes$.subscribe({
-          next: (commandes) => {
-            this.sortedCommandes = commandes;
-            this.updateDisplayedCommandes();
+          next: (response: any) => {
+            // Assurez-vous que 'response' contient bien les commandes
+            if (response && Array.isArray(response)) {
+              this.sortedCommandes = response; // Assurez-vous que sortedCommandes est bien initialisé
+              this.updateDisplayedCommandes();
+            } else {
+              console.error('Format inattendu de la réponse des commandes', response);
+            }
           },
           error: (err) => {
             console.error('Erreur lors de la récupération des commandes', err);
@@ -73,6 +79,7 @@ export class OrderHistoryComponent implements OnInit {
       }
     });
   }
+  
 
   updateDisplayedCommandes(): void {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
@@ -82,23 +89,34 @@ export class OrderHistoryComponent implements OnInit {
 
   openOrderDetails(commande: Commande): void {
     this.selectedCommande = commande;
-    this.livres = [];
-
-    if (commande.livreIds && commande.livreIds.length > 0) {
-      const livreObservables = commande.livreIds.map(id => this.bookService.getBookById(id));
-      forkJoin(livreObservables).subscribe(
-        (livres: Book[]) => {
-          this.livres = livres;
-          this.isModalOpen = true;
-        },
-        (error) => {
-          console.error('Erreur lors de la récupération des livres', error);
-        }
-      );
-    } else {
-      this.isModalOpen = true;
-    }
+    console.log('Commande sélectionnée:', commande);
+    
+    this.livres = []; // Réinitialiser les livres avant de charger les nouveaux
+  
+    const bookRequests = commande.livreIds.map(id =>
+      this.bookService.getBookById(id).pipe(
+        map((response: any) => {
+          console.log('Réponse de getBookById pour ID', id, ':', response);
+          if (response && response.data) {
+            return response.data;
+          } else {
+            console.error('La réponse de l\'API est mal formatée ou la propriété data n\'est pas présente', response);
+            return null;
+          }
+        })
+      )
+    );
+  
+    forkJoin(bookRequests).subscribe({
+      next: (books: Book[]) => {
+        console.log('Livres récupérés:', books);
+        this.livres = books.filter(book => book !== null);
+        this.isModalOpen = true; // Ouvrir la modale
+      },
+      error: (err) => console.error('Erreur lors de la récupération des livres', err)
+    });
   }
+  
 
   closeOrderDetails(): void {
     this.isModalOpen = false;

@@ -82,7 +82,7 @@ public class BookController {
         }
     }
 
-    @PostMapping(value = "/book", consumes = "application/json", produces = "application/json")
+    @PostMapping(value = "/book")
     public ResponseEntity<Payload> addBook(@RequestBody Livre newBook) {
         try {
             // Validation des données du livre

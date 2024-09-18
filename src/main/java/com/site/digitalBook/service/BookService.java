@@ -63,7 +63,7 @@ public class BookService {
         logger.warn("Livre non trouvé avec l'ID : {}", id);
         return null;
     }
-    
+   
     public Livre addBook(Livre newBook) {
         logger.info("Ajout du nouveau livre avec l'ID : {}", newBook.getId());
         return bookRepository.save(newBook);
