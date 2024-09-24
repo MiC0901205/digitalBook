@@ -41,44 +41,49 @@ export class UserManagementComponent implements OnInit {
   loadUsers(): void {
     this.userService.getUsers().pipe(
       map((data: User[]) => {
+        console.log("Données reçues du backend:", data); // Log pour vérifier les données
         this.totalPages = Math.ceil(data.length / this.itemsPerPage);
         this.enablePagination = this.totalPages > 1;
-        this.updatePaginatedUsers(data);
-        return data;
+        return data; // Retourner les données directement
       }),
       catchError((err: any) => {
         console.error('Erreur lors du chargement des utilisateurs', err);
         return of([]);
       })
     ).subscribe(users => {
-      this.paginatedUsers = users.slice(0, this.itemsPerPage);
+      // Mettre à jour les utilisateurs paginés ici
+      this.updatePaginatedUsers(users); // Appeler updatePaginatedUsers ici
     });
   }
 
   updatePaginatedUsers(users: User[]): void {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
+    
+    // Log pour vérifier quels utilisateurs sont affichés
+    console.log(`Affichage des utilisateurs de l'index ${startIndex} à ${endIndex}`);
+    
     this.paginatedUsers = users.slice(startIndex, endIndex);
   }
 
   prevPage(): void {
     if (this.currentPage > 1) {
       this.currentPage--;
-      this.loadUsers();
+      this.loadUsers(); // Recharger les utilisateurs
     }
   }
 
   nextPage(): void {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
-      this.loadUsers();
+      this.loadUsers(); // Recharger les utilisateurs
     }
   }
 
   goToPage(page: number): void {
     if (page >= 1 && page <= this.totalPages) {
       this.currentPage = page;
-      this.loadUsers();
+      this.loadUsers(); // Recharger les utilisateurs
     }
   }
 

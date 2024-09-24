@@ -3,147 +3,48 @@
     user-select: none;
 }
 
+/* Gestion des utilisateurs */
 .user-management {
     padding: 20px;
-    background-color: #000; /* Fond noir pour correspondre au style du login */
-    color: #fff; /* Texte en blanc pour contraster avec le fond noir */
-    border-radius: 8px; /* Coins arrondis pour un look moderne */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Ombre plus prononcée pour un effet de profondeur */
+    background-color: #000; /* Fond noir */
+    color: #fff; /* Texte en blanc */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
-/* Titre du conteneur */
-.user-management-container h2 {
+.user-management h2 {
     margin-top: 0;
     font-size: 1.5em;
     color: #cc0000; /* Couleur rouge pour le titre */
 }
 
-h2 {
-    color: red;
-}
-
 table {
     width: 100%;
-    border-collapse: collapse; /* Pour des bordures fusionnées */
+    border-collapse: collapse;
 }
 
 th, td {
     padding: 10px;
     text-align: left;
-    border-bottom: 1px solid #444; /* Bordures plus sombres pour s’harmoniser avec le fond */
+    border-bottom: 1px solid #444;
 }
 
 th {
-    background-color: #222; /* Fond sombre pour les en-têtes de colonne */
-    color: #ccc; /* Couleur du texte des en-têtes, clair pour contraster */
+    background-color: #222;
+    color: #ccc;
     font-weight: bold;
 }
 
 tbody tr:hover {
-    background-color: #333; /* Couleur de survol des lignes, légèrement plus claire */
+    background-color: #333;
 }
 
 p {
     font-size: 16px;
-    color: #ccc; /* Couleur du texte des messages */
+    color: #ccc;
 }
 
-/* Style de la modale */
-.modal {
-    display: none; /* Cacher la modale par défaut */
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4); /* Fond sombre */
-}
-
-.modal.show {
-    display: block; /* Afficher la modale quand elle est active */
-}
-
-.modal-content {
-    background-color: #000; /* Fond noir pour correspondre au style du tableau */
-    margin: 10% auto; /* Remonter le contenu de la modale */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    color: #fff; /* Texte en blanc pour contraster avec le fond noir */
-    border-radius: 8px; /* Coins arrondis pour un look moderne */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Ombre plus prononcée pour un effet de profondeur */
-    position: relative; /* Pour que le positionnement de la croix soit relatif à .modal-content */
-}
-
-/* Style pour le titre de la modale */
-.modal-content h2 {
-    color: #cc0000; /* Couleur rouge pour le titre */
-    margin-top: 0; /* Supprimer la marge au-dessus du titre */
-    font-size: 1.5em; /* Ajustez la taille de la police du titre si nécessaire */
-}
-
-/* Style pour les éléments <strong> dans la modale */
-.modal-content strong {
-    color: #cc000098; /* Couleur rouge pour le texte fort */
-}
-
-/* Style pour le bouton principal avec l'icône */
-.btn-primary {
-    background-color: #cc0000; /* Couleur du bouton */
-    color: #fff; /* Texte du bouton en blanc */
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 4px; /* Coins arrondis pour le bouton */
-    display: flex;
-    align-items: center;
-    gap: 8px; /* Espace entre l'icône et le texte */
-}
-
-.btn-primary i {
-    font-size: 18px; /* Taille de l'icône */
-}
-
-.btn-primary:hover {
-    background-color: #a30000; /* Couleur du bouton au survol */
-}
-
-/* Pour l'icône Font Awesome */
-.fas {
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
-}
-
-/* Header pour les options de tri */
-.price-header, .date-header {
-    display: flex;
-    align-items: center;
-}
-
-/* Style pour les boutons de tri */
-.sort-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 12px; /* Ajustez la taille de la police selon vos besoins */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-left: 5px; /* Espace entre le texte "Date" ou "Prix Total" et le bouton */
-}
-
-.arrows {
-    line-height: 1; /* Pour s'assurer que les flèches sont proches l'une de l'autre */
-    display: flex;
-    flex-direction: column; /* Superpose les flèches */
-    justify-content: center;
-    align-items: center;
-}
-
-/* Pagination Controls */
+/* Pagination */
 .pagination-controls {
     display: flex;
     justify-content: center;
@@ -151,43 +52,96 @@ p {
 }
 
 .pagination-controls button {
+    margin: 0 10px;
+    padding: 5px 10px;
+    font-size: 12px; /* Taille des flèches */
     background-color: transparent;
+    color: white;
     border: none;
-    color: #fd2626;
-    font-size: 1rem;
     cursor: pointer;
-    margin: 0 5px;
 }
 
-.pagination-controls button.active {
-    font-weight: bold;
-    text-decoration: underline;
+.pagination-controls span {
+    line-height: 30px;
+    color: #cc0000; /* Rouge pour le texte de la pagination */
+    font-size: 1rem;
 }
 
-.pagination-controls button:hover {
-    text-decoration: underline;
+.pagination-controls button:disabled {
+    color: #555;
+    cursor: not-allowed;
 }
 
-/* Conteneur pour le texte "Statut" et le toggle switch */
-.status-container {
+.pagination-controls button i {
+    font-size: 18px; /* Ajustez la taille des flèches si nécessaire */
+    color: white;
+}
+
+.pagination-controls button:disabled i {
+    color: #555; /* Couleur des flèches désactivées */
+}
+
+/* Success message */
+.success-message {
+    color: green;
+    font-size: 1.2em;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Modale pour les détails de l'utilisateur */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal.show {
+    display: block;
+}
+
+.modal-content {
+    background-color: #000;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    max-width: 400px;
+    color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.modal-content h2 {
+    color: #cc0000;
+    margin-top: 0;
+    font-size: 1.5em;
+}
+
+.modal-content .status-container {
     display: flex;
-    align-items: center; /* Aligne les éléments verticalement au centre */
-    margin-top: 10px; /* Espacement au-dessus du conteneur */
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
 }
 
-/* Style pour le texte du statut */
-.status-label {
-    margin-right: 10px; /* Espacement entre le texte et le toggle switch */
-    color: #fff; /* Couleur du texte */
-    font-size: 16px; /* Taille du texte pour l'harmonie */
+.switch-status {
+    margin-left: 10px;
+    color: #fff;
 }
 
-/* Style du Toggle Switch */
 .switch {
     position: relative;
     display: inline-block;
-    width: 50px; /* Largeur du toggle */
-    height: 24px; /* Hauteur du toggle */
+    width: 34px;
+    height: 20px;
 }
 
 .switch input {
@@ -203,35 +157,30 @@ p {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc; /* Couleur de fond par défaut du toggle */
+    background-color: #ccc;
     transition: 0.4s;
-    border-radius: 34px; /* Arrondir le fond pour un effet de toggle */
 }
 
 .slider:before {
     position: absolute;
     content: "";
-    height: 18px;
-    width: 18px;
+    height: 12px;
+    width: 12px;
     left: 4px;
-    bottom: 3px;
+    bottom: 4px;
     background-color: white;
     transition: 0.4s;
-    border-radius: 50%; /* Arrondir le cercle pour un effet de toggle */
 }
 
 input:checked + .slider {
-    background-color: #cc0000; /* Couleur du toggle quand il est actif */
-}
-
-input:focus + .slider {
-    box-shadow: 0 0 1px #cc0000; /* Ombre quand on se concentre sur le toggle */
+    background-color: #cc0000;
 }
 
 input:checked + .slider:before {
-    transform: translateX(26px); /* Déplacement du cercle quand le toggle est activé */
+    transform: translateX(14px);
 }
 
+/* Slider round */
 .slider.round {
     border-radius: 34px;
 }
@@ -239,15 +188,3 @@ input:checked + .slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
-
-.switch-status {
-    margin-left: 10px;
-}
-
-.success-message {
-    color: green;
-    font-size: 1.2em;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    text-align: center;
-  }

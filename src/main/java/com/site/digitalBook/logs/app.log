@@ -525,3 +525,250 @@ This generated password is for development use only. Your security configuration
 2024-09-24 16:18:36 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
 2024-09-24 16:18:37 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
 2024-09-24 16:18:37 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 17:02:10 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 17:02:10 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 17:02:10 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 17:02:10 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 17:02:15 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 17:02:15 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 17:02:15 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 17:02:15 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 17:02:18 [http-nio-8080-exec-3] INFO  c.s.d.service.TokenBlacklistService - Jeton ajouté à la liste noire : dummy-token
+2024-09-24 17:02:33 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Ajout d'un utilisateur avec l'email : mickap0901@gmail.com
+2024-09-24 17:02:33 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Utilisateur ajouté avec l'email : mickap0901@gmail.com
+2024-09-24 17:02:33 [http-nio-8080-exec-10] INFO  c.s.d.s.VerificationCodeService - Code de vérification généré : M5Q5Svdd
+2024-09-24 17:02:33 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.EmailService - E-mail de confirmation envoyé à l'adresse : mickap0901@gmail.com
+2024-09-24 17:02:33 [http-nio-8080-exec-10] INFO  c.s.d.s.VerificationCodeService - Code de vérification sauvegardé pour l'email mickap0901@gmail.com : M5Q5Svdd
+2024-09-24 17:02:41 [http-nio-8080-exec-9] INFO  c.s.d.s.VerificationCodeService - Code de vérification valide pour l'email mickap0901@gmail.com : M5Q5Svdd
+2024-09-24 17:02:41 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Activation de l'utilisateur avec l'email : mickap0901@gmail.com
+2024-09-24 17:02:41 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : mickap0901@gmail.com
+2024-09-24 17:02:41 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Utilisateur activé avec l'email : mickap0901@gmail.com
+2024-09-24 17:02:50 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Authentification de l'utilisateur avec l'email : mickap0901@gmail.com
+2024-09-24 17:02:50 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 17:02:50 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : mickap0901@gmail.com
+2024-09-24 17:02:50 [http-nio-8080-exec-3] WARN  c.s.digitalBook.service.CartService - Panier non trouvé pour l'utilisateur avec l'ID: 3
+2024-09-24 17:02:50 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 3: 0
+2024-09-24 17:02:53 [http-nio-8080-exec-10] INFO  c.s.d.service.TokenBlacklistService - Jeton ajouté à la liste noire : dummy-token
+2024-09-24 17:03:29 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Ajout d'un utilisateur avec l'email : morganpe04@gmail.com
+2024-09-24 17:03:29 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Utilisateur ajouté avec l'email : morganpe04@gmail.com
+2024-09-24 17:03:29 [http-nio-8080-exec-9] INFO  c.s.d.s.VerificationCodeService - Code de vérification généré : QeWZNA8j
+2024-09-24 17:03:29 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.EmailService - E-mail de confirmation envoyé à l'adresse : morganpe04@gmail.com
+2024-09-24 17:03:29 [http-nio-8080-exec-9] INFO  c.s.d.s.VerificationCodeService - Code de vérification sauvegardé pour l'email morganpe04@gmail.com : QeWZNA8j
+2024-09-24 17:03:37 [http-nio-8080-exec-2] INFO  c.s.d.s.VerificationCodeService - Code de vérification valide pour l'email morganpe04@gmail.com : QeWZNA8j
+2024-09-24 17:03:37 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Activation de l'utilisateur avec l'email : morganpe04@gmail.com
+2024-09-24 17:03:37 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : morganpe04@gmail.com
+2024-09-24 17:03:37 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Utilisateur activé avec l'email : morganpe04@gmail.com
+2024-09-24 17:03:46 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Authentification de l'utilisateur avec l'email : morganpe04@gmail.com
+2024-09-24 17:03:46 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 17:03:46 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : morganpe04@gmail.com
+2024-09-24 17:03:46 [http-nio-8080-exec-10] WARN  c.s.digitalBook.service.CartService - Panier non trouvé pour l'utilisateur avec l'ID: 4
+2024-09-24 17:03:46 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 4: 0
+2024-09-24 17:03:48 [http-nio-8080-exec-9] INFO  c.s.d.service.TokenBlacklistService - Jeton ajouté à la liste noire : dummy-token
+2024-09-24 17:03:50 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : morganpe04@gmail.com
+2024-09-24 17:04:13 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.UserService - Ajout d'un utilisateur avec l'email : cecilel1978@gmail.com
+2024-09-24 17:04:13 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.UserService - Utilisateur ajouté avec l'email : cecilel1978@gmail.com
+2024-09-24 17:04:13 [http-nio-8080-exec-6] INFO  c.s.d.s.VerificationCodeService - Code de vérification généré : cr7bVWJ8
+2024-09-24 17:04:13 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.EmailService - E-mail de confirmation envoyé à l'adresse : cecilel1978@gmail.com
+2024-09-24 17:04:13 [http-nio-8080-exec-6] INFO  c.s.d.s.VerificationCodeService - Code de vérification sauvegardé pour l'email cecilel1978@gmail.com : cr7bVWJ8
+2024-09-24 17:04:20 [http-nio-8080-exec-5] INFO  c.s.d.s.VerificationCodeService - Code de vérification valide pour l'email cecilel1978@gmail.com : cr7bVWJ8
+2024-09-24 17:04:20 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Activation de l'utilisateur avec l'email : cecilel1978@gmail.com
+2024-09-24 17:04:20 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cecilel1978@gmail.com
+2024-09-24 17:04:20 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Utilisateur activé avec l'email : cecilel1978@gmail.com
+2024-09-24 17:04:30 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Authentification de l'utilisateur avec l'email : cecilel1978@gmail.com
+2024-09-24 17:04:30 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 17:04:30 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cecilel1978@gmail.com
+2024-09-24 17:04:30 [http-nio-8080-exec-7] WARN  c.s.digitalBook.service.CartService - Panier non trouvé pour l'utilisateur avec l'ID: 5
+2024-09-24 17:04:30 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 5: 0
+2024-09-24 17:04:32 [http-nio-8080-exec-6] INFO  c.s.d.service.TokenBlacklistService - Jeton ajouté à la liste noire : dummy-token
+2024-09-24 17:04:40 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Authentification de l'utilisateur avec l'email : m.pecheur09@gmail.com
+2024-09-24 17:04:40 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 17:04:40 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 17:04:40 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 17:04:40 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 17:04:40 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 17:04:40 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 17:04:40 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 17:04:40 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 17:04:40 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 17:04:40 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 17:04:42 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 17:04:42 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 17:04:42 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 17:04:42 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 17:22:51 [http-nio-8080-exec-6] INFO  c.s.d.service.TokenBlacklistService - Jeton ajouté à la liste noire : dummy-token
+2024-09-24 17:23:19 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Ajout d'un utilisateur avec l'email : test@test.com
+2024-09-24 17:23:19 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Utilisateur ajouté avec l'email : test@test.com
+2024-09-24 17:23:19 [http-nio-8080-exec-9] INFO  c.s.d.s.VerificationCodeService - Code de vérification généré : Np1WhkMg
+2024-09-24 17:23:19 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.EmailService - E-mail de confirmation envoyé à l'adresse : test@test.com
+2024-09-24 17:23:19 [http-nio-8080-exec-9] INFO  c.s.d.s.VerificationCodeService - Code de vérification sauvegardé pour l'email test@test.com : Np1WhkMg
+2024-09-24 17:23:27 [http-nio-8080-exec-1] INFO  c.s.d.s.VerificationCodeService - Code de vérification valide pour l'email test@test.com : Np1WhkMg
+2024-09-24 17:23:27 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Activation de l'utilisateur avec l'email : test@test.com
+2024-09-24 17:23:27 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : test@test.com
+2024-09-24 17:23:27 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Utilisateur activé avec l'email : test@test.com
+2024-09-24 17:23:37 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.UserService - Authentification de l'utilisateur avec l'email : test@test.com
+2024-09-24 17:23:37 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 17:23:37 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : test@test.com
+2024-09-24 17:23:37 [http-nio-8080-exec-6] WARN  c.s.digitalBook.service.CartService - Panier non trouvé pour l'utilisateur avec l'ID: 6
+2024-09-24 17:23:37 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 6: 0
+2024-09-24 17:23:38 [http-nio-8080-exec-9] INFO  c.s.d.service.TokenBlacklistService - Jeton ajouté à la liste noire : dummy-token
+2024-09-24 17:23:48 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Authentification de l'utilisateur avec l'email : m.pecheur09@gmail.com
+2024-09-24 17:23:48 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 17:23:48 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 17:23:48 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 17:23:48 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 17:23:48 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 17:23:48 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 17:23:48 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 17:23:48 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 17:23:48 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 17:23:48 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 17:23:50 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 17:23:50 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 17:23:50 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 17:23:50 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 17:23:51 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 17:23:53 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 17:23:54 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 17:23:55 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 17:28:12 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 17:28:12 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 17:28:12 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 17:28:12 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 17:42:46 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 17:42:46 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 17:42:46 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 17:42:46 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 17:48:25 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 17:48:25 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 17:48:25 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 17:48:25 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 17:48:45 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 17:48:45 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 17:48:45 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 17:48:45 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 17:51:02 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 17:51:02 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 17:51:02 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 17:51:02 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 17:58:54 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 17:58:54 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 17:58:54 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 17:58:54 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 17:58:57 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 17:58:57 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 17:59:17 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 17:59:17 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 17:59:18 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 17:59:18 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 17:59:19 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 17:59:20 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 17:59:23 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 17:59:23 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 17:59:23 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 17:59:23 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 18:00:04 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 18:00:04 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 18:00:04 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 18:00:04 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 18:00:07 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 18:00:07 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 18:00:07 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 18:00:07 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 18:00:08 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 18:00:24 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 18:00:24 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 18:00:24 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 18:00:24 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 18:03:31 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 18:03:31 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 18:03:31 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 18:03:31 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 18:03:33 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 18:03:33 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 18:03:34 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 18:03:37 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 18:03:37 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 18:03:37 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 18:03:37 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 18:03:40 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 18:03:40 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 18:03:40 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 18:03:40 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 18:03:41 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 18:04:02 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 18:04:03 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 18:04:04 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 18:04:09 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 18:04:09 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 18:04:09 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 18:04:09 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 18:04:13 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 18:04:13 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 18:04:13 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 18:04:13 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 18:06:10 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 18:06:10 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 18:06:10 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 18:06:10 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 18:06:16 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 18:06:16 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 18:06:16 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 18:06:16 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 18:06:33 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 18:06:33 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 18:06:33 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 18:06:33 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 18:06:41 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 18:06:42 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 18:06:56 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 18:06:56 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 18:06:56 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 18:06:56 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 18:07:00 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 18:07:00 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 18:07:00 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 18:07:00 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 18:07:02 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 18:07:03 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 18:07:12 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 18:07:12 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 18:07:12 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 18:07:12 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 18:07:55 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 18:07:55 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 18:07:55 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 18:07:55 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 18:08:02 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 18:08:02 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 18:08:02 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 18:08:02 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 18:08:06 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 18:08:06 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 18:08:06 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 18:08:06 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 18:08:08 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 18:08:08 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 18:08:13 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 18:08:13 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 18:08:13 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 18:08:13 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 18:08:24 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 18:08:24 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 18:08:24 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 18:08:24 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 18:08:26 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 18:08:26 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 18:08:26 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 18:08:26 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 18:08:28 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 18:20:25 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 18:20:25 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 18:20:25 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 18:20:25 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 18:20:33 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 18:20:33 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : m.pecheur09@gmail.com
+2024-09-24 18:20:33 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 2
+2024-09-24 18:20:33 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 2: 0
+2024-09-24 18:20:35 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 18:20:37 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs
+2024-09-24 18:20:54 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de tous les utilisateurs

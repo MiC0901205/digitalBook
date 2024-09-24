@@ -35,44 +35,47 @@
 
   <!-- Contrôles de pagination -->
   <div *ngIf="enablePagination" class="pagination-controls">
-    <button (click)="prevPage()" [disabled]="currentPage === 1">Précédent</button>
+    <button (click)="prevPage()" [disabled]="currentPage === 1">
+      <i class="fa fa-chevron-left"></i> <!-- Flèche gauche Font Awesome -->
+    </button>
     <span>Page {{ currentPage }} sur {{ totalPages }}</span>
-    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Suivant</button>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">
+      <i class="fa fa-chevron-right"></i> <!-- Flèche droite Font Awesome -->
+    </button>
   </div>
+  
 
   <!-- Modale pour les détails de l'utilisateur -->
-  <!-- Modale pour les détails de l'utilisateur -->
-<div class="modal" [ngClass]="{'show': isModalOpen}" (click)="closeUserModal()">
-  <div class="modal-content" (click)="$event.stopPropagation()">
-    <h2>Détails de l'Utilisateur</h2>
-    <p><strong>ID:</strong> {{ selectedUser?.id }}</p>
-    <p><strong>Nom:</strong> {{ selectedUser?.nom }}</p>
-    <p><strong>Prénom:</strong> {{ selectedUser?.prenom }}</p>
-    <p><strong>Date de Naissance:</strong> {{ selectedUser?.dateNaissance | date:'shortDate' }}</p>
-    <p><strong>Email:</strong> {{ selectedUser?.email }}</p>
-    
-    <!-- Conteneur pour le texte et le toggle switch -->
-    <div class="status-container">
-      <!-- Texte pour le statut -->
-      <p class="status-label"><strong>Statut:</strong></p>
+  <div class="modal" [ngClass]="{'show': isModalOpen}" (click)="closeUserModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <h2>Détails de l'Utilisateur</h2>
+      <p><strong>ID:</strong> {{ selectedUser?.id }}</p>
+      <p><strong>Nom:</strong> {{ selectedUser?.nom }}</p>
+      <p><strong>Prénom:</strong> {{ selectedUser?.prenom }}</p>
+      <p><strong>Date de Naissance:</strong> {{ selectedUser?.dateNaissance | date:'shortDate' }}</p>
+      <p><strong>Email:</strong> {{ selectedUser?.email }}</p>
       
-      <!-- Toggle Switch pour le statut de l'utilisateur -->
-      <label class="switch">
-        <input 
-          type="checkbox" 
-          [checked]="selectedUser?.estActif" 
-          (change)="toggleUserStatus($event)">
-        <span class="slider round"></span>
-      </label>
-      
-      <!-- Texte indiquant le statut de l'utilisateur -->
-      <span class="switch-status">
-        {{ selectedUser?.estActif ? 'Actif' : 'Inactif' }}
-      </span>
+      <!-- Conteneur pour le texte et le toggle switch -->
+      <div class="status-container">
+        <!-- Texte pour le statut -->
+        <p class="status-label"><strong>Statut:</strong></p>
+        
+        <!-- Toggle Switch pour le statut de l'utilisateur -->
+        <label class="switch">
+          <input 
+            type="checkbox" 
+            [checked]="selectedUser?.estActif" 
+            (change)="toggleUserStatus($event)">
+          <span class="slider round"></span>
+        </label>
+        
+        <!-- Texte indiquant le statut de l'utilisateur -->
+        <span class="switch-status">
+          {{ selectedUser?.estActif ? 'Actif' : 'Inactif' }}
+        </span>
+      </div>
     </div>
   </div>
-</div>
 
 </div>
-
 <app-footer></app-footer>
