@@ -8,13 +8,13 @@
     <div class="payment-options">
       <h2>Choisissez votre mode de paiement</h2>
       <div class="payment-buttons">
-        <button (click)="selectPaymentMethod('paypal')" title="PayPal">
+        <button (click)="selectPaymentMethod('paypal')" title="PayPal" class="paypal">
           <i class="fab fa-cc-paypal" aria-hidden="true"></i>
         </button>
-        <button (click)="selectPaymentMethod('creditCard')" title="Carte Bancaire">
+        <button (click)="selectPaymentMethod('creditCard')" title="Carte Bancaire" class="credit-card">
           <i class="fa fa-credit-card"></i>
         </button>
-        <button (click)="selectPaymentMethod('giftCard')" title="Chèque-Cadeau">
+        <button (click)="selectPaymentMethod('giftCard')" title="Chèque-Cadeau" class="gift-card">
           <i class="fa fa-gift"></i>
         </button>
       </div>
@@ -32,59 +32,63 @@
               <small *ngIf="paymentForm.get('paypalEmail')?.errors?.['email']">Veuillez entrer un email valide.</small>
             </div>
           </div>
-          <button type="button" [disabled]="paymentForm.invalid" (click)="submitOrder()">Valider le paiement</button>
+          <button type="button" [disabled]="paymentForm.invalid" (click)="submitOrder()" class="submit-button">Valider le paiement</button>
         </form>
       </div>
-      
+
       <div *ngSwitchCase="'creditCard'">
         <h3>Paiement par Carte Bancaire</h3>
+
+        <div *ngIf="savedCards && savedCards.length > 0">
+          <h4>Cartes Enregistrées</h4>
+          <div *ngFor="let card of savedCards" class="card-container">
+            <div class="clickable-card" (click)="selectCard(card)">
+              {{ maskCardNumber(card.cardNumber) }}
+            </div>
+            <button class="delete-button" (click)="deleteCard(card)">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+
+          <div class="separator">
+            <span>OR</span>
+          </div>
+        </div>
+
         <form [formGroup]="paymentForm">
           <div class="form-group">
             <label for="cardNumber">Numéro de carte</label>
-            <input 
-              id="cardNumber" 
-              formControlName="cardNumber" 
-              type="text" 
-              placeholder="Numéro de carte" 
-              (input)="formatCardNumber($event)"
-              maxlength="19"
-            />
+            <input id="cardNumber" formControlName="cardNumber" type="text" placeholder="Numéro de carte" (input)="formatCardNumber($event)" maxlength="19" />
             <div *ngIf="paymentForm.get('cardNumber')?.invalid && paymentForm.get('cardNumber')?.touched">
               <small *ngIf="paymentForm.get('cardNumber')?.errors?.['required']">Le numéro de carte est requis.</small>
               <small *ngIf="paymentForm.get('cardNumber')?.errors?.['pattern']">Veuillez entrer un numéro de carte valide.</small>
             </div>
           </div>
+
           <div class="form-group">
             <label for="expiryDate">Date d'expiration (MM/AA)</label>
-            <input 
-              id="expiryDate" 
-              formControlName="expiryDate" 
-              type="text" 
-              placeholder="MM/AA" 
-              (input)="formatExpiryDate($event)"
-              maxlength="5"
-            />
+            <input id="expiryDate" formControlName="expiryDate" type="text" placeholder="MM/AA" (input)="formatExpiryDate($event)" maxlength="5" />
             <div *ngIf="paymentForm.get('expiryDate')?.invalid && paymentForm.get('expiryDate')?.touched">
               <small *ngIf="paymentForm.get('expiryDate')?.errors?.['required']">La date d'expiration est requise.</small>
               <small *ngIf="paymentForm.get('expiryDate')?.errors?.['pattern']">Veuillez entrer une date valide (MM/AA).</small>
             </div>
           </div>
+
           <div class="form-group">
             <label for="cvv">CVV</label>
-            <input 
-              id="cvv" 
-              formControlName="cvv" 
-              type="text" 
-              placeholder="CVV" 
-              (input)="formatCvv($event)"
-              maxlength="3"
-            />
+            <input id="cvv" formControlName="cvv" type="text" placeholder="CVV" (input)="formatCvv($event)" maxlength="3" />
             <div *ngIf="paymentForm.get('cvv')?.invalid && paymentForm.get('cvv')?.touched">
               <small *ngIf="paymentForm.get('cvv')?.errors?.['required']">Le CVV est requis.</small>
               <small *ngIf="paymentForm.get('cvv')?.errors?.['pattern']">Veuillez entrer un CVV valide (3 chiffres).</small>
             </div>
           </div>
-          <button type="button" [disabled]="paymentForm.invalid" (click)="submitOrder()">Valider le paiement</button>
+
+          <div class="form-group checkbox-group" style="display: flex; align-items: center;">
+            <input type="checkbox" id="saveCard" formControlName="saveCard" style="margin-right: 10px;">
+            <label for="saveCard">Mémoriser cette carte</label>
+          </div>
+
+          <button type="button" [disabled]="paymentForm.invalid" (click)="submitOrder()" class="submit-button">Valider le paiement</button>
         </form>
       </div>
 
@@ -98,7 +102,7 @@
               <small *ngIf="paymentForm.get('giftCardCode')?.errors?.['required']">Le code est requis.</small>
             </div>
           </div>
-          <button type="button" [disabled]="paymentForm.invalid" (click)="submitOrder()">Valider le paiement</button>
+          <button type="button" [disabled]="paymentForm.invalid" (click)="submitOrder()" class="submit-button">Valider le paiement</button>
         </form>
       </div>
     </div>

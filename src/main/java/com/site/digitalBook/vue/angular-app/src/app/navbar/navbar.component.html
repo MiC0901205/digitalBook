@@ -10,9 +10,11 @@
     </li>
     <div class="cart-container">
       <a routerLink="/cart" class="cart-link">
-        <i class="fa fa-shopping-cart cart-icon"></i> <!-- Icône de panier -->
-        <span class="cart-badge" *ngIf="(cartItemCount$ | async) ?? 0 > 0">
-          {{ (cartItemCount$ | async) ?? 0 }}
+        <i class="fa fa-shopping-cart cart-icon"></i>
+        <!-- Utilisez async pour obtenir le count -->
+        <span class="cart-badge" *ngIf="(cartItemCount$ | async) as cartItemCount">
+          <!-- Affichez le count seulement s'il est supérieur à 0 -->
+          {{ cartItemCount > 0 ? cartItemCount : '' }}
         </span>
       </a>
     </div>

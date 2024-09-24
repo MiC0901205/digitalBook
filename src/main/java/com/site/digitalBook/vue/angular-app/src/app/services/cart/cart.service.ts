@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { Book } from '../../interface/book.model';
 
 @Injectable({
@@ -10,16 +10,20 @@ import { Book } from '../../interface/book.model';
 export class CartService {
   private apiUrl = 'http://localhost:8080/api';
   private cartItemCountSubject = new BehaviorSubject<number>(0);
+  cartItemCount$ = this.cartItemCountSubject.asObservable();
+
 
   constructor(private http: HttpClient) {}
 
   // Méthode pour obtenir le nombre d'articles du panier
   getCartItemCount$(userId: number): Observable<number> {
     return this.http.get<{ message: string, data: number }>(`${this.apiUrl}/cart/${userId}/count`).pipe(
+      tap(response => console.log(`Nombre d'articles récupéré: ${response.data}`)), // Ajoutez cette ligne
       map(response => response.data),
       catchError(this.handleError)
     );
   }
+  
 
   /**
    * Récupère les éléments du panier pour un utilisateur spécifique.
@@ -39,8 +43,12 @@ export class CartService {
    * @returns Un Observable contenant la réponse du backend.
    */
   addToCart(userId: number, bookId: number): Observable<any> {
-    return this.sendCartRequest('add', userId, bookId);
+    return this.sendCartRequest('add', userId, bookId).pipe(
+      tap(() => this.updateCartItemCount(userId)),
+      catchError(this.handleError)
+    );
   }
+  
 
   /**
    * Supprime un livre du panier pour un utilisateur spécifique.
@@ -49,19 +57,27 @@ export class CartService {
    * @returns Un Observable contenant la réponse du backend.
    */
   removeFromCart(userId: number, bookId: number): Observable<any> {
-    return this.sendCartRequest('remove', userId, bookId);
+    return this.sendCartRequest('remove', userId, bookId).pipe(
+      tap(() => this.updateCartItemCount(userId)), // Mettre à jour le compteur ici
+      catchError(this.handleError)
+    );
   }
 
-  /**
-   * Vide le panier pour un utilisateur spécifique.
-   * @param userId L'ID de l'utilisateur.
-   * @returns Un Observable contenant la réponse du backend.
-   */
-  clearCart(userId: number): Observable<any> {
-    return this.http.post(`${this.apiUrl}/cart/clear`, null, {
-      params: new HttpParams().set('userId', userId.toString())
-    }).pipe(catchError(this.handleError));
-  }
+
+/**
+ * Vide le panier pour un utilisateur spécifique.
+ * @param userId L'ID de l'utilisateur.
+ * @returns Un Observable contenant la réponse du backend.
+ */
+clearCart(userId: number): Observable<any> {
+  return this.http.post(`${this.apiUrl}/cart/clear`, null, {
+    params: new HttpParams().set('userId', userId.toString())
+  }).pipe(
+    tap(() => this.updateCartItemCount(userId)), // Mettre à jour le compteur ici
+    catchError(this.handleError)
+  );
+}
+
 
   /**
    * Méthode commune pour envoyer les requêtes d'ajout ou de suppression d'éléments dans le panier.
@@ -90,8 +106,8 @@ export class CartService {
     return throwError(() => new Error(error.message || 'Erreur inconnue'));
   }
 
-  // Méthode pour obtenir le nombre d'articles dans le panier en tant qu'Observable
-  getCartItemCountObservable(): Observable<number> {
+   // Méthode pour obtenir le nombre d'articles dans le panier en tant qu'Observable
+   getCartItemCountObservable(): Observable<number> {
     return this.cartItemCountSubject.asObservable();
   }
 

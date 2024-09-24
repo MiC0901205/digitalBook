@@ -70,7 +70,7 @@
     padding: 15px;
     border: none;
     border-radius: 12px;
-    background-color: #444;
+    background-color: #f80c0c;
     color: #fff;
     font-size: 18px;
     cursor: pointer;
@@ -105,7 +105,7 @@
 .payment-modal .form-group label {
     font-weight: bold;
     margin-bottom: 8px;
-    color: #ddd;
+    color: #f92626;
 }
 
 .payment-modal .form-group input {
@@ -120,7 +120,7 @@
     text-align: left;
 }
 
-.payment-modal button {
+.paypal, .credit-card, .gift-card, .submit-button {
     width: 100%;
     max-width: 300px;
     padding: 10px;
@@ -134,14 +134,15 @@
     margin-top: 10px;
 }
 
-.payment-modal button:hover {
+.paypal:hover, .credit-card:hover, .gift-card:hover, .submit-button:hover {
     background-color: #a30000;
 }
 
-.payment-modal button:disabled {
+.submit-button:disabled {
     background-color: #999;
     color: #666;
     cursor: not-allowed;
+    width: 75%;
 }
 
 /* Style pour les titres */
@@ -194,7 +195,6 @@ small {
     text-align: center; /* Centrer le texte */
 }
 
-
 .success-message p {
     margin: 0;
     font-size: 18px;
@@ -214,4 +214,106 @@ small {
 
 .success-message button:hover {
     background-color: #f1f1f1;
+}
+
+/* Style pour les cases à cocher */
+.payment-modal .form-group input[type="checkbox"] {
+    width: auto; /* Ajuster la largeur pour la case à cocher */
+    margin-right: 10px; /* Espacement à droite de la case à cocher */
+}
+
+/* Style pour le texte des cases à cocher */
+.payment-modal .form-group label[for="saveCard"] {
+    display: flex; /* Utiliser flex pour aligner la case et le texte */
+    align-items: center; /* Aligner verticalement */
+    font-size: 16px; /* Taille du texte */
+    color: #ddd; /* Couleur du texte */
+}
+
+/* Style pour les titres de section */
+h4 {
+    font-size: 20px;
+    margin: 15px 0;
+    text-align: center;
+    color: #fd2020; /* Couleur des titres */
+}
+
+  
+  .separator {
+    display: flex;
+    align-items: center;
+    margin: 20px 0; /* Ajuste la marge selon tes préférences */
+  }
+  
+  .separator::before,
+  .separator::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #ccc; /* Couleur de la ligne */
+  }
+  
+  .separator span {
+    padding: 0 10px; /* Espacement autour du texte "OR" */
+    font-weight: bold; /* Pour mettre en valeur le texte */
+  }
+  
+  .checkbox-group {
+    display: flex;
+    align-items: center; /* Aligner verticalement */
+    margin-bottom: 0; /* Supprime la marge en bas pour éviter un espacement */
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-right: 50px; /* Espacement entre la case à cocher et le label */
+    width: auto; /* Réduire la largeur pour la case à cocher */
+    margin-left: -250px;
+}
+
+.checkbox-group label {
+    font-size: 16px;
+    color: #ddd; /* Couleur du texte */
+    margin-top: -19px;
+    margin-left: -90px;
+}
+
+.card-container {
+    display: flex;
+    align-items: center; /* Aligne verticalement la carte et le bouton poubelle */
+    justify-content: space-between; /* Sépare la carte et la poubelle horizontalement */
+    margin-bottom: 10px; /* Ajoute un peu d'espace entre les cartes */
+}
+
+.clickable-card {
+    flex: 1; /* La carte occupe tout l'espace disponible */
+    padding: 15px;
+    background-color: #292929;
+    color: #fff;
+    border-radius: 8px;
+    margin-right: 10px; /* Ajoute un espace à droite de la carte pour le bouton */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.clickable-card:hover {
+    background-color: #3a3a3a;
+    transform: translateY(-2px);
+}
+
+.delete-button {
+    background-color: transparent;
+    border: none;
+    color: #f10707c9; /* Couleur rouge pour la suppression */
+    cursor: pointer;
+    font-size: 18px;
+    margin-left: 15px;
+    padding: 0; /* Supprimer tout padding pour éviter que le bouton soit trop large */
+    width: 10%; /* Laisser le bouton ajuster sa taille automatiquement */
+    display: flex; /* Aligner l'icône de poubelle */
+    align-items: center; /* Centrer verticalement */
+    justify-content: center; /* Centrer horizontalement */
+    transition: color 0.3s;
+}
+
+.delete-button:hover {
+    color: #a30000;
 }

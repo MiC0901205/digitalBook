@@ -28,6 +28,7 @@ export class BookDetailComponent implements OnInit {
   formattedCategories: string = '';
   userId?: number;
   isInCart: boolean = false;
+  cartItemCount: number = 0; // Ajoutez cette propriété
 
   constructor(
     private route: ActivatedRoute,
@@ -36,7 +37,13 @@ export class BookDetailComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private cookieService: CookieService
-  ) {}
+  ) 
+  {
+     // Souscription au compteur d'articles
+     this.cartService.getCartItemCountObservable().subscribe(count => {
+      this.cartItemCount = count;
+    });
+  }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -76,15 +83,11 @@ export class BookDetailComponent implements OnInit {
   getImageAltText(book: Book): string {
     return `${book.titre} par ${book.auteur} - Découvrez ce livre captivant`;
   }
-
   addToCart(book: Book): void {
     if (this.userId !== undefined) {
       if (book.id && !this.isInCart) {
         this.cartService.addToCart(this.userId, book.id).subscribe({
           next: () => {
-            if (this.userId !== undefined) {
-              this.cartService.updateCartItemCount(this.userId);
-            }
             this.isInCart = true;
             console.log('Livre ajouté au panier:', book);
           },
@@ -95,7 +98,7 @@ export class BookDetailComponent implements OnInit {
       this.addToCartInCookies(book);
     }
   }
-
+  
   private addToCartInCookies(book: Book): void {
     const cartCookie = this.cookieService.get('cart') || '[]';
     const cart: Book[] = JSON.parse(cartCookie);
