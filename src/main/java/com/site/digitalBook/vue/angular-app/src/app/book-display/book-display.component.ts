@@ -117,10 +117,14 @@ export class BookDisplayComponent implements OnInit {
       next: (response: Categorie[]) => {
         this.categories = response || [];
         this.categoriesByType = this.groupCategoriesByType(this.categories);
+        
+        // Ajoutez cette ligne pour voir les catégories dans la console
+        console.log('Catégories chargées:', this.categories);
       },
       error: (err) => console.error('Erreur lors de la récupération des catégories', err)
     });
-  }
+}
+
 
   private groupCategoriesByType(categories: Categorie[]): { [type: string]: Categorie[] } {
     return categories.reduce((acc, categorie) => {

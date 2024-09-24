@@ -478,4 +478,38 @@ form button {
   font-weight: bold;
 }
 
+.button-group {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column; /* Changez la direction du flex à colonne */
+  align-items: stretch; /* Étirer les boutons pour qu'ils prennent toute la largeur */
+}
+
+.apply-button, .reset-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%; /* Prendre toute la largeur du conteneur */
+  margin-bottom: 10px; /* Ajoute de l'espace entre les boutons */
+}
+
+.apply-button:hover {
+  background-color: #0056b3;
+}
+
+.reset-button {
+  background-color: #6c757d;
+}
+
+.reset-button:hover {
+  background-color: #5a6268;
+}
+
+
+
 
