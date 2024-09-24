@@ -42,8 +42,9 @@
     gap: 1rem;
     align-items: center;
     flex: 1; /* Assure que le menu prend l'espace restant */
-    justify-content: center; /* Centre les éléments horizontalement */
+    justify-content: flex-end; /* Aligne les éléments à droite */
 }
+
 
 .welcome-message {
     text-align: center;
