@@ -1,0 +1,199 @@
+2024-09-24 12:07:25 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:07:27 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:07:34 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=10h22m28s753ms708µs).
+2024-09-24 12:10:12 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:10:12 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:10:20 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:10:21 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:12:07 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:12:07 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:12:37 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:12:38 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:13:37 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:13:37 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:14:30 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:14:31 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:15:39 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:15:39 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:16:19 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:16:19 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:16:38 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:16:39 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:17:17 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:17:17 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:17:26 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:17:26 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:17:57 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:17:57 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:18:06 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:18:07 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:20:40 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:20:42 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:26:46 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:26:46 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:27:48 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:27:49 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:27:52 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:27:52 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:28:08 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:28:08 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:28:19 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:28:20 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:28:46 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:28:47 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:29:09 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:29:10 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:29:24 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:29:25 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:29:47 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:29:48 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:32:07 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:32:07 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:32:24 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:32:24 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:32:31 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:32:32 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:32:35 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:32:36 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:32:38 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:32:39 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:32:46 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:32:47 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:33:00 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:33:00 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:43:38 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:43:38 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:43:56 [http-nio-8080-exec-4] INFO  c.s.d.service.CommandeService - Commande ajoutée avec succès. ID: 13
+2024-09-24 12:43:56 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.EmailService - E-mail de confirmation de commande envoyé à l'adresse : cedricp1979@gmail.com
+2024-09-24 12:43:56 [http-nio-8080-exec-4] INFO  c.s.d.service.CommandeService - E-mail de confirmation envoyé à l'adresse: cedricp1979@gmail.com
+2024-09-24 12:43:56 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.CartService - Vidage du panier de l'utilisateur avec l'ID: 1
+2024-09-24 12:43:56 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:43:56 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.CartService - Panier de l'utilisateur avec l'ID 1 vidé avec succès
+2024-09-24 12:43:56 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:43:56 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 1: 0
+2024-09-24 12:43:56 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:43:56 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 1: 0
+2024-09-24 12:43:59 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 12:43:59 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:43:59 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:43:59 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 1: 0
+2024-09-24 12:44:10 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 12:44:10 [http-nio-8080-exec-7] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-24 12:44:10 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 12:44:10 [http-nio-8080-exec-7] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 21
+2024-09-24 12:44:11 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 12:44:11 [http-nio-8080-exec-10] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-24 12:44:11 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:44:11 [http-nio-8080-exec-10] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 21
+2024-09-24 12:44:11 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:44:11 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 1: 0
+2024-09-24 12:44:11 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 12:44:13 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 1
+2024-09-24 12:44:13 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:44:13 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:44:13 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.BookService - Récupération des livres par catégorie : Historical
+2024-09-24 12:44:13 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:44:13 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:44:13 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 1: 0
+2024-09-24 12:44:14 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.CartService - Ajout du livre avec l'ID 1 au panier de l'utilisateur avec l'ID 1
+2024-09-24 12:44:14 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.CartService - Livre avec l'ID 1 ajouté au panier de l'utilisateur avec l'ID 1
+2024-09-24 12:44:14 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:44:14 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 1: 1
+2024-09-24 12:44:15 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 12:44:15 [http-nio-8080-exec-1] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-24 12:44:15 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:44:15 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:44:15 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 1: 1
+2024-09-24 12:44:15 [http-nio-8080-exec-1] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 21
+2024-09-24 12:44:15 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 12:44:15 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
+2024-09-24 12:44:15 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:44:15 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:44:15 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.BookService - Récupération des livres par catégorie : Family Life
+2024-09-24 12:44:15 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:44:15 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:44:15 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 1: 1
+2024-09-24 12:44:16 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.CartService - Ajout du livre avec l'ID 2 au panier de l'utilisateur avec l'ID 1
+2024-09-24 12:44:16 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.CartService - Livre avec l'ID 2 ajouté au panier de l'utilisateur avec l'ID 1
+2024-09-24 12:44:16 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:44:16 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 1: 2
+2024-09-24 12:44:17 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:44:17 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:44:17 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:44:17 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:44:17 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 1: 2
+2024-09-24 12:44:23 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:44:23 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:44:33 [http-nio-8080-exec-5] INFO  c.s.d.service.CommandeService - Commande ajoutée avec succès. ID: 14
+2024-09-24 12:44:33 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.EmailService - E-mail de confirmation de commande envoyé à l'adresse : cedricp1979@gmail.com
+2024-09-24 12:44:33 [http-nio-8080-exec-5] INFO  c.s.d.service.CommandeService - E-mail de confirmation envoyé à l'adresse: cedricp1979@gmail.com
+2024-09-24 12:44:33 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Vidage du panier de l'utilisateur avec l'ID: 1
+2024-09-24 12:44:33 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:44:33 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Panier de l'utilisateur avec l'ID 1 vidé avec succès
+2024-09-24 12:44:33 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:44:33 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 1: 0
+2024-09-24 12:44:33 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:44:33 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 1: 0
+2024-09-24 12:44:36 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 12:44:36 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:44:36 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:44:36 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 1: 0
+2024-09-24 12:44:45 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:44:45 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:44:45 [http-nio-8080-exec-9] INFO  c.s.d.service.CommandeService - Récupération des commandes pour l'utilisateur ID: 1
+2024-09-24 12:44:45 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:44:45 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 1: 0
+2024-09-24 12:44:45 [http-nio-8080-exec-9] INFO  c.s.d.service.CommandeService - Nombre de commandes récupérées pour l'utilisateur ID 1: 14
+2024-09-24 12:46:25 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 12:46:25 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 12:46:25 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 12:46:25 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 1: 0
+2024-09-24 13:00:06 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 13:00:07 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 13:00:07 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 13:00:08 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 13:00:08 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 1: 0
+2024-09-24 13:06:44 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 13:06:45 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 13:06:45 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 13:06:45 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 13:06:45 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 1: 0
+2024-09-24 13:06:47 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 13:06:48 [http-nio-8080-exec-5] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-24 13:06:48 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 13:06:48 [http-nio-8080-exec-5] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 21
+2024-09-24 13:06:48 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 13:06:48 [http-nio-8080-exec-1] INFO  c.s.d.service.CategorieService - Récupération de toutes les catégories.
+2024-09-24 13:06:48 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 13:06:48 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 13:06:48 [http-nio-8080-exec-1] INFO  c.s.d.service.CategorieService - Nombre de catégories récupérées: 21
+2024-09-24 13:06:48 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 1: 0
+2024-09-24 13:06:48 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 13:06:51 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.BookService - Récupération du livre avec l'ID : 2
+2024-09-24 13:06:51 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 13:06:51 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 13:06:51 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.BookService - Récupération des livres par catégorie : Family Life
+2024-09-24 13:06:51 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 13:06:51 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 13:06:51 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 1: 0
+2024-09-24 13:06:52 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.CartService - Ajout du livre avec l'ID 2 au panier de l'utilisateur avec l'ID 1
+2024-09-24 13:06:52 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.CartService - Livre avec l'ID 2 ajouté au panier de l'utilisateur avec l'ID 1
+2024-09-24 13:06:52 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 13:06:52 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 1: 1
+2024-09-24 13:06:53 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 13:06:53 [http-nio-8080-exec-5] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 13:06:53 [http-nio-8080-exec-9] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 13:06:53 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 13:06:53 [http-nio-8080-exec-3] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 1: 1
+2024-09-24 13:06:55 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.CartService - Suppression du livre avec l'ID 2 du panier de l'utilisateur avec l'ID 1
+2024-09-24 13:06:55 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 13:06:55 [http-nio-8080-exec-7] INFO  c.s.digitalBook.service.CartService - Livre avec l'ID 2 supprimé du panier de l'utilisateur avec l'ID 1
+2024-09-24 13:06:55 [http-nio-8080-exec-2] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 13:06:55 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 13:06:55 [http-nio-8080-exec-1] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 1: 0
+2024-09-24 13:06:55 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 13:06:55 [http-nio-8080-exec-8] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 1: 0
+2024-09-24 13:06:56 [http-nio-8080-exec-6] INFO  c.s.digitalBook.service.BookService - Récupération de tous les livres
+2024-09-24 13:06:56 [http-nio-8080-exec-10] INFO  c.s.digitalBook.service.UserService - Récupération de l'utilisateur par email : cedricp1979@gmail.com
+2024-09-24 13:06:56 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.CartService - Panier récupéré pour l'utilisateur avec l'ID: 1
+2024-09-24 13:06:56 [http-nio-8080-exec-4] INFO  c.s.digitalBook.service.CartService - Nombre d'articles dans le panier de l'utilisateur avec l'ID 1: 0
