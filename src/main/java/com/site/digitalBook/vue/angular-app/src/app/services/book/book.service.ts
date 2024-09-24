@@ -1,9 +1,8 @@
-// book.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { Book } from '../../interface/book.model'; // Assurez-vous que le modèle Book existe et est correct
+import { Book } from '../../interface/book.model';
 
 @Injectable({
   providedIn: 'root'

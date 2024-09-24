@@ -50,7 +50,7 @@ export class BookDisplayComponent implements OnInit {
   selectedCategories: number[] = [];
   modalSelectedCategories: number[] = []; 
   showSuccessMessage: boolean = false;
-  searchQuery: string = ''; // Déclarer 'searchQuery'
+  searchQuery: string = '';
 
   private isBrowser: boolean;
 
@@ -72,15 +72,13 @@ export class BookDisplayComponent implements OnInit {
     this.updateItemsPerPage();
     // Écoute des changements dans les paramètres de l'URL
     this.route.queryParams.subscribe(params => {
-      this.searchQuery = params['search'] || '';  // Récupère le terme de recherche
-      console.log('Search Query:', this.searchQuery); // Déboguer la requête de recherche
-      this.filterBooks();  // Applique le filtre après avoir chargé les livres
+      this.searchQuery = params['search'] || '';
+      this.filterBooks();  
     });
   }  
 
    // Ajouter la méthode getBooks si elle n'existe pas encore
    getBooks(): void {
-    // Logique pour charger les livres filtrés par la recherche
     this.filteredBooks = this.books.filter(book => 
       book.titre.toLowerCase().includes(this.searchQuery.toLowerCase())
     );
@@ -137,12 +135,10 @@ export class BookDisplayComponent implements OnInit {
   }
 
   filterBooks(): void {
-    console.log('Performing search with query:', this.searchQuery);
     this.bookService.getBooks().subscribe({
       next: (response: any) => { 
-        // Vérifiez que 'response' est un objet avec une clé 'data' qui est un tableau
         if (response && Array.isArray(response.data)) {
-          this.books = response.data; // Assigner le tableau de livres à 'this.books'
+          this.books = response.data; 
           
           // Appliquer les filtres
           this.filteredBooks = this.books.filter(book => {
@@ -167,7 +163,6 @@ export class BookDisplayComponent implements OnInit {
   }
 
   onSearchChange(): void {
-    console.log('Search Query Changed:', this.searchQuery);
     this.filterBooks();
   }
   
@@ -232,7 +227,7 @@ export class BookDisplayComponent implements OnInit {
           // Masquer le message après 3 secondes
           setTimeout(() => {
             this.showSuccessMessage = false;
-          }, 3000); // 3 secondes
+          }, 3000); 
         },
         error: (err) => console.error('Erreur lors de l\'ajout du livre', err)
       });
@@ -242,10 +237,9 @@ export class BookDisplayComponent implements OnInit {
   private loadBooks(): void {
     this.bookService.getBooks().subscribe({
       next: (response: any) => { 
-        // Vérifiez que 'response' est un objet avec une clé 'data' qui est un tableau
         if (response && Array.isArray(response.data)) {
-          this.books = response.data; // Assigner le tableau de livres à 'this.books'
-          this.filteredBooks = [...this.books]; // Crée une copie pour le filtrage
+          this.books = response.data; 
+          this.filteredBooks = [...this.books];
           this.updatePagination();
           this.paginate();
         } else {
@@ -268,7 +262,7 @@ export class BookDisplayComponent implements OnInit {
       editeur: '',
       datePublication: new Date(),
       estVendable: true,
-      photos: '', // Assigne une chaîne vide
+      photos: '', 
       categories: [],
       description: '',
     };
@@ -278,7 +272,6 @@ export class BookDisplayComponent implements OnInit {
   private updatePagination(): void {
     this.totalPages = Math.ceil(this.filteredBooks.length / this.itemsPerPage);
     
-    // Assurez-vous que `currentPage` est dans les limites valides
     if (this.currentPage > this.totalPages) {
       this.currentPage = this.totalPages;
     }

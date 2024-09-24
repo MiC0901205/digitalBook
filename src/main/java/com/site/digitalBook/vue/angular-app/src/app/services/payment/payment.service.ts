@@ -11,21 +11,6 @@ export class PaymentService {
 
   constructor(private http: HttpClient) {}
 
-  // Fonction pour convertir une chaîne de caractères en tableau de bytes (Uint8Array)
-  private stringToByteArray(str: string): Uint8Array {
-    return new TextEncoder().encode(str);
-  }
-
-  // Fonction pour convertir un tableau de bytes en chaîne Base64
-  private byteArrayToBase64(byteArray: Uint8Array): string {
-    let binary = '';
-    const len = byteArray.byteLength;
-    for (let i = 0; i < len; i++) {
-      binary += String.fromCharCode(byteArray[i]);
-    }
-    return btoa(binary);
-  }
-
   // Fonction pour récupérer les cartes enregistrées de l'utilisateur
   getSavedCards(userId: number): Observable<PaymentCard[]> {
     return this.http.get<PaymentCard[]>(`${this.apiUrl}/payment-cards/${userId}`);
@@ -34,20 +19,17 @@ export class PaymentService {
   // Fonction pour envoyer les données de carte de paiement
   sendPaymentCard(cardNumber: string, expiryDate: string, cvv: string, userId: number): Observable<any> {
     // Convertir les chaînes en Base64
-    const cardNumberBase64 = btoa(cardNumber); // Encode le numéro de carte
-    const cvvBase64 = btoa(cvv);               // Encode le CVV
+    const cardNumberBase64 = btoa(cardNumber);
+    const cvvBase64 = btoa(cvv); 
 
     // Préparer les données à envoyer
     const paymentData = {
-        cardNumber: cardNumberBase64,  // Numéro de carte encodé en Base64
-        expiryDate: expiryDate,        // Date d'expiration telle quelle
-        cvv: cvvBase64,                // CVV encodé en Base64
-        userId: userId                  // ID de l'utilisateur
+        cardNumber: cardNumberBase64, 
+        expiryDate: expiryDate,       
+        cvv: cvvBase64,
+        userId: userId 
     };
 
-    console.log("Données envoyées au backend:", paymentData); // Log des données envoyées
-
-    // Envoi de la requête POST à l'API backend
     return this.http.post(`${this.apiUrl}/payment-cards`, paymentData);
   }
 

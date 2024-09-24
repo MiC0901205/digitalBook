@@ -35,7 +35,6 @@ export class HomeComponent implements OnInit {
   }
 
   performSearch(): void {
-    console.log('Performing search with query:', this.searchQuery);
     if (this.searchQuery.trim()) {
       this.router.navigate(['/books'], { queryParams: { search: this.searchQuery } });
     }
@@ -44,7 +43,6 @@ export class HomeComponent implements OnInit {
   loadFeaturedBooks(): void {
     this.bookService.getBooks().subscribe({
       next: (response: any) => {
-        // Vérifiez que 'response' est un objet avec une clé 'data' qui est un tableau
         if (response && Array.isArray(response.data)) {
           this.featuredBooks = response.data.slice(0, this.FEATURED_BOOK_COUNT);
         } else {
@@ -58,7 +56,6 @@ export class HomeComponent implements OnInit {
 
 
   viewBookDetail(bookId: number): void {
-    console.log('Viewing book detail:', bookId);
     this.router.navigate(['/book-detail', bookId]);
   }
 

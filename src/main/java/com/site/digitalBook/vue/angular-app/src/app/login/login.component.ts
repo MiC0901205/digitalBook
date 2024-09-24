@@ -101,10 +101,10 @@ export class LoginComponent implements OnInit {
 
           if (this.isBrowser) {
             localStorage.setItem('userEmail', email);
-            localStorage.setItem('userToken', response.token); // Stockez le token ici
+            localStorage.setItem('userToken', response.token);
           }
 
-          this.authService.setLoggedInStatus(true); // Mettez à jour l'état de connexion
+          this.authService.setLoggedInStatus(true);
           this.router.navigate(['/']);
         },
         (error: HttpErrorResponse) => {
@@ -135,11 +135,10 @@ export class LoginComponent implements OnInit {
 
   closeSecretQuestionModal(): void {
     this.isSecretQuestionModalOpen = false;
-    this.securityQuestion = null;  // Réinitialiser la question de sécurité lors de la fermeture
+    this.securityQuestion = null; 
   }
 
   submitSecretQuestionAnswer(): void {
-    console.log('Submitting secret question answer');
     this.isSubmittedSecretQuestion = true;
   
     if (this.secretQuestionForm.valid) {
@@ -147,16 +146,11 @@ export class LoginComponent implements OnInit {
   
       this.authService.getCurrentUser().subscribe({
         next: (response: any) => {
-          console.log('Received current user data:', response);
           const reponseSecrete = response.data.reponseSecrete;
-  
-          console.log('Received security answer:', securityAnswer);
-          console.log('Received secret answer:', reponseSecrete);
-          if (securityAnswer && reponseSecrete) {
+            if (securityAnswer && reponseSecrete) {
             if (securityAnswer.trim().toLowerCase() === reponseSecrete.trim().toLowerCase()) {
               this.authService.forgotPassword(response.data.email).subscribe(
                 res => {
-                  console.log('Password reset link sent:', res);
                   this.successMessage = 'Un lien pour réinitialiser votre mot de passe a été envoyé à votre adresse email.';
                   this.errorMessage = null;
                   this.isError = false;

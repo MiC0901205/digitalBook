@@ -168,7 +168,7 @@ export class AuthService {
     const localStorage = this.getLocalStorage();
     if (localStorage) {
       if (isLoggedIn) {
-        localStorage.setItem('userToken', 'dummy-token'); // Vous devriez remplacer 'dummy-token' par le token réel si nécessaire
+        localStorage.setItem('userToken', 'dummy-token');
         this.isLoggedInSubject.next(true);
       } else {
         localStorage.removeItem('userToken');

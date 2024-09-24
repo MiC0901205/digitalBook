@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './privacy-modal.component.html',
   styleUrls: ['./privacy-modal.component.css'],
   standalone: true,
-  imports: [CommonModule]  // Ajouter CommonModule ici
+  imports: [CommonModule] 
 })
 export class PrivacyModalComponent implements OnInit {
   showModal: boolean = false;
@@ -16,10 +16,8 @@ export class PrivacyModalComponent implements OnInit {
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
-      // Vérifie si le consentement est déjà stocké
       const consentGiven = localStorage.getItem('privacyConsent');
       
-      // Si aucune décision n'a été prise, affiche la modale
       if (!consentGiven) {
         this.showModal = true;
       }
@@ -28,17 +26,15 @@ export class PrivacyModalComponent implements OnInit {
 
   acceptPolicy() {
     if (isPlatformBrowser(this.platformId)) {
-      // Stocke le consentement dans localStorage
       localStorage.setItem('privacyConsent', 'true');
     }
-    this.showModal = false;  // Masque la modale après acceptation
+    this.showModal = false;
   }
 
   rejectPolicy() {
     if (isPlatformBrowser(this.platformId)) {
-      // Stocke le refus dans localStorage
       localStorage.setItem('privacyConsent', 'false');
     }
-    this.showModal = false;  // Masque la modale après refus
+    this.showModal = false;
   }
 }

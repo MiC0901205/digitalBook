@@ -32,10 +32,8 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.loadUserIdAndCartItems();
   
-    // Abonnez-vous au compteur d'articles
     this.cartService.getCartItemCountObservable().subscribe(count => {
-      console.log(`Compteur d'articles mis à jour dans le composant: ${count}`);
-      this.cartItemCount = count; // Mettez à jour la variable ici
+      this.cartItemCount = count; 
     });
   }
   
@@ -75,9 +73,8 @@ export class CartComponent implements OnInit {
     if (this.userId !== undefined) {
       this.cartService.removeFromCart(this.userId, item.id).subscribe({
         next: () => {
-          console.log(`Élément avec ID: ${item.id} supprimé avec succès.`);
-          this.loadCartItems(); // Mettre à jour les articles dans le panier
-          this.cartService.updateCartItemCount(this.userId); // Mettez à jour le compteur
+          this.loadCartItems();
+          this.cartService.updateCartItemCount(this.userId); 
         },
         error: (err: any) => console.error('Erreur lors de la suppression de l\'élément du panier', err)
       });
@@ -88,8 +85,8 @@ export class CartComponent implements OnInit {
     if (this.userId !== undefined) {
       this.cartService.clearCart(this.userId).subscribe({
         next: () => {
-          this.loadCartItems(); // Mettre à jour les articles
-          this.cartService.updateCartItemCount(this.userId); // Mettez à jour le compteur
+          this.loadCartItems();
+          this.cartService.updateCartItemCount(this.userId); 
         },
         error: (err: any) => console.error('Erreur lors du vidage du panier', err)
       });

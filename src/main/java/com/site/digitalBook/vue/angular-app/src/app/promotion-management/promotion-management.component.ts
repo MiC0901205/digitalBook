@@ -29,7 +29,6 @@ export class PromotionManagementComponent implements OnInit {
   currentBook: Book | null = null;
   showSuccessMessage: boolean = false; 
 
-
   constructor(private bookService: BookService) {}
 
   ngOnInit(): void {
@@ -39,10 +38,18 @@ export class PromotionManagementComponent implements OnInit {
   // Charger les livres à partir du backend
   loadBooks() {
     this.bookService.getBooks().subscribe({
-      next: (data: Book[]) => {
-        this.books = data;
-        this.totalPages = Math.ceil(this.books.length / this.booksPerPage);
-        this.updatePaginatedBooks();
+      next: (response: any) => {
+        
+        if (response && Array.isArray(response.data)) {
+          this.books = response.data; 
+
+          // Mettez à jour le nombre total de pages et les livres paginés
+          this.totalPages = Math.ceil(this.books.length / this.booksPerPage);
+          this.updatePaginatedBooks();
+        } else {
+          console.error('La réponse de l\'API est mal formatée ou la propriété data n\'est pas un tableau', response);
+          this.books = []; 
+        }
       },
       error: (err) => console.error('Erreur lors du chargement des livres :', err)
     });
@@ -77,28 +84,21 @@ export class PromotionManagementComponent implements OnInit {
       };
   
       this.bookService.updateBook(this.currentBook.id, updateData).subscribe({
-        next: (updatedBook: Book) => {
-          const index = this.books.findIndex(book => book.id === updatedBook.id);
-          if (index !== -1) {
-            this.books[index].remise = updatedBook.remise;
-          }
-          this.updatePaginatedBooks(); 
-          this.showSuccessMessage = true; // Afficher le message de réussite
-
-          // Masquer le message après 3 secondes
+        next: () => {
+          this.loadBooks();
+  
+          this.showSuccessMessage = true;
+  
           setTimeout(() => {
             this.showSuccessMessage = false;
           }, 3000);
-
-          this.closeModal(); 
+  
+          this.closeModal();
         },
         error: (err) => console.error('Erreur lors de la mise à jour du livre :', err)
       });
     }
   }
-  
-  
-
 
   // Fermer la modale
   closeModal() {

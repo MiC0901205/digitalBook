@@ -51,7 +51,6 @@ export class RegisterComponent implements OnInit {
       reponseSecrete: ['', Validators.required]
     });
 
-    // Update phone validators initially
     this.updatePhoneValidators();
   }
 
@@ -101,9 +100,9 @@ export class RegisterComponent implements OnInit {
 
   selectCountry(code: any): void {
     this.selectedCountry = code;
-    this.registerForm.get('tel')?.setValue(''); // Clear phone input on country change
+    this.registerForm.get('tel')?.setValue('');
     this.updatePhoneValidators();
-    this.dropdownOpen = false; // Close the dropdown after selection
+    this.dropdownOpen = false;
   }
 
   updatePhoneValidators(): void {
@@ -148,7 +147,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(): void {
     this.isSubmitted = true;
-    this.errorMessage = null; // Réinitialiser le message d'erreur
+    this.errorMessage = null;
   
     if (this.registerForm.valid) {
       const formData = this.registerForm.value;
@@ -157,7 +156,6 @@ export class RegisterComponent implements OnInit {
           this.registerForm.reset();
           this.errorMessage = null;
   
-          // Stocker le succès dans le localStorage
           localStorage.setItem('registrationSuccess', 'true');
           localStorage.setItem('userEmail', formData.email);
   
@@ -167,7 +165,6 @@ export class RegisterComponent implements OnInit {
           console.error('Registration failed', error);
           this.errorMessage = 'Adresse email déjà existante. Vous pouvez vous rendre sur la page de <a href="/login">connexion</a> pour vous connecter.';
   
-          // Masquer le message d'erreur après 3 secondes
           setTimeout(() => {
             this.errorMessage = null;
           }, 3000);

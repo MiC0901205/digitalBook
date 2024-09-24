@@ -24,9 +24,9 @@ export class ProfileComponent implements OnInit {
   maxLength: number = 13;
   errorMessage: string | null = null;
   successMessage: string | null = null;
-  initialProfileValues: Partial<User> = {}; // Utiliser Partial pour faciliter la comparaison
+  initialProfileValues: Partial<User> = {};
   isFormChanged = false;
-  initialEmail: string | null = null; // Pour stocker l'email initial
+  initialEmail: string | null = null;
 
   secretQuestions: string[] = [
     'Quel est le nom de votre premier animal de compagnie ?',
@@ -70,7 +70,7 @@ export class ProfileComponent implements OnInit {
       response => {
         const user = response.data;
         if (user) {
-          this.initialEmail = user.email;  // Stocker l'email initial ici
+          this.initialEmail = user.email;
           this.profileForm.patchValue({
             id: user.id,
             nom: user.nom || '',
@@ -170,7 +170,7 @@ export class ProfileComponent implements OnInit {
             this.errorMessage = null;
             setTimeout(() => {
               this.successMessage = null;
-            }, 3000); // 3 seconds
+            }, 3000);
           },
           error => {
             console.error('Erreur lors de la mise à jour du profil', error);
@@ -178,7 +178,7 @@ export class ProfileComponent implements OnInit {
             this.successMessage = null;
             setTimeout(() => {
               this.errorMessage = null;
-            }, 3000); // 3 seconds
+            }, 3000);
           }
         );
       } else {

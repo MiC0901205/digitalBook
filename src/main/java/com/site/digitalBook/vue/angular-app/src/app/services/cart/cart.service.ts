@@ -18,7 +18,6 @@ export class CartService {
   // Méthode pour obtenir le nombre d'articles du panier
   getCartItemCount$(userId: number): Observable<number> {
     return this.http.get<{ message: string, data: number }>(`${this.apiUrl}/cart/${userId}/count`).pipe(
-      tap(response => console.log(`Nombre d'articles récupéré: ${response.data}`)), // Ajoutez cette ligne
       map(response => response.data),
       catchError(this.handleError)
     );
@@ -58,26 +57,24 @@ export class CartService {
    */
   removeFromCart(userId: number, bookId: number): Observable<any> {
     return this.sendCartRequest('remove', userId, bookId).pipe(
-      tap(() => this.updateCartItemCount(userId)), // Mettre à jour le compteur ici
+      tap(() => this.updateCartItemCount(userId)),
       catchError(this.handleError)
     );
   }
 
-
-/**
- * Vide le panier pour un utilisateur spécifique.
- * @param userId L'ID de l'utilisateur.
- * @returns Un Observable contenant la réponse du backend.
- */
-clearCart(userId: number): Observable<any> {
-  return this.http.post(`${this.apiUrl}/cart/clear`, null, {
-    params: new HttpParams().set('userId', userId.toString())
-  }).pipe(
-    tap(() => this.updateCartItemCount(userId)), // Mettre à jour le compteur ici
-    catchError(this.handleError)
-  );
-}
-
+  /**
+   * Vide le panier pour un utilisateur spécifique.
+   * @param userId L'ID de l'utilisateur.
+   * @returns Un Observable contenant la réponse du backend.
+   */
+  clearCart(userId: number): Observable<any> {
+    return this.http.post(`${this.apiUrl}/cart/clear`, null, {
+      params: new HttpParams().set('userId', userId.toString())
+    }).pipe(
+      tap(() => this.updateCartItemCount(userId)),
+      catchError(this.handleError)
+    );
+  }
 
   /**
    * Méthode commune pour envoyer les requêtes d'ajout ou de suppression d'éléments dans le panier.
@@ -106,8 +103,8 @@ clearCart(userId: number): Observable<any> {
     return throwError(() => new Error(error.message || 'Erreur inconnue'));
   }
 
-   // Méthode pour obtenir le nombre d'articles dans le panier en tant qu'Observable
-   getCartItemCountObservable(): Observable<number> {
+  // Méthode pour obtenir le nombre d'articles dans le panier en tant qu'Observable
+  getCartItemCountObservable(): Observable<number> {
     return this.cartItemCountSubject.asObservable();
   }
 

@@ -18,7 +18,7 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class UserActionComponent implements OnInit {
   actionForm: FormGroup;
-  actionType: string = 'forgot-password'; // Valeur par défaut
+  actionType: string = 'forgot-password';
   isSubmitted: boolean = false;
   successMessage: string | null = null;
   errorMessage: string | null = null;
@@ -40,7 +40,7 @@ export class UserActionComponent implements OnInit {
       newPassword: ['', [Validators.required, this.passwordStrengthValidator()]],
       confirmPassword: ['', [Validators.required]],
       code: ['', [Validators.required]],
-      email: [''] // Email optionnel pour les confirmations
+      email: ['']
     }, { validators: this.passwordMatchValidator });
   }
 

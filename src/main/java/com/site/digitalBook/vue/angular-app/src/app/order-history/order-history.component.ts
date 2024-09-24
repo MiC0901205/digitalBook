@@ -60,9 +60,8 @@ export class OrderHistoryComponent implements OnInit {
         this.commandes$ = this.orderService.getCommandesByUserId(userId);
         this.commandes$.subscribe({
           next: (response: any) => {
-            // Assurez-vous que 'response' contient bien les commandes
             if (response && Array.isArray(response)) {
-              this.sortedCommandes = response; // Assurez-vous que sortedCommandes est bien initialisé
+              this.sortedCommandes = response; 
               this.updateDisplayedCommandes();
             } else {
               console.error('Format inattendu de la réponse des commandes', response);
@@ -89,14 +88,12 @@ export class OrderHistoryComponent implements OnInit {
 
   openOrderDetails(commande: Commande): void {
     this.selectedCommande = commande;
-    console.log('Commande sélectionnée:', commande);
     
-    this.livres = []; // Réinitialiser les livres avant de charger les nouveaux
+    this.livres = [];
   
     const bookRequests = commande.livreIds.map(id =>
       this.bookService.getBookById(id).pipe(
         map((response: any) => {
-          console.log('Réponse de getBookById pour ID', id, ':', response);
           if (response && response.data) {
             return response.data;
           } else {
@@ -109,9 +106,8 @@ export class OrderHistoryComponent implements OnInit {
   
     forkJoin(bookRequests).subscribe({
       next: (books: Book[]) => {
-        console.log('Livres récupérés:', books);
         this.livres = books.filter(book => book !== null);
-        this.isModalOpen = true; // Ouvrir la modale
+        this.isModalOpen = true;
       },
       error: (err) => console.error('Erreur lors de la récupération des livres', err)
     });
@@ -162,7 +158,6 @@ export class OrderHistoryComponent implements OnInit {
     return this.currencyPipe.transform(price, 'EUR', 'symbol', '1.2-2');
   }
 
-  // Pagination Methods
   previousPage(): void {
     if (this.currentPage > 1) {
       this.currentPage--;
@@ -177,7 +172,6 @@ export class OrderHistoryComponent implements OnInit {
     }
   }
 
-  // Sorting Methods
   toggleSortByDate(): void {
     this.sortByDateAscending = !this.sortByDateAscending;
     this.sortedCommandes.sort((a, b) => 

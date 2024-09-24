@@ -34,7 +34,7 @@ export class CartValidationComponent implements OnInit {
   showPaymentModal: boolean = true;
   paymentForm!: FormGroup;
   showSuccessMessage: boolean = false;
-  savedCards: PaymentCard[] = []; // Ajout de la propriété pour les cartes enregistrées
+  savedCards: PaymentCard[] = [];
 
   constructor(
     private cartService: CartService,
@@ -52,9 +52,9 @@ export class CartValidationComponent implements OnInit {
       expiryDate: ['', [Validators.pattern(/^\d{2}\/\d{2}$/)]],
       cvv: ['', [Validators.pattern(/^\d{3}$/)]],
       giftCardCode: [''],
-      saveCard: [false], // Ajout de la case à cocher ici
-      selectedCard: [null], // Ajout d'un FormControl pour la carte sélectionnée
-      submit: [false] // FormControl pour le bouton de soumission
+      saveCard: [false],
+      selectedCard: [null],
+      submit: [false]
     });
     
   
@@ -62,7 +62,7 @@ export class CartValidationComponent implements OnInit {
       next: (id: number) => {
         this.userId = id;
         this.loadCartItems();
-        this.loadSavedCards(); // Ajoute cet appel ici
+        this.loadSavedCards(); 
       },
       error: (err: any) => console.error('Erreur lors de la récupération de l\'ID utilisateur', err)
     });
@@ -107,10 +107,8 @@ export class CartValidationComponent implements OnInit {
   loadSavedCards(): void {
     if (this.userId !== undefined) {
       this.paymentService.getSavedCards(this.userId).subscribe({
-        next: (response: any) => { // Utilise 'any' pour obtenir plus de flexibilité
-          console.log('Réponse de l\'API pour les cartes:', response);
-          this.savedCards = response.data || []; // Assigne le tableau à partir de 'data'
-          console.log('Cartes enregistrées:', this.savedCards);
+        next: (response: any) => {
+          this.savedCards = response.data || [];
         },
         error: (err: any) => console.error('Erreur lors de la récupération des cartes enregistrées', err)
       });
@@ -118,8 +116,8 @@ export class CartValidationComponent implements OnInit {
   }
 
   maskCardNumber(cardNumber: string): string {
-    // Décoder le numéro de carte (en supposant qu'il est encodé en Base64)
-    const decodedCardNumber = atob(cardNumber); // Utilise atob pour décoder
+    // Décoder le numéro de carte 
+    const decodedCardNumber = atob(cardNumber);
 
     // Masquer tous les chiffres sauf les 2 premiers et les 4 derniers
     return decodedCardNumber.slice(0, 2) + '** **** **** **' + decodedCardNumber.slice(-2);
@@ -127,8 +125,8 @@ export class CartValidationComponent implements OnInit {
 
 
   maskCvv(cvv: string): string {
-    // Décodez le CVV (en supposant qu'il est encodé en Base64)
-    return atob(cvv); // Utilise atob pour décoder
+    // Décodez le CVV
+    return atob(cvv);
   }
 
 
@@ -138,12 +136,10 @@ export class CartValidationComponent implements OnInit {
         selectedCard: card,
         cardNumber: this.formatCardNumberWithSpaces(decryptedCardNumber), // Formatez avec des espaces
         expiryDate: card.expiryDate,
-        cvv: atob(card.cvv) // Affichez le CVV déchiffré
+        cvv: atob(card.cvv) 
     });
     
     this.checkIfSubmitEnabled();
-    console.log("Carte sélectionnée:", card);
-    console.log("État du bouton de soumission:", this.paymentForm.get('submit')?.value);
 }
 
   // Fonction pour formater le numéro de carte avec des espaces
@@ -155,8 +151,6 @@ export class CartValidationComponent implements OnInit {
  checkIfSubmitEnabled(): void {
     const isCardSelected = this.paymentForm.get('selectedCard')?.value !== null;
     const isFormValid = this.paymentForm.valid;
-    console.log('Carte sélectionnée:', isCardSelected);
-    console.log('Formulaire valide:', isFormValid);
     this.paymentForm.get('submit')?.setValue(isCardSelected && isFormValid);
   }
 
@@ -178,7 +172,6 @@ export class CartValidationComponent implements OnInit {
         const response = await this.orderService.createCommande(commande).toPromise();
         
         const saveCard = this.paymentForm.get('saveCard')?.value;
-        console.log("Mémoriser cette carte :", saveCard);
         
         if (saveCard) {
           const paymentCard: PaymentCard = {
@@ -187,9 +180,7 @@ export class CartValidationComponent implements OnInit {
             cvv: this.paymentForm.get('cvv')?.value,
             userId: this.userId
           };
-  
-          console.log("Données de la carte de paiement :", paymentCard);
-          
+            
           await this.paymentService.sendPaymentCard(paymentCard.cardNumber, paymentCard.expiryDate, paymentCard.cvv, paymentCard.userId!).toPromise();
         }
         
@@ -336,7 +327,7 @@ export class CartValidationComponent implements OnInit {
           // Mise à jour de la liste des cartes sauvegardées
           this.savedCards = this.savedCards.filter(c => c.id !== card.id);
           alert('Carte supprimée avec succès.');
-          this.loadSavedCards(); // Recharger les cartes depuis l'API
+          this.loadSavedCards();
         },
         error: (err: any) => {
           console.error('Erreur lors de la suppression de la carte :', err);

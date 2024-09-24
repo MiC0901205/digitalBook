@@ -112,7 +112,6 @@ export class UserManagementComponent implements OnInit {
           this.closeUserModal();
           this.loadUsers();
 
-          // Effacer le message après 3 secondes
           setTimeout(() => {
             this.successMessage = null;
           }, 3000);

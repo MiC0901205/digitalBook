@@ -28,7 +28,7 @@ export class BookDetailComponent implements OnInit {
   formattedCategories: string = '';
   userId?: number;
   isInCart: boolean = false;
-  cartItemCount: number = 0; // Ajoutez cette propriété
+  cartItemCount: number = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -39,7 +39,6 @@ export class BookDetailComponent implements OnInit {
     private cookieService: CookieService
   ) 
   {
-     // Souscription au compteur d'articles
      this.cartService.getCartItemCountObservable().subscribe(count => {
       this.cartItemCount = count;
     });
@@ -52,8 +51,7 @@ export class BookDetailComponent implements OnInit {
       if (id) {
         this.bookService.getBookById(id).subscribe({
           next: (response: any) => {
-            console.log('Détails du livre reçus:', response);
-            this.book = response.data; // Ajustez en fonction de votre réponse API
+            this.book = response.data;
 
             if (this.book) {
               this.formattedCategories = this.formatCategories(this.book.categories || []);
@@ -70,7 +68,6 @@ export class BookDetailComponent implements OnInit {
 
     this.authService.getUserId().subscribe({
       next: (id: number) => {
-        console.log('ID utilisateur récupéré:', id);
         this.userId = id;
         if (this.book) {
           this.checkIfBookIsInCart();
@@ -89,7 +86,6 @@ export class BookDetailComponent implements OnInit {
         this.cartService.addToCart(this.userId, book.id).subscribe({
           next: () => {
             this.isInCart = true;
-            console.log('Livre ajouté au panier:', book);
           },
           error: (err: any) => console.error('Erreur lors de l\'ajout du livre au panier', err)
         });
@@ -106,16 +102,12 @@ export class BookDetailComponent implements OnInit {
     if (!cart.some(item => item.id === book.id)) {
       cart.push(book);
       this.cookieService.set('cart', JSON.stringify(cart));
-      console.log('Livre ajouté aux cookies:', book);
     }
   }
 
   private loadRecommendedBooks(category: string): void {
     this.bookService.getBooksByCategory(category).subscribe({
-      next: (response: any) => {
-        console.log('Réponse reçue pour les livres recommandés:', response);
-        
-        // Supposons que la réponse contient une propriété 'data' qui est un tableau
+      next: (response: any) => {        
         const books = response.data as Book[];
   
         if (Array.isArray(books)) {
@@ -145,7 +137,6 @@ export class BookDetailComponent implements OnInit {
     if (this.userId !== undefined && this.book?.id !== undefined) {
       this.cartService.getCartItems(this.userId).subscribe({
         next: (response: any) => {
-          console.log('Éléments du panier reçus:', response);
           const cartItems: Book[] = response.data || [];
           this.isInCart = cartItems.some((item: Book) => item.id === this.book?.id);
         },

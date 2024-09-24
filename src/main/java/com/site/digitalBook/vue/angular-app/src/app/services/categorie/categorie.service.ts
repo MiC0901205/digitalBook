@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Categorie } from '../../interface/categorie.model'; // Assurez-vous que le modèle Categorie existe et est correct
+import { Categorie } from '../../interface/categorie.model';
 
 @Injectable({
   providedIn: 'root'
